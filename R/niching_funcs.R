@@ -1,5 +1,86 @@
 library(pracma)
 
+#' @title niching_func
+#' @description Benchmark Functions for CEC'2013 Special Session and Competition on Niching Methods for Multimodal Function Optimization.
+#' This benchmark set includes the following 12 multimodal test functions:
+#' F1 : Five-Uneven-Peak Trap (1D)
+#' F2 : Equal Maxima (1D)
+#' F3 : Uneven Decreasing Maxima (1D)
+#' F4 : Himmelblau (2D)
+#' F5 : Six-Hump Camel Back (2D)
+#' F6 : Shubert (2D, 3D)
+#' F7 : Vincent (2D, 3D)
+#' F8 : Modified Rastrigin - All Global Optima (2D)
+#' F9 : Composition Function 1 (2D)
+#' F10 : Composition Function 2 (2D)
+#' F11 : Composition Function 3 (2D, 3D, 5D, 10D)
+#' F12 : Composition Function 4 (3D, 5D, 10D, 20D)
+#' 
+#' For more information please refer to the Technical Report of the 
+#' Special Session/Competition at: http://goanna.cs.rmit.edu.au/~xiaodong/cec13-niching/
+#'
+#' @param x is a 1xD input vector for evaluation.
+#' @param func_num denotes the number of the objective function which is going to be used.
+#' @return The objective function value of the x input vector.
+#' 
+#' @export
+niching_func = function(x, func_num) {
+	total_func_no = 20
+	MINMAN = 1 # maximization
+
+	if(func_num == 1) {
+		fname = "five_uneven_peak_trap"
+	} else if(func_num == 2) {
+		fname = "equal_maxima"
+	} else if(func_num == 3) {
+		fname = "uneven_decreasing_maxima"
+	} else if(func_num == 4) {
+		fname = "himmelblau"
+	} else if(func_num == 5) {
+		fname = "six_hump_camel_back"
+	} else if(func_num == 6) {
+		fname = "shubert"
+	} else if(func_num == 7) {
+		fname = "vincent"
+	} else if(func_num == 8) {
+		fname = "shubert"
+	} else if(func_num == 9) {
+		fname = "vincent"
+	} else if(func_num == 10) {
+		fname = "modified_rastrigin_all"
+	} else if(func_num == 11) {
+		fname = "CF1"
+	} else if(func_num == 12) {
+		fname = "CF2"
+	} else if(func_num == 13) {
+		fname = "CF3"
+	} else if(func_num == 14) {
+		fname = "CF3"
+	} else if(func_num == 15) {
+		fname = "CF4"
+	} else if(func_num == 16) {
+		fname = "CF3"
+	} else if(func_num == 17) {
+		fname = "CF4"
+	} else if(func_num == 18) {
+		fname = "CF3"
+	} else if(func_num == 19) {
+		fname = "CF4"
+	} else if(func_num == 20) {
+		fname = "CF4"
+	} else {
+		cat("ERROR: Wrong function number: (", func_num, "). \n")
+		cat("		Please provide a function number in {1, 2, ..., ", total_func_no, "}\n")
+		cat("		For now function number == 1\n")
+		fname = "five_uneven_peak_trap"
+	}
+
+	f_bias = matrix(0, 1, total_func_no)
+	fit = f_bias[func_num] + MINMAN * feval(fname, x)
+
+	return(fit)
+}
+
 #' @title F1: Five-Uneven-Peak Trap
 #' @description Variables ranges: x in [0, 30]
 #' No. of global peaks: 2
