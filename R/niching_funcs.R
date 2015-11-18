@@ -1,3 +1,5 @@
+library(pracma)
+
 #' @title F1: Five-Uneven-Peak Trap
 #' @description Variables ranges: x in [0, 30]
 #' No. of global peaks: 2
@@ -439,9 +441,9 @@ FEF8F2 = function(x) {
 	d = size(x)[2]
 	f = 0
 	for(i in 1:(d - 1)) {
-		f = f + F8F2(x[, []] + 1) # TODO: check matlab code for this case
+		f = f + F8F2(x[, i:(i+1)] + 1)
 	}
-	return(f + F8F2(x[, []] + 1)) # and this one
+	return(f + F8F2(x[, d:1] + 1))
 }
 
 #' @title F8F2 Function
@@ -462,22 +464,10 @@ F8F2 = function(x) {
 #' 
 #' @export
 local_gram_schmidt = function(A) {
-	m = size(A)[2]
-	q = A
-	r = matrix(0, m, m)
-	for(j in 1:m) {
-		for(i in 1:j-1) {
-			r[i, j] = q[, j] * q[, i]
-		}
-		for(i in 1:j-1) {
-			q = add_col(q, j, q[, j] - r[i, j] * q[, i])
-			#q[, j] = q[, j] - r[i, j] * q[, i]
-		}
-		t = norm(q[, j], 2)
-		q[, j] = q[, j] / t
-		r[j, j] = t
-	}
-	return(list("q" = q, "r" = r))
+	tmp = qr(A)
+	q = qr.Q(tmp)
+	r = qr.R(tmp)
+	return(list("q" = q, "r" = r, "qr" = tmp$qr))
 }
 
 #' @title Rotation Matrix
@@ -490,24 +480,28 @@ local_gram_schmidt = function(A) {
 #' @export
 rot_matrix_condition = function(D, c) {
 	# A random normal matrix
-	#A = normrnd(0,1,D,D);
+	A = rnorm(D, 0, 1);
 
 	# P Orthogonal matrix
-	P = gram_schmidt(A)
+	P = local_gram_schmidt(A)
 
 	# A random normal matrix
-	#A = normrnd(0,1,D,D);
+	A = rnorm(D, 0, 1);
 
 	# Q Orthogonal matrix
-	Q = gram_schmidt(A)
+	Q = local_gram_schmidt(A)
 
 	# Make a diagonal matrix D with prespecified condition number
 	u = runif(D)
 	D = c^((u - min(u))/(max(u) - min(u)))
 	D = diag(D)
 
+	print(P)
+	print(D)
+	print(Q)
+
 	# M rotation matrix with condition number c
-	M = P * D * Q
+	M = P$qr * as.vector(D) * Q$qr
 	return(M)
 }
 
