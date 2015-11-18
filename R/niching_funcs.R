@@ -496,12 +496,8 @@ rot_matrix_condition = function(D, c) {
 	D = c^((u - min(u))/(max(u) - min(u)))
 	D = diag(D)
 
-	print(P)
-	print(D)
-	print(Q)
-
 	# M rotation matrix with condition number c
-	M = P$qr * as.vector(D) * Q$qr
+	M = P$qr * D * Q$qr
 	return(M)
 }
 
