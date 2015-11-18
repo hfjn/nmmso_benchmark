@@ -48,26 +48,26 @@ niching_func = function(x, func_num) {
 		fname = "vincent"
 	} else if(func_num == 10) {
 		fname = "modified_rastrigin_all"
-	} else if(func_num == 11) {
-		fname = "CF1"
-	} else if(func_num == 12) {
-		fname = "CF2"
-	} else if(func_num == 13) {
-		fname = "CF3"
-	} else if(func_num == 14) {
-		fname = "CF3"
-	} else if(func_num == 15) {
-		fname = "CF4"
-	} else if(func_num == 16) {
-		fname = "CF3"
-	} else if(func_num == 17) {
-		fname = "CF4"
-	} else if(func_num == 18) {
-		fname = "CF3"
-	} else if(func_num == 19) {
-		fname = "CF4"
-	} else if(func_num == 20) {
-		fname = "CF4"
+	# } else if(func_num == 11) {
+	# 	fname = "CF1"
+	# } else if(func_num == 12) {
+	# 	fname = "CF2"
+	# } else if(func_num == 13) {
+	# 	fname = "CF3"
+	# } else if(func_num == 14) {
+	# 	fname = "CF3"
+	# } else if(func_num == 15) {
+	# 	fname = "CF4"
+	# } else if(func_num == 16) {
+	# 	fname = "CF3"
+	# } else if(func_num == 17) {
+	# 	fname = "CF4"
+	# } else if(func_num == 18) {
+	# 	fname = "CF3"
+	# } else if(func_num == 19) {
+	# 	fname = "CF4"
+	# } else if(func_num == 20) {
+	# 	fname = "CF4"
 	} else {
 		cat("ERROR: Wrong function number: (", func_num, "). \n")
 		cat("		Please provide a function number in {1, 2, ..., ", total_func_no, "}\n")
@@ -76,7 +76,8 @@ niching_func = function(x, func_num) {
 	}
 
 	f_bias = matrix(0, 1, total_func_no)
-	fit = f_bias[func_num] + MINMAN * feval(fname, x)
+	print(as.symbol(fname))
+	fit = f_bias[func_num] + MINMAN * feval(as.symbol(fname), x)
 
 	return(fit)
 }
@@ -237,7 +238,7 @@ CF1 = function(x) {
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
-			o = lb + (ub - lb) * # rand(func_num, d)
+			o = lb + (ub - lb) #* rand(func_num, d)
 		}
 		initial_flag = 1
 		# func.f1 = str2func('FGriewank');
@@ -276,7 +277,7 @@ CF2 = function(x) {
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
-			o = lb + (ub - lb) * # rand(func_num, d)
+			o = lb + (ub - lb) #* rand(func_num, d)
 		}
 		# func.f1 = str2func('FRastrigin');
 		# func.f2 = str2func('FRastrigin');
@@ -316,7 +317,7 @@ CF3 = function(x) {
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
-			o = lb + (ub - lb) * # rand(func_num, d)
+			o = lb + (ub - lb) #* rand(func_num, d)
 		}
 		# func.f1 = str2func('FEF8F2');
 		# func.f2 = str2func('FEF8F2');
@@ -343,7 +344,7 @@ CF3 = function(x) {
 		} else {
 			for(i in 1:func_num) {
 			# eval(['M.M' int2str(i) '= RotMatrixCondition( D,c(i) );']);
-		}
+			}
 		}
 	}
 	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
@@ -367,7 +368,7 @@ CF4 = function(x) {
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
-			o = lb + (ub - lb) * # rand(func_num, d)
+			o = lb + (ub - lb) #* rand(func_num, d)
 		}
 		# func.f1 = str2func('FRastrigin');
 		# func.f2 = str2func('FRastrigin');

@@ -1,3 +1,6 @@
+source("./R/niching_funcs.R")
+source("./../nmmso/R/feval.R")
+
 # Demonstration file on how to use the benchmark suite of the Competition 
 
 dims = c(1, 1, 1, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 3, 5, 5, 10, 10, 20) # dimensionality of benchmark functions
@@ -19,7 +22,7 @@ for(func_num in 1:20) {
 
 	# evaluate the solution
 	val = niching_func(x, func_num) # fitness evaluation
-	cat("f_", func_num, " : f(1...1) = ", val ".\n")
+	cat("f_", func_num, " : f(1...1) = ", val, ".\n")
 }
 print("-------------------------------------------------------------------")
 
