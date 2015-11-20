@@ -1,6 +1,7 @@
 library(devtools)
 load_all("../nmmso/")
 source("./R/cec_2015_problem_data.R")
+source("./R/niching_funcs.R")
 
 library(pryr)
 
@@ -26,8 +27,7 @@ state = list()
 evals = 0
 index = 2
 #Rprof("file.out", line.profiling=TRUE)
-result <- NMMSO(swarm_size = as.numeric(10*length(mx[2])), problem_function = fit, max_evaluations = 50000, mn = as.numeric(mn[2]), mx = as.numeric(mx[2]))
-stop()
+result <- NMMSO(swarm_size = as.numeric(10*length(mx[[7]])), problem_function = vincent, max_evaluations = gens[[7]], mn = as.numeric(mn[[7]]), mx = as.numeric(mx[[7]]))
 #str(result)
 #Rprof(NULL)
 #summaryRprof("file.out", lines="show")
