@@ -29,25 +29,25 @@ niching_func = function(x, func_num) {
 	MINMAN = 1 # maximization
 
 	if(func_num == 1) {
-		fname = "five_uneven_peak_trap"
+		f = feval(five_uneven_peak_trap, x)
 	} else if(func_num == 2) {
-		fname = "equal_maxima"
+		f = feval(equal_maxima, x)
 	} else if(func_num == 3) {
-		fname = "uneven_decreasing_maxima"
+		f = feval(uneven_decreasing_maxima, x)
 	} else if(func_num == 4) {
-		fname = "himmelblau"
+		f = feval(himmelblau, x)
 	} else if(func_num == 5) {
-		fname = "six_hump_camel_back"
+		f = feval(six_hump_camel_back, x)
 	} else if(func_num == 6) {
-		fname = "shubert"
+		f = feval(shubert, x)
 	} else if(func_num == 7) {
-		fname = "vincent"
+		f = feval(vincent, x)
 	} else if(func_num == 8) {
-		fname = "shubert"
+		f = feval(shubert, x)
 	} else if(func_num == 9) {
-		fname = "vincent"
+		f = feval(vincent, x)
 	} else if(func_num == 10) {
-		fname = "modified_rastrigin_all"
+		f = feval(modified_rastrigin_all, x)
 	# } else if(func_num == 11) {
 	# 	fname = "CF1"
 	# } else if(func_num == 12) {
@@ -72,12 +72,11 @@ niching_func = function(x, func_num) {
 		cat("ERROR: Wrong function number: (", func_num, "). \n")
 		cat("		Please provide a function number in {1, 2, ..., ", total_func_no, "}\n")
 		cat("		For now function number == 1\n")
-		fname = "five_uneven_peak_trap"
+		f = feval(five_uneven_peak_trap, x)
 	}
 
 	f_bias = matrix(0, 1, total_func_no)
-	print(as.symbol(fname))
-	fit = f_bias[func_num] + MINMAN * feval(as.symbol(fname), x)
+	fit = f_bias[func_num] + MINMAN * f
 
 	return(fit)
 }

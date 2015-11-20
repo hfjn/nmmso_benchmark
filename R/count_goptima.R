@@ -15,14 +15,14 @@ count_goptima = function(pop, nfunc, accuracy) {
 	nopt = c(2, 5, 1, 4, 2, 18, 36, 81, 216, 12, 6, 8, 6, 6, 8, 6, 8, 6, 6, 8)
 
 	# evaluate pop
-	fpop = matrix(0, 1, np)
+	fpop = c()
 	for(i in 1:np) {
 		fpop[i] = niching_func(pop[i, ], nfunc)
 	}
 	fpoptmp = fpop
 
 	# descent sorting
-	index = sort(fpoptmp, decreasing = TRUE, index.return = TRUE)
+	index = sort(fpoptmp, decreasing = TRUE, index.return = TRUE)$ix
 
 	# sort population based on its fitness values
 	# do not change the current population. Work on cpop/cpopfits
@@ -30,38 +30,39 @@ count_goptima = function(pop, nfunc, accuracy) {
 	cpopfits = fpop[index]
 
 	# get seeds
-	seeds = NULL
-	seedsidx = NULL
+	seeds = c()
+	seedsidx = c()
 
 	for(i in 1:np) {
 		found = 0
 		snp = size(seeds)[1]
-		for(j in 1:snp) {
-			# calculate distance from seeds
-			dist = sqrt(apply((seeds[j, ] - cpop[i, ])^2, 2, sum))
-			# if the Euclidean distance is less than the radius
-			if(dist <= rho[nfunc]) {
-				found = 1
-				break
+		if(snp != 0) {
+			for(j in 1:snp) {
+				# calculate distance from seeds
+				dist = sqrt(sum((seeds[j] - cpop[i])^2))
+				# if the Euclidean distance is less than the radius
+				if(dist <= rho[nfunc]) {
+					found = 1
+					break
+				}
 			}
 		}
 		# if it is not similar to any other seed, then it is a new seed
 		if(found == 0) {
-			seeds = [seeds, cpop[i]]
-			seedsidx = [seedsidx, i]
+			seeds = c(seeds, cpop[i])
+			seedsidx = c(seedsidx, i)
 		}
 	}
 
 	# based on the accuracy: check which seeds are global optimizers
-	count = 0
-	finalseeds = NULL
 	seedsfit = cpopfits[seedsidx]
 	idx = which(abs(seedsfit - fgoptima[nfunc]) <= accuracy)
+
 	if(length(idx) > nopt[nfunc]) {
 		idx = idx[1:nopt[nfunc]]
 	}
 	count = length(idx)
-	finalseeds = seeds[idx, ]
+	finalseeds = seeds[idx]
 
 	return(list("count" = count, "finalseeds" = finalseeds))
 }
