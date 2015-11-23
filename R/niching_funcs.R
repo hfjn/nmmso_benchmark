@@ -48,10 +48,10 @@ niching_func = function(x, func_num) {
 		f = feval(vincent, x)
 	} else if(func_num == 10) {
 		f = feval(modified_rastrigin_all, x)
-	# } else if(func_num == 11) {
-	# 	fname = "CF1"
-	# } else if(func_num == 12) {
-	# 	fname = "CF2"
+	} else if(func_num == 11) {
+		f = feval(CF1, x)
+	} else if(func_num == 12) {
+		f = feval(CF2, x)
 	# } else if(func_num == 13) {
 	# 	fname = "CF3"
 	# } else if(func_num == 14) {
@@ -217,6 +217,16 @@ modified_rastrigin_all = function(x) {
 	return(-sum(10 + 9 * cos(2 * pi * MMP * x)))
 }
 
+eval_functions = function(fname, x) {
+	switch(fname,
+		FGriewank = feval(FGriewank, x),
+		FWeierstrass = feval(FWeierstrass, x),
+		FSphere = feval(FSphere, x),
+		FRastrigin = feval(FRastrigin, x),
+		FEF8F2 = feval(FEF8F2, x)
+	)
+}
+
 # Global variables for composition functions
 initial_flag = 0
 
@@ -232,28 +242,22 @@ CF1 = function(x) {
 	func_num = 6
 	lb = -5
 	ub = 5
+	o = c()
 	if(initial_flag == 0) {
 		#load data/optima.mat # saved the predifined optima
-		if(length(o[1, ]) >= d) {
-			o = o[, 1:d]
+		if(length(o) >= d) {
+			o = o[1:d]
 		} else {
-			o = lb + (ub - lb) #* rand(func_num, d)
+			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
 		}
 		initial_flag = 1
-		# func.f1 = str2func('FGriewank');
-		# func.f2 = str2func('FGriewank');
-		# func.f3 = str2func('FWeierstrass');
-		# func.f4 = str2func('FWeierstrass');
-		# func.f5 = str2func('FSphere');
-		# func.f6 = str2func('FSphere');
+		func = c("FGriewank", "FGriewank", "FWeierstrass", "FWeierstrass", "FSphere", "FSphere")
 		bias = matrix(0, 1, func_num)
 		sigma = matrix(1, 1, func_num)
 		lambda = rbind(1, 1, 8, 8, 1/5, 1/5)
 		lambda = repmat(lambda, 1, d)
 
-		for(i in 1:func_num) {
-			# eval(['M.M' int2str(i) '= diag(ones(1,D));']);
-		}
+		M = diag(1, d)
 	}
 	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
 }
@@ -270,30 +274,22 @@ CF2 = function(x) {
 	func_num = 8
 	lb = -5
 	ub = 5
+	o = c()
 	if(initial_flag == 0) {
 		initial_flag = 1
 		#load data/optima.mat # saved the predifined optima
-		if(length(o[1, ]) >= d) {
-			o = o[, 1:d]
+		if(length(o) >= d) {
+			o = o[1:d]
 		} else {
-			o = lb + (ub - lb) #* rand(func_num, d)
+			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
 		}
-		# func.f1 = str2func('FRastrigin');
-		# func.f2 = str2func('FRastrigin');
-		# func.f3 = str2func('FWeierstrass');
-		# func.f4 = str2func('FWeierstrass');
-		# func.f5 = str2func('FGriewank');
-		# func.f6 = str2func('FGriewank');
-		# func.f7 = str2func('FSphere');
-		# func.f8 = str2func('FSphere');
+		func = c("FRastrigin", "FRastrigin", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank", "FSphere", "FSphere")
 		bias = matrix(0, 1, func_num)
 		sigma = matrix(1, 1, func_num)
 		lambda = rbind(1, 1, 10, 10, 1/10, 1/10, 1/7, 1/7)
 		lambda = repmat(lambda, 1, d)
 
-		for(i in 1:func_num) {
-			# eval(['M.M' int2str(i) '= diag(ones(1,D));']);
-		}
+		M = diag(1, d)
 	}
 	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
 }
@@ -310,20 +306,16 @@ CF3 = function(x) {
 	func_num = 6
 	lb = -5
 	ub = 5
+	o = c()
 	if(initial_flag == 0) {
 		initial_flag = 1
 		#load data/optima.mat # saved the predifined optima
-		if(length(o[1, ]) >= d) {
-			o = o[, 1:d]
+		if(length(o) >= d) {
+			o = o[1:d]
 		} else {
-			o = lb + (ub - lb) #* rand(func_num, d)
+			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
 		}
-		# func.f1 = str2func('FEF8F2');
-		# func.f2 = str2func('FEF8F2');
-		# func.f3 = str2func('FWeierstrass');
-		# func.f4 = str2func('FWeierstrass');
-		# func.f5 = str2func('FGriewank');
-		# func.f6 = str2func('FGriewank');
+		func = c("FEF8F2", "FEF8F2", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank")
 		bias = matrix(0, 1, func_num)
 		sigma = c(1, 1, 2, 2, 2, 2)
 		lambda = rbind(1/4, 1/10, 2, 1, 2, 5)
@@ -361,22 +353,16 @@ CF4 = function(x) {
 	func_num = 8
 	lb = -5
 	ub = 5
+	o = c()
 	if(initial_flag == 0) {
 		initial_flag = 1
 		#load data/optima.mat # saved the predifined optima
-		if(length(o[1, ]) >= d) {
-			o = o[, 1:d]
+		if(length(o) >= d) {
+			o = o[1:d]
 		} else {
-			o = lb + (ub - lb) #* rand(func_num, d)
+			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
 		}
-		# func.f1 = str2func('FRastrigin');
-		# func.f2 = str2func('FRastrigin');
-		# func.f3 = str2func('FEF8F2');
-		# func.f4 = str2func('FEF8F2');
-		# func.f5 = str2func('FWeierstrass');
-		# func.f6 = str2func('FWeierstrass');
-		# func.f7 = str2func('FGriewank');
-		# func.f8 = str2func('FGriewank');		
+		func = c("FRastrigin", "FRastrigin", "FEF8F2", "FEF8F2", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank")	
 		bias = matrix(0, 1, func_num)
 		sigma = c(1, 1, 1, 1, 1, 2, 2, 2)
 		lambda = rbind(4, 1, 4, 1, 1/10, 1/5, 1/10, 1/40)
@@ -396,7 +382,7 @@ CF4 = function(x) {
 		} else {
 			for(i in 1:func_num) {
 			# eval(['M.M' int2str(i) '= RotMatrixCondition( D,c(i) );']);
-		}
+			}
 		}
 	}
 	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
@@ -418,32 +404,32 @@ CF4 = function(x) {
 hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M) {
 	d = size(x)[2]
 	ps = size(x)[1]
-	weight = matrix()
+	weight = matrix(0, func_num, func_num)
 
 	for(i in 1:func_num) {
-		oo = repmat(o[1, ], ps, 1)
-		weight = add_col(weight, i, exp(-apply((x - oo)^2, 2, sum)/2/(d * sigma[i]^2)))
+		oo = as.vector(repmat(o[i], ps, 1))
+		weight[, i] = exp(-sum((x - oo)^2)/2/(d * sigma[i]^2))
 	}
 
 	tmp = t(apply(weight, 1, sort))
 	for(i in 1:ps) {
-		value = (weight[i, ] == tmp[i, func_num]) * weight[i, ] + (weight[i, ] != tmp[i, func_num]) * (weight[i, ] * (1 - tmp[i, func_num]^10))
-		weight = add_row(weight, i, value)
+		weight[i, ] = (weight[i, ] == tmp[i, func_num]) * weight[i, ] + (weight[i, ] != tmp[i, func_num]) * (weight[i, ] * (1 - tmp[i, func_num]^10))
 	}
 
-	if(apply(weight, 2, sum) == 0) {
+	if(sum(weight) == 0) {
 		weight = weight + 1
 	}
 
-	weight = weight / repmat(apply(weight, 2, sum), 1, func_num)
+	weight = weight / repmat(matrix(apply(weight, 2, sum)), 1, func_num)
 	it = 0
 	res = 0
 	for(i in 1:func_num) {
-		oo = repmat(o[i, ], ps, 1)
-		#eval(['f = feval(func.f' int2str(i) ',((x-oo)./repmat(lambda(i,:),ps,1))*M.M' int2str(i) ');']);
+		oo = as.vector(repmat(o[i], ps, 1))
+		f = eval_functions(func[i], ((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M)
 		x1 = 5 * matrix(1, 1, d)
-		#eval(['f1 = feval(func.f' int2str(i) ',(x1./lambda(i,:))*M.M' int2str(i) ');']);
+		f1 = eval_functions(func[i], (x1 / lambda[i, ]) %*% M)
 		fit = 2000 * f / f1
+
 		res = res + weight[, i] * (fit + bias[i])
 	}
 	return(-res)
@@ -548,7 +534,7 @@ local_gram_schmidt = function(A) {
 	tmp = qr(A)
 	q = qr.Q(tmp)
 	r = qr.R(tmp)
-	return(list("q" = q, "r" = r, "qr" = tmp$qr))
+	return(q)
 }
 
 #' @title Rotation Matrix
@@ -561,13 +547,13 @@ local_gram_schmidt = function(A) {
 #' @export
 rot_matrix_condition = function(D, c) {
 	# A random normal matrix
-	A = rnorm(D, 0, 1);
+	A = matrix(rnorm(D^2, 0, 1), D, D);
 
 	# P Orthogonal matrix
 	P = local_gram_schmidt(A)
 
 	# A random normal matrix
-	A = rnorm(D, 0, 1);
+	A = matrix(rnorm(D^2, 0, 1), D, D);
 
 	# Q Orthogonal matrix
 	Q = local_gram_schmidt(A)
@@ -578,7 +564,7 @@ rot_matrix_condition = function(D, c) {
 	D = diag(D)
 
 	# M rotation matrix with condition number c
-	M = P$qr * D * Q$qr
+	M = P %*% D %*% Q
 	return(M)
 }
 
