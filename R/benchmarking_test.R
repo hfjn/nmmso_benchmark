@@ -6,7 +6,7 @@ source("./R/count_goptima.R")
 
 library(pryr)
 
-set.seed = 098765
+set.seed = Sys.time()
 
 # using the CEC test problems
 
@@ -21,7 +21,7 @@ acc = c(0.1, 0.01, 0.001, 0.0001, 0.00001)
 state = list()
 
 evaluations_after = 0
-index = 2
+index = 7
 
 count = c(0,0,0,0,0)
 
@@ -32,7 +32,7 @@ evaluations_after = 0
 
 while(evaluations_after < gens[[index]] && count[5] != nopt[index]){
 	old_count = count
-	result <- NMMSO_iterative(swarm_size = as.numeric(10*length(mx[[index]])), problem_function = equal_maxima, max_evaluations = gens[[index]], mn = as.numeric(mn[[index]]), mx = as.numeric(mx[[index]]), evaluations = evaluations_after, nmmso_state = nmmso_state)
+	result <- NMMSO_iterative(swarm_size = as.numeric(10*length(mx[[index]])), problem_function = vincent, max_evaluations = gens[[index]], mn = as.numeric(mn[[index]]), mx = as.numeric(mx[[index]]), evaluations = evaluations_after, nmmso_state = nmmso_state)
 	mode_loc_after = result$mode_loc
 	mode_y_after = result$mode_y
 	evaluations_after = result$evaluations
@@ -52,9 +52,10 @@ if(evaluations_after > gens[index]){
 	count = old_count
 }
 
+
 for(j in 1:5){
 	I = which(c_list[,j] == nopt[index])
-	if(length(I) == 0)
+	if(length(I) != 0)
 		conv_evals[j] = eval_list[I[1]]
 	else
 		conv_evals[j] = gens[index] + 1
