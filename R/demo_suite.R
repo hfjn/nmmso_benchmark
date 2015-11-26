@@ -10,7 +10,11 @@ max_fes = c(50000 * matrix(1, 1, 5), 200000, 200000, 400000, 400000, 200000 * ma
 # do not forget
 initial_flag = 0 # the global flag used in test suite
 
+<<<<<<< HEAD
 for(func_num in 11:11) {
+=======
+for(func_num in 1:10) {
+>>>>>>> origin/master
 	# set the lower and upper bound for each function
 	# do not forget
 	initial_flag = 0 # should set the flag to 0 for each run, each function
