@@ -1,7 +1,6 @@
 source("./R/niching_funcs.R")
 source("./R/feval.R")
 source("./R/count_goptima.R")
-source("./R/add_col.R")
 
 # Demonstration file on how to use the benchmark suite of the Competition 
 
@@ -11,7 +10,7 @@ max_fes = c(50000 * matrix(1, 1, 5), 200000, 200000, 400000, 400000, 200000 * ma
 # do not forget
 initial_flag = 0 # the global flag used in test suite
 
-for(func_num in 1:12) {
+for(func_num in 11:11) {
 	# set the lower and upper bound for each function
 	# do not forget
 	initial_flag = 0 # should set the flag to 0 for each run, each function
@@ -37,6 +36,7 @@ for(func_num in 1:10) {
 	# randomize population within optimization bounds
 	# (here dummy initialization within [0, 1] only for demo)
 	pop = matrix(runif(np * d), np, d)
+	#pop = matrix(1:4, 4, 1)
 
 	# how many global optima have been found?
 	accuracy = 0.001

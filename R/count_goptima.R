@@ -26,7 +26,7 @@ count_goptima = function(pop, nfunc, accuracy) {
 
 	# sort population based on its fitness values
 	# do not change the current population. Work on cpop/cpopfits
-	cpop = pop[index, ]
+	cpop = c(pop[index, ])
 	cpopfits = fpop[index]
 
 	# get seeds

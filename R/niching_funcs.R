@@ -134,9 +134,9 @@ equal_maxima = function(x) sin(5 * pi * x)^6
 #' 
 #' @export
 uneven_decreasing_maxima = function(x) {
-	tmp1 = -2 * log(2.0) * ((x - 0.08)/0.854) * ((x - 0.08)/0.854)
-	tmp2 = sin(5 * pi * x^(3/4) - 0.05)
-	return(exp(tmp1) * tmp2^6)
+	tmp1 = exp(-2 * log(2) * ((x - 0.08)/0.854)^2)
+	tmp2 = sin(5 * pi * (x^0.75 - 0.05))^6
+	return(tmp1 * tmp2)
 }
 
 #' @title F4: Himmelblau
@@ -242,13 +242,13 @@ CF1 = function(x) {
 	func_num = 6
 	lb = -5
 	ub = 5
-	o = c()
+	o = 0
 	if(initial_flag == 0) {
 		#load data/optima.mat # saved the predifined optima
 		if(length(o) >= d) {
 			o = o[1:d]
 		} else {
-			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
+			o = lb + (ub - lb) * matrix(runif(func_num * d), func_num, d)
 		}
 		initial_flag = 1
 		func = c("FGriewank", "FGriewank", "FWeierstrass", "FWeierstrass", "FSphere", "FSphere")
@@ -320,7 +320,7 @@ CF3 = function(x) {
 		sigma = c(1, 1, 2, 2, 2, 2)
 		lambda = rbind(1/4, 1/10, 2, 1, 2, 5)
 		lambda = repmat(lambda, 1, d)
-		c = matrix(1, 1, func_num)
+		c = matrix(1, 1, 6)
 
 		if(d == 2) {
 			#load data/CF3_M_D2.mat
@@ -333,8 +333,10 @@ CF3 = function(x) {
 		} else if(d == 20) {
 			#load data/CF3_M_D20.mat
 		} else {
-			for(i in 1:func_num) {
+			M = rot_matrix_condition(4, 1)
+			for(i in 1:6) {
 			# eval(['M.M' int2str(i) '= RotMatrixCondition( D,c(i) );']);
+				print(rot_matrix_condition(4, c[i]))
 			}
 		}
 	}
@@ -404,10 +406,10 @@ CF4 = function(x) {
 hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M) {
 	d = size(x)[2]
 	ps = size(x)[1]
-	weight = matrix(0, func_num, func_num)
+	weight = matrix(0, ps, func_num)
 
 	for(i in 1:func_num) {
-		oo = as.vector(repmat(o[i], ps, 1))
+		oo = repmat(o[i, ], ps, 1)
 		weight[, i] = exp(-sum((x - oo)^2)/2/(d * sigma[i]^2))
 	}
 
@@ -416,19 +418,31 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M)
 		weight[i, ] = (weight[i, ] == tmp[i, func_num]) * weight[i, ] + (weight[i, ] != tmp[i, func_num]) * (weight[i, ] * (1 - tmp[i, func_num]^10))
 	}
 
-	if(sum(weight) == 0) {
+	if(sum(weight) == 0) { # still need to check for more than 1 row
 		weight = weight + 1
 	}
 
-	weight = weight / repmat(matrix(apply(weight, 2, sum)), 1, func_num)
+	weight = weight / repmat(as.matrix(apply(weight, 1, sum)), 1, func_num)
+
 	it = 0
 	res = 0
 	for(i in 1:func_num) {
-		oo = as.vector(repmat(o[i], ps, 1))
+		oo = repmat(o[i, ], ps, 1)
+		print(((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M)
 		f = eval_functions(func[i], ((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M)
 		x1 = 5 * matrix(1, 1, d)
 		f1 = eval_functions(func[i], (x1 / lambda[i, ]) %*% M)
 		fit = 2000 * f / f1
+
+		print("res")
+		print(res)
+		print("weight[, i]")
+		print(weight[, i])
+		print("fit")
+		print(fit)
+		print("bias[i]")
+		print(bias[i])
+		print("_____________")
 
 		res = res + weight[, i] * (fit + bias[i])
 	}
@@ -457,7 +471,8 @@ FGriewank = function(x) {
 	for(i in 1:d) {
 		f = f * cos(x[, i]/sqrt(i))
 	}
-	return(apply(x^2, 2, sum)/4000 - f + 1)
+	print(f)
+	return(apply(x^2, 1, sum)/4000 - f + 1)
 }
 
 #' @title Rastrigin's Function
@@ -466,7 +481,7 @@ FGriewank = function(x) {
 #' @return
 #' 
 #' @export
-FRastrigin = function(x) apply(x^2 - 10 * cos(2 * pi * x) + 10, 2, sum)
+FRastrigin = function(x) apply(x^2 - 10 * cos(2 * pi * x) + 10, 1, sum)
 
 #' @title Weierstrass Function
 #'
@@ -495,6 +510,7 @@ w = function(x, c1, c2) {
 	for(k in 1:length(x)) {
 		y[k] = sum(c1 * cos(c2 * x[, k]))
 	}
+	print(y)
 	return(y)
 }
 
