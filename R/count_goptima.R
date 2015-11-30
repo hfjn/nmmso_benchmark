@@ -4,7 +4,7 @@
 #' @param nfunc
 #' @param accuracy
 #' @return
-#' 
+#'
 #' @export
 count_goptima = function(pop, nfunc, accuracy) {
 	np = size(pop)[1]
@@ -26,7 +26,7 @@ count_goptima = function(pop, nfunc, accuracy) {
 
 	# sort population based on its fitness values
 	# do not change the current population. Work on cpop/cpopfits
-	cpop = c(pop[index, ])
+	cpop = pop[index, ]
 	cpopfits = fpop[index]
 
 	# get seeds

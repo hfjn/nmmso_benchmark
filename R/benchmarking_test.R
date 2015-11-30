@@ -21,7 +21,7 @@ acc = c(0.1, 0.01, 0.001, 0.0001, 0.00001)
 state = list()
 
 evaluations_after = 0
-index = 7
+index = 5
 
 count = c(0,0,0,0,0)
 
@@ -32,7 +32,7 @@ evaluations_after = 0
 
 while(evaluations_after < gens[[index]] && count[5] != nopt[index]){
 	old_count = count
-	result <- NMMSO_iterative(swarm_size = as.numeric(10*length(mx[[index]])), problem_function = vincent, max_evaluations = gens[[index]], mn = as.numeric(mn[[index]]), mx = as.numeric(mx[[index]]), evaluations = evaluations_after, nmmso_state = nmmso_state)
+	result <- NMMSO_iterative(swarm_size = as.numeric(10*length(mx[[index]])), problem_function = six_hump_camel_back, max_evaluations = gens[[index]], mn = as.numeric(mn[[index]]), mx = as.numeric(mx[[index]]), evaluations = evaluations_after, nmmso_state = nmmso_state)
 	mode_loc_after = result$mode_loc
 	mode_y_after = result$mode_y
 	evaluations_after = result$evaluations

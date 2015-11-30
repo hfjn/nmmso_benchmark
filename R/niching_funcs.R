@@ -15,14 +15,14 @@ library(pracma)
 #' F10 : Composition Function 2 (2D)
 #' F11 : Composition Function 3 (2D, 3D, 5D, 10D)
 #' F12 : Composition Function 4 (3D, 5D, 10D, 20D)
-#' 
-#' For more information please refer to the Technical Report of the 
+#'
+#' For more information please refer to the Technical Report of the
 #' Special Session/Competition at: http://goanna.cs.rmit.edu.au/~xiaodong/cec13-niching/
 #'
 #' @param x is a 1xD input vector for evaluation.
 #' @param func_num denotes the number of the objective function which is going to be used.
 #' @return The objective function value of the x input vector.
-#' 
+#'
 #' @export
 niching_func = function(x, func_num) {
 	total_func_no = 20
@@ -86,9 +86,9 @@ niching_func = function(x, func_num) {
 #' No. of global peaks: 2
 #' No. of local peaks: 3
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 five_uneven_peak_trap = function(x) {
 	result = -1.0
@@ -97,13 +97,13 @@ five_uneven_peak_trap = function(x) {
 	} else if(x >= 2.5 && x < 5.0) {
 		result = 64 * (x - 2.5)
 	} else if(x >= 5.0 && x < 7.5) {
-		result = 64 * (7.5 - x) 
+		result = 64 * (7.5 - x)
 	} else if(x >= 7.5 && x < 12.5) {
 		result = 28 * (x - 7.5)
 	} else if(x >= 12.5 && x < 17.5) {
 		result = 28 * (17.5 - x)
 	} else if(x >= 17.5 && x < 22.5) {
-		result = 32 * (x - 17.5) 
+		result = 32 * (x - 17.5)
 	} else if(x >= 22.5 && x < 27.5) {
 		result = 32 * (27.5 - x)
 	} else if(x >= 27.5 && x <= 30) {
@@ -118,9 +118,9 @@ five_uneven_peak_trap = function(x) {
 #' No. of global peaks: 5
 #' No. of local peaks: 0
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 equal_maxima = function(x) sin(5 * pi * x)^6
 
@@ -129,9 +129,9 @@ equal_maxima = function(x) sin(5 * pi * x)^6
 #' No. of global peaks: 1
 #' No. of local peaks: 4
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 uneven_decreasing_maxima = function(x) {
 	tmp1 = exp(-2 * log(2) * ((x - 0.08)/0.854)^2)
@@ -144,9 +144,9 @@ uneven_decreasing_maxima = function(x) {
 #' No. of global peaks: 4
 #' No. of local peaks: 0
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 himmelblau = function(x) 200 - (x[1] * x[1] + x[2] - 11) * (x[1] * x[1] + x[2] - 11) - (x[1] + x[2] * x[2] - 7) * (x[1] + x[2] * x[2] - 7)
 
@@ -155,26 +155,35 @@ himmelblau = function(x) 200 - (x[1] * x[1] + x[2] - 11) * (x[1] * x[1] + x[2] -
 #' No. of global peaks: 2
 #' No. of local peaks: 2
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
-six_hump_camel_back = function(x) -((4 - 2.1 * x[1] * x[1] + (x[1]^4)/3) * x[1] * x[1] + x[1] * x[2] + (4 * x[2] * x[2] - 4) * x[2] * x[2])
+six_hump_camel_back = function(xx){
+  x1 <- xx[1]
+  x2 <- xx[2]
 
+  term1 <- (4-2.1*x1^2+(x1^4)/3) * x1^2
+  term2 <- x1*x2
+  term3 <- (-4+4*x2^2) * x2^2
+
+  y <- term1 + term2 + term3
+  return(y)
+}
 #' @title F6: Shubert
 #' @description Variables ranges: x_i in [-10, 10]^n, i = 1, 2, ..., n
 #' No. of global peaks: n * 3^n
 #' No. of local peaks: many
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 shubert = function(x) {
 	d = size(x)[2]
 	result = 1
 	j = 1:5
-	
+
 	for(i in 1:d) {
 		result = result * sum(j * cos((j + 1) * x[i] + j))
 	}
@@ -186,9 +195,9 @@ shubert = function(x) {
 #' No. of global peaks: 6^n
 #' No. of local peaks: 0
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 vincent = function(x) {
 	d = size(x)[2]
@@ -200,9 +209,9 @@ vincent = function(x) {
 #' No. of global peaks: \prod_{i=1}^n k_i
 #' No. of local peaks: 0
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 modified_rastrigin_all = function(x) {
 	MMP = 0
@@ -233,9 +242,9 @@ initial_flag = 0
 #' @title Composition Function 1
 #' @description n = 6
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 CF1 = function(x) {
 	d = size(x)[2]
@@ -265,9 +274,9 @@ CF1 = function(x) {
 #' @title Composition Function 2
 #' @description n = 8
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 CF2 = function(x) {
 	d = size(x)[2]
@@ -297,9 +306,9 @@ CF2 = function(x) {
 #' @title Composition Function 3
 #' @description n = 6
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 CF3 = function(x) {
 	d = size(x)[2]
@@ -346,9 +355,9 @@ CF3 = function(x) {
 #' @title Composition Function 4
 #' @description n = 8
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 CF4 = function(x) {
 	d = size(x)[2]
@@ -364,7 +373,7 @@ CF4 = function(x) {
 		} else {
 			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
 		}
-		func = c("FRastrigin", "FRastrigin", "FEF8F2", "FEF8F2", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank")	
+		func = c("FRastrigin", "FRastrigin", "FEF8F2", "FEF8F2", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank")
 		bias = matrix(0, 1, func_num)
 		sigma = c(1, 1, 1, 1, 1, 2, 2, 2)
 		lambda = rbind(4, 1, 4, 1, 1/10, 1/5, 1/10, 1/40)
@@ -392,7 +401,7 @@ CF4 = function(x) {
 
 #' @title Hybrid Composition General Framework
 #'
-#' @param x 
+#' @param x
 #' @param func_num
 #' @param func
 #' @param o
@@ -401,7 +410,7 @@ CF4 = function(x) {
 #' @param bias
 #' @param M
 #' @return
-#' 
+#'
 #' @export
 hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M) {
 	d = size(x)[2]
@@ -453,17 +462,17 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M)
 
 #' @title Sphere Function
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 FSphere = function(x) apply(x^2, 2, sum)
 
 #' @title Griewank's Function
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 FGriewank = function(x) {
 	d = size(x)[2]
@@ -477,17 +486,17 @@ FGriewank = function(x) {
 
 #' @title Rastrigin's Function
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 FRastrigin = function(x) apply(x^2 - 10 * cos(2 * pi * x) + 10, 1, sum)
 
 #' @title Weierstrass Function
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 FWeierstrass = function(x) {
 	d = size(x)[2]
@@ -516,9 +525,9 @@ w = function(x, c1, c2) {
 
 #' @title FEF8F2 Function
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 FEF8F2 = function(x) {
 	d = size(x)[2]
@@ -531,9 +540,9 @@ FEF8F2 = function(x) {
 
 #' @title F8F2 Function
 #'
-#' @param x 
+#' @param x
 #' @return
-#' 
+#'
 #' @export
 F8F2 = function(x) {
 	f2 = 100 * (x[, 1]^2 - x[, 2])^2 + (1 - x[, 1])^2
@@ -544,7 +553,7 @@ F8F2 = function(x) {
 #'
 #' @param A
 #' @return
-#' 
+#'
 #' @export
 local_gram_schmidt = function(A) {
 	tmp = qr(A)
@@ -559,7 +568,7 @@ local_gram_schmidt = function(A) {
 #' @param D
 #' @param c
 #' @return
-#' 
+#'
 #' @export
 rot_matrix_condition = function(D, c) {
 	# A random normal matrix

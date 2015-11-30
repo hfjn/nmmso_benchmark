@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SearchIndexes Version="1.0">
+    <Documents>
+        <Document ID="19">
+            <Title>Conclusion</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="15">
+            <Title>Pitfalls and Problems</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="16">
+            <Title>Benchmark and Comparison</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="5">
+            <Title>Structure</Title>
+            <Text>### Seminar Project - R Implementation of NMMSO 
+1. Introduction
+2. Explanation of the Algorithm &amp; Problem
+	1. General function &amp; Pseudcode
+	2. CEC
+3. Our implementation of the programm
+	1. Structure of the project
+	2. Pitfalls &amp; Problems
+	4. Benchmark &amp; Comparison
+	5. Testing &amp; alternative parameter settings
+4. Discussion
+5. Conclusion
+	</Text>
+        </Document>
+        <Document ID="12">
+            <Title>General Function</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="17">
+            <Title>Testing and alternative parameter settings</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="13">
+            <Title>CEC</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="18">
+            <Title>Discussion</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="0">
+            <Title>Paper</Title>
+        </Document>
+        <Document ID="8">
+            <Title>The Algorithm</Title>
+        </Document>
+        <Document ID="14">
+            <Title>Structure of the project</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="20">
+            <Title>Introduction</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="9">
+            <Title>The Implementation</Title>
+        </Document>
+    </Documents>
+</SearchIndexes>
