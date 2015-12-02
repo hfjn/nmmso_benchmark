@@ -2,7 +2,7 @@ source("./R/niching_funcs.R")
 source("./R/feval.R")
 source("./R/count_goptima.R")
 
-# Demonstration file on how to use the benchmark suite of the Competition 
+# Demonstration file on how to use the benchmark suite of the Competition
 
 dims = c(1, 1, 1, 2, 2, 2, 2, 3, 3, 2, 2, 2, 2, 3, 3, 5, 5, 10, 10, 20) # dimensionality of benchmark functions
 max_fes = c(50000 * matrix(1, 1, 5), 200000, 200000, 400000, 400000, 200000 * matrix(1, 1, 4), 400000 * matrix(1, 1, 7))
@@ -10,11 +10,7 @@ max_fes = c(50000 * matrix(1, 1, 5), 200000, 200000, 400000, 400000, 200000 * ma
 # do not forget
 initial_flag = 0 # the global flag used in test suite
 
-<<<<<<< HEAD
 for(func_num in 11:11) {
-=======
-for(func_num in 1:10) {
->>>>>>> origin/master
 	# set the lower and upper bound for each function
 	# do not forget
 	initial_flag = 0 # should set the flag to 0 for each run, each function
@@ -56,5 +52,5 @@ for(func_num in 1:10) {
 			cat("F_p: ", val, ", F_g: ", fgoptima[func_num], ", diff: ", abs(val - fgoptima[func_num]), ".\n")
 			cat("F_p - F_g <= ", accuracy, " : ", abs(val - fgoptima[func_num]) < accuracy, ".\n")
 		}
-	} 
+	}
 }

@@ -159,16 +159,8 @@ himmelblau = function(x) 200 - (x[1] * x[1] + x[2] - 11) * (x[1] * x[1] + x[2] -
 #' @return
 #'
 #' @export
-six_hump_camel_back = function(xx){
-  x1 <- xx[1]
-  x2 <- xx[2]
-
-  term1 <- (4-2.1*x1^2+(x1^4)/3) * x1^2
-  term2 <- x1*x2
-  term3 <- (-4+4*x2^2) * x2^2
-
-  y <- term1 + term2 + term3
-  return(y)
+six_hump_camel_back = function(x){
+  -((4 - 2.1 * (x[1] * x[1]) + (x[1]^4)/3) * x[1]*x[1] + x[1] * x[2] + (4 * x[2] * x[2] - 4) * x[2]* x[2])
 }
 #' @title F6: Shubert
 #' @description Variables ranges: x_i in [-10, 10]^n, i = 1, 2, ..., n
@@ -437,21 +429,10 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M)
 	res = 0
 	for(i in 1:func_num) {
 		oo = repmat(o[i, ], ps, 1)
-		print(((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M)
 		f = eval_functions(func[i], ((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M)
 		x1 = 5 * matrix(1, 1, d)
 		f1 = eval_functions(func[i], (x1 / lambda[i, ]) %*% M)
 		fit = 2000 * f / f1
-
-		print("res")
-		print(res)
-		print("weight[, i]")
-		print(weight[, i])
-		print("fit")
-		print(fit)
-		print("bias[i]")
-		print(bias[i])
-		print("_____________")
 
 		res = res + weight[, i] * (fit + bias[i])
 	}
@@ -480,7 +461,6 @@ FGriewank = function(x) {
 	for(i in 1:d) {
 		f = f * cos(x[, i]/sqrt(i))
 	}
-	print(f)
 	return(apply(x^2, 1, sum)/4000 - f + 1)
 }
 
@@ -519,7 +499,6 @@ w = function(x, c1, c2) {
 	for(k in 1:length(x)) {
 		y[k] = sum(c1 * cos(c2 * x[, k]))
 	}
-	print(y)
 	return(y)
 }
 
