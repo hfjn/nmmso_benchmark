@@ -160,17 +160,19 @@ himmelblau = function(x) 200 - (x[1] * x[1] + x[2] - 11) * (x[1] * x[1] + x[2] -
 #' @return
 #'
 #' @export
-six_hump_camel_back = function(xx){
-  x1 <- xx[1]
-  x2 <- xx[2]
+six_hump_camel_back = function(x){
 
-  term1 <- (4-2.1*x1^2+(x1^4)/3) * x1^2
-  term2 <- x1*x2
-  term3 <- (-4+4*x2^2) * x2^2
+	x1 = x[1]
+	x2 = x[2]
 
-  y <- term1 + term2 + term3
-  return(y)
+	term1 = (4 - 2.1 * x1^2 + (x1^4)/3) * x1^2
+	term2 = x1 * x2
+	term3 = (4 * x2^2 - 4) * x2^2
+
+	y = -(term1 + term2 + term3)
+	return(y)
 }
+  
 #' @title F6: Shubert
 #' @description Variables ranges: x_i in [-10, 10]^n, i = 1, 2, ..., n
 #' No. of global peaks: n * 3^n
