@@ -450,7 +450,14 @@ p.shot {text-align:left; text-indent:0; margin: 12pt 0pt 0pt 0pt; text-transform
 	<key>SCRCompileMultiMarkdownLaTeXHeaderStringKey</key>
 	<string></string>
 	<key>SCRCompileMultiMarkdownMetaDataKey</key>
-	<array/>
+	<array>
+		<dict>
+			<key>data</key>
+			<string>3</string>
+			<key>key</key>
+			<string>base header level</string>
+		</dict>
+	</array>
 	<key>SCRCompileMultiMarkdownUseXSLTPostProcessingKey</key>
 	<false/>
 	<key>SCRCompileMultiMarkdownUsesHTMLMarkdownCompatibilityKey</key>

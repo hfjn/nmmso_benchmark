@@ -10,7 +10,8 @@ max_fes = c(50000 * matrix(1, 1, 5), 200000, 200000, 400000, 400000, 200000 * ma
 # do not forget
 initial_flag = 0 # the global flag used in test suite
 
-for(func_num in 11:11) {
+
+for(func_num in 1:12) {
 	# set the lower and upper bound for each function
 	# do not forget
 	initial_flag = 0 # should set the flag to 0 for each run, each function
@@ -20,7 +21,6 @@ for(func_num in 11:11) {
 
 	# potential solution
 	x = matrix(1, 1, d)
-
 	# evaluate the solution
 	val = niching_func(x, func_num) # fitness evaluation
 	cat("f_", func_num, " : f(1...1) = ", val, "\n")
@@ -28,7 +28,7 @@ for(func_num in 11:11) {
 
 fgoptima = c(200.0, 1.0, 1.0, 200.0, 1.03163, 186.731, 1.0, 2709.0935, 1.0, -2.0, matrix(0, 1, 10))
 np = 100
-for(func_num in 1:10) {
+for(func_num in 1:12) {
 	# do not forget
 	initial_flag = 0 # should set the flag to 0 for each run, each function
 	d = dims[func_num]

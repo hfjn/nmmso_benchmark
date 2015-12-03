@@ -1,4 +1,5 @@
 library(pracma)
+library(R.matlab)
 
 #' @title niching_func
 #' @description Benchmark Functions for CEC'2013 Special Session and Competition on Niching Methods for Multimodal Function Optimization.
@@ -160,8 +161,17 @@ himmelblau = function(x) 200 - (x[1] * x[1] + x[2] - 11) * (x[1] * x[1] + x[2] -
 #'
 #' @export
 six_hump_camel_back = function(x){
-  -((4 - 2.1 * (x[1] * x[1]) + (x[1]^4)/3) * x[1]*x[1] + x[1] * x[2] + (4 * x[2] * x[2] - 4) * x[2]* x[2])
+	x1 = x[1]
+	x2 = x[2]
+
+	term1 = (4 - 2.1 * x1^2 + (x1^4)/3) * x1^2
+	term2 = x1 * x2
+	term3 = (4 * x2^2 - 4) * x2^2
+
+	y = -(term1 + term2 + term3)
+	return(y)
 }
+
 #' @title F6: Shubert
 #' @description Variables ranges: x_i in [-10, 10]^n, i = 1, 2, ..., n
 #' No. of global peaks: n * 3^n
@@ -243,11 +253,11 @@ CF1 = function(x) {
 	func_num = 6
 	lb = -5
 	ub = 5
-	o = 0
 	if(initial_flag == 0) {
 		#load data/optima.mat # saved the predifined optima
-		if(length(o) >= d) {
-			o = o[1:d]
+		o = readMat("R/data/optima.mat")$o
+		if(length(o[1, ]) >= d) {
+			o = o[, 1:d]
 		} else {
 			o = lb + (ub - lb) * matrix(runif(func_num * d), func_num, d)
 		}
@@ -275,14 +285,14 @@ CF2 = function(x) {
 	func_num = 8
 	lb = -5
 	ub = 5
-	o = c()
 	if(initial_flag == 0) {
 		initial_flag = 1
 		#load data/optima.mat # saved the predifined optima
-		if(length(o) >= d) {
-			o = o[1:d]
+		o = readMat("R/data/optima.mat")$o
+		if(length(o[1, ]) >= d) {
+			o = o[, 1:d]
 		} else {
-			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
+			o = lb + (ub - lb) * matrix(runif(func_num * d), func_num, d)
 		}
 		func = c("FRastrigin", "FRastrigin", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank", "FSphere", "FSphere")
 		bias = matrix(0, 1, func_num)
@@ -307,14 +317,14 @@ CF3 = function(x) {
 	func_num = 6
 	lb = -5
 	ub = 5
-	o = c()
 	if(initial_flag == 0) {
 		initial_flag = 1
 		#load data/optima.mat # saved the predifined optima
-		if(length(o) >= d) {
-			o = o[1:d]
+		o = readMat("R/data/optima.mat")$o
+		if(length(o[1, ]) >= d) {
+			o = o[, 1:d]
 		} else {
-			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
+			o = lb + (ub - lb) * matrix(runif(func_num * d), func_num, d)
 		}
 		func = c("FEF8F2", "FEF8F2", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank")
 		bias = matrix(0, 1, func_num)
@@ -356,14 +366,14 @@ CF4 = function(x) {
 	func_num = 8
 	lb = -5
 	ub = 5
-	o = c()
 	if(initial_flag == 0) {
 		initial_flag = 1
 		#load data/optima.mat # saved the predifined optima
-		if(length(o) >= d) {
-			o = o[1:d]
+		o = readMat("R/data/optima.mat")$o
+		if(length(o[1, ]) >= d) {
+			o = o[, 1:d]
 		} else {
-			o = c(o, lb + (ub - lb) * matrix(runif(func_num * d), func_num, d))
+			o = lb + (ub - lb) * matrix(runif(func_num * d), func_num, d)
 		}
 		func = c("FRastrigin", "FRastrigin", "FEF8F2", "FEF8F2", "FWeierstrass", "FWeierstrass", "FGriewank", "FGriewank")
 		bias = matrix(0, 1, func_num)
@@ -409,6 +419,7 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M)
 	ps = size(x)[1]
 	weight = matrix(0, ps, func_num)
 
+
 	for(i in 1:func_num) {
 		oo = repmat(o[i, ], ps, 1)
 		weight[, i] = exp(-sum((x - oo)^2)/2/(d * sigma[i]^2))
@@ -447,7 +458,7 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M)
 #' @return
 #'
 #' @export
-FSphere = function(x) apply(x^2, 2, sum)
+FSphere = function(x) apply(x^2, 1, sum)
 
 #' @title Griewank's Function
 #'
@@ -491,11 +502,11 @@ FWeierstrass = function(x) {
 	for(i in 1:d) {
 		f = f + w(t(x[, i]), c1, c2)
 	}
-	return(f + as.vector(c) * d)
+	return(f + c * d)
 }
 
 w = function(x, c1, c2) {
-	y = matrix(0, length(x), 1)
+	y = as.vector(matrix(0, length(x), 1))
 	for(k in 1:length(x)) {
 		y[k] = sum(c1 * cos(c2 * x[, k]))
 	}

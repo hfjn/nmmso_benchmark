@@ -11,7 +11,7 @@ niching_funcs = c(five_uneven_peak_trap, equal_maxima, uneven_decreasing_maxima,
                   himmelblau, six_hump_camel_back, shubert, vincent, shubert, vincent,
                   modified_rastrigin_all, CF1, CF2)
 # using the CEC test problems
-for(index in 1:10){
+for(index in 12){
   eval_list = c()
   c_list = c()
   pop_size = c()
