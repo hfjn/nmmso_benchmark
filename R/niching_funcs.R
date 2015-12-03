@@ -53,22 +53,22 @@ niching_func = function(x, func_num) {
 		f = feval(CF1, x)
 	} else if(func_num == 12) {
 		f = feval(CF2, x)
-	# } else if(func_num == 13) {
-	# 	fname = "CF3"
-	# } else if(func_num == 14) {
-	# 	fname = "CF3"
-	# } else if(func_num == 15) {
-	# 	fname = "CF4"
-	# } else if(func_num == 16) {
-	# 	fname = "CF3"
-	# } else if(func_num == 17) {
-	# 	fname = "CF4"
-	# } else if(func_num == 18) {
-	# 	fname = "CF3"
-	# } else if(func_num == 19) {
-	# 	fname = "CF4"
-	# } else if(func_num == 20) {
-	# 	fname = "CF4"
+	} else if(func_num == 13) {
+		f = feval(CF3, x)
+	} else if(func_num == 14) {
+		f = feval(CF3, x)
+	} else if(func_num == 15) {
+		f = feval(CF4, x)
+	} else if(func_num == 16) {
+		f = feval(CF3, x)
+	} else if(func_num == 17) {
+		f = feval(CF4, x)
+	} else if(func_num == 18) {
+		f = feval(CF3, x)
+	} else if(func_num == 19) {
+		f = feval(CF4, x)
+	} else if(func_num == 20) {
+		f = feval(CF4, x)
 	} else {
 		cat("ERROR: Wrong function number: (", func_num, "). \n")
 		cat("		Please provide a function number in {1, 2, ..., ", total_func_no, "}\n")
@@ -254,7 +254,6 @@ CF1 = function(x) {
 	lb = -5
 	ub = 5
 	if(initial_flag == 0) {
-		#load data/optima.mat # saved the predifined optima
 		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
@@ -270,7 +269,7 @@ CF1 = function(x) {
 
 		M = diag(1, d)
 	}
-	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
+	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M, FALSE))
 }
 
 #' @title Composition Function 2
@@ -287,7 +286,6 @@ CF2 = function(x) {
 	ub = 5
 	if(initial_flag == 0) {
 		initial_flag = 1
-		#load data/optima.mat # saved the predifined optima
 		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
@@ -302,7 +300,7 @@ CF2 = function(x) {
 
 		M = diag(1, d)
 	}
-	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
+	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M, FALSE))
 }
 
 #' @title Composition Function 3
@@ -319,7 +317,6 @@ CF3 = function(x) {
 	ub = 5
 	if(initial_flag == 0) {
 		initial_flag = 1
-		#load data/optima.mat # saved the predifined optima
 		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
@@ -334,24 +331,23 @@ CF3 = function(x) {
 		c = matrix(1, 1, 6)
 
 		if(d == 2) {
-			#load data/CF3_M_D2.mat
+			M = readMat("R/data/CF3_M_D2.mat")$M
 		} else if(d == 3) {
-			#load data/CF3_M_D3.mat
+			M = readMat("R/data/CF3_M_D3.mat")$M
 		} else if(d == 5) {
-			#load data/CF3_M_D5.mat
+			M = readMat("R/data/CF3_M_D5.mat")$M
 		} else if(d == 10) {
-			#load data/CF3_M_D10.mat
+			M = readMat("R/data/CF3_M_D10.mat")$M
 		} else if(d == 20) {
-			#load data/CF3_M_D20.mat
+			M = readMat("R/data/CF3_M_D20.mat")$M
 		} else {
-			M = rot_matrix_condition(4, 1)
+			M = list()
 			for(i in 1:6) {
-			# eval(['M.M' int2str(i) '= RotMatrixCondition( D,c(i) );']);
-				print(rot_matrix_condition(4, c[i]))
+				M[[i]] = rot_matrix_condition(d, c[i])
 			}
 		}
 	}
-	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
+	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M, TRUE))
 }
 
 #' @title Composition Function 4
@@ -368,7 +364,6 @@ CF4 = function(x) {
 	ub = 5
 	if(initial_flag == 0) {
 		initial_flag = 1
-		#load data/optima.mat # saved the predifined optima
 		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
@@ -383,22 +378,23 @@ CF4 = function(x) {
 		c = matrix(1, 1, func_num)
 
 		if(d == 2) {
-			#load data/CF4_M_D2.mat
+			M = readMat("R/data/CF4_M_D2.mat")$M
 		} else if(d == 3) {
-			#load data/CF4_M_D3.mat
+			M = readMat("R/data/CF4_M_D3.mat")$M
 		} else if(d == 5) {
-			#load data/CF4_M_D5.mat
+			M = readMat("R/data/CF4_M_D5.mat")$M
 		} else if(d == 10) {
-			#load data/CF4_M_D10.mat
+			M = readMat("R/data/CF4_M_D10.mat")$M
 		} else if(d == 20) {
-			#load data/CF4_M_D20.mat
+			M = readMat("R/data/CF4_M_D20.mat")$M
 		} else {
-			for(i in 1:func_num) {
-			# eval(['M.M' int2str(i) '= RotMatrixCondition( D,c(i) );']);
+			M = list()
+			for(i in 1:6) {
+				M[[i]] = rot_matrix_condition(d, c[i])
 			}
 		}
 	}
-	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M))
+	return(hybrid_composition_func(x, func_num, func, o, sigma, lambda, bias, M, TRUE))
 }
 
 #' @title Hybrid Composition General Framework
@@ -414,7 +410,7 @@ CF4 = function(x) {
 #' @return
 #'
 #' @export
-hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M) {
+hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M, CF3_CF4_flag) {
 	d = size(x)[2]
 	ps = size(x)[1]
 	weight = matrix(0, ps, func_num)
@@ -438,15 +434,30 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M)
 
 	it = 0
 	res = 0
-	for(i in 1:func_num) {
-		oo = repmat(o[i, ], ps, 1)
-		f = eval_functions(func[i], ((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M)
-		x1 = 5 * matrix(1, 1, d)
-		f1 = eval_functions(func[i], (x1 / lambda[i, ]) %*% M)
-		fit = 2000 * f / f1
 
-		res = res + weight[, i] * (fit + bias[i])
+	# Check if the M is from CF1/CF2 in order to avoid iterating in it.
+	if(CF3_CF4_flag) {
+		for(i in 1:func_num) {
+			oo = repmat(o[i, ], ps, 1)
+			f = eval_functions(func[i], ((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M[[i]])
+			x1 = 5 * matrix(1, 1, d)
+			f1 = eval_functions(func[i], (x1 / lambda[i, ]) %*% M[[i]])
+			fit = 2000 * f / f1
+
+			res = res + weight[, i] * (fit + bias[i])
+		}
+	} else {
+		for(i in 1:func_num) {
+			oo = repmat(o[i, ], ps, 1)
+			f = eval_functions(func[i], ((x - oo) / repmat(lambda[i, ], ps, 1)) %*% M)
+			x1 = 5 * matrix(1, 1, d)
+			f1 = eval_functions(func[i], (x1 / lambda[i, ]) %*% M)
+			fit = 2000 * f / f1
+
+			res = res + weight[, i] * (fit + bias[i])
+		}
 	}
+	
 	return(-res)
 }
 
@@ -535,7 +546,7 @@ FEF8F2 = function(x) {
 #'
 #' @export
 F8F2 = function(x) {
-	f2 = 100 * (x[, 1]^2 - x[, 2])^2 + (1 - x[, 1])^2
+	f2 = 100 * (x[1]^2 - x[2])^2 + (1 - x[1])^2
 	return(1 + f2^2/4000 - cos(f2))
 }
 
