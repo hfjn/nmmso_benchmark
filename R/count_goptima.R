@@ -56,6 +56,7 @@ count_goptima = function(pop, nfunc, accuracy) {
 
 	# based on the accuracy: check which seeds are global optimizers
 	seedsfit = cpopfits[seedsidx]
+	print(seedsfit)
 	idx = which(abs(seedsfit - fgoptima[nfunc]) <= accuracy)
 
 	if(length(idx) > nopt[nfunc]) {
@@ -63,6 +64,5 @@ count_goptima = function(pop, nfunc, accuracy) {
 	}
 	count = length(idx)
 	finalseeds = round(seeds[idx], digits = 5)
-
 	return(list("count" = count, "finalseeds" = finalseeds))
 }
