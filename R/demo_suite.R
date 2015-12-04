@@ -34,7 +34,6 @@ for(func_num in 1:20) {
 	# randomize population within optimization bounds
 	# (here dummy initialization within [0, 1] only for demo)
 	pop = matrix(runif(np * d), np, d)
-	#pop = matrix(1:4, 4, 1)
 
 	# how many global optima have been found?
 	accuracy = 0.001

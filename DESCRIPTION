@@ -1,10 +1,13 @@
 Package: nmmsoBenchmark
 Type: Package
-Title: What the Package Does (Title Case)
+Title: CEC Benchmarking Tool
 Version: 0.1
 Date: 2015-11-16
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
+Author: c(person("Daniel", "Carriola",
+  email = "daniel.carriola@gmail.com", role = c("aut")), person("Jannik", "Hoffjann", email="jhoffjann@gmail.com", role = c("aut", "cre")))
+Maintainer: Who to complain to <daniel.carriola@gmail.com>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
-LazyData: TRUE
+LinkingTo: pracma
+Imports: testthat, pracma, flexclust, R.matlab, pryr
+Suggests:

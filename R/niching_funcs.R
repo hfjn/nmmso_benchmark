@@ -240,6 +240,7 @@ eval_functions = function(fname, x) {
 
 # Global variables for composition functions
 initial_flag = 0
+o = readMat("R/data/optima.mat")$o
 
 #' @title Composition Function 1
 #' @description n = 6
@@ -254,7 +255,6 @@ CF1 = function(x) {
 	lb = -5
 	ub = 5
 	if(initial_flag == 0) {
-		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
@@ -286,7 +286,6 @@ CF2 = function(x) {
 	ub = 5
 	if(initial_flag == 0) {
 		initial_flag = 1
-		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
@@ -317,7 +316,6 @@ CF3 = function(x) {
 	ub = 5
 	if(initial_flag == 0) {
 		initial_flag = 1
-		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
@@ -364,7 +362,6 @@ CF4 = function(x) {
 	ub = 5
 	if(initial_flag == 0) {
 		initial_flag = 1
-		o = readMat("R/data/optima.mat")$o
 		if(length(o[1, ]) >= d) {
 			o = o[, 1:d]
 		} else {
