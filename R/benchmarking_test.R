@@ -11,9 +11,9 @@ niching_funcs = c(five_uneven_peak_trap, equal_maxima, uneven_decreasing_maxima,
                   himmelblau, six_hump_camel_back, shubert, vincent, shubert, vincent,
                   modified_rastrigin_all, CF1, CF2, CF3, CF3, CF4, CF3, CF4, CF3, CF4, CF4)
 # using the CEC test problems, all 20.
-for(index in 1:20){
+for(index in 1:7){
   # run each 50 times.
-  for(run in 1:50){
+  for(run in 1:1){
     # set new seed
     set.seed = Sys.time()
     eval_list = c()

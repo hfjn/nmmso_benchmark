@@ -26,7 +26,7 @@ for(func_num in 1:20) {
 
 fgoptima = c(200.0, 1.0, 1.0, 200.0, 1.03163, 186.731, 1.0, 2709.0935, 1.0, -2.0, matrix(0, 1, 10))
 np = 100
-for(func_num in 1:20) {
+for(func_num in 2) {
 	# do not forget
 	initial_flag = 0 # should set the flag to 0 for each run, each function
 	d = dims[func_num]
