@@ -62,7 +62,7 @@ count_goptima = function(pop, nfunc, accuracy) {
 		idx = idx[1:nopt[nfunc]]
 	}
 	count = length(idx)
-	finalseeds = seeds[idx]
+	finalseeds = round(seeds[idx], digits = 5)
 
 	return(list("count" = count, "finalseeds" = finalseeds))
 }
