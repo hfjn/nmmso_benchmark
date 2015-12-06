@@ -1,8 +1,14 @@
 # Introduction #
 
-```
-```
-In the recent years R has become the statistical programming language of choice for many people. Since its introduction in 1992. 
+In the recent years R has become the statistical programming language of choice for many scientist. The strength of R of being a domain specific language has also become one of its weaknesses. Since new research findings in statistical computing are split up over several languages like R, Matlab or SciPy[^1] it often becomes difficult to compare new methods with established ones. Since it is also hard to interface those languages due to different architectures, data storage mechanisms there is often no other way than to reimplement new methods in a different programming language to create a common scope.
+
+An example for a new well perceived new finding in statistical computing is the NMMSO-Algorithm by Jonathan E. Fieldsend [@fieldsend_2014]. It won the niching competition in 2015 held by the CEC and is only written in Matlab. Since the chair 'Information Systems and Statistics' at the Westfälische Wilhems-Universität Münster is mainly concentrating its work on Statistical Computing in R an implementation of this algorithm became interesting. 
+
+As part of this Seminar Project in the context of the Seminar 'Statistical Computing in R' a reimplementation of the NMMSO algorithm in R will be presented. During this technical documentation the general function of the algorithm will and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, aswell as problems and pitfalls due to the different behaviors of R and Matlab will be shown. The documentation will be closed by the benchmarking results and different test cases. 
+
+… write a bit more here.
+
+[^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 
 ----
 
@@ -54,6 +60,27 @@ test
 
 
 
+```
+## Loading required package: lattice
+## Loading required package: MASS
+## 
+## Attaching package: 'memisc'
+## 
+## The following object is masked from 'package:plyr':
+## 
+##     rename
+## 
+## The following objects are masked from 'package:stats':
+## 
+##     contr.sum, contr.treatment, contrasts
+## 
+## The following objects are masked from 'package:base':
+## 
+##     as.array, trimws
+```
+
+
+
  0.1   0.01   0.001   0.0001   0.00001
 ----  -----  ------  -------  --------
    1      1       1        1         1
@@ -88,7 +115,9 @@ test
 ## Error in file(filename, "r", encoding = encoding): cannot open the connection
 ```
 
-![plot of chunk Results of Function 5](figure/Results of Function 5-1.png) 
+```
+## Error in eval(expr, envir, enclos): could not find function "grid.arrange"
+```
 
 
 ## Testing and alternative parameter settings ##

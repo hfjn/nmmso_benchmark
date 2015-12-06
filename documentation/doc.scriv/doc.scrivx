@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-06 19:05:40 +0100" ModID="493604F1-6E04-4DF7-94B5-385B194AC05A">
+<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-06 20:44:35 +0100" ModID="3FB83858-5207-413B-A350-F80B27CDA26F">
     <Binder>
         <BinderItem ID="0" UUID="BC25FB0C-FB20-4BF6-990C-801331C2F125" Type="DraftFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:28:01 +0100">
             <Title>Paper</Title>
@@ -8,7 +8,7 @@
                 <IconFileName>Book (Blue Book).tiff</IconFileName>
             </MetaData>
             <Children>
-                <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 08:49:31 +0100" Modified="2015-12-06 16:45:48 +0100">
+                <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 08:49:31 +0100" Modified="2015-12-06 20:44:23 +0100">
                     <Title>Introduction</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -90,7 +90,7 @@
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>32,0</TextSelection>
+                                <TextSelection>3019,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem ID="17" UUID="327A621D-03DC-48F1-801D-0166E7B0CDC1" Type="Text" Created="2015-11-30 08:30:41 +0100" Modified="2015-11-30 08:49:44 +0100">
@@ -222,7 +222,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2015-11-30 08:26:41 +0100" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="370" Characters="2867" Date="2015-12-06 13:02:04 +0100"></PreviousSession>
+        <PreviousSession Words="628" Characters="4478" Date="2015-12-06 13:02:04 +0100"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="595.275574,841.861389" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

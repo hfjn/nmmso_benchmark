@@ -15,8 +15,10 @@
 
 
 <h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
-<pre><code></code></pre>
-<p>In the recent years R has become the statistical programming language of choice for many people. Since its introduction in 1992.</p>
+<p>In the recent years R has become the statistical programming language of choice for many scientist. The strength of R of being a domain specific language has also become one of its weaknesses. Since new research findings in statistical computing are split up over several languages like R, Matlab or SciPy<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> it often becomes difficult to compare new methods with established ones. Since it is also hard to interface those languages due to different architectures, data storage mechanisms there is often no other way than to reimplement new methods in a different programming language to create a common scope.</p>
+<p>An example for a new well perceived new finding in statistical computing is the NMMSO-Algorithm by Jonathan E. Fieldsend <span class="citation">[1]</span>. It won the niching competition in 2015 held by the CEC and is only written in Matlab. Since the chair ‘Information Systems and Statistics’ at the Westfälische Wilhems-Universität Münster is mainly concentrating its work on Statistical Computing in R an implementation of this algorithm became interesting.</p>
+<p>As part of this Seminar Project in the context of the Seminar ‘Statistical Computing in R’ a reimplementation of the NMMSO algorithm in R will be presented. During this technical documentation the general function of the algorithm will and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, aswell as problems and pitfalls due to the different behaviors of R and Matlab will be shown. The documentation will be closed by the benchmarking results and different test cases.</p>
+<p>… write a bit more here.</p>
 <hr />
 <h1 id="the-algorithm"><span class="header-section-number">2</span> The Algorithm</h1>
 <h2 id="general-function"><span class="header-section-number">2.1</span> General Function</h2>
@@ -48,6 +50,22 @@
 <h2 id="pitfalls-and-problems"><span class="header-section-number">3.2</span> Pitfalls and Problems</h2>
 <p>test</p>
 <h2 id="benchmark-and-comparison"><span class="header-section-number">3.3</span> Benchmark and Comparison</h2>
+<pre><code>## Loading required package: lattice
+## Loading required package: MASS
+## 
+## Attaching package: &#39;memisc&#39;
+## 
+## The following object is masked from &#39;package:plyr&#39;:
+## 
+##     rename
+## 
+## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     contr.sum, contr.treatment, contrasts
+## 
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     as.array, trimws</code></pre>
 <table>
 <thead>
 <tr class="header">
@@ -204,10 +222,7 @@
 <pre><code>## Warning in file(filename, &quot;r&quot;, encoding = encoding): cannot open file &#39;R/
 ## cec_2015_problem_data.R&#39;: No such file or directory</code></pre>
 <pre><code>## Error in file(filename, &quot;r&quot;, encoding = encoding): cannot open the connection</code></pre>
-<div class="figure">
-<img src="figure/Results%20of%20Function%205-1.png" alt="plot of chunk Results of Function 5" />
-<p class="caption">plot of chunk Results of Function 5</p>
-</div>
+<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;grid.arrange&quot;</code></pre>
 <h2 id="testing-and-alternative-parameter-settings"><span class="header-section-number">3.4</span> Testing and alternative parameter settings</h2>
 <p>test</p>
 <h1 id="discussion"><span class="header-section-number">4</span> Discussion</h1>
@@ -224,6 +239,12 @@
 <div id="ref-epitropakis_2013">
 <p>[3] M.G. Epitropakis, X. Li, E.K. Burke, A dynamic archive niching differential evolution algorithm for multimodal optimization, in: Evolutionary Computation (CEC), 2013 IEEE Congress on, IEEE, 2013: pp. 79–86.</p>
 </div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.<a href="#fnref1">↩</a></p></li>
+</ol>
 </div>
 </body>
 </html>
