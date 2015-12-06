@@ -22,6 +22,18 @@
 
 \documentclass[12pt,a4paper]{article}
 
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+
+\setlength\textwidth{165mm}
+\setlength\textheight{240mm}
+\setlength\topmargin{-10mm}
+\setlength\oddsidemargin{0mm}
+\setlength\parindent{0pt}
+\setlength\parskip{1.7\medskipamount}
+
+\sloppy\pagestyle{fancy}
+
 
 %% rest
 

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="/Users/jhoffjann/.pandoc/marked/kultiad-serif.css">
+</head>
+<body>
+
+
+
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<pre><code></code></pre>
+<p>In the recent years R has become the statistical programming language of choice for many people. Since its introduction in 1992.</p>
+<hr />
+<h1 id="the-algorithm"><span class="header-section-number">2</span> The Algorithm</h1>
+<h2 id="general-function"><span class="header-section-number">2.1</span> General Function</h2>
+<p>Starting point of the project was the paper provided by Jonathen E. Fieldsend <span class="citation">[1]</span> on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an algorithm in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates <span class="citation">[1]</span>.</p>
+<p>Multi-modal optimization in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimizing point but all possible points <span class="citation">[1]</span>. In order to do so, many early multi-modal optimization algorithms needed highly defined parameters [TODO: quote needed].</p>
+<p>Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices <span class="citation">[2]</span> and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimization runs <span class="citation">[3]</span>. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current <span class="citation">[1]</span></p>
+<p>In order to do so NMMSO follow a strict structure which can be seen in the following pseudo-code</p>
+<pre><code>nmmso(max_evals, tol, n, max_inc, c_1, c_2, chi, w)
+    S: initialise_swarm(1)
+    evaluations := 1
+    while evaluations &lt; max_evals:
+        while flagged_swarms(S) == true:
+            {S, m} := attempt_merge(S, n, tol)
+            evals := evals + m
+        S := increment(S, n, max_inc, c_1, c_2, chi, w)
+        evals := evals + min(|S|, max_inc)
+        {S, k} := attempt_separation(S, tol)
+        evals := evals + k
+        S := add_new_swarm(S)
+        evals := evals + 1
+    {X*, Y*} := extract_gebsest(S)
+    return X*,Y*</code></pre>
+<h2 id="cec"><span class="header-section-number">2.2</span> CEC</h2>
+<p>test</p>
+<hr />
+<h1 id="the-implementation"><span class="header-section-number">3</span> The Implementation</h1>
+<h2 id="structure-of-the-project"><span class="header-section-number">3.1</span> Structure of the project</h2>
+<p>test [#fieldsend_2014]</p>
+<h2 id="pitfalls-and-problems"><span class="header-section-number">3.2</span> Pitfalls and Problems</h2>
+<p>test</p>
+<h2 id="benchmark-and-comparison"><span class="header-section-number">3.3</span> Benchmark and Comparison</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="right">0.1</th>
+<th align="right">0.01</th>
+<th align="right">0.001</th>
+<th align="right">0.0001</th>
+<th align="right">0.00001</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">6</td>
+<td align="right">6</td>
+</tr>
+<tr class="odd">
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">7</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+<td align="right">8</td>
+</tr>
+<tr class="odd">
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">9</td>
+<td align="right">9</td>
+</tr>
+<tr class="even">
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">10</td>
+<td align="right">10</td>
+</tr>
+<tr class="odd">
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">11</td>
+<td align="right">11</td>
+</tr>
+<tr class="even">
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">12</td>
+<td align="right">12</td>
+</tr>
+<tr class="odd">
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">13</td>
+<td align="right">13</td>
+</tr>
+<tr class="even">
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">14</td>
+<td align="right">14</td>
+</tr>
+<tr class="odd">
+<td align="right">15</td>
+<td align="right">15</td>
+<td align="right">15</td>
+<td align="right">15</td>
+<td align="right">15</td>
+</tr>
+<tr class="even">
+<td align="right">16</td>
+<td align="right">16</td>
+<td align="right">16</td>
+<td align="right">16</td>
+<td align="right">16</td>
+</tr>
+<tr class="odd">
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">17</td>
+<td align="right">17</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">18</td>
+<td align="right">18</td>
+<td align="right">18</td>
+<td align="right">18</td>
+</tr>
+<tr class="odd">
+<td align="right">19</td>
+<td align="right">19</td>
+<td align="right">19</td>
+<td align="right">19</td>
+<td align="right">19</td>
+</tr>
+<tr class="even">
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">20</td>
+<td align="right">20</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="figure/Results%20of%20Function%205-1.png" alt="plot of chunk Results of Function 5" />
+<p class="caption">plot of chunk Results of Function 5</p>
+</div>
+<h2 id="testing-and-alternative-parameter-settings"><span class="header-section-number">3.4</span> Testing and alternative parameter settings</h2>
+<p>test</p>
+<h1 id="discussion"><span class="header-section-number">4</span> Discussion</h1>
+<p>test</p>
+<h1 id="conclusion"><span class="header-section-number">5</span> Conclusion</h1>
+<p>test </p>
+<div id="refs" class="references">
+<div id="ref-fieldsend_2014">
+<p>[1] J.E. Fieldsend, Running up those hills: Multi-modal search with the niching migratory multi-swarm optimiser, in: Evolutionary Computation (CEC), 2014 IEEE Congress on, IEEE, 2014: pp. 2593–2600.</p>
+</div>
+<div id="ref-preuss_2010">
+<p>[2] M. Preuss, Niching the cMA-eS via nearest-better clustering, in: Proceedings of the 12th Annual Conference Companion on Genetic and Evolutionary Computation, ACM, New York, NY, USA, 2010: pp. 1711–1718. doi:<a href="https://doi.org/10.1145/1830761.1830793">10.1145/1830761.1830793</a>.</p>
+</div>
+<div id="ref-epitropakis_2013">
+<p>[3] M.G. Epitropakis, X. Li, E.K. Burke, A dynamic archive niching differential evolution algorithm for multimodal optimization, in: Evolutionary Computation (CEC), 2013 IEEE Congress on, IEEE, 2013: pp. 79–86.</p>
+</div>
+</div>
+</body>
+</html>
