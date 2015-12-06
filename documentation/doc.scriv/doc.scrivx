@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-06 22:49:26 +0100" ModID="43DCC3F6-DAE3-45AF-8424-FB67AB511923">
+<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-06 23:06:42 +0100" ModID="CE57A5DF-9B3D-4239-BCA3-0B95E29AE5BF">
     <Binder>
         <BinderItem ID="0" UUID="BC25FB0C-FB20-4BF6-990C-801331C2F125" Type="DraftFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:28:01 +0100">
             <Title>Paper</Title>
@@ -8,14 +8,14 @@
                 <IconFileName>Book (Blue Book).tiff</IconFileName>
             </MetaData>
             <Children>
-                <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 08:49:31 +0100" Modified="2015-12-06 20:56:15 +0100">
+                <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 08:49:31 +0100" Modified="2015-12-06 23:04:36 +0100">
                     <Title>Introduction</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>1789,0</TextSelection>
+                        <TextSelection>1819,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="8" UUID="597C7ED7-3997-4505-8651-2C0602589FF0" Type="Folder" Created="2015-11-30 08:28:36 +0100" Modified="2015-11-30 08:28:39 +0100">
@@ -31,14 +31,14 @@
                         <SelectedSubdocumentIDs>12</SelectedSubdocumentIDs>
                     </CorkboardAndOutliner>
                     <Children>
-                        <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 08:29:50 +0100" Modified="2015-12-06 21:49:20 +0100">
+                        <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 08:29:50 +0100" Modified="2015-12-06 23:04:30 +0100">
                             <Title>General Function</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>1992,0</TextSelection>
+                                <TextSelection>2538,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem ID="13" UUID="A73FBB02-F78F-42F1-A3FF-412C9EFB7705" Type="Text" Created="2015-11-30 08:30:01 +0100" Modified="2015-12-06 20:46:50 +0100">
@@ -83,14 +83,14 @@
                                 <TextSelection>0,4</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem ID="16" UUID="205AC671-0528-4B9E-80FD-14FDAFD490D6" Type="Text" Created="2015-11-30 08:30:31 +0100" Modified="2015-12-06 22:49:16 +0100">
+                        <BinderItem ID="16" UUID="205AC671-0528-4B9E-80FD-14FDAFD490D6" Type="Text" Created="2015-11-30 08:30:31 +0100" Modified="2015-12-06 23:06:31 +0100">
                             <Title>Benchmark and Comparison</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>70,0</TextSelection>
+                                <TextSelection>47,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem ID="17" UUID="327A621D-03DC-48F1-801D-0166E7B0CDC1" Type="Text" Created="2015-11-30 08:30:41 +0100" Modified="2015-12-06 20:46:50 +0100">
@@ -222,7 +222,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2015-11-30 08:26:41 +0100" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="783" Characters="5432" Date="2015-12-06 13:02:04 +0100"></PreviousSession>
+        <PreviousSession Words="887" Characters="6072" Date="2015-12-06 13:02:04 +0100"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="595.275574,841.861389" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>

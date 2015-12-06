@@ -8,7 +8,7 @@ As part of this Seminar Project in the context of the Seminar 'Statistical Compu
 
 It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. 
 
-… write a bit more here.
+**… write a bit more here.**
 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage
@@ -22,6 +22,8 @@ It was the goal of this project to keep up high comparability with the original 
 Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
 Multi-modal optimization in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimizing point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimization algorithms needed highly defined parameters [TODO: quote needed]. 
+
+** maybe it would be interesting to write a few more lines about the history of evalutionary algorithms here?**
 
 Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2010] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimization runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
 
@@ -43,7 +45,9 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 		{X*, Y*} := extract_gebsest(S)
 		return X*,Y*
 
-This structure wasn't modified during the reimplementation of 
+This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibilty to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
+
+** What else about the algorithm need to be explained that isn't explicitly part of the implementation? **
 
 ## CEC ##
 
@@ -64,6 +68,7 @@ test
 ## Benchmark and Comparison ##
 
 
+To compare the nmmsoR with the original NMMSO the CEC testcases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. 
 
 -------------------------------------------------
  &nbsp;    0.1   0.01   0.001   0.0001   0.00001 

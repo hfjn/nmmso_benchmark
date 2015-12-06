@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="stylesheet" href="/Users/jhoffjann/.pandoc/marked/kultiad-serif.css">
+</head>
+<body>
+
+
+
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<p>In the recent years R has become the statistical programming language of choice for many scientist. The strength of R of being a domain specific language has also become one of its weaknesses. Since new research findings in statistical computing are split up over several languages like R, Matlab or SciPy<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> it often becomes difficult to compare new methods with established ones. Since it is also hard to interface those languages due to different architectures, data storage mechanisms there is often no other way than to reimplement new methods in a different programming language to create a common scope.</p>
+<p>An example for a well perceived new finding in statistical computing is the NMMSO-Algorithm by Jonathan E. Fieldsend <span class="citation">[1]</span>. It won the niching competition in 2015 held by the CEC and is only written in Matlab. Since the chair ‘Information Systems and Statistics’ at the Westfälische Wilhelms-Universität Münster, Germany is mainly concentrating its work on Statistical Computing in R an implementation of this algorithm became interesting.</p>
+<p>As part of this Seminar Project in the context of the Seminar ‘Statistical Computing in R’ a reimplementation of the NMMSO algorithm in R will be presented. During this technical documentation the general function of the algorithm will and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, aswell as problems and pitfalls due to the different behaviors of R and Matlab will be shown. The documentation will be closed by the benchmarking results and different test cases.</p>
+<p>It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program.</p>
+<p><strong>… write a bit more here.</strong></p>
+<hr />
+<h1 id="the-algorithm"><span class="header-section-number">2</span> The Algorithm</h1>
+<h2 id="general-function"><span class="header-section-number">2.1</span> General Function</h2>
+<p>Starting point of the project was the paper provided by Jonathen E. Fieldsend <span class="citation">[1]</span> on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates <span class="citation">[1]</span>.</p>
+<p>Multi-modal optimization in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimizing point but all possible points <span class="citation">[1]</span>. In order to do so, many early multi-modal optimization algorithms needed highly defined parameters [TODO: quote needed].</p>
+<p>** maybe it would be interesting to write a few more lines about the history of evalutionary algorithms here?**</p>
+<p>Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices <span class="citation">[2]</span> and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimization runs <span class="citation">[3]</span>. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current <span class="citation">[1]</span></p>
+<p>In order to do so NMMSO follow a strict structure which can be seen in the following pseudo-code</p>
+<pre><code>nmmso(max_evals, tol, n, max_inc, c_1, c_2, chi, w)
+    S: initialise_swarm(1)
+    evaluations := 1
+    while evaluations &lt; max_evals:
+        while flagged_swarms(S) == true:
+            {S, m} := attempt_merge(S, n, tol)
+            evals := evals + m
+        S := increment(S, n, max_inc, c_1, c_2, chi, w)
+        evals := evals + min(|S|, max_inc)
+        {S, k} := attempt_separation(S, tol)
+        evals := evals + k
+        S := add_new_swarm(S)
+        evals := evals + 1
+    {X*, Y*} := extract_gebsest(S)
+    return X*,Y*</code></pre>
+<p>This structure wasn’t modified during the reimplementation of NMMSO to keep comparability and the possibilty to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.</p>
+<p>** What else about the algorithm need to be explained that isn’t explicitly part of the implementation? **</p>
+<h2 id="cec"><span class="header-section-number">2.2</span> CEC</h2>
+<p>test</p>
+<hr />
+<h1 id="the-implementation"><span class="header-section-number">3</span> The Implementation</h1>
+<h2 id="structure-of-the-project"><span class="header-section-number">3.1</span> Structure of the project</h2>
+<p>test [#fieldsend_2014]</p>
+<h2 id="pitfalls-and-problems"><span class="header-section-number">3.2</span> Pitfalls and Problems</h2>
+<p>test</p>
+<h2 id="benchmark-and-comparison"><span class="header-section-number">3.3</span> Benchmark and Comparison</h2>
+<p>To compare the nmmsoR with the original NMMSO the CEC testcases were used to run the same benchmarks as in the original submission <span class="citation">[1]</span>.</p>
+<table style="width:68%;">
+<caption>Success Ratio over 50 runs</caption>
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="9%" />
+<col width="11%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">0.1</th>
+<th align="center">0.01</th>
+<th align="center">0.001</th>
+<th align="center">0.0001</th>
+<th align="center">0.00001</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>F1</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F2</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F3</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F4</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F5</strong></td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F6</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F7</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F8</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F9</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F10</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F11</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F12</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F13</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F14</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F15</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F16</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F17</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F18</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F19</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F20</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<table style="width:68%;">
+<caption>Convergence Rates over 50 runs</caption>
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="9%" />
+<col width="11%" />
+<col width="12%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center"> </th>
+<th align="center">0.1</th>
+<th align="center">0.01</th>
+<th align="center">0.001</th>
+<th align="center">0.0001</th>
+<th align="center">0.00001</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><strong>F1</strong></td>
+<td align="center">627.2</td>
+<td align="center">808.6</td>
+<td align="center">1031</td>
+<td align="center">1219</td>
+<td align="center">1406</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F2</strong></td>
+<td align="center">204.5</td>
+<td align="center">326.3</td>
+<td align="center">424</td>
+<td align="center">510</td>
+<td align="center">695</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F3</strong></td>
+<td align="center">37.16</td>
+<td align="center">150.1</td>
+<td align="center">229.4</td>
+<td align="center">322.5</td>
+<td align="center">439.2</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F4</strong></td>
+<td align="center">900.1</td>
+<td align="center">1228</td>
+<td align="center">1524</td>
+<td align="center">1813</td>
+<td align="center">2132</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F5</strong></td>
+<td align="center">74.94</td>
+<td align="center">169.3</td>
+<td align="center">364</td>
+<td align="center">565.6</td>
+<td align="center">852.8</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F6</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F7</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F8</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F9</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F10</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F11</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F12</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F13</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F14</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F15</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F16</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F17</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F18</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="odd">
+<td align="center"><strong>F19</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+<tr class="even">
+<td align="center"><strong>F20</strong></td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img src="figure/trend%20curve%20of%20kept%20swarms%20over%20all%2020%20functions%20and%2050%20runs.%20The%20black%20line%20shows%20the%20mean%20of%20all%2050%20runs.-1.png" alt="plot of chunk trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs." />
+<p class="caption">plot of chunk trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs.</p>
+</div>
+<h2 id="testing-and-alternative-parameter-settings"><span class="header-section-number">3.4</span> Testing and alternative parameter settings</h2>
+<p>test</p>
+<h1 id="discussion"><span class="header-section-number">4</span> Discussion</h1>
+<p>test</p>
+<h1 id="conclusion"><span class="header-section-number">5</span> Conclusion</h1>
+<p>test </p>
+<div id="refs" class="references">
+<div id="ref-fieldsend_2014">
+<p>[1] J.E. Fieldsend, Running up those hills: Multi-modal search with the niching migratory multi-swarm optimiser, in: Evolutionary Computation (CEC), 2014 IEEE Congress on, IEEE, 2014: pp. 2593–2600.</p>
+</div>
+<div id="ref-preuss_2010">
+<p>[2] M. Preuss, Niching the cMA-eS via nearest-better clustering, in: Proceedings of the 12th Annual Conference Companion on Genetic and Evolutionary Computation, ACM, New York, NY, USA, 2010: pp. 1711–1718. doi:<a href="https://doi.org/10.1145/1830761.1830793">10.1145/1830761.1830793</a>.</p>
+</div>
+<div id="ref-epitropakis_2013">
+<p>[3] M.G. Epitropakis, X. Li, E.K. Burke, A dynamic archive niching differential evolution algorithm for multimodal optimization, in: Evolutionary Computation (CEC), 2013 IEEE Congress on, IEEE, 2013: pp. 79–86.</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language. <a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+</body>
+</html>
