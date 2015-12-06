@@ -590,15 +590,3 @@ rot_matrix_condition = function(D, c) {
 	M = P %*% D %*% Q
 	return(M)
 }
-
-
-
-
-
-
-
-
-
-
-
-
