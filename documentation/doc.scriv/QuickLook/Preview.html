@@ -36,7 +36,7 @@
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>General Function</strong><br/>Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an algorithm in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly ...</p>
+<p class="binderItem"><strong>General Function</strong><br/>Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly f...</p>
 </li>
 <li>
 <p class="binderItem"><strong>CEC</strong><br/>test</p>
@@ -57,23 +57,15 @@
 <li>
 <p class="binderItem"><strong>Benchmark and Comparison</strong><br/><br/>
 ```{r, prepare SR, echo=FALSE}<br/>
-source("../R/cec_2015_problem_data.R")<br/>
-# calculate sr<br/>
-library(ascii)<br/>
-library(memisc)<br/>
-sr <- as.data.frame(matrix(seq(20),nrow=20,ncol=5))<br/>
+library(pander)<br/>
+names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")<br/>
+sr <- as.data.frame(matrix(0,nrow=20,ncol=5))<br/>
+mean <- as.data.frame(matrix(0,nrow=20,ncol=5))<br/>
+sd <- as.data.frame(matrix(0,nrow=20,ncol=5))<br/>
 for(i in 1:5){<br/>
  c_list <- read.table(paste("../output/", i,"_output.txt", sep = ""))<br/>
- sr[i,] <- (apply(c_list, 2, function(x) length(which(x < gens[i]))/50))<br/>
-}<br/>
-<br/>
-sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))<br/>
-kable(sr, format = "pandoc")<br/>
-<br/>
-```<br/>
-<br/>
-<br/>
-```{r, Results of Function 5, echo...</p>
+ sr[i,] <-(apply(c_list, 2, function(x) length(which(x < gens[i]))/50))<br/>
+ mean[i, ] <-...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Testing and alternative parameter settings</strong><br/>test</p>

@@ -51,7 +51,7 @@ for(index in 6){
     	c_list = rbind(c_list, rbind(count))
     	pop_size = c(pop_size, length(mode_y_after))
     	write(c(run, iteration, length(nmmso_state$swarms)-1), file = paste("./output/", index, ".txt", sep = ""), append = TRUE)
-  }
+    }
 
 
     if(evaluations_after > gens[index]){

@@ -42,6 +42,9 @@
 % for nice tables
 \usepackage{longtable}
 \usepackage{booktabs}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=bottom}
+% for nice code
 
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
