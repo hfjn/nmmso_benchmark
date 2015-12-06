@@ -1,3 +1,4 @@
+source("R/cec_2015_problem_data.R")
 library(plyr)
 library(ggplot2)
 library(reshape2)
@@ -25,7 +26,16 @@ sd(runs$V4)
 
 
 # calculate sr
-c_list <- read.table(paste("output/", index,"_output.txt", sep = ""))
-sr <- (apply(c_list, 2, function(x) length(which(x < gens[index]))/50))
+library(ascii)
+library(memisc)
+sr <- as.data.frame(matrix(seq(20),nrow=20,ncol=5))
+for(i in 1:5){
+	c_list <- read.table(paste("output/", i,"_output.txt", sep = ""))
+	sr[i,] <- (apply(c_list, 2, function(x) length(which(x < gens[i]))/50))
+}
 
-# calculate pr
+sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))
+
+print(ascii(sr), caption="SR Values", style=c("d", "d", "d"), type="pandoc")
+
+

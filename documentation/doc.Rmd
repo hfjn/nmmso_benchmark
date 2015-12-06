@@ -1,5 +1,7 @@
 # Introduction #
 
+```
+```
 In the recent years R has become the statistical programming language of choice for many people. Since its introduction in 1992. 
 
 ----
@@ -8,9 +10,9 @@ In the recent years R has become the statistical programming language of choice 
 
 ## General Function ##
 
-Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an algorithm in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [p. 1][@fieldsend_2014]. 
+Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an algorithm in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
-Multi-modal optimization in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimizing point but all possible points [p. 1][@fieldsend_2014]. In order to do so, many early multi-modal optimization algorithms needed highly defined parameters [TODO: quote needed]. 
+Multi-modal optimization in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimizing point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimization algorithms needed highly defined parameters [TODO: quote needed]. 
 
 Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2010] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimization runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
 
@@ -50,12 +52,33 @@ test
 
 ## Benchmark and Comparison ##
 
+
+```{r, prepare SR, echo=FALSE}
+source("../R/cec_2015_problem_data.R")
+# calculate sr
+library(ascii)
+library(memisc)
+sr <- as.data.frame(matrix(seq(20),nrow=20,ncol=5))
+for(i in 1:5){
+	c_list <- read.table(paste("../output/", i,"_output.txt", sep = ""))
+	sr[i,] <- (apply(c_list, 2, function(x) length(which(x < gens[i]))/50))
+}
+
+sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))
+kable(sr, format = "pandoc")
+
+```
+
+
 ```{r, Results of Function 5, echo = FALSE}
+source("multiplot.R")
 library(plyr)
 library(ggplot2)
 library(reshape2)
 library(ggthemes)
-index = 5
+
+## 1
+index = 1
 
 results <- read.table(paste("../output/",index, ".txt", sep=""))
 
@@ -64,7 +87,60 @@ results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms")
 results <- transform(results, run = sprintf('run%d', run)) 
 
 p1 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
-p1 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")
+p1 = p1 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none") + theme(aspect.ratio=4/3)
+
+
+## 2
+index = 2
+
+results <- read.table(paste("../output/",index, ".txt", sep=""))
+
+results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
+
+results <- transform(results, run = sprintf('run%d', run)) 
+
+p2 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
+p2 = p2 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none") + theme(aspect.ratio=4/3)
+
+## 3
+
+index = 3
+
+results <- read.table(paste("../output/",index, ".txt", sep=""))
+
+results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
+
+results <- transform(results, run = sprintf('run%d', run)) 
+
+p3 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
+p3 = p3 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none") + theme(aspect.ratio=4/3)
+
+
+## 4
+index = 4
+
+results <- read.table(paste("../output/",index, ".txt", sep=""))
+
+results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
+
+results <- transform(results, run = sprintf('run%d', run)) 
+
+p4 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
+p4 = p4 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none") + theme(aspect.ratio=4/3)
+
+## 5
+index = 5
+
+results <- read.table(paste("../output/",index, ".txt", sep=""))
+
+results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
+
+results <- transform(results, run = sprintf('run%d', run)) 
+
+p5 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
+p5 = p5 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none") + theme(aspect.ratio=4/3)
+
+multiplot(p1, p2, p3,p4,p5,cols=4)
 
 ```
 
@@ -80,3 +156,4 @@ test
 # Conclusion #
 
 test
+\newpage

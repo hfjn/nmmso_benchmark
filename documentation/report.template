@@ -21,11 +21,60 @@
 % Just compile this file using pdflatex after making all required changes.
 
 \documentclass[12pt,a4paper]{article}
-\usepackage[pdftex]{graphicx} %for embedding images
+
+
+%% rest
+
 \usepackage{url} %for proper url entries
 \usepackage[numbers]{natbib}
-\usepackage[bookmarks, colorlinks=false, pdfborder={0 0 0}, pdftitle={<pdf title here>}, pdfauthor={<author's name here>}, pdfsubject={<subject here>}, pdfkeywords={<keywords here>}]{hyperref} %for creating links in the pdf version and other additional pdf attributes, no effect on the printed document
-%\usepackage[final]{pdfpages} %for embedding another pdf, remove if not required
+% for nice tables
+\usepackage{longtable}
+\usepackage{booktabs}
+
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifxetex
+  \usepackage{fontspec,xltxtra,xunicode}
+  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+\else
+  \ifluatex
+    \usepackage{fontspec}
+    \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \else
+    \usepackage[utf8]{inputenc}
+  \fi
+\fi
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\DefineShortVerb[commandchars=\\\{\}]{\|}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+\newcommand{\RegionMarkerTok}[1]{{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+\newcommand{\NormalTok}[1]{{#1}}
+\usepackage[pdftex]{graphicx}
+\setkeys{Gin}{width=\textwidth}
+\usepackage[Export]{adjustbox}
+\usepackage[unicode=true]{hyperref}
+\hypersetup{breaklinks=true, pdfborder={0 0 0}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+%\setcounter{secnumdepth}{0}
+
 
 \begin{document}
 \renewcommand\refname{References} %Renames "Bibliography" to "References" on ref page
@@ -33,12 +82,6 @@
 %include other pages
 \input{./tex/title.tex}
 \newpage
-
-\pagenumbering{roman} %numbering before main content starts
-\tableofcontents
-\newpage
-\listoffigures
-
 $if(abstract)$
 
 \begin{abstract}
@@ -48,9 +91,15 @@ $if(abstract)$
 \end{abstract}
 
 $endif$
+\pagenumbering{roman} %numbering before main content starts
+\tableofcontents
+\newpage
+\listoffigures
+
+\newpage
+\pagenumbering{arabic} %reset numbering to normal for the main content
 
 $body$
-
 $if(natbib)$
 $if(biblio-files)$
 $if(biblio-title)$
@@ -60,12 +109,14 @@ $else$
 \renewcommand\refname{References}
 $endif$
 $endif$
-
 \bibliography{$biblio-files$}
 
 $endif$
 $endif$
+
+
 $if(biblatex)$
+
 \printbibliography$if(biblio-title)$[title=References]$endif$
 
 $endif$
