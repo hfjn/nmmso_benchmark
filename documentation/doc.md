@@ -78,6 +78,16 @@ test
   20     20      20       20        20
 
 
+
+```
+## Warning in file(filename, "r", encoding = encoding): cannot open file 'R/
+## cec_2015_problem_data.R': No such file or directory
+```
+
+```
+## Error in file(filename, "r", encoding = encoding): cannot open the connection
+```
+
 ![plot of chunk Results of Function 5](figure/Results of Function 5-1.png) 
 
 
