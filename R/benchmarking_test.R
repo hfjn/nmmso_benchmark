@@ -6,14 +6,13 @@ source("./R/count_goptima.R")
 
 library(pryr)
 
-set.seed = Sys.time()
 niching_funcs = c(five_uneven_peak_trap, equal_maxima, uneven_decreasing_maxima,
                   himmelblau, six_hump_camel_back, shubert, vincent, shubert, vincent,
                   modified_rastrigin_all, CF1, CF2, CF3, CF3, CF4, CF3, CF4, CF3, CF4, CF4)
 # using the CEC test problems, all 20.
-for(index in 8:20){
+for(index in 6){
   # run each 50 times.
-  for(run in 1:1){
+  for(run in 1:50){
     # set new seed
     set.seed = Sys.time()
     eval_list = c()
@@ -34,8 +33,9 @@ for(index in 8:20){
     mode_y_after = list()
     nmmso_state = list()
     evaluations_after = 0
-
+    iteration = 0
     while(evaluations_after < gens[[index]] && count[5] != nopt[index]){
+      iteration = iteration + 1
     	old_count = count
     	result <- NMMSO_iterative(swarm_size = as.numeric(10*length(mx[[index]])), problem_function = niching_funcs[[index]], max_evaluations = gens[[index]], mn = as.numeric(mn[[index]]), mx = as.numeric(mx[[index]]), evaluations = evaluations_after, nmmso_state = nmmso_state)
     	mode_loc_after = result$mode_loc
@@ -50,8 +50,8 @@ for(index in 8:20){
     	eval_list = rbind(eval_list, as.matrix(evaluations_after))
     	c_list = rbind(c_list, rbind(count))
     	pop_size = c(pop_size, length(mode_y_after))
-    	write(c(evaluations_after, length(nmmso_state$swarms)), file = paste("./output/", index,"_", run, ".txt", sep = ""), append = TRUE)
-    }
+    	write(c(run, iteration, length(nmmso_state$swarms)-1), file = paste("./output/", index, ".txt", sep = ""), append = TRUE)
+  }
 
 
     if(evaluations_after > gens[index]){
@@ -69,7 +69,7 @@ for(index in 8:20){
     }
 
     write(conv_evals, paste("./output/", index,"_output.txt", sep = ""), append = TRUE)
-    write(c_list, paste("./output/", index, "_", run, "_clist.txt", sep = ""), append = TRUE)
+    write(c(run, c_list), paste("./output/", index, "_clist.txt", sep = ""), append = TRUE)
   }
 }
 

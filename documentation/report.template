@@ -31,8 +31,7 @@
 \renewcommand\refname{References} %Renames "Bibliography" to "References" on ref page
 
 %include other pages
-\input{./title.tex}
-\input{./abstract.tex}
+\input{./tex/title.tex}
 \newpage
 
 \pagenumbering{roman} %numbering before main content starts
@@ -40,13 +39,38 @@
 \newpage
 \listoffigures
 
-\newpage
-\pagenumbering{arabic} %reset numbering to normal for the main content
+$if(abstract)$
 
-\input{./doc.tex}
+\begin{abstract}
 
-\newpage
-\bibliographystyle{unsrt}
-\bibliography{ref} 
+\noindent \emph{Abstract:} $abstract$
 
+\end{abstract}
+
+$endif$
+
+$body$
+
+$if(natbib)$
+$if(biblio-files)$
+$if(biblio-title)$
+$if(book-class)$
+\renewcommand\bibname{Bibliography}
+$else$
+\renewcommand\refname{References}
+$endif$
+$endif$
+
+\bibliography{$biblio-files$}
+
+$endif$
+$endif$
+$if(biblatex)$
+\printbibliography$if(biblio-title)$[title=References]$endif$
+
+$endif$
+$for(include-after)$
+$include-after$
+
+$endfor$
 \end{document}

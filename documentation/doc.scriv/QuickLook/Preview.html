@@ -36,7 +36,7 @@
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>General Function</strong><br/>Starting point of the project was the paper provided by Jonathen E. Fieldsend [#fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an algorithm in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly ...</p>
+<p class="binderItem"><strong>General Function</strong><br/>Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an algorithm in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly ...</p>
 </li>
 <li>
 <p class="binderItem"><strong>CEC</strong><br/>test</p>
@@ -55,7 +55,21 @@
 <p class="binderItem"><strong>Pitfalls and Problems</strong><br/>test</p>
 </li>
 <li>
-<p class="binderItem"><strong>Benchmark and Comparison</strong><br/>test</p>
+<p class="binderItem"><strong>Benchmark and Comparison</strong><br/>```{r, Results of Function 5, echo = FALSE}<br/>
+library(plyr)<br/>
+library(ggplot2)<br/>
+library(reshape2)<br/>
+library(ggthemes)<br/>
+index = 5<br/>
+<br/>
+results <- read.table(paste("../output/",index, ".txt", sep=""))<br/>
+<br/>
+results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))<br/>
+<br/>
+results <- transform(results, run = sprintf('run%d', run)) <br/>
+<br/>
+p1 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)<br/>
+p1 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Testing and alternative parameter settings</strong><br/>test</p>
