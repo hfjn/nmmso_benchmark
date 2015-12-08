@@ -241,6 +241,16 @@ eval_functions = function(fname, x) {
 # Global variables for composition functions
 initial_flag = 0
 o = readMat("R/data/optima.mat")$o
+M_CF3_2 = readMat("R/data/CF3_M_D2.mat")$M
+M_CF3_3 = readMat("R/data/CF3_M_D3.mat")$M
+M_CF3_5 = readMat("R/data/CF3_M_D5.mat")$M
+M_CF3_10 = readMat("R/data/CF3_M_D10.mat")$M
+M_CF3_20 = readMat("R/data/CF3_M_D20.mat")$M
+M_CF4_2 = readMat("R/data/CF4_M_D2.mat")$M
+M_CF4_3 = readMat("R/data/CF4_M_D3.mat")$M
+M_CF4_5 = readMat("R/data/CF4_M_D5.mat")$M
+M_CF4_10 = readMat("R/data/CF4_M_D10.mat")$M
+M_CF4_20 = readMat("R/data/CF4_M_D20.mat")$M
 
 #' @title Composition Function 1
 #' @description n = 6
@@ -329,15 +339,15 @@ CF3 = function(x) {
 		c = matrix(1, 1, 6)
 
 		if(d == 2) {
-			M = readMat("R/data/CF3_M_D2.mat")$M
+			M = M_CF3_2
 		} else if(d == 3) {
-			M = readMat("R/data/CF3_M_D3.mat")$M
+			M = M_CF3_3
 		} else if(d == 5) {
-			M = readMat("R/data/CF3_M_D5.mat")$M
+			M = M_CF4_5
 		} else if(d == 10) {
-			M = readMat("R/data/CF3_M_D10.mat")$M
+			M = M_CF3_10
 		} else if(d == 20) {
-			M = readMat("R/data/CF3_M_D20.mat")$M
+			M = M_CF3_20
 		} else {
 			M = list()
 			for(i in 1:6) {
@@ -375,15 +385,15 @@ CF4 = function(x) {
 		c = matrix(1, 1, func_num)
 
 		if(d == 2) {
-			M = readMat("R/data/CF4_M_D2.mat")$M
+			M = M_CF4_2
 		} else if(d == 3) {
-			M = readMat("R/data/CF4_M_D3.mat")$M
+			M = M_CF4_3
 		} else if(d == 5) {
-			M = readMat("R/data/CF4_M_D5.mat")$M
+			M = M_CF4_5
 		} else if(d == 10) {
-			M = readMat("R/data/CF4_M_D10.mat")$M
+			M = M_CF4_10
 		} else if(d == 20) {
-			M = readMat("R/data/CF4_M_D20.mat")$M
+			M = M_CF4_20
 		} else {
 			M = list()
 			for(i in 1:6) {

@@ -35,7 +35,7 @@ for(index in 6){
     evaluations_after = 0
     iteration = 0
     while(evaluations_after < gens[[index]] && count[5] != nopt[index]){
-      iteration = iteration + 1
+      	iteration = iteration + 1
     	old_count = count
     	result <- NMMSO_iterative(swarm_size = as.numeric(10*length(mx[[index]])), problem_function = niching_funcs[[index]], max_evaluations = gens[[index]], mn = as.numeric(mn[[index]]), mx = as.numeric(mx[[index]]), evaluations = evaluations_after, nmmso_state = nmmso_state)
     	mode_loc_after = result$mode_loc
