@@ -9,8 +9,8 @@ acc = c(0.1, 0.01, 0.001, 0.0001, 0.00001)
 niching_funcs = c(five_uneven_peak_trap, equal_maxima, uneven_decreasing_maxima,
                   himmelblau, six_hump_camel_back, shubert, vincent, shubert, vincent,
                   modified_rastrigin_all, CF1, CF2, CF3, CF3, CF4, CF3, CF4, CF3, CF4, CF4)
-# using the CEC test problems, all 20.
 
+# using the CEC test problems, all 20.
 benchmark <- function(index, seed){
     # set new seed
     set.seed(seed)
