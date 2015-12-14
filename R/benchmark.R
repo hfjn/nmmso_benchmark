@@ -51,7 +51,6 @@ benchmark <- function(index, seed){
     	c_list = rbind(c_list, rbind(count))
     	pop_size = c(pop_size, length(mode_y_after))
     	write(c(iteration, length(nmmso_state$swarms)-1), file = paste("./output/", index, "_", seed, ".txt", sep = ""), append = TRUE)
-    	print(index)
     }
     
     # count actually found optima
