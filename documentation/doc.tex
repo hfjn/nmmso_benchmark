@@ -129,11 +129,11 @@ of this algorithm became interesting.
 
 As part of this Seminar Project in the context of the Seminar
 `Statistical Computing in R' a reimplementation of the NMMSO algorithm
-in R will be presented. During this technical documentation the general
-function of the algorithm will and the used test cases by the CEC will
-be shown. Afterwards the structure and used techniques and libraries,
-aswell as problems and pitfalls due to the different behaviors of R and
-Matlab will be shown. The documentation will be closed by the
+in R will be presented. During this technical documentation, the general
+function of the algorithm and the used test cases by the CEC will be
+shown. Afterwards the structure and used techniques and libraries, as
+well as problems and pitfalls due to the different behaviours of R and
+Matlab, will be shown. The documentation will be closed by the
 benchmarking results and different test cases.
 
 It was the goal of this project to keep up high comparability with the
@@ -148,30 +148,30 @@ changes to the original codebase in this program.
 
 \subsection{General Function}\label{general-function}
 
-Starting point of the project was the paper provided by Jonathen E.
-Fieldsend (Fieldsend 2014) on the Niching Migratoy Multi-Swarm Optimiser
-(NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily
-on multiple swarms which are generated on the landscape of an function
-in order to find the global optimum. It is build around three main
-pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive
-without any special preparation and (3) exploitative local search to
-quickly find peak estimates (Fieldsend 2014, 1).
+The starting point of the project was the paper provided by Dr.~Jonathen
+E. Fieldsend (Fieldsend 2014) on the Niching Migratory Multi-Swarm
+Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which
+relies heavily on multiple swarms which are generated on the landscape
+of an function in order to find the global optimum. It is build around
+three main pillars: (1) dynamic in the numbers of dimensions, (2)
+self-adaptive without any special preparation and (3) exploitative local
+search to quickly find peak estimates (Fieldsend 2014, 1).
 
-Multi-modal optimization in general is not that different from well
+Multi-modal optimisation in general is not that different from well
 known and widely discussed single-objective optimisation, but in
 difference to it the goal of the algorithms in the multi-modal is not to
-find just one single optimizing point but all possible points (Fieldsend
-2014, 1). In order to do so, many early multi-modal optimization
+find just one single optimising point but all possible points (Fieldsend
+2014, 1). In order to do so, many early multi-modal optimisation
 algorithms needed highly defined parameters {[}TODO: quote needed{]}.
 
 ** maybe it would be interesting to write a few more lines about the
-history of evalutionary algorithms here?**
+history of evolutionary algorithms here?**
 
 Newer algorithms fall in the field of self-tuning and try to use
 different mathematical paradigms like nearest-best clustering with
 covariance matrices (Preuss 2010) and strategies like storing the so far
 best found global optima estimators to provide them as parameters for
-new optimization runs (Epitropakis, Li, and Burke 2013). Contradictory
+new optimisation runs (Epitropakis, Li, and Burke 2013). Contradictory
 to that NMMSO goes another way and uses the the swarm strategy in order
 to find which store their current (Fieldsend 2014)
 
@@ -197,7 +197,7 @@ nmmso(max_evals, tol, n, max_inc, c_1, c_2, chi, w)
 \end{verbatim}
 
 This structure wasn't modified during the reimplementation of NMMSO to
-keep comparability and the possibilty to fix bugs at a high level. The
+keep comparability and the possibility to fix bugs at a high level. The
 only newly introduced setting was the possibility to modify the c\_1,
 c\_2, chi, w as parameters from the outside. In the original version
 those parameters are part of the program code.
@@ -207,7 +207,54 @@ explicitly part of the implementation? **
 
 \subsection{CEC}\label{cec}
 
-test
+The IEEE Congress of Evolutionary Computation (CEC) is one of the
+largest, most important and recognised conferences within Evolutionary
+Computation (EC). It is organised by the IEEE Computational Intelligence
+Society in cooperation with the Evolutionary Programming Society, and
+covers most of the subtopics of the EC.
+
+In order to validate the potential of the NMMSO algorithm, it was
+submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here,
+Dr.~Fieldsend was provided with some multimodal benchmark test functions
+with different dimension sizes and characteristics, for evaluating
+niching algorithms developed by Dr.~Xiaodong Li, Dr.~Andries Engelbrecht
+and Dr.~Michael G. Epitropakis. They state that even if several niching
+methods have been around for many years, further advances in this area
+have been hindered by several obstacles; most of the studies focus on
+very low dimensional multimodal problems (2 or 3 dimensions) making this
+more complicated to asses theses methods' scalability to high dimensions
+with better performance. The benchmark tool includes 20 test functions
+(in some cases the same function but with different dimension sizes),
+which includes 10 simple, well-known and widely used benchmark
+functions, based on recent studies, and more complex functions following
+the paradigm of composition functions. In the following section, they
+will be briefly explained:
+
+F1: Five-Uneven-Peak Trap (1D) F2: Equal Maxima (1D) F3: Uneven
+Decreasing Maxima (1D) F4: Himmelblau (2D) F5: Six-Hump Camel Back (2D)
+F6: Shubert (2D, 3D) F7: Vincent (2D, 3D) F8: Modified Rastrigin - All
+Global Optima (2D) F9: Composition Function 1 (2D) F10: Composition
+Function 2 (2D) F11: Composition Function 3 (2D, 3D, 5D, 10D) F12:
+Composition Function 4 (3D, 5D, 10D, 20D)
+
+All of the test functions are formulated as maximisation problems. F1,
+F2 and F3 are simple 1D multimodal functions, while F4 and F5 are simple
+2D functions and not scalable. F6 to F8 are scalable multimodal
+functions. The number of global optima for F6 and F7 are determined by
+the dimension. However, for F8, the number of global optima is
+independent from the dimension, therefore it can be controlled by the
+user. F9 to F12 are scalable multimodal functions constructed by several
+basic functions with different properties (Sphere function, Grienwank,
+Rastrigin, Weierstrass and the Expanded Griewank's plus Rosenbrock's
+function). F9 and F10 are separable, and non-symmetric, while F11 and
+F12 are non-separable, non-symmetric complex multimodal functions. The
+number of global optima in all of the composition functions is
+independent from the number of dimensions, therefore can be controlled
+by the user.
+
+\textbf{Maybe write each math equation or the R code}
+
+https://en.wikipedia.org/wiki/IEEE\_Congress\_on\_Evolutionary\_Computation
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
@@ -215,7 +262,35 @@ test
 
 \subsection{Structure of the project}\label{structure-of-the-project}
 
-test {[}\#fieldsend\_2014{]}
+After analysing the algorithm provided in Matlab by Dr.~Fieldsend, it
+was decided to first translate each of the functions into the R
+programming language. At first instance, this task seemed to be simple
+because must of the functions were basically managing matrices and
+vectors, but later this became a problem that will be addressed in the
+pitfalls' section of this paper.
+
+Once all the NMMSO functions existed in R and having the input data, the
+testing phase started. It has be said, that one of the biggest problems
+when you code an already existing program into another programming
+language, is the different behaviours corresponding to each object (in
+case of an object-oriented language) or its main structure. The first
+runs came with several errors regarding the matrix generation and
+handling, slowing down the project in a near future. Using GitHub, it
+was easier to attack these problems in parallel, having one developer
+reviewing different functions and the other one, fixing other bugs and
+continue the testing phase. Also, this was achieved in an easier way,
+thanks that each function was coded in an independent R file, making
+easier and faster the debugging and the fixing of each problem.
+
+During the developing time, an issue raised with the CEC benchmark tool.
+In order to compare the R implementation of the NMMSO algorithm with the
+original one, it was mandatory to use this tool to test each of its
+functions with the new algorithm and compare results. After several
+complications with the original test suite (these complications will be
+addressed in the pitfalls' section), it was decided to recode each of
+the functions as an independent R package to avoid any further
+complication and having an easier and more trustworthy comparison of the
+NMMSO algorithm in R.
 
 \subsection{Pitfalls and Problems}\label{pitfalls-and-problems}
 
@@ -223,9 +298,30 @@ test
 
 \subsection{Benchmark and Comparison}\label{benchmark-and-comparison}
 
-To compare the nmmsoR with the original NMMSO the CEC testcases were
+To compare the nmmsoR with the original NMMSO the CEC test cases were
 used to run the same benchmarks as in the original submission (Fieldsend
 2014).
+
+\begin{verbatim}
+## Warning in file(file, "rt"): cannot open file '../output/1_output.txt': No
+## such file or directory
+\end{verbatim}
+
+\begin{verbatim}
+## Error in file(file, "rt"): cannot open the connection
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): could not find function "rename"
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): could not find function "rename"
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): could not find function "rename"
+\end{verbatim}
 
 \begin{longtable}[c]{@{}cccccc@{}}
 \caption{Success Ratio over 50 runs}\tabularnewline
@@ -233,20 +329,20 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.12\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
-0.1
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
-0.01
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V2
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
-0.001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V3
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.0001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V4
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.00001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V5
 \strut\end{minipage}\tabularnewline
 \midrule
 \endfirsthead
@@ -254,381 +350,381 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.12\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
-0.1
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
-0.01
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V2
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
-0.001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V3
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.0001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V4
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.00001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V5
 \strut\end{minipage}\tabularnewline
 \midrule
 \endhead
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F1}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F2}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \bottomrule
@@ -640,20 +736,20 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.12\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
-0.1
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
-0.01
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V2
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
-0.001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V3
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.0001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V4
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.00001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V5
 \strut\end{minipage}\tabularnewline
 \midrule
 \endfirsthead
@@ -661,392 +757,514 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.12\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
-0.1
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
-0.01
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V2
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
-0.001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V3
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.0001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V4
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
-0.00001
+\begin{minipage}[b]{0.06\columnwidth}\centering\strut
+V5
 \strut\end{minipage}\tabularnewline
 \midrule
 \endhead
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F1}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-627.2
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-808.6
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1031
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1219
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1406
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F2}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-204.5
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-326.3
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-424
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-510
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-695
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-37.16
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-150.1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-229.4
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-322.5
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-439.2
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-900.1
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1228
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1524
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1813
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-2132
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-74.94
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-169.3
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-364
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-565.6
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-852.8
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
+0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.12\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.06\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-\begin{figure}[htbp]
-\centering
-\includegraphics{figure/trend\%20curve\%20of\%20kept\%20swarms\%20over\%20all\%2020\%20functions\%20and\%2050\%20runs.\%20The\%20black\%20line\%20shows\%20the\%20mean\%20of\%20all\%2050\%20runs.-1.png}
-\caption{plot of chunk trend curve of kept swarms over all 20 functions
-and 50 runs. The black line shows the mean of all 50 runs.}
-\end{figure}
+\begin{verbatim}
+## Warning in file(file, "rt"): cannot open file '../output/1.txt': No such
+## file or directory
+\end{verbatim}
+
+\begin{verbatim}
+## Error in file(file, "rt"): cannot open the connection
+\end{verbatim}
+
+\begin{verbatim}
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): object 'p1' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file(file, "rt"): cannot open file '../output/2.txt': No such
+## file or directory
+\end{verbatim}
+
+\begin{verbatim}
+## Error in file(file, "rt"): cannot open the connection
+\end{verbatim}
+
+\begin{verbatim}
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): object 'p2' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file(file, "rt"): cannot open file '../output/3.txt': No such
+## file or directory
+\end{verbatim}
+
+\begin{verbatim}
+## Error in file(file, "rt"): cannot open the connection
+\end{verbatim}
+
+\begin{verbatim}
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): object 'p3' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file(file, "rt"): cannot open file '../output/4.txt': No such
+## file or directory
+\end{verbatim}
+
+\begin{verbatim}
+## Error in file(file, "rt"): cannot open the connection
+\end{verbatim}
+
+\begin{verbatim}
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): object 'p4' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in file(file, "rt"): cannot open file '../output/5.txt': No such
+## file or directory
+\end{verbatim}
+
+\begin{verbatim}
+## Error in file(file, "rt"): cannot open the connection
+\end{verbatim}
+
+\begin{verbatim}
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in eval(expr, envir, enclos): object 'p5' not found
+\end{verbatim}
+
+\begin{verbatim}
+## Error in arrangeGrob(...): object 'p1' not found
+\end{verbatim}
 
 \subsection{Testing and alternative parameter
 settings}\label{testing-and-alternative-parameter-settings}

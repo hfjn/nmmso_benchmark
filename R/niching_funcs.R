@@ -422,7 +422,6 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M,
 	ps = size(x)[1]
 	weight = matrix(0, ps, func_num)
 
-
 	for(i in 1:func_num) {
 		oo = repmat(o[i, ], ps, 1)
 		weight[, i] = exp(-sum((x - oo)^2)/2/(d * sigma[i]^2))

@@ -1593,6 +1593,10 @@ F6
             <Title>Discussion</Title>
             <Text>test</Text>
         </Document>
+        <Document ID="24">
+            <Title>Recovered File [24]</Title>
+            <Text>Thanks to everybody!</Text>
+        </Document>
         <Document ID="8">
             <Title>The Algorithm</Title>
         </Document>

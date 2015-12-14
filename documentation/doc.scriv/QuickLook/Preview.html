@@ -36,10 +36,12 @@
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>General Function</strong><br/>Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly f...</p>
+<p class="binderItem"><strong>General Function</strong><br/>The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to ...</p>
 </li>
 <li>
-<p class="binderItem"><strong>CEC</strong><br/>test</p>
+<p class="binderItem"><strong>CEC</strong><br/>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.<br/>
+<br/>
+In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here, Dr. Fieldsend was provided with some multimodal benc...</p>
 </li>
 </ul>
 <hr/>
@@ -49,14 +51,16 @@
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>Structure of the project</strong><br/>test [#fieldsend_2014]</p>
+<p class="binderItem"><strong>Structure of the project</strong><br/>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because must of the functions were basically managing matrices and vectors, but later this became a problem that will be addressed in the pitfalls’ section of this paper.<br/>
+<br/>
+Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has be said, that one of...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Pitfalls and Problems</strong><br/>test</p>
 </li>
 <li>
 <p class="binderItem"><strong>Benchmark and Comparison</strong><br/><br/>
-To compare the nmmsoR with the original NMMSO the CEC testcases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. <br/>
+To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. <br/>
 ```{r, prepare SR, echo=FALSE}<br/>
 library(pander)<br/>
 names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")<br/>
@@ -64,7 +68,7 @@ sr <- as.data.frame(matrix(0,nrow=20,ncol=5))<br/>
 mean <- as.data.frame(matrix(0,nrow=20,ncol=5))<br/>
 sd <- as.data.frame(matrix(0,nrow=20,ncol=5))<br/>
 for(i in 1:5){<br/>
- c_l...</p>
+ c_...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Testing and alternative parameter settings</strong><br/>test</p>
