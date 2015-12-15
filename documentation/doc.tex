@@ -164,8 +164,8 @@ find just one single optimising point but all possible points (Fieldsend
 2014, 1). In order to do so, many early multi-modal optimisation
 algorithms needed highly defined parameters {[}TODO: quote needed{]}.
 
-** maybe it would be interesting to write a few more lines about the
-history of evolutionary algorithms here?**
+\textbf{maybe it would be interesting to write a few more lines about
+the history of evolutionary algorithms here?}
 
 Newer algorithms fall in the field of self-tuning and try to use
 different mathematical paradigms like nearest-best clustering with
@@ -202,8 +202,8 @@ only newly introduced setting was the possibility to modify the c\_1,
 c\_2, chi, w as parameters from the outside. In the original version
 those parameters are part of the program code.
 
-** What else about the algorithm need to be explained that isn't
-explicitly part of the implementation? **
+\textbf{What else about the algorithm need to be explained that isn't
+explicitly part of the implementation?}
 
 \subsection{CEC}\label{cec}
 
@@ -273,7 +273,7 @@ https://en.wikipedia.org/wiki/IEEE\_Congress\_on\_Evolutionary\_Computation
 After analysing the algorithm provided in Matlab by Dr.~Fieldsend, it
 was decided to first translate each of the functions into the R
 programming language. At first instance, this task seemed to be simple
-because must of the functions were basically managing matrices and
+because most of the functions were basically managing matrices and
 vectors, but later this became a problem that will be addressed in the
 pitfalls' section of this paper.
 
@@ -308,12 +308,18 @@ test
 
 To compare the nmmsoR with the original NMMSO the CEC test cases were
 used to run the same benchmarks as in the original submission (Fieldsend
-2014).
+2014). There 4 different Ratios were used to measure the performance of
+certain algorithms. Three of those measures (Peak Ratio, Success Ratio
+and Convergence Speed) have been introduced in (Epitropakis, Li, and
+Burke 2013, 6--7) to create a common point of comparison. The fourth
+ratio is special for the nmmso algorithm since it tracks the number of
+swarms over the iterations of the algorithm. Nmmso.R uses the same
+measures to reach the highest comparability possible.
 
-\begin{longtable}[c]{@{}cccccc@{}}
-\caption{Success Ratio over 50 runs}\tabularnewline
+\begin{longtable}[c]{@{}ccccccc@{}}
+\caption{Success Ratio over given runs}\tabularnewline
 \toprule
-\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
 \begin{minipage}[b]{0.07\columnwidth}\centering\strut
@@ -328,13 +334,16 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.10\columnwidth}\centering\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 0.00001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+runs
 \strut\end{minipage}\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
 \begin{minipage}[b]{0.07\columnwidth}\centering\strut
@@ -349,12 +358,15 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.10\columnwidth}\centering\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 0.00001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+runs
 \strut\end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F1}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -369,10 +381,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -387,10 +402,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+14
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -405,10 +423,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -423,10 +444,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -441,10 +465,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+13
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -459,10 +486,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -477,10 +507,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -495,10 +528,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0.8333
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -513,10 +549,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -531,10 +570,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -549,10 +591,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -567,10 +612,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -585,10 +633,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -603,10 +654,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+11
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -621,10 +675,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -639,14 +696,17 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+2
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+0.5
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
 0
@@ -657,10 +717,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+2
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -675,10 +738,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -693,10 +759,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\centering\strut
@@ -711,16 +780,19 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-\begin{longtable}[c]{@{}cccccc@{}}
-\caption{Convergence Rates over 50 runs}\tabularnewline
+\begin{longtable}[c]{@{}ccccccc@{}}
+\caption{Convergence Rates over given runs}\tabularnewline
 \toprule
-\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
 \begin{minipage}[b]{0.08\columnwidth}\centering\strut
@@ -735,13 +807,16 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.10\columnwidth}\centering\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 0.00001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+runs
 \strut\end{minipage}\tabularnewline
 \midrule
 \endfirsthead
 \toprule
-\begin{minipage}[b]{0.12\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
 \begin{minipage}[b]{0.08\columnwidth}\centering\strut
@@ -756,156 +831,183 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[b]{0.10\columnwidth}\centering\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
 0.00001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+runs
 \strut\end{minipage}\tabularnewline
 \midrule
 \endhead
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F1}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-642.6
+628.6
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-815.5
+793
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1073
+1059
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1268
+1245
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1486
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1482
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-156.9
+158.7
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-233.8
+276.1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-339.6
+415.1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-514.8
+592.4
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-629.2
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+698.3
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+14
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-46.43
+49.06
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-173
+184.2
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-250.7
+268.4
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-346.6
+374.1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-481.6
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+507.7
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-491.4
+493.9
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-751.2
+758.2
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-969.7
+979.1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1119
+1131
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1455
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1457
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-97.09
+93.62
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-253.1
+253.2
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-393.8
+393.9
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-596
+607.1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-798
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+830.5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+13
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-17941
+18344
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-23032
+23219
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-29260
+29187
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-41536
+41740
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 2e+05
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-7548
+7716
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-8301
+8406
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-9855
+9835
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-11071
+10949
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-12620
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+12537
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-167705
+177212
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-195125
+203759
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-226237
+233870
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-262356
+266790
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-304597
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+320498
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
@@ -920,100 +1022,118 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 204368
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 222057
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-817
+834.8
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1317
+1325
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1706
+1699
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-2197
+2241
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-2795
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+2807
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-3719
+3763
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-5238
+5283
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-7039
+6968
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-8473
+8359
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-9180
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+8948
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-17745
+17495
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-24681
+24252
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-39501
+38160
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-45310
+43330
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-47487
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+49796
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-8681
+9690
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-13990
+14290
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-19692
+19370
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-25638
+24729
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-28889
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+27167
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-43790
+39134
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-49174
+44380
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\centering\strut
-52697
+47898
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
-60607
+55939
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-78658
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+71790
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+11
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
@@ -1028,10 +1148,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 142474
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 149112
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
@@ -1046,14 +1169,17 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 4e+05
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+2
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
-137773
+268887
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
 4e+05
@@ -1064,10 +1190,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 4e+05
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+2
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
@@ -1082,10 +1211,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 4e+05
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
@@ -1100,10 +1232,13 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 4e+05
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1
 \strut\end{minipage}\tabularnewline
-\begin{minipage}[t]{0.12\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\centering\strut
@@ -1118,7 +1253,483 @@ used to run the same benchmarks as in the original submission (Fieldsend
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
 0
 \strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+0
+\strut\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{longtable}[c]{@{}ccccccc@{}}
+\caption{Mean Peak Ratio over given runs}\tabularnewline
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+~
+\strut\end{minipage} &
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+0.1
+\strut\end{minipage} &
+\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+0.01
+\strut\end{minipage} &
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+0.001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+0.0001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+0.00001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+runs
+\strut\end{minipage}\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+~
+\strut\end{minipage} &
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+0.1
+\strut\end{minipage} &
+\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+0.01
+\strut\end{minipage} &
+\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+0.001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+0.0001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+0.00001
+\strut\end{minipage} &
+\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+runs
+\strut\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F1}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F2}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+14
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F3}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F4}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+16
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F5}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+13
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F6}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F7}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F8}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0.9938
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F9}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F10}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F11}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F12}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F13}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+12
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F14}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+11
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F15}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+1
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+6
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F16}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.08333
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+2
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F17}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.875
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+0.8125
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.8125
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+0.8125
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0.6875
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+2
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F18}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+0.5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+0.5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0.5
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F19}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.3333
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+0.3333
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0.3333
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+0.3333
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0.3333
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+1
+\strut\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\textbf{F20}
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+0
+\strut\end{minipage} &
+\begin{minipage}[t]{0.07\columnwidth}\centering\strut
 0
 \strut\end{minipage}\tabularnewline
 \bottomrule
@@ -1126,9 +1737,9 @@ used to run the same benchmarks as in the original submission (Fieldsend
 
 \begin{figure}[htbp]
 \centering
-\includegraphics{figure/trend\%20curve\%20of\%20kept\%20swarms\%20over\%20all\%2020\%20functions\%20and\%2050\%20runs.\%20The\%20black\%20line\%20shows\%20the\%20mean\%20of\%20all\%2050\%20runs.-1.pdf}
-\caption{plot of chunk trend curve of kept swarms over all 20 functions
-and 50 runs. The black line shows the mean of all 50 runs.}
+\includegraphics{figure/trend\%20curve\%20of\%20kept\%20swarms\%20over\%20all\%2020\%20functions.-1.pdf}
+\caption{plot of chunk trend curve of kept swarms over all 20
+functions.}
 \end{figure}
 
 \subsection{Testing and alternative parameter
@@ -1142,7 +1753,11 @@ test
 
 \section{Conclusion}\label{conclusion}
 
-test \newpage
+test
+
+\section{Acknowledgements}\label{acknowledgements}
+
+Thanks to everybody! \newpage
 
 \hypertarget{refs}{}
 \hypertarget{ref-epitropakisux5f2013}{}

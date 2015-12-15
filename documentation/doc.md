@@ -23,7 +23,7 @@ The starting point of the project was the paper provided by Dr. Jonathen E. Fiel
 
 Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimisation algorithms needed highly defined parameters [TODO: quote needed]. 
 
-** maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?**
+**maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?**
 
 Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2010] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
 
@@ -47,7 +47,7 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 
 This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
 
-** What else about the algorithm need to be explained that isn't explicitly part of the implementation? **
+**What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
 ## CEC ##
 
@@ -81,7 +81,7 @@ https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation
 
 ## Structure of the project ##
 
-After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because must of the functions were basically managing matrices and vectors, but later this became a problem that will be addressed in the pitfalls’ section of this paper.
+After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be addressed in the pitfalls’ section of this paper.
 
 Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has be said, that one of the biggest problems when you code an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.
 
@@ -94,103 +94,152 @@ test
 ## Benchmark and Comparison ##
 
 
-To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. 
-
--------------------------------------------------
- &nbsp;    0.1   0.01   0.001   0.0001   0.00001 
---------- ----- ------ ------- -------- ---------
- **F1**     1     1       1       1         1    
-
- **F2**     1     1       1       1         1    
-
- **F3**     1     1       1       1         1    
-
- **F4**     1     1       1       1         1    
-
- **F5**     1     1       1       1         1    
-
- **F6**     1     1       1       1         0    
-
- **F7**     1     1       1       1         1    
-
- **F8**     1     1       1       1         1    
-
- **F9**     1     1       1       1         1    
-
- **F10**    1     1       1       1         1    
-
- **F11**    1     1       1       1         1    
-
- **F12**    1     1       1       1         1    
-
- **F13**    1     1       1       1         1    
-
- **F14**    1     1       1       1         1    
-
- **F15**    1     1       1       1         1    
-
- **F16**    0     0       0       0         0    
-
- **F17**    1     0       0       0         0    
-
- **F18**    0     0       0       0         0    
-
- **F19**    0     0       0       0         0    
-
- **F20**    0     0       0       0         0    
--------------------------------------------------
-
-Table: Success Ratio over 50 runs
+To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
 
 
---------------------------------------------------
- &nbsp;    0.1    0.01   0.001   0.0001   0.00001 
---------- ------ ------ ------- -------- ---------
- **F1**   642.6  815.5   1073     1268     1486   
+--------------------------------------------------------
+ &nbsp;    0.1   0.01   0.001   0.0001   0.00001   runs 
+--------- ----- ------ ------- -------- --------- ------
+ **F1**     1     1       1       1         1       16  
 
- **F2**   156.9  233.8   339.6   514.8     629.2  
+ **F2**     1     1       1       1         1       14  
 
- **F3**   46.43   173    250.7   346.6     481.6  
+ **F3**     1     1       1       1         1       16  
 
- **F4**   491.4  751.2   969.7    1119     1455   
+ **F4**     1     1       1       1         1       16  
 
- **F5**   97.09  253.1   393.8    596       798   
+ **F5**     1     1       1       1         1       13  
 
- **F6**   17941  23032   29260   41536     2e+05  
+ **F6**     1     1       1       1         0       12  
 
- **F7**    7548   8301   9855    11071     12620  
+ **F7**     1     1       1       1         1       12  
 
- **F8**   167705 195125 226237   262356   304597  
+ **F8**     1     1       1       1      0.8333     6   
 
- **F9**   174139 179022 196943   204368   222057  
+ **F9**     1     1       1       1         1       6   
 
- **F10**   817    1317   1706     2197     2795   
+ **F10**    1     1       1       1         1       12  
 
- **F11**   3719   5238   7039     8473     9180   
+ **F11**    1     1       1       1         1       12  
 
- **F12**  17745  24681   39501   45310     47487  
+ **F12**    1     1       1       1         1       12  
 
- **F13**   8681  13990   19692   25638     28889  
+ **F13**    1     1       1       1         1       12  
 
- **F14**  43790  49174   52697   60607     78658  
+ **F14**    1     1       1       1         1       11  
 
- **F15**  57357  67456  121446   142474   149112  
+ **F15**    1     1       1       1         1       6   
 
- **F16**  4e+05  4e+05   4e+05   4e+05     4e+05  
+ **F16**    0     0       0       0         0       2   
 
- **F17**  137773 4e+05   4e+05   4e+05     4e+05  
+ **F17**   0.5    0       0       0         0       2   
 
- **F18**  4e+05  4e+05   4e+05   4e+05     4e+05  
+ **F18**    0     0       0       0         0       1   
 
- **F19**  4e+05  4e+05   4e+05   4e+05     4e+05  
+ **F19**    0     0       0       0         0       1   
 
- **F20**    0      0       0       0         0    
---------------------------------------------------
+ **F20**    0     0       0       0         0       0   
+--------------------------------------------------------
 
-Table: Convergence Rates over 50 runs
+Table: Success Ratio over given runs
+
+---------------------------------------------------------
+ &nbsp;    0.1    0.01   0.001   0.0001   0.00001   runs 
+--------- ------ ------ ------- -------- --------- ------
+ **F1**   628.6   793    1059     1245     1482      16  
+
+ **F2**   158.7  276.1   415.1   592.4     698.3     14  
+
+ **F3**   49.06  184.2   268.4   374.1     507.7     16  
+
+ **F4**   493.9  758.2   979.1    1131     1457      16  
+
+ **F5**   93.62  253.2   393.9   607.1     830.5     13  
+
+ **F6**   18344  23219   29187   41740     2e+05     12  
+
+ **F7**    7716   8406   9835    10949     12537     12  
+
+ **F8**   177212 203759 233870   266790   320498     6   
+
+ **F9**   174139 179022 196943   204368   222057     6   
+
+ **F10**  834.8   1325   1699     2241     2807      12  
+
+ **F11**   3763   5283   6968     8359     8948      12  
+
+ **F12**  17495  24252   38160   43330     49796     12  
+
+ **F13**   9690  14290   19370   24729     27167     12  
+
+ **F14**  39134  44380   47898   55939     71790     11  
+
+ **F15**  57357  67456  121446   142474   149112     6   
+
+ **F16**  4e+05  4e+05   4e+05   4e+05     4e+05     2   
+
+ **F17**  268887 4e+05   4e+05   4e+05     4e+05     2   
+
+ **F18**  4e+05  4e+05   4e+05   4e+05     4e+05     1   
+
+ **F19**  4e+05  4e+05   4e+05   4e+05     4e+05     1   
+
+ **F20**    0      0       0       0         0       0   
+---------------------------------------------------------
+
+Table: Convergence Rates over given runs
 
 
-![plot of chunk trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs.](figure/trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs.-1.pdf) 
+----------------------------------------------------------
+ &nbsp;     0.1    0.01   0.001   0.0001   0.00001   runs 
+--------- ------- ------ ------- -------- --------- ------
+ **F1**      1      1       1       1         1       16  
+
+ **F2**      1      1       1       1         1       14  
+
+ **F3**      1      1       1       1         1       16  
+
+ **F4**      1      1       1       1         1       16  
+
+ **F5**      1      1       1       1         1       13  
+
+ **F6**      1      1       1       1         0       12  
+
+ **F7**      1      1       1       1         1       12  
+
+ **F8**      1      1       1       1      0.9938     6   
+
+ **F9**      1      1       1       1         1       6   
+
+ **F10**     1      1       1       1         1       12  
+
+ **F11**     1      1       1       1         1       12  
+
+ **F12**     1      1       1       1         1       12  
+
+ **F13**     1      1       1       1         1       12  
+
+ **F14**     1      1       1       1         1       11  
+
+ **F15**     1      1       1       1         1       6   
+
+ **F16**  0.08333   0       0       0         0       2   
+
+ **F17**   0.875  0.8125 0.8125   0.8125   0.6875     2   
+
+ **F18**    0.5    0.5     0.5     0.5       0.5      1   
+
+ **F19**  0.3333  0.3333 0.3333   0.3333   0.3333     1   
+
+ **F20**     0      0       0       0         0       0   
+----------------------------------------------------------
+
+Table: Mean Peak Ratio over given runs
+
+
+
+
+![plot of chunk trend curve of kept swarms over all 20 functions.](figure/trend curve of kept swarms over all 20 functions.-1.pdf) 
 
 
 ## Testing and alternative parameter settings ##
@@ -204,4 +253,9 @@ test
 # Conclusion #
 
 test
+
+
+# Acknowledgements #
+
+Thanks to everybody!
 \newpage

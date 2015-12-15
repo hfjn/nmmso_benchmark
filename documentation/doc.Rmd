@@ -23,7 +23,7 @@ The starting point of the project was the paper provided by Dr. Jonathen E. Fiel
 
 Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimisation algorithms needed highly defined parameters [TODO: quote needed]. 
 
-** maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?**
+**maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?**
 
 Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2010] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
 
@@ -47,7 +47,7 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 
 This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
 
-** What else about the algorithm need to be explained that isn't explicitly part of the implementation? **
+**What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
 ## CEC ##
 
@@ -81,7 +81,7 @@ https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation
 
 ## Structure of the project ##
 
-After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because must of the functions were basically managing matrices and vectors, but later this became a problem that will be addressed in the pitfalls’ section of this paper.
+After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be addressed in the pitfalls’ section of this paper.
 
 Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has be said, that one of the biggest problems when you code an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.
 
@@ -94,43 +94,70 @@ test
 ## Benchmark and Comparison ##
 
 
-To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. 
-```{r, prepare SR, echo=FALSE}
+To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
+
+```{r, SR, echo=FALSE}
+rm(list = ls())
+# calculate sr
 source("../R/cec_2015_problem_data.R")
 # calculate sr
 library(pander)
 names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")
-sr <- as.data.frame(matrix(0,nrow=20,ncol=5))
-mean <- as.data.frame(matrix(0,nrow=20,ncol=5))
-sd <- as.data.frame(matrix(0,nrow=20,ncol=5))
-
+sr <- as.data.frame(matrix(0,nrow=20,ncol=6))
+mean <- as.data.frame(matrix(0,nrow=20,ncol=6))
+sd <- as.data.frame(matrix(0,nrow=20,ncol=6))
 for(i in 1:20){
 	filenames.output <- list.files(full.names = TRUE, path='../output/', pattern=paste("(^",i,")_.*\\output.txt$", sep=""))
 	if(length(filenames.output) != 0){
 		results <- lapply(filenames.output, read.table)
+		names(results) <- paste0('run',seq_along(results))
 		c_list <- ldply(results)
-		sr[i,] <-(apply(c_list, 2, function(x) length(which(x < gens[i]))/length(x)))
-		mean[i, ] <- (apply(c_list, 2, function(x) mean(x)))
-		sd[i,] <-(apply(c_list, 2, function(x) sd(x)))
+		sr[i,] <-c(apply(c_list[,2:6], 2, function(x) length(which(x < gens[i]))/length(x)), length(unique(c_list$.id)))
+		mean[i, ] <- c(apply(c_list[,2:6], 2, function(x) mean(x)), length(unique(c_list$.id)))
+		sd[i,] <-c(apply(c_list[,2:6], 2, function(x) sd(x)), length(unique(c_list$.id)))
 	}
 }
-
 rownames(sr) = names
 rownames(mean) = names
 rownames(sd) = names
-sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))
-mean <- rename(mean, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))
-sd <- rename(sd, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))
-set.caption('Success Ratio over 50 runs')
+sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
+mean <- rename(mean, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
+sd <- rename(sd, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
+set.caption('Success Ratio over given runs')
 pander(sr)
-set.caption('Convergence Rates over 50 runs')
+
+```
+```{r, Mean, echo=FALSE}
+set.caption('Convergence Rates over given runs')
 pander(mean)
+```
+
+```{r, MPR, echo=FALSE}
+source("../R/cec_2015_problem_data.R")
+names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")
+mpr <- as.data.frame(matrix(0,nrow=20,ncol=6))
+for(i in 1:20){
+	filenames.output <- list.files(full.names = TRUE, path='../output/', pattern=paste("(^",i,")_.*\\clist.txt$", sep=""))
+	if(length(filenames.output) != 0){
+		results <- lapply(filenames.output, read.table)
+		max <- lapply(results, function (x) sapply(x, max))
+		names(max) <- paste0('run',seq_along(max))
+		c_list <- ldply(max)
+		mpr[i,] <-c(apply(c_list[,2:6], 2, function(x) mean(x)/nopt[i]), length(unique(c_list$.id)))
+	}
+}
+rownames(mpr) = names
+mpr <- rename(mpr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
+set.caption('Mean Peak Ratio over given runs')
+pander(mpr)
 
 ```
 
 
-```{r, trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs., echo = FALSE, fig.ext='pdf'}
 
+
+```{r, trend curve of kept swarms over all 20 functions., echo = FALSE, dpi = 250, fig.ext='pdf', keep='all'}
+rm(list = ls())
 source("../R/cec_2015_problem_data.R")
 library(plyr)
 library(ggplot2)
@@ -139,19 +166,23 @@ library(gridExtra)
 
 plots = list()
 for(i in 1:20){
-	filenames.swarms <- list.files(full.names = TRUE, path='../output/', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))
+	results <- NA
+	filenames.swarms <- list.files(full.names = TRUE, path='../output', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))
+
 	results <- lapply(filenames.swarms, read.table)
+	names(results) <- paste0('run',seq_along(results))
 	results <- ldply(results)
 
 	results <- rename(results, c("V1" = "iterations", "V2" = "swarms"))
 
 	#results <- transform(results, run = sprintf('run%d', run)) 
 
-	p1 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"))
-	p1 = p1 + ggtitle(paste("F", i, sep="")) + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")
+	p1 = ggplot(results, aes(x = iterations, y = swarms, group=.id, colour="grey"))
+	p1 = p1 + ggtitle(paste0("F",i)) + geom_line() + theme_tufte() + theme(legend.position = "none")
+	p1 = p1 + stat_summary(fun.y = mean, geom="line", colour="black", aes(group = 1))
 	plots[[i]] = p1
 }
-do.call("grid.arrange", c(plots, ncol = 4)) 
+do.call("grid.arrange", c(plots, ncol = 4))
 
 ```
 
@@ -167,4 +198,9 @@ test
 # Conclusion #
 
 test
+
+
+# Acknowledgements #
+
+Thanks to everybody!
 \newpage

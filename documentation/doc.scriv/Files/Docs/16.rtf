@@ -1,6 +1,5 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf130
-{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Consolas;
-}
+{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;\red43\green39\blue19;\red234\green234\blue234;}
 \deftab720
 \pard\pardeftab720\sl280
@@ -8,47 +7,79 @@
 \f0\fs24 \cf0 \expnd0\expndtw0\kerning0
 \
 
-\f1\fs28 To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. 
+\f1\fs28 To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in \kerning1\expnd0\expndtw0 [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. \expnd0\expndtw0\kerning0
+Nmmso.R uses the same measures to reach the highest comparability possible.\
+
 \f0\fs24 \
-```\{r, prepare SR, echo=FALSE\}\
+```\{r, SR, echo=FALSE\}\
+\pard\pardeftab720\sl308
+\cf0 rm(list = ls())\
+\pard\pardeftab720\sl280
+\cf0 # calculate sr\
 source("../R/cec_2015_problem_data.R")\
 # calculate sr\
 library(pander)\
 names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")\
-sr <- as.data.frame(matrix(0,nrow=20,ncol=5))\
-mean <- as.data.frame(matrix(0,nrow=20,ncol=5))\
-sd <- as.data.frame(matrix(0,nrow=20,ncol=5))\
-\
+sr <- as.data.frame(matrix(0,nrow=20,ncol=6))\
+mean <- as.data.frame(matrix(0,nrow=20,ncol=6))\
+sd <- as.data.frame(matrix(0,nrow=20,ncol=6))\
 for(i in 1:20)\{\
 	filenames.output <- list.files(full.names = TRUE, path='../output/', pattern=paste("(^",i,")_.*\\\\output.txt$", sep=""))\
 	if(length(filenames.output) != 0)\{\
 		results <- lapply(filenames.output, read.table)\
+		names(results) <- paste0('run',seq_along(results))\
 		c_list <- ldply(results)\
-		sr[i,] <-(apply(c_list, 2, function(x) length(which(x < gens[i]))/length(x)))\
-		mean[i, ] <- (apply(c_list, 2, function(x) mean(x)))\
-		sd[i,] <-(apply(c_list, 2, function(x) sd(x)))\
+		sr[i,] <-c(apply(c_list[,2:6], 2, function(x) length(which(x < gens[i]))/length(x)), length(unique(c_list$.id)))\
+		mean[i, ] <- c(apply(c_list[,2:6], 2, function(x) mean(x)), length(unique(c_list$.id)))\
+		sd[i,] <-c(apply(c_list[,2:6], 2, function(x) sd(x)), length(unique(c_list$.id)))\
 	\}\
 \}\
-\
 rownames(sr) = names\
 rownames(mean) = names\
 rownames(sd) = names\
-sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))\
-mean <- rename(mean, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))\
-sd <- rename(sd, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001"))\
-set.caption('Success Ratio over 50 runs')\
+sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))\
+mean <- rename(mean, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))\
+sd <- rename(sd, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))\
+set.caption('Success Ratio over given runs')\
 pander(sr)\
-set.caption('Convergence Rates over 50 runs')\
-pander(mean)
-\f2\fs26 \cf2 \cb3 \
-
-\f0\fs24 \cf0 \cb1 \
+\
+```\
+\pard\pardeftab720\sl280
+\cf0 ```\{r, Mean, echo=FALSE\}\
+set.caption('Convergence Rates over given runs')\
+pander(mean)\
+```\
+\
+```\{r, MPR, echo=FALSE\}\
+source("../R/cec_2015_problem_data.R")\
+names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")\
+mpr <- as.data.frame(matrix(0,nrow=20,ncol=6))\
+for(i in 1:20)\{\
+	filenames.output <- list.files(full.names = TRUE, path='../output/', pattern=paste("(^",i,")_.*\\\\clist.txt$", sep=""))\
+	if(length(filenames.output) != 0)\{\
+		results <- lapply(filenames.output, read.table)\
+		max <- lapply(results, function (x) sapply(x, max))\
+		names(max) <- paste0('run',seq_along(max))\
+		c_list <- ldply(max)\
+		mpr[i,] <-c(apply(c_list[,2:6], 2, function(x) mean(x)/nopt[i]), length(unique(c_list$.id)))\
+	\}\
+\}\
+rownames(mpr) = names\
+mpr <- rename(mpr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))\
+set.caption('Mean Peak Ratio over given runs')\
+pander(mpr)\cf2 \cb3 \
+\pard\pardeftab720\sl280
+\cf0 \cb1 \
 ```\
 \
 \
-```\{r, trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs., echo = FALSE, fig.ext='pdf'\}\
 \
-source("../R/cec_2015_problem_data.R")\
+\
+```\{r, trend curve of kept swarms over all 20 functions., echo = FALSE, dpi = 250, fig.ext='pdf', keep='all'\}\
+\pard\pardeftab720\sl308
+\cf0 rm(list = ls())\
+\pard\pardeftab720\sl280
+\cf0 source("../R/cec_2015_problem_data.R")\
 library(plyr)\
 library(ggplot2)\
 library(ggthemes)\
@@ -56,19 +87,23 @@ library(gridExtra)\
 \
 plots = list()\
 for(i in 1:20)\{\
-	filenames.swarms <- list.files(full.names = TRUE, path='../output/', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))\
+	results <- NA\
+	filenames.swarms <- list.files(full.names = TRUE, path='../output', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))\
+\
 	results <- lapply(filenames.swarms, read.table)\
+	names(results) <- paste0('run',seq_along(results))\
 	results <- ldply(results)\
 \
 	results <- rename(results, c("V1" = "iterations", "V2" = "swarms"))\
 \
 	#results <- transform(results, run = sprintf('run%d', run)) \
 \
-	p1 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"))\
-	p1 = p1 + ggtitle(paste("F", i, sep="")) + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")\
+	p1 = ggplot(results, aes(x = iterations, y = swarms, group=.id, colour="grey"))\
+	p1 = p1 + ggtitle(paste0("F",i)) + geom_line() + theme_tufte() + theme(legend.position = "none")\
+	p1 = p1 + stat_summary(fun.y = mean, geom="line", colour="black", aes(group = 1))\
 	plots[[i]] = p1\
 \}\
-do.call("grid.arrange", c(plots, ncol = 4))\'a0\
+do.call("grid.arrange", c(plots, ncol = 4))\
 \
 ```\
 }
