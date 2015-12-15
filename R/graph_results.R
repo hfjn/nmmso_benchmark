@@ -3,78 +3,26 @@ library(plyr)
 library(ggplot2)
 library(reshape2)
 library(ggthemes)
+library(gridExtra)
+
 
 ## 1
-index = 1
+plots = list()
+for(i in 1:20){
+	filenames.swarms <- list.files(full.names = TRUE, path='.', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))
+	results <- lapply(filenames.swarms, read.table)
+	results <- ldply(results)
 
-results <- read.table(paste("../output/",index, ".txt", sep=""))
+	results <- rename(results, c("V1" = "iterations", "V2" = "swarms"))
 
-results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
+	#results <- transform(results, run = sprintf('run%d', run)) 
 
-results <- transform(results, run = sprintf('run%d', run)) 
+	p1 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light")) + theme_tufte()
+	p1 = p1 + ggtitle(paste("F", i, sep="")) + geom_line() + stat_summary(fun.y=mean, size=1.5, geom="line", aes(colour="mean")) + theme(legend.position = "none")
+	plots[[i]] = p1
+}
+do.call("grid.arrange", c(plots, ncol = 4))
 
-p1 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
-p1 = p1 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")
-
-
-## 2
-index = 2
-
-results <- read.table(paste("../output/",index, ".txt", sep=""))
-
-results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
-
-results <- transform(results, run = sprintf('run%d', run)) 
-
-p2 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
-p2 = p2 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")
-
-## 3
-
-index = 3
-
-results <- read.table(paste("../output/",index, ".txt", sep=""))
-
-results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
-
-results <- transform(results, run = sprintf('run%d', run)) 
-
-p3 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
-p3 = p3 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")
-
-
-## 4
-index = 4
-
-results <- read.table(paste("../output/",index, ".txt", sep=""))
-
-results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
-
-results <- transform(results, run = sprintf('run%d', run)) 
-
-p4 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
-p4 = p4 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")
-
-## 5
-index = 5
-
-results <- read.table(paste("../output/",index, ".txt", sep=""))
-
-results <- rename(results, c("V1" = "run", "V2" = "iterations", "V3" = "swarms"))
-
-results <- transform(results, run = sprintf('run%d', run)) 
-
-p5 = ggplot(results, aes(x = iterations, y = swarms, colour="theme_light"), linetype= run)
-p5 = p5 + geom_line() + stat_summary(fun.y=mean, colour="black", geom="line", aes(group = 1)) + theme_tufte() + theme(legend.position = "none")
-
-grid.arrange(p1, p2, p3,p4,p5,p2, p3,p4,p5, p1, p1, p2, p3,p4,p5,p2, p3,p4,p5, p1, ncol=4)
-
-# calculate convergence rates
-mean(runs$V1)
-sd(runs$V1)
-
-mean(runs$V4)
-sd(runs$V4)
 
 
 # calculate sr
@@ -85,11 +33,15 @@ names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "
 sr <- as.data.frame(matrix(0,nrow=20,ncol=5))
 mean <- as.data.frame(matrix(0,nrow=20,ncol=5))
 sd <- as.data.frame(matrix(0,nrow=20,ncol=5))
-for(i in 1:5){
-	c_list <- read.table(paste("../output/", i,"_output.txt", sep = ""))
-	sr[i,] <-(apply(c_list, 2, function(x) length(which(x < gens[i]))/50))
-	mean[i, ] <- (apply(c_list, 2, function(x) mean(x)))
-	sd[i,] <-(apply(c_list, 2, function(x) sd(x)))
+for(i in 1:20){
+	filenames.output <- list.files(fill.names = TRUE, path='.', pattern=paste("(^",i,")_.*\\output.txt$", sep=""))
+	if(length(filenames.output) != 0){
+		results <- lapply(filenames.output, read.table)
+		c_list <- ldply(results)
+		sr[i,] <-(apply(c_list, 2, function(x) length(which(x < gens[i]))/length(x)))
+		mean[i, ] <- (apply(c_list, 2, function(x) mean(x)))
+		sd[i,] <-(apply(c_list, 2, function(x) sd(x)))
+	}
 }
 rownames(sr) = names
 rownames(mean) = names

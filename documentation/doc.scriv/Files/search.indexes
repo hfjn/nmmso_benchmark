@@ -1032,22 +1032,6 @@ Kamin, S. N. (1990). Programming languages. Addison Wesley.
 5
 </Text>
         </Document>
-        <Document ID="5">
-            <Title>Structure</Title>
-            <Text>### Seminar Project - R Implementation of NMMSO 
-1. Introduction
-2. Explanation of the Algorithm &amp; Problem
-	1. General function &amp; Pseudcode
-	2. CEC
-3. Our implementation of the programm
-	1. Structure of the project
-	2. Pitfalls &amp; Problems
-	4. Benchmark &amp; Comparison
-	5. Testing &amp; alternative parameter settings
-4. Discussion
-5. Conclusion
-	</Text>
-        </Document>
         <Document ID="12">
             <Title>General Function</Title>
             <Text>Starting point of the project was the paper provided by Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratoy Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
@@ -1079,6 +1063,22 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibilty to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
 
 ** What else about the algorithm need to be explained that isn't explicitly part of the implementation? **</Text>
+        </Document>
+        <Document ID="5">
+            <Title>Structure</Title>
+            <Text>### Seminar Project - R Implementation of NMMSO 
+1. Introduction
+2. Explanation of the Algorithm &amp; Problem
+	1. General function &amp; Pseudcode
+	2. CEC
+3. Our implementation of the programm
+	1. Structure of the project
+	2. Pitfalls &amp; Problems
+	4. Benchmark &amp; Comparison
+	5. Testing &amp; alternative parameter settings
+4. Discussion
+5. Conclusion
+	</Text>
         </Document>
         <Document ID="17">
             <Title>Testing and alternative parameter settings</Title>

@@ -96,101 +96,251 @@ test
 
 To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. 
 
--------------------------------------------------
- &nbsp;    0.1   0.01   0.001   0.0001   0.00001 
---------- ----- ------ ------- -------- ---------
- **F1**     1     1       1       1         1    
+```
+## Warning in file(file, "rt"): cannot open file '../output/1_output.txt': No
+## such file or directory
+```
 
- **F2**     1     1       1       1         1    
+```
+## Error in file(file, "rt"): cannot open the connection
+```
 
- **F3**     1     1       1       1         1    
+```
+## Error in eval(expr, envir, enclos): could not find function "rename"
+```
 
- **F4**     1     1       1       1         1    
+```
+## Error in eval(expr, envir, enclos): could not find function "rename"
+```
 
- **F5**     1     1       1       1         1    
+```
+## Error in eval(expr, envir, enclos): could not find function "rename"
+```
 
- **F6**     1     1       1       1         0    
 
- **F7**     1     1       1       1         1    
+----------------------------------
+ &nbsp;    V1   V2   V3   V4   V5 
+--------- ---- ---- ---- ---- ----
+ **F1**    0    0    0    0    0  
 
- **F8**     1     1       1       1         1    
+ **F2**    0    0    0    0    0  
 
- **F9**     1     1       1       1         1    
+ **F3**    0    0    0    0    0  
 
- **F10**    1     1       1       1         1    
+ **F4**    0    0    0    0    0  
 
- **F11**    1     1       1       1         1    
+ **F5**    0    0    0    0    0  
 
- **F12**    1     1       1       1         1    
+ **F6**    0    0    0    0    0  
 
- **F13**    1     1       1       1         1    
+ **F7**    0    0    0    0    0  
 
- **F14**    1     1       1       1         1    
+ **F8**    0    0    0    0    0  
 
- **F15**    1     1       1       1         1    
+ **F9**    0    0    0    0    0  
 
- **F16**    0     0       0       0         0    
+ **F10**   0    0    0    0    0  
 
- **F17**    1     0       0       0         0    
+ **F11**   0    0    0    0    0  
 
- **F18**    0     0       0       0         0    
+ **F12**   0    0    0    0    0  
 
- **F19**    0     0       0       0         0    
+ **F13**   0    0    0    0    0  
 
- **F20**    0     0       0       0         0    
--------------------------------------------------
+ **F14**   0    0    0    0    0  
+
+ **F15**   0    0    0    0    0  
+
+ **F16**   0    0    0    0    0  
+
+ **F17**   0    0    0    0    0  
+
+ **F18**   0    0    0    0    0  
+
+ **F19**   0    0    0    0    0  
+
+ **F20**   0    0    0    0    0  
+----------------------------------
 
 Table: Success Ratio over 50 runs
 
 
---------------------------------------------------
- &nbsp;    0.1    0.01   0.001   0.0001   0.00001 
---------- ------ ------ ------- -------- ---------
- **F1**   642.6  815.5   1073     1268     1486   
+----------------------------------
+ &nbsp;    V1   V2   V3   V4   V5 
+--------- ---- ---- ---- ---- ----
+ **F1**    0    0    0    0    0  
 
- **F2**   156.9  233.8   339.6   514.8     629.2  
+ **F2**    0    0    0    0    0  
 
- **F3**   46.43   173    250.7   346.6     481.6  
+ **F3**    0    0    0    0    0  
 
- **F4**   491.4  751.2   969.7    1119     1455   
+ **F4**    0    0    0    0    0  
 
- **F5**   97.09  253.1   393.8    596       798   
+ **F5**    0    0    0    0    0  
 
- **F6**   17941  23032   29260   41536     2e+05  
+ **F6**    0    0    0    0    0  
 
- **F7**    7548   8301   9855    11071     12620  
+ **F7**    0    0    0    0    0  
 
- **F8**   167705 195125 226237   262356   304597  
+ **F8**    0    0    0    0    0  
 
- **F9**   174139 179022 196943   204368   222057  
+ **F9**    0    0    0    0    0  
 
- **F10**   817    1317   1706     2197     2795   
+ **F10**   0    0    0    0    0  
 
- **F11**   3719   5238   7039     8473     9180   
+ **F11**   0    0    0    0    0  
 
- **F12**  17745  24681   39501   45310     47487  
+ **F12**   0    0    0    0    0  
 
- **F13**   8681  13990   19692   25638     28889  
+ **F13**   0    0    0    0    0  
 
- **F14**  43790  49174   52697   60607     78658  
+ **F14**   0    0    0    0    0  
 
- **F15**  57357  67456  121446   142474   149112  
+ **F15**   0    0    0    0    0  
 
- **F16**  4e+05  4e+05   4e+05   4e+05     4e+05  
+ **F16**   0    0    0    0    0  
 
- **F17**  137773 4e+05   4e+05   4e+05     4e+05  
+ **F17**   0    0    0    0    0  
 
- **F18**  4e+05  4e+05   4e+05   4e+05     4e+05  
+ **F18**   0    0    0    0    0  
 
- **F19**  4e+05  4e+05   4e+05   4e+05     4e+05  
+ **F19**   0    0    0    0    0  
 
- **F20**    0      0       0       0         0    
---------------------------------------------------
+ **F20**   0    0    0    0    0  
+----------------------------------
 
 Table: Convergence Rates over 50 runs
 
 
-![plot of chunk trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs.](figure/trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs.-1.pdf) 
+
+```
+## Warning in file(file, "rt"): cannot open file '../output/1.txt': No such
+## file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
+```
+
+```
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+```
+
+```
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+```
+
+```
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'p1' not found
+```
+
+```
+## Warning in file(file, "rt"): cannot open file '../output/2.txt': No such
+## file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
+```
+
+```
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+```
+
+```
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+```
+
+```
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'p2' not found
+```
+
+```
+## Warning in file(file, "rt"): cannot open file '../output/3.txt': No such
+## file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
+```
+
+```
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+```
+
+```
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+```
+
+```
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'p3' not found
+```
+
+```
+## Warning in file(file, "rt"): cannot open file '../output/4.txt': No such
+## file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
+```
+
+```
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+```
+
+```
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+```
+
+```
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'p4' not found
+```
+
+```
+## Warning in file(file, "rt"): cannot open file '../output/5.txt': No such
+## file or directory
+```
+
+```
+## Error in file(file, "rt"): cannot open the connection
+```
+
+```
+## Error in revalue(names(x), replace, warn_missing = warn_missing): object 'results' not found
+```
+
+```
+## Error in transform(results, run = sprintf("run%d", run)): object 'results' not found
+```
+
+```
+## Error in ggplot(results, aes(x = iterations, y = swarms, colour = "theme_light"), : object 'results' not found
+```
+
+```
+## Error in eval(expr, envir, enclos): object 'p5' not found
+```
+
+```
+## Error in arrangeGrob(...): object 'p1' not found
+```
 
 
 ## Testing and alternative parameter settings ##

@@ -48,7 +48,18 @@
 <h2 id="cec"><span class="header-section-number">2.2</span> CEC</h2>
 <p>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.</p>
 <p>In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here, Dr. Fieldsend was provided with some multimodal benchmark test functions with different dimension sizes and characteristics, for evaluating niching algorithms developed by Dr. Xiaodong Li, Dr. Andries Engelbrecht and Dr. Michael G. Epitropakis. They state that even if several niching methods have been around for many years, further advances in this area have been hindered by several obstacles; most of the studies focus on very low dimensional multimodal problems (2 or 3 dimensions) making this more complicated to asses theses methods’ scalability to high dimensions with better performance. The benchmark tool includes 20 test functions (in some cases the same function but with different dimension sizes), which includes 10 simple, well-known and widely used benchmark functions, based on recent studies, and more complex functions following the paradigm of composition functions. In the following section, they will be briefly explained:</p>
-<p>F1: Five-Uneven-Peak Trap (1D) F2: Equal Maxima (1D) F3: Uneven Decreasing Maxima (1D) F4: Himmelblau (2D) F5: Six-Hump Camel Back (2D) F6: Shubert (2D, 3D) F7: Vincent (2D, 3D) F8: Modified Rastrigin - All Global Optima (2D) F9: Composition Function 1 (2D) F10: Composition Function 2 (2D) F11: Composition Function 3 (2D, 3D, 5D, 10D) F12: Composition Function 4 (3D, 5D, 10D, 20D)</p>
+<pre><code>•   F1: Five-Uneven-Peak Trap (1D)
+•   F2: Equal Maxima (1D)
+•   F3: Uneven Decreasing Maxima (1D)
+•   F4: Himmelblau (2D)
+•   F5: Six-Hump Camel Back (2D)
+•   F6: Shubert (2D, 3D)
+•   F7: Vincent (2D, 3D)
+•   F8: Modified Rastrigin - All Global Optima (2D)
+•   F9: Composition Function 1 (2D)
+•   F10: Composition Function 2 (2D)
+•   F11: Composition Function 3 (2D, 3D, 5D, 10D)
+•   F12: Composition Function 4 (3D, 5D, 10D, 20D)</code></pre>
 <p>All of the test functions are formulated as maximisation problems. F1, F2 and F3 are simple 1D multimodal functions, while F4 and F5 are simple 2D functions and not scalable. F6 to F8 are scalable multimodal functions. The number of global optima for F6 and F7 are determined by the dimension. However, for F8, the number of global optima is independent from the dimension, therefore it can be controlled by the user. F9 to F12 are scalable multimodal functions constructed by several basic functions with different properties (Sphere function, Grienwank, Rastrigin, Weierstrass and the Expanded Griewank’s plus Rosenbrock’s function). F9 and F10 are separable, and non-symmetric, while F11 and F12 are non-separable, non-symmetric complex multimodal functions. The number of global optima in all of the composition functions is independent from the number of dimensions, therefore can be controlled by the user.</p>
 <p><strong>Maybe write each math equation or the R code</strong></p>
 <p>https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation</p>
@@ -62,152 +73,146 @@
 <p>test</p>
 <h2 id="benchmark-and-comparison"><span class="header-section-number">3.3</span> Benchmark and Comparison</h2>
 <p>To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission <span class="citation">[1]</span>.</p>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;../output/1_output.txt&#39;: No
-## such file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;rename&quot;</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;rename&quot;</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): could not find function &quot;rename&quot;</code></pre>
-<table style="width:49%;">
+<table style="width:68%;">
 <caption>Success Ratio over 50 runs</caption>
 <colgroup>
 <col width="13%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
+<col width="8%" />
+<col width="9%" />
+<col width="11%" />
+<col width="12%" />
+<col width="12%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
-<th align="center">V1</th>
-<th align="center">V2</th>
-<th align="center">V3</th>
-<th align="center">V4</th>
-<th align="center">V5</th>
+<th align="center">0.1</th>
+<th align="center">0.01</th>
+<th align="center">0.001</th>
+<th align="center">0.0001</th>
+<th align="center">0.00001</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>F1</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F2</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F3</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F4</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F5</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F6</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 <td align="center">0</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F7</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F8</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F9</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F10</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F11</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F12</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F13</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F14</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F15</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F16</strong></td>
@@ -219,7 +224,7 @@
 </tr>
 <tr class="odd">
 <td align="center"><strong>F17</strong></td>
-<td align="center">0</td>
+<td align="center">1</td>
 <td align="center">0</td>
 <td align="center">0</td>
 <td align="center">0</td>
@@ -251,178 +256,178 @@
 </tr>
 </tbody>
 </table>
-<table style="width:49%;">
+<table style="width:69%;">
 <caption>Convergence Rates over 50 runs</caption>
 <colgroup>
 <col width="13%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
-<col width="6%" />
+<col width="9%" />
+<col width="9%" />
+<col width="11%" />
+<col width="12%" />
+<col width="12%" />
 </colgroup>
 <thead>
 <tr class="header">
 <th align="center"> </th>
-<th align="center">V1</th>
-<th align="center">V2</th>
-<th align="center">V3</th>
-<th align="center">V4</th>
-<th align="center">V5</th>
+<th align="center">0.1</th>
+<th align="center">0.01</th>
+<th align="center">0.001</th>
+<th align="center">0.0001</th>
+<th align="center">0.00001</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>F1</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">642.6</td>
+<td align="center">815.5</td>
+<td align="center">1073</td>
+<td align="center">1268</td>
+<td align="center">1486</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F2</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">156.9</td>
+<td align="center">233.8</td>
+<td align="center">339.6</td>
+<td align="center">514.8</td>
+<td align="center">629.2</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F3</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">46.43</td>
+<td align="center">173</td>
+<td align="center">250.7</td>
+<td align="center">346.6</td>
+<td align="center">481.6</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F4</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">491.4</td>
+<td align="center">751.2</td>
+<td align="center">969.7</td>
+<td align="center">1119</td>
+<td align="center">1455</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F5</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">97.09</td>
+<td align="center">253.1</td>
+<td align="center">393.8</td>
+<td align="center">596</td>
+<td align="center">798</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F6</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">17941</td>
+<td align="center">23032</td>
+<td align="center">29260</td>
+<td align="center">41536</td>
+<td align="center">2e+05</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F7</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">7548</td>
+<td align="center">8301</td>
+<td align="center">9855</td>
+<td align="center">11071</td>
+<td align="center">12620</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F8</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">167705</td>
+<td align="center">195125</td>
+<td align="center">226237</td>
+<td align="center">262356</td>
+<td align="center">304597</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F9</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">174139</td>
+<td align="center">179022</td>
+<td align="center">196943</td>
+<td align="center">204368</td>
+<td align="center">222057</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F10</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">817</td>
+<td align="center">1317</td>
+<td align="center">1706</td>
+<td align="center">2197</td>
+<td align="center">2795</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F11</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">3719</td>
+<td align="center">5238</td>
+<td align="center">7039</td>
+<td align="center">8473</td>
+<td align="center">9180</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F12</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">17745</td>
+<td align="center">24681</td>
+<td align="center">39501</td>
+<td align="center">45310</td>
+<td align="center">47487</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F13</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">8681</td>
+<td align="center">13990</td>
+<td align="center">19692</td>
+<td align="center">25638</td>
+<td align="center">28889</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F14</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">43790</td>
+<td align="center">49174</td>
+<td align="center">52697</td>
+<td align="center">60607</td>
+<td align="center">78658</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F15</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">57357</td>
+<td align="center">67456</td>
+<td align="center">121446</td>
+<td align="center">142474</td>
+<td align="center">149112</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F16</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F17</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">137773</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F18</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F19</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
+<td align="center">4e+05</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F20</strong></td>
@@ -434,42 +439,10 @@
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;../output/1.txt&#39;: No such
-## file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre><code>## Error in revalue(names(x), replace, warn_missing = warn_missing): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in transform(results, run = sprintf(&quot;run%d&quot;, run)): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in ggplot(results, aes(x = iterations, y = swarms, colour = &quot;theme_light&quot;), : object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;p1&#39; not found</code></pre>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;../output/2.txt&#39;: No such
-## file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre><code>## Error in revalue(names(x), replace, warn_missing = warn_missing): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in transform(results, run = sprintf(&quot;run%d&quot;, run)): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in ggplot(results, aes(x = iterations, y = swarms, colour = &quot;theme_light&quot;), : object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;p2&#39; not found</code></pre>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;../output/3.txt&#39;: No such
-## file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre><code>## Error in revalue(names(x), replace, warn_missing = warn_missing): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in transform(results, run = sprintf(&quot;run%d&quot;, run)): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in ggplot(results, aes(x = iterations, y = swarms, colour = &quot;theme_light&quot;), : object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;p3&#39; not found</code></pre>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;../output/4.txt&#39;: No such
-## file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre><code>## Error in revalue(names(x), replace, warn_missing = warn_missing): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in transform(results, run = sprintf(&quot;run%d&quot;, run)): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in ggplot(results, aes(x = iterations, y = swarms, colour = &quot;theme_light&quot;), : object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;p4&#39; not found</code></pre>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;../output/5.txt&#39;: No such
-## file or directory</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre><code>## Error in revalue(names(x), replace, warn_missing = warn_missing): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in transform(results, run = sprintf(&quot;run%d&quot;, run)): object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in ggplot(results, aes(x = iterations, y = swarms, colour = &quot;theme_light&quot;), : object &#39;results&#39; not found</code></pre>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;p5&#39; not found</code></pre>
-<pre><code>## Error in arrangeGrob(...): object &#39;p1&#39; not found</code></pre>
+<div class="figure">
+<embed src="figure/trend%20curve%20of%20kept%20swarms%20over%20all%2020%20functions%20and%2050%20runs.%20The%20black%20line%20shows%20the%20mean%20of%20all%2050%20runs.-1.pdf" />
+<p class="caption">plot of chunk trend curve of kept swarms over all 20 functions and 50 runs. The black line shows the mean of all 50 runs.</p>
+</div>
 <h2 id="testing-and-alternative-parameter-settings"><span class="header-section-number">3.4</span> Testing and alternative parameter settings</h2>
 <p>test</p>
 <h1 id="discussion"><span class="header-section-number">4</span> Discussion</h1>
