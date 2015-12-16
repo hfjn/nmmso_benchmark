@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-15 18:31:05 +0100" ModID="685889D1-6128-4E99-A71F-423659691727">
+<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-16 16:22:14 +0100" ModID="90C03B4C-1D0B-48C3-984E-2682B36A53A6">
     <Binder>
         <BinderItem ID="0" UUID="BC25FB0C-FB20-4BF6-990C-801331C2F125" Type="DraftFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:28:01 +0100">
             <Title>Paper</Title>
@@ -83,6 +83,18 @@
                                 <TextSelection>0,4</TextSelection>
                             </TextSettings>
                         </BinderItem>
+                    </Children>
+                </BinderItem>
+                <BinderItem ID="26" UUID="0503C4EA-719D-4FB9-A209-DC0DF6F94F73" Type="Folder" Created="2015-12-16 16:17:27 +0100" Modified="2015-12-16 16:17:31 +0100">
+                    <Title>Benchmarking</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                    <Children>
                         <BinderItem ID="16" UUID="205AC671-0528-4B9E-80FD-14FDAFD490D6" Type="Text" Created="2015-11-30 08:30:31 +0100" Modified="2015-12-15 18:13:54 +0100">
                             <Title>Benchmark and Comparison</Title>
                             <MetaData>
@@ -91,16 +103,6 @@
                             </MetaData>
                             <TextSettings>
                                 <TextSelection>2895,0</TextSelection>
-                            </TextSettings>
-                        </BinderItem>
-                        <BinderItem ID="17" UUID="327A621D-03DC-48F1-801D-0166E7B0CDC1" Type="Text" Created="2015-11-30 08:30:41 +0100" Modified="2015-12-06 20:46:50 +0100">
-                            <Title>Testing and alternative parameter settings</Title>
-                            <MetaData>
-                                <IncludeInCompile>Yes</IncludeInCompile>
-                                <NotesTextSelection>0,0</NotesTextSelection>
-                            </MetaData>
-                            <TextSettings>
-                                <TextSelection>0,4</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -180,6 +182,16 @@
                         <CurrentPDFPage>1</CurrentPDFPage>
                     </MediaSettings>
                 </BinderItem>
+                <BinderItem ID="27" UUID="305FA7F8-A4CD-4C4B-A6B1-8F3FFABFC0CC" Type="Text" Created="2015-12-16 16:17:55 +0100" Modified="2015-12-16 16:22:14 +0100">
+                    <Title>Todo</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
             </Children>
         </BinderItem>
         <BinderItem ID="2" UUID="FB59FCE3-FA5C-4C89-965E-8EAE68AA2DCB" Type="TrashFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:26:42 +0100">
@@ -196,6 +208,16 @@
                     </MetaData>
                     <TextSettings>
                         <TextSelection>0,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="17" UUID="327A621D-03DC-48F1-801D-0166E7B0CDC1" Type="Text" Created="2015-11-30 08:30:41 +0100" Modified="2015-12-06 20:46:50 +0100">
+                    <Title>Testing and alternative parameter settings</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,4</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -243,7 +265,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2015-11-30 08:26:41 +0100" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="43" Characters="283" Date="2015-12-15 17:42:37 +0100"></PreviousSession>
+        <PreviousSession Words="0" Characters="0" Date="2015-12-16 16:17:03 +0100"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
