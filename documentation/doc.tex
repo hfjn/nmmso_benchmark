@@ -142,11 +142,7 @@ changes to the original codebase in this program.
 
 \textbf{\ldots{} write a bit more here.}
 
-\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
-
-\section{The Algorithm}\label{the-algorithm}
-
-\subsection{General Function}\label{general-function}
+\section{General Function}\label{general-function}
 
 The starting point of the project was the paper provided by Dr.~Jonathen
 E. Fieldsend (Fieldsend 2014) on the Niching Migratory Multi-Swarm
@@ -204,6 +200,10 @@ those parameters are part of the program code.
 
 \textbf{What else about the algorithm need to be explained that isn't
 explicitly part of the implementation?}
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+\section{CEC Algrithms}\label{cec-algrithms}
 
 \subsection{CEC}\label{cec}
 
@@ -264,6 +264,11 @@ by the user (Epitropakis, Li, and Burke 2013).
 
 https://en.wikipedia.org/wiki/IEEE\_Congress\_on\_Evolutionary\_Computation
 
+\subsection{Implementation and
+Pitfalls}\label{implementation-and-pitfalls}
+
+\textbf{write also about the count\_goptima and so on}
+
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
 \section{The Implementation}\label{the-implementation}
@@ -304,7 +309,7 @@ NMMSO algorithm in R.
 
 test
 
-\subsection{Benchmark and Comparison}\label{benchmark-and-comparison}
+\section{Benchmark and Comparison}\label{benchmark-and-comparison}
 
 To compare the nmmsoR with the original NMMSO the CEC test cases were
 used to run the same benchmarks as in the original submission (Fieldsend
@@ -316,28 +321,28 @@ ratio is special for the nmmso algorithm since it tracks the number of
 swarms over the iterations of the algorithm. Nmmso.R uses the same
 measures to reach the highest comparability possible.
 
-\begin{longtable}[c]{@{}ccccccc@{}}
+\begin{longtable}[c]{@{}crrrrrr@{}}
 \caption{Success Ratio over given runs}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 0.1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.01
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
 0.001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\raggedleft\strut
 0.00001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 runs
 \strut\end{minipage}\tabularnewline
 \midrule
@@ -346,22 +351,22 @@ runs
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 0.1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.01
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
 0.001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\raggedleft\strut
 0.00001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 runs
 \strut\end{minipage}\tabularnewline
 \midrule
@@ -369,448 +374,448 @@ runs
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F1}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-15
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+30
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+0.91
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-0.8333
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.73
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-6
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+11
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-8
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+15
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+28
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+28
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+27
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-7
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+20
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+8
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-0.5
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+0.14
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+7
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-0
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+0.4
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-0
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+0.4
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.4
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-0
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+0.4
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-0
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.4
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+10
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+7
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+6
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-\begin{longtable}[c]{@{}ccccccc@{}}
+\begin{longtable}[c]{@{}crrrrrr@{}}
 \caption{Convergence Rates over given runs}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.01
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
 0.001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\raggedleft\strut
 0.00001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 runs
 \strut\end{minipage}\tabularnewline
 \midrule
@@ -819,22 +824,22 @@ runs
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.01
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
 0.001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\raggedleft\strut
 0.00001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 runs
 \strut\end{minipage}\tabularnewline
 \midrule
@@ -842,448 +847,448 @@ runs
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F1}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-613.7
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+641
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-783.6
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+839
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1044
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+1050
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1220
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+1228
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-1485
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+1449
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-156.4
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+179
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-267.8
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+256
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-408.4
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+394
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-580.3
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+534
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-690.7
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+636
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-15
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+30
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-47.65
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+38
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-181.4
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+182
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-262.1
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+277
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-361.6
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+386
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-490.8
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+511
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-489.8
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+501
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-745.4
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+736
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-974.1
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+969
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-1131
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+1173
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-1447
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+1434
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-92.07
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+84
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-251.9
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+200
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-383.6
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+322
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-583.4
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+503
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-830.5
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+786
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-18356
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+19548
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-23594
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+24640
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-29162
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+30646
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-41493
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+42534
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 2e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-7636
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+8368
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-8249
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+9059
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-9488
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+10272
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-10528
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+12212
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-12298
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+13613
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-177212
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+176727
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-203759
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+215977
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-233870
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+253443
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-266790
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+307968
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-320498
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+341918
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-6
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+11
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-180477
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+175729
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-185068
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+179787
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-204954
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+192204
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-216185
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+2e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-230947
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+213030
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-8
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+15
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-858.7
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+899
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-1324
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+1347
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-1699
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+1727
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-2226
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+2255
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-2793
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+2773
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-3773
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+3517
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-5175
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+5516
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-6774
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+7099
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-7966
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+8069
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-8471
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+8741
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-16695
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+17330
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-22960
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+25136
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-35280
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+37468
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-40981
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+44542
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-46842
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+50752
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+28
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-8931
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+11555
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-12949
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+16033
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-17334
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+20058
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-23123
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+23771
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-25213
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+27500
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+28
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-35471
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+29504
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-41272
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+35431
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-62197
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+50219
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-70296
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+58919
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-82930
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+68803
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+27
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-72129
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+97539
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-82885
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+120679
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-136540
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+145910
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-158129
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+175327
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-164531
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+185881
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-7
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+20
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+8
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-268887
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+362540
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+7
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-4e+05
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+288605
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-4e+05
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+288631
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-4e+05
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+288822
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-4e+05
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+288905
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-4e+05
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+289382
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+10
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+7
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 4e+05
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+6
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
-\begin{longtable}[c]{@{}ccccccc@{}}
+\begin{longtable}[c]{@{}crrrrrr@{}}
 \caption{Mean Peak Ratio over given runs}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 0.1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.01
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
 0.001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\raggedleft\strut
 0.00001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 runs
 \strut\end{minipage}\tabularnewline
 \midrule
@@ -1292,22 +1297,22 @@ runs
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 0.1
 \strut\end{minipage} &
-\begin{minipage}[b]{0.08\columnwidth}\centering\strut
+\begin{minipage}[b]{0.08\columnwidth}\raggedleft\strut
 0.01
 \strut\end{minipage} &
-\begin{minipage}[b]{0.09\columnwidth}\centering\strut
+\begin{minipage}[b]{0.09\columnwidth}\raggedleft\strut
 0.001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.10\columnwidth}\centering\strut
+\begin{minipage}[b]{0.10\columnwidth}\raggedleft\strut
 0.0001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.11\columnwidth}\centering\strut
+\begin{minipage}[b]{0.11\columnwidth}\raggedleft\strut
 0.00001
 \strut\end{minipage} &
-\begin{minipage}[b]{0.07\columnwidth}\centering\strut
+\begin{minipage}[b]{0.07\columnwidth}\raggedleft\strut
 runs
 \strut\end{minipage}\tabularnewline
 \midrule
@@ -1315,425 +1320,439 @@ runs
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F1}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-15
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+30
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-17
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+32
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-0.9938
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.98
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-6
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+11
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-8
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+15
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+29
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+28
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+28
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-14
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+27
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 1
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-7
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+20
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.08333
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+0.02
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+8
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.875
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+0.8
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-0.8125
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+0.79
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.8125
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.79
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-0.8125
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+0.79
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-0.6875
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.71
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+7
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.5
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+0.82
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-0.5
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+0.82
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.5
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.82
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-0.5
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+0.8
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-0.5
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.8
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+10
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.4167
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+0.36
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-0.4167
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+0.36
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.3333
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.33
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-0.3333
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+0.33
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-0.3333
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.31
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-2
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+7
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.25
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+0.21
 \strut\end{minipage} &
-\begin{minipage}[t]{0.08\columnwidth}\centering\strut
-0.25
+\begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
+0.19
 \strut\end{minipage} &
-\begin{minipage}[t]{0.09\columnwidth}\centering\strut
-0.25
+\begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
+0.19
 \strut\end{minipage} &
-\begin{minipage}[t]{0.10\columnwidth}\centering\strut
-0.25
+\begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
+0.19
 \strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\centering\strut
-0.25
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.17
 \strut\end{minipage} &
-\begin{minipage}[t]{0.07\columnwidth}\centering\strut
-1
+\begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
+6
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
+
+\begin{verbatim}
+## Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+## na.strings, : number of items read is not a multiple of the number of
+## columns
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 1 rows containing missing values (stat_summary).
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Removed 1 rows containing missing values (geom_path).
+\end{verbatim}
 
 \begin{figure}[htbp]
 \centering
@@ -1741,11 +1760,6 @@ runs
 \caption{plot of chunk trend curve of kept swarms over all 20
 functions.}
 \end{figure}
-
-\subsection{Testing and alternative parameter
-settings}\label{testing-and-alternative-parameter-settings}
-
-test
 
 \section{Discussion}\label{discussion}
 

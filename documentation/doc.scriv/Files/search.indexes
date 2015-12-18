@@ -809,12 +809,15 @@ PR
             <Title>Pitfalls and Problems</Title>
             <Text>test</Text>
         </Document>
+        <Document ID="26">
+            <Title>Benchmarking</Title>
+        </Document>
         <Document ID="16">
             <Title>Benchmark and Comparison</Title>
             <Text>
-To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. 
+To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
 
-```{r, prepare SR, echo=FALSE}
+```{r, SR, echo=FALSE}
 rm(list = ls())
 # calculate sr
 source("../R/cec_2015_problem_data.R")
@@ -841,12 +844,37 @@ rownames(sd) = names
 sr &lt;- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
 mean &lt;- rename(mean, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
 sd &lt;- rename(sd, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
-set.caption('Success Ratio over 50 runs')
+set.caption('Success Ratio over given runs')
 pander(sr)
-set.caption('Convergence Rates over 50 runs')
-pander(mean)
 
 ```
+```{r, Mean, echo=FALSE}
+set.caption('Convergence Rates over given runs')
+pander(mean)
+```
+
+```{r, MPR, echo=FALSE}
+source("../R/cec_2015_problem_data.R")
+names &lt;- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")
+mpr &lt;- as.data.frame(matrix(0,nrow=20,ncol=6))
+for(i in 1:20){
+	filenames.output &lt;- list.files(full.names = TRUE, path='../output/', pattern=paste("(^",i,")_.*\\clist.txt$", sep=""))
+	if(length(filenames.output) != 0){
+		results &lt;- lapply(filenames.output, read.table)
+		max &lt;- lapply(results, function (x) sapply(x, max))
+		names(max) &lt;- paste0('run',seq_along(max))
+		c_list &lt;- ldply(max)
+		mpr[i,] &lt;-c(apply(c_list[,2:6], 2, function(x) mean(x)/nopt[i]), length(unique(c_list$.id)))
+	}
+}
+rownames(mpr) = names
+mpr &lt;- rename(mpr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
+set.caption('Mean Peak Ratio over given runs')
+pander(mpr)
+
+```
+
+
 
 
 ```{r, trend curve of kept swarms over all 20 functions., echo = FALSE, dpi = 250, fig.ext='pdf', keep='all'}
@@ -997,21 +1025,18 @@ Kamin, S. N. (1990). Programming languages. Addison Wesley.
 5
 </Text>
         </Document>
-        <Document ID="5">
-            <Title>Structure</Title>
-            <Text>### Seminar Project - R Implementation of NMMSO 
-1. Introduction
-2. Explanation of the Algorithm &amp; Problem
-	1. General function &amp; Pseudcode
-	2. CEC
-3. Our implementation of the programm
-	1. Structure of the project
-	2. Pitfalls &amp; Problems
-	4. Benchmark &amp; Comparison
-	5. Testing &amp; alternative parameter settings
-4. Discussion
-5. Conclusion
-	</Text>
+        <Document ID="27">
+            <Title>Todo</Title>
+            <Text>	•	1. Introduction -&gt; add something about the done evaluation of algorithm
+	•	2.1 General Function -&gt; don't write as much about history of evolutionary algorithms, but more about multimodal optimaziation
+	•	2.2 CEC -&gt; show more that implementation of benchmarking suite was own work, show we tested it and "proved" that it is working as described. Also show the problems that occured here.
+	•	4. Benchmark -&gt; describe the definition of the single measures.
+	•	Delete list of igures
+	•	 Give examples for paramaters, basically and explanation on how to use nmmso
+	•	self-contained description of tables and graphs
+	•	maybe introduce grayscale table to better visualize the measures?
+	•	show runtimes of algorithm
+	•	Right-align tables</Text>
         </Document>
         <Document ID="12">
             <Title>General Function</Title>
@@ -1044,6 +1069,22 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
 
 **What else about the algorithm need to be explained that isn't explicitly part of the implementation?**</Text>
+        </Document>
+        <Document ID="5">
+            <Title>Structure</Title>
+            <Text>### Seminar Project - R Implementation of NMMSO 
+1. Introduction
+2. Explanation of the Algorithm &amp; Problem
+	1. General function &amp; Pseudcode
+	2. CEC
+3. Our implementation of the programm
+	1. Structure of the project
+	2. Pitfalls &amp; Problems
+	4. Benchmark &amp; Comparison
+	5. Testing &amp; alternative parameter settings
+4. Discussion
+5. Conclusion
+	</Text>
         </Document>
         <Document ID="17">
             <Title>Testing and alternative parameter settings</Title>
@@ -1554,7 +1595,7 @@ F6
             <Title>CEC</Title>
             <Text>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.
 
-In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here, Dr. Fieldsend was provided with some multimodal benchmark test functions with different dimension sizes and characteristics, for evaluating niching algorithms developed by Dr. Xiaodong Li, Dr. Andries Engelbrecht and Dr. Michael G. Epitropakis. They state that even if several niching methods have been around for many years, further advances in this area have been hindered by several obstacles; most of the studies focus on very low dimensional multimodal problems (2 or 3 dimensions) making this more complicated to asses theses methods’ scalability to high dimensions with better performance. The benchmark tool includes 20 test functions (in some cases the same function but with different dimension sizes), which includes 10 simple, well-known and widely used benchmark functions, based on recent studies, and more complex functions following the paradigm of composition functions. In the following section, they will be briefly explained:
+In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here, Dr. Fieldsend was provided with some multimodal benchmark test functions with different dimension sizes and characteristics, for evaluating niching algorithms developed by Dr. Xiaodong Li, Dr. Andries Engelbrecht and Dr. Michael G. Epitropakis [@epitropakis_2013]. They state that even if several niching methods have been around for many years, further advances in this area have been hindered by several obstacles; most of the studies focus on very low dimensional multimodal problems (2 or 3 dimensions) making this more complicated to asses theses methods’ scalability to high dimensions with better performance. The benchmark tool includes 20 test functions (in some cases the same function but with different dimension sizes), which includes 10 simple, well-known and widely used benchmark functions, based on recent studies, and more complex functions following the paradigm of composition functions. In the following section, they will be briefly explained:
 
 	•	F1: Five-Uneven-Peak Trap (1D)
 	•	F2: Equal Maxima (1D)
@@ -1569,7 +1610,7 @@ In order to validate the potential of the NMMSO algorithm, it was submitted to t
 	•	F11: Composition Function 3 (2D, 3D, 5D, 10D)
 	•	F12: Composition Function 4 (3D, 5D, 10D, 20D)
 
-All of the test functions are formulated as maximisation problems. F1, F2 and F3 are simple 1D multimodal functions, while F4 and F5 are simple 2D functions and not scalable. F6 to F8 are scalable multimodal functions. The number of global optima for F6 and F7 are determined by the dimension. However, for F8, the number of global optima is independent from the dimension, therefore it can be controlled by the user. F9 to F12 are scalable multimodal functions constructed by several basic functions with different properties (Sphere function, Grienwank, Rastrigin, Weierstrass and the Expanded Griewank’s plus Rosenbrock’s function). F9 and F10 are separable, and non-symmetric, while F11 and F12 are non-separable, non-symmetric complex multimodal functions. The number of global optima in all of the composition functions is independent from the number of dimensions, therefore can be controlled by the user.
+All of the test functions are formulated as maximisation problems. F1, F2 and F3 are simple 1D multimodal functions, while F4 and F5 are simple 2D functions and not scalable. F6 to F8 are scalable multimodal functions. The number of global optima for F6 and F7 are determined by the dimension. However, for F8, the number of global optima is independent from the dimension, therefore it can be controlled by the user. F9 to F12 are scalable multimodal functions constructed by several basic functions with different properties (Sphere function, Grienwank, Rastrigin, Weierstrass and the Expanded Griewank’s plus Rosenbrock’s function). F9 and F10 are separable, and non-symmetric, while F11 and F12 are non-separable, non-symmetric complex multimodal functions. The number of global optima in all of the composition functions is independent from the number of dimensions, therefore can be controlled by the user [@epitropakis_2013].
 
 **Maybe write each math equation or the R code**
 

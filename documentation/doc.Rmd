@@ -13,11 +13,7 @@ It was the goal of this project to keep up high comparability with the original 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage
 
-----
-
-# The Algorithm #
-
-## General Function ##
+# General Function #
 
 The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
@@ -49,6 +45,10 @@ This structure wasn't modified during the reimplementation of  NMMSO to keep com
 
 **What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
+----
+
+# CEC Algrithms #
+
 ## CEC ##
 
 The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.
@@ -75,6 +75,10 @@ All of the test functions are formulated as maximisation problems. F1, F2 and F3
 
 https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation
 
+## Implementation and Pitfalls ##
+
+**write also about the count_goptima and so on**
+
 ----
 
 # The Implementation #
@@ -91,7 +95,7 @@ During the developing time, an issue raised with the CEC benchmark tool. In orde
 
 test
 
-## Benchmark and Comparison ##
+# Benchmark and Comparison #
 
 
 To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
@@ -102,6 +106,11 @@ rm(list = ls())
 source("../R/cec_2015_problem_data.R")
 # calculate sr
 library(pander)
+panderOptions('table.alignment.default', function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
+panderOptions('digits', 2)
+panderOptions('round', 2)
+panderOptions('keep.trailing.zeros', TRUE)
+
 names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")
 sr <- as.data.frame(matrix(0,nrow=20,ncol=6))
 mean <- as.data.frame(matrix(0,nrow=20,ncol=6))
@@ -186,10 +195,6 @@ do.call("grid.arrange", c(plots, ncol = 4))
 
 ```
 
-
-## Testing and alternative parameter settings ##
-
-test
 
 # Discussion #
 

@@ -20,9 +20,7 @@
 <p>As part of this Seminar Project in the context of the Seminar ‘Statistical Computing in R’ a reimplementation of the NMMSO algorithm in R will be presented. During this technical documentation, the general function of the algorithm and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, as well as problems and pitfalls due to the different behaviours of R and Matlab, will be shown. The documentation will be closed by the benchmarking results and different test cases.</p>
 <p>It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program.</p>
 <p><strong>… write a bit more here.</strong></p>
-<hr />
-<h1 id="the-algorithm"><span class="header-section-number">2</span> The Algorithm</h1>
-<h2 id="general-function"><span class="header-section-number">2.1</span> General Function</h2>
+<h1 id="general-function"><span class="header-section-number">2</span> General Function</h1>
 <p>The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend <span class="citation">[1]</span> on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates <span class="citation">[1]</span>.</p>
 <p>Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points <span class="citation">[1]</span>. In order to do so, many early multi-modal optimisation algorithms needed highly defined parameters [TODO: quote needed].</p>
 <p><strong>maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?</strong></p>
@@ -45,7 +43,9 @@
     return X*,Y*</code></pre>
 <p>This structure wasn’t modified during the reimplementation of NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.</p>
 <p><strong>What else about the algorithm need to be explained that isn’t explicitly part of the implementation?</strong></p>
-<h2 id="cec"><span class="header-section-number">2.2</span> CEC</h2>
+<hr />
+<h1 id="cec-algrithms"><span class="header-section-number">3</span> CEC Algrithms</h1>
+<h2 id="cec"><span class="header-section-number">3.1</span> CEC</h2>
 <p>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.</p>
 <p>In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here, Dr. Fieldsend was provided with some multimodal benchmark test functions with different dimension sizes and characteristics, for evaluating niching algorithms developed by Dr. Xiaodong Li, Dr. Andries Engelbrecht and Dr. Michael G. Epitropakis <span class="citation">[3]</span>. They state that even if several niching methods have been around for many years, further advances in this area have been hindered by several obstacles; most of the studies focus on very low dimensional multimodal problems (2 or 3 dimensions) making this more complicated to asses theses methods’ scalability to high dimensions with better performance. The benchmark tool includes 20 test functions (in some cases the same function but with different dimension sizes), which includes 10 simple, well-known and widely used benchmark functions, based on recent studies, and more complex functions following the paradigm of composition functions. In the following section, they will be briefly explained:</p>
 <pre><code>•   F1: Five-Uneven-Peak Trap (1D)
@@ -63,15 +63,17 @@
 <p>All of the test functions are formulated as maximisation problems. F1, F2 and F3 are simple 1D multimodal functions, while F4 and F5 are simple 2D functions and not scalable. F6 to F8 are scalable multimodal functions. The number of global optima for F6 and F7 are determined by the dimension. However, for F8, the number of global optima is independent from the dimension, therefore it can be controlled by the user. F9 to F12 are scalable multimodal functions constructed by several basic functions with different properties (Sphere function, Grienwank, Rastrigin, Weierstrass and the Expanded Griewank’s plus Rosenbrock’s function). F9 and F10 are separable, and non-symmetric, while F11 and F12 are non-separable, non-symmetric complex multimodal functions. The number of global optima in all of the composition functions is independent from the number of dimensions, therefore can be controlled by the user <span class="citation">[3]</span>.</p>
 <p><strong>Maybe write each math equation or the R code</strong></p>
 <p>https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation</p>
+<h2 id="implementation-and-pitfalls"><span class="header-section-number">3.2</span> Implementation and Pitfalls</h2>
+<p><strong>write also about the count_goptima and so on</strong></p>
 <hr />
-<h1 id="the-implementation"><span class="header-section-number">3</span> The Implementation</h1>
-<h2 id="structure-of-the-project"><span class="header-section-number">3.1</span> Structure of the project</h2>
+<h1 id="the-implementation"><span class="header-section-number">4</span> The Implementation</h1>
+<h2 id="structure-of-the-project"><span class="header-section-number">4.1</span> Structure of the project</h2>
 <p>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be addressed in the pitfalls’ section of this paper.</p>
 <p>Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has be said, that one of the biggest problems when you code an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.</p>
 <p>During the developing time, an issue raised with the CEC benchmark tool. In order to compare the R implementation of the NMMSO algorithm with the original one, it was mandatory to use this tool to test each of its functions with the new algorithm and compare results. After several complications with the original test suite (these complications will be addressed in the pitfalls’ section), it was decided to recode each of the functions as an independent R package to avoid any further complication and having an easier and more trustworthy comparison of the NMMSO algorithm in R.</p>
-<h2 id="pitfalls-and-problems"><span class="header-section-number">3.2</span> Pitfalls and Problems</h2>
+<h2 id="pitfalls-and-problems"><span class="header-section-number">4.2</span> Pitfalls and Problems</h2>
 <p>test</p>
-<h2 id="benchmark-and-comparison"><span class="header-section-number">3.3</span> Benchmark and Comparison</h2>
+<h1 id="benchmark-and-comparison"><span class="header-section-number">5</span> Benchmark and Comparison</h1>
 <p>To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission <span class="citation">[1]</span>. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in <span class="citation">[3]</span> to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.</p>
 <table style="width:78%;">
 <caption>Success Ratio over given runs</caption>
@@ -87,194 +89,194 @@
 <thead>
 <tr class="header">
 <th align="center"> </th>
-<th align="center">0.1</th>
-<th align="center">0.01</th>
-<th align="center">0.001</th>
-<th align="center">0.0001</th>
-<th align="center">0.00001</th>
-<th align="center">runs</th>
+<th align="right">0.1</th>
+<th align="right">0.01</th>
+<th align="right">0.001</th>
+<th align="right">0.0001</th>
+<th align="right">0.00001</th>
+<th align="right">runs</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>F1</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">17</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">32</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F2</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">15</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">30</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F3</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">17</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">32</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F4</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">17</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">32</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F5</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F6</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">29</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F7</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F8</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.8333</td>
-<td align="center">6</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.91</td>
+<td align="right">0.73</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F9</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">15</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F10</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F11</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F12</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">28</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F13</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">28</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F14</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">27</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F15</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">7</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">20</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F16</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">8</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F17</strong></td>
-<td align="center">0.5</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">2</td>
+<td align="right">0.14</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F18</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">1</td>
+<td align="right">0.4</td>
+<td align="right">0.4</td>
+<td align="right">0.4</td>
+<td align="right">0.4</td>
+<td align="right">0.4</td>
+<td align="right">10</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F19</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">2</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F20</strong></td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">1</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">6</td>
 </tr>
 </tbody>
 </table>
@@ -292,202 +294,202 @@
 <thead>
 <tr class="header">
 <th align="center"> </th>
-<th align="center">0.1</th>
-<th align="center">0.01</th>
-<th align="center">0.001</th>
-<th align="center">0.0001</th>
-<th align="center">0.00001</th>
-<th align="center">runs</th>
+<th align="right">0.1</th>
+<th align="right">0.01</th>
+<th align="right">0.001</th>
+<th align="right">0.0001</th>
+<th align="right">0.00001</th>
+<th align="right">runs</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>F1</strong></td>
-<td align="center">613.7</td>
-<td align="center">783.6</td>
-<td align="center">1044</td>
-<td align="center">1220</td>
-<td align="center">1485</td>
-<td align="center">17</td>
+<td align="right">641</td>
+<td align="right">839</td>
+<td align="right">1050</td>
+<td align="right">1228</td>
+<td align="right">1449</td>
+<td align="right">32</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F2</strong></td>
-<td align="center">156.4</td>
-<td align="center">267.8</td>
-<td align="center">408.4</td>
-<td align="center">580.3</td>
-<td align="center">690.7</td>
-<td align="center">15</td>
+<td align="right">179</td>
+<td align="right">256</td>
+<td align="right">394</td>
+<td align="right">534</td>
+<td align="right">636</td>
+<td align="right">30</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F3</strong></td>
-<td align="center">47.65</td>
-<td align="center">181.4</td>
-<td align="center">262.1</td>
-<td align="center">361.6</td>
-<td align="center">490.8</td>
-<td align="center">17</td>
+<td align="right">38</td>
+<td align="right">182</td>
+<td align="right">277</td>
+<td align="right">386</td>
+<td align="right">511</td>
+<td align="right">32</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F4</strong></td>
-<td align="center">489.8</td>
-<td align="center">745.4</td>
-<td align="center">974.1</td>
-<td align="center">1131</td>
-<td align="center">1447</td>
-<td align="center">17</td>
+<td align="right">501</td>
+<td align="right">736</td>
+<td align="right">969</td>
+<td align="right">1173</td>
+<td align="right">1434</td>
+<td align="right">32</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F5</strong></td>
-<td align="center">92.07</td>
-<td align="center">251.9</td>
-<td align="center">383.6</td>
-<td align="center">583.4</td>
-<td align="center">830.5</td>
-<td align="center">14</td>
+<td align="right">84</td>
+<td align="right">200</td>
+<td align="right">322</td>
+<td align="right">503</td>
+<td align="right">786</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F6</strong></td>
-<td align="center">18356</td>
-<td align="center">23594</td>
-<td align="center">29162</td>
-<td align="center">41493</td>
-<td align="center">2e+05</td>
-<td align="center">14</td>
+<td align="right">19548</td>
+<td align="right">24640</td>
+<td align="right">30646</td>
+<td align="right">42534</td>
+<td align="right">2e+05</td>
+<td align="right">29</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F7</strong></td>
-<td align="center">7636</td>
-<td align="center">8249</td>
-<td align="center">9488</td>
-<td align="center">10528</td>
-<td align="center">12298</td>
-<td align="center">14</td>
+<td align="right">8368</td>
+<td align="right">9059</td>
+<td align="right">10272</td>
+<td align="right">12212</td>
+<td align="right">13613</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F8</strong></td>
-<td align="center">177212</td>
-<td align="center">203759</td>
-<td align="center">233870</td>
-<td align="center">266790</td>
-<td align="center">320498</td>
-<td align="center">6</td>
+<td align="right">176727</td>
+<td align="right">215977</td>
+<td align="right">253443</td>
+<td align="right">307968</td>
+<td align="right">341918</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F9</strong></td>
-<td align="center">180477</td>
-<td align="center">185068</td>
-<td align="center">204954</td>
-<td align="center">216185</td>
-<td align="center">230947</td>
-<td align="center">8</td>
+<td align="right">175729</td>
+<td align="right">179787</td>
+<td align="right">192204</td>
+<td align="right">2e+05</td>
+<td align="right">213030</td>
+<td align="right">15</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F10</strong></td>
-<td align="center">858.7</td>
-<td align="center">1324</td>
-<td align="center">1699</td>
-<td align="center">2226</td>
-<td align="center">2793</td>
-<td align="center">14</td>
+<td align="right">899</td>
+<td align="right">1347</td>
+<td align="right">1727</td>
+<td align="right">2255</td>
+<td align="right">2773</td>
+<td align="right">29</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F11</strong></td>
-<td align="center">3773</td>
-<td align="center">5175</td>
-<td align="center">6774</td>
-<td align="center">7966</td>
-<td align="center">8471</td>
-<td align="center">14</td>
+<td align="right">3517</td>
+<td align="right">5516</td>
+<td align="right">7099</td>
+<td align="right">8069</td>
+<td align="right">8741</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F12</strong></td>
-<td align="center">16695</td>
-<td align="center">22960</td>
-<td align="center">35280</td>
-<td align="center">40981</td>
-<td align="center">46842</td>
-<td align="center">14</td>
+<td align="right">17330</td>
+<td align="right">25136</td>
+<td align="right">37468</td>
+<td align="right">44542</td>
+<td align="right">50752</td>
+<td align="right">28</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F13</strong></td>
-<td align="center">8931</td>
-<td align="center">12949</td>
-<td align="center">17334</td>
-<td align="center">23123</td>
-<td align="center">25213</td>
-<td align="center">14</td>
+<td align="right">11555</td>
+<td align="right">16033</td>
+<td align="right">20058</td>
+<td align="right">23771</td>
+<td align="right">27500</td>
+<td align="right">28</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F14</strong></td>
-<td align="center">35471</td>
-<td align="center">41272</td>
-<td align="center">62197</td>
-<td align="center">70296</td>
-<td align="center">82930</td>
-<td align="center">14</td>
+<td align="right">29504</td>
+<td align="right">35431</td>
+<td align="right">50219</td>
+<td align="right">58919</td>
+<td align="right">68803</td>
+<td align="right">27</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F15</strong></td>
-<td align="center">72129</td>
-<td align="center">82885</td>
-<td align="center">136540</td>
-<td align="center">158129</td>
-<td align="center">164531</td>
-<td align="center">7</td>
+<td align="right">97539</td>
+<td align="right">120679</td>
+<td align="right">145910</td>
+<td align="right">175327</td>
+<td align="right">185881</td>
+<td align="right">20</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F16</strong></td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">2</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">8</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F17</strong></td>
-<td align="center">268887</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">2</td>
+<td align="right">362540</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F18</strong></td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">1</td>
+<td align="right">288605</td>
+<td align="right">288631</td>
+<td align="right">288822</td>
+<td align="right">288905</td>
+<td align="right">289382</td>
+<td align="right">10</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F19</strong></td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">2</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F20</strong></td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">4e+05</td>
-<td align="center">1</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">4e+05</td>
+<td align="right">6</td>
 </tr>
 </tbody>
 </table>
-<table style="width:81%;">
+<table style="width:78%;">
 <caption>Mean Peak Ratio over given runs</caption>
 <colgroup>
 <col width="13%" />
-<col width="11%" />
+<col width="8%" />
 <col width="9%" />
 <col width="11%" />
 <col width="12%" />
@@ -497,208 +499,211 @@
 <thead>
 <tr class="header">
 <th align="center"> </th>
-<th align="center">0.1</th>
-<th align="center">0.01</th>
-<th align="center">0.001</th>
-<th align="center">0.0001</th>
-<th align="center">0.00001</th>
-<th align="center">runs</th>
+<th align="right">0.1</th>
+<th align="right">0.01</th>
+<th align="right">0.001</th>
+<th align="right">0.0001</th>
+<th align="right">0.00001</th>
+<th align="right">runs</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td align="center"><strong>F1</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">17</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">32</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F2</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">15</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">30</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F3</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">17</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">32</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F4</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">17</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">32</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F5</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F6</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0</td>
+<td align="right">29</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F7</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F8</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">0.9938</td>
-<td align="center">6</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">0.98</td>
+<td align="right">11</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F9</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">8</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">15</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F10</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F11</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">29</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F12</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">28</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F13</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">28</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F14</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">14</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">27</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F15</strong></td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">7</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">1</td>
+<td align="right">20</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F16</strong></td>
-<td align="center">0.08333</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">2</td>
+<td align="right">0.02</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">0</td>
+<td align="right">8</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F17</strong></td>
-<td align="center">0.875</td>
-<td align="center">0.8125</td>
-<td align="center">0.8125</td>
-<td align="center">0.8125</td>
-<td align="center">0.6875</td>
-<td align="center">2</td>
+<td align="right">0.8</td>
+<td align="right">0.79</td>
+<td align="right">0.79</td>
+<td align="right">0.79</td>
+<td align="right">0.71</td>
+<td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F18</strong></td>
-<td align="center">0.5</td>
-<td align="center">0.5</td>
-<td align="center">0.5</td>
-<td align="center">0.5</td>
-<td align="center">0.5</td>
-<td align="center">1</td>
+<td align="right">0.82</td>
+<td align="right">0.82</td>
+<td align="right">0.82</td>
+<td align="right">0.8</td>
+<td align="right">0.8</td>
+<td align="right">10</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F19</strong></td>
-<td align="center">0.4167</td>
-<td align="center">0.4167</td>
-<td align="center">0.3333</td>
-<td align="center">0.3333</td>
-<td align="center">0.3333</td>
-<td align="center">2</td>
+<td align="right">0.36</td>
+<td align="right">0.36</td>
+<td align="right">0.33</td>
+<td align="right">0.33</td>
+<td align="right">0.31</td>
+<td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F20</strong></td>
-<td align="center">0.25</td>
-<td align="center">0.25</td>
-<td align="center">0.25</td>
-<td align="center">0.25</td>
-<td align="center">0.25</td>
-<td align="center">1</td>
+<td align="right">0.21</td>
+<td align="right">0.19</td>
+<td align="right">0.19</td>
+<td align="right">0.19</td>
+<td align="right">0.17</td>
+<td align="right">6</td>
 </tr>
 </tbody>
 </table>
+<pre><code>## Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+## na.strings, : number of items read is not a multiple of the number of
+## columns</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (stat_summary).</code></pre>
+<pre><code>## Warning: Removed 1 rows containing missing values (geom_path).</code></pre>
 <div class="figure">
 <embed src="figure/trend%20curve%20of%20kept%20swarms%20over%20all%2020%20functions.-1.pdf" />
 <p class="caption">plot of chunk trend curve of kept swarms over all 20 functions.</p>
 </div>
-<h2 id="testing-and-alternative-parameter-settings"><span class="header-section-number">3.4</span> Testing and alternative parameter settings</h2>
+<h1 id="discussion"><span class="header-section-number">6</span> Discussion</h1>
 <p>test</p>
-<h1 id="discussion"><span class="header-section-number">4</span> Discussion</h1>
+<h1 id="conclusion"><span class="header-section-number">7</span> Conclusion</h1>
 <p>test</p>
-<h1 id="conclusion"><span class="header-section-number">5</span> Conclusion</h1>
-<p>test</p>
-<h1 id="acknowledgements"><span class="header-section-number">6</span> Acknowledgements</h1>
+<h1 id="acknowledgements"><span class="header-section-number">8</span> Acknowledgements</h1>
 <p>Thanks to everybody! </p>
 <div id="refs" class="references">
 <div id="ref-fieldsend_2014">

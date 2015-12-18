@@ -31,17 +31,20 @@
 <p class="binderItem"><strong>Introduction</strong><br/>In the recent years R has become the statistical programming language of choice for many scientist. The strength of R of being a domain specific language has also become one of its weaknesses. Since new research findings in statistical computing are split up over several languages like R, Matlab or SciPy[^1] it often becomes difficult to compare new methods with established ones. Since it is also hard to interface those languages due to different architectures, data storage mechanisms there is o...</p>
 </li>
 <li>
-<p class="binderItem"><strong>The Algorithm</strong></p>
+<p class="binderItem"><strong>General Function</strong><br/>The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to ...</p>
+</li>
+<li>
+<p class="binderItem"><strong>CEC Algrithms</strong></p>
 </li>
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>General Function</strong><br/>The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to ...</p>
-</li>
-<li>
 <p class="binderItem"><strong>CEC</strong><br/>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.<br/>
 <br/>
 In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here, Dr. Fieldsend was provided with some multimodal benc...</p>
+</li>
+<li>
+<p class="binderItem"><strong>Implementation and Pitfalls</strong><br/>**write also about the count_goptima and so on**</p>
 </li>
 </ul>
 <hr/>
@@ -61,16 +64,9 @@ Once all the NMMSO functions existed in R and having the input data, the testing
 </ul>
 <hr/>
 <li>
-<p class="binderItem"><strong>Benchmarking</strong></p>
-</li>
-<hr/>
-<ul>
-<li>
 <p class="binderItem"><strong>Benchmark and Comparison</strong><br/><br/>
 To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over th...</p>
 </li>
-</ul>
-<hr/>
 <li>
 <p class="binderItem"><strong>Discussion</strong><br/>test</p>
 </li>

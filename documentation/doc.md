@@ -13,11 +13,7 @@ It was the goal of this project to keep up high comparability with the original 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage
 
-----
-
-# The Algorithm #
-
-## General Function ##
+# General Function #
 
 The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
@@ -49,6 +45,10 @@ This structure wasn't modified during the reimplementation of  NMMSO to keep com
 
 **What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
+----
+
+# CEC Algrithms #
+
 ## CEC ##
 
 The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.
@@ -75,6 +75,10 @@ All of the test functions are formulated as maximisation problems. F1, F2 and F3
 
 https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation
 
+## Implementation and Pitfalls ##
+
+**write also about the count_goptima and so on**
+
 ----
 
 # The Implementation #
@@ -91,160 +95,171 @@ During the developing time, an issue raised with the CEC benchmark tool. In orde
 
 test
 
-## Benchmark and Comparison ##
+# Benchmark and Comparison #
 
 
 To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
 
 
 --------------------------------------------------------
- &nbsp;    0.1   0.01   0.001   0.0001   0.00001   runs 
+ &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
 --------- ----- ------ ------- -------- --------- ------
- **F1**     1     1       1       1         1       17  
+ **F1**       1      1       1        1         1     32
 
- **F2**     1     1       1       1         1       15  
+ **F2**       1      1       1        1         1     30
 
- **F3**     1     1       1       1         1       17  
+ **F3**       1      1       1        1         1     32
 
- **F4**     1     1       1       1         1       17  
+ **F4**       1      1       1        1         1     32
 
- **F5**     1     1       1       1         1       14  
+ **F5**       1      1       1        1         1     29
 
- **F6**     1     1       1       1         0       14  
+ **F6**       1      1       1        1         0     29
 
- **F7**     1     1       1       1         1       14  
+ **F7**       1      1       1        1         1     29
 
- **F8**     1     1       1       1      0.8333     6   
+ **F8**       1      1       1     0.91      0.73     11
 
- **F9**     1     1       1       1         1       8   
+ **F9**       1      1       1        1         1     15
 
- **F10**    1     1       1       1         1       14  
+ **F10**      1      1       1        1         1     29
 
- **F11**    1     1       1       1         1       14  
+ **F11**      1      1       1        1         1     29
 
- **F12**    1     1       1       1         1       14  
+ **F12**      1      1       1        1         1     28
 
- **F13**    1     1       1       1         1       14  
+ **F13**      1      1       1        1         1     28
 
- **F14**    1     1       1       1         1       14  
+ **F14**      1      1       1        1         1     27
 
- **F15**    1     1       1       1         1       7   
+ **F15**      1      1       1        1         1     20
 
- **F16**    0     0       0       0         0       2   
+ **F16**      0      0       0        0         0      8
 
- **F17**   0.5    0       0       0         0       2   
+ **F17**   0.14      0       0        0         0      7
 
- **F18**    0     0       0       0         0       1   
+ **F18**    0.4    0.4     0.4      0.4       0.4     10
 
- **F19**    0     0       0       0         0       2   
+ **F19**      0      0       0        0         0      7
 
- **F20**    0     0       0       0         0       1   
+ **F20**      0      0       0        0         0      6
 --------------------------------------------------------
 
 Table: Success Ratio over given runs
 
 ---------------------------------------------------------
- &nbsp;    0.1    0.01   0.001   0.0001   0.00001   runs 
+ &nbsp;      0.1   0.01   0.001   0.0001   0.00001   runs
 --------- ------ ------ ------- -------- --------- ------
- **F1**   613.7  783.6   1044     1220     1485      17  
+ **F1**      641    839    1050     1228      1449     32
 
- **F2**   156.4  267.8   408.4   580.3     690.7     15  
+ **F2**      179    256     394      534       636     30
 
- **F3**   47.65  181.4   262.1   361.6     490.8     17  
+ **F3**       38    182     277      386       511     32
 
- **F4**   489.8  745.4   974.1    1131     1447      17  
+ **F4**      501    736     969     1173      1434     32
 
- **F5**   92.07  251.9   383.6   583.4     830.5     14  
+ **F5**       84    200     322      503       786     29
 
- **F6**   18356  23594   29162   41493     2e+05     14  
+ **F6**    19548  24640   30646    42534     2e+05     29
 
- **F7**    7636   8249   9488    10528     12298     14  
+ **F7**     8368   9059   10272    12212     13613     29
 
- **F8**   177212 203759 233870   266790   320498     6   
+ **F8**   176727 215977  253443   307968    341918     11
 
- **F9**   180477 185068 204954   216185   230947     8   
+ **F9**   175729 179787  192204    2e+05    213030     15
 
- **F10**  858.7   1324   1699     2226     2793      14  
+ **F10**     899   1347    1727     2255      2773     29
 
- **F11**   3773   5175   6774     7966     8471      14  
+ **F11**    3517   5516    7099     8069      8741     29
 
- **F12**  16695  22960   35280   40981     46842     14  
+ **F12**   17330  25136   37468    44542     50752     28
 
- **F13**   8931  12949   17334   23123     25213     14  
+ **F13**   11555  16033   20058    23771     27500     28
 
- **F14**  35471  41272   62197   70296     82930     14  
+ **F14**   29504  35431   50219    58919     68803     27
 
- **F15**  72129  82885  136540   158129   164531     7   
+ **F15**   97539 120679  145910   175327    185881     20
 
- **F16**  4e+05  4e+05   4e+05   4e+05     4e+05     2   
+ **F16**   4e+05  4e+05   4e+05    4e+05     4e+05      8
 
- **F17**  268887 4e+05   4e+05   4e+05     4e+05     2   
+ **F17**  362540  4e+05   4e+05    4e+05     4e+05      7
 
- **F18**  4e+05  4e+05   4e+05   4e+05     4e+05     1   
+ **F18**  288605 288631  288822   288905    289382     10
 
- **F19**  4e+05  4e+05   4e+05   4e+05     4e+05     2   
+ **F19**   4e+05  4e+05   4e+05    4e+05     4e+05      7
 
- **F20**  4e+05  4e+05   4e+05   4e+05     4e+05     1   
+ **F20**   4e+05  4e+05   4e+05    4e+05     4e+05      6
 ---------------------------------------------------------
 
 Table: Convergence Rates over given runs
 
 
-----------------------------------------------------------
- &nbsp;     0.1    0.01   0.001   0.0001   0.00001   runs 
---------- ------- ------ ------- -------- --------- ------
- **F1**      1      1       1       1         1       17  
+--------------------------------------------------------
+ &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
+--------- ----- ------ ------- -------- --------- ------
+ **F1**       1      1       1        1         1     32
 
- **F2**      1      1       1       1         1       15  
+ **F2**       1      1       1        1         1     30
 
- **F3**      1      1       1       1         1       17  
+ **F3**       1      1       1        1         1     32
 
- **F4**      1      1       1       1         1       17  
+ **F4**       1      1       1        1         1     32
 
- **F5**      1      1       1       1         1       14  
+ **F5**       1      1       1        1         1     29
 
- **F6**      1      1       1       1         0       14  
+ **F6**       1      1       1        1         0     29
 
- **F7**      1      1       1       1         1       14  
+ **F7**       1      1       1        1         1     29
 
- **F8**      1      1       1       1      0.9938     6   
+ **F8**       1      1       1        1      0.98     11
 
- **F9**      1      1       1       1         1       8   
+ **F9**       1      1       1        1         1     15
 
- **F10**     1      1       1       1         1       14  
+ **F10**      1      1       1        1         1     29
 
- **F11**     1      1       1       1         1       14  
+ **F11**      1      1       1        1         1     29
 
- **F12**     1      1       1       1         1       14  
+ **F12**      1      1       1        1         1     28
 
- **F13**     1      1       1       1         1       14  
+ **F13**      1      1       1        1         1     28
 
- **F14**     1      1       1       1         1       14  
+ **F14**      1      1       1        1         1     27
 
- **F15**     1      1       1       1         1       7   
+ **F15**      1      1       1        1         1     20
 
- **F16**  0.08333   0       0       0         0       2   
+ **F16**   0.02      0       0        0         0      8
 
- **F17**   0.875  0.8125 0.8125   0.8125   0.6875     2   
+ **F17**    0.8   0.79    0.79     0.79      0.71      7
 
- **F18**    0.5    0.5     0.5     0.5       0.5      1   
+ **F18**   0.82   0.82    0.82      0.8       0.8     10
 
- **F19**  0.4167  0.4167 0.3333   0.3333   0.3333     2   
+ **F19**   0.36   0.36    0.33     0.33      0.31      7
 
- **F20**   0.25    0.25   0.25     0.25     0.25      1   
-----------------------------------------------------------
+ **F20**   0.21   0.19    0.19     0.19      0.17      6
+--------------------------------------------------------
 
 Table: Mean Peak Ratio over given runs
 
 
 
 
+
+```
+## Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
+## na.strings, : number of items read is not a multiple of the number of
+## columns
+```
+
+```
+## Warning: Removed 1 rows containing missing values (stat_summary).
+```
+
+```
+## Warning: Removed 1 rows containing missing values (geom_path).
+```
+
 ![plot of chunk trend curve of kept swarms over all 20 functions.](figure/trend curve of kept swarms over all 20 functions.-1.pdf) 
 
-
-## Testing and alternative parameter settings ##
-
-test
 
 # Discussion #
 
