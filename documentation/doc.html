@@ -17,12 +17,11 @@
 <h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
 <p>In the recent years R has become the statistical programming language of choice for many scientist. The strength of R of being a domain specific language has also become one of its weaknesses. Since new research findings in statistical computing are split up over several languages like R, Matlab or SciPy<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> it often becomes difficult to compare new methods with established ones. Since it is also hard to interface those languages due to different architectures, data storage mechanisms there is often no other way than to reimplement new methods in a different programming language to create a common scope.</p>
 <p>An example for a well perceived new finding in statistical computing is the NMMSO-Algorithm by Jonathan E. Fieldsend <span class="citation">[1]</span>. It won the niching competition in 2015 held by the CEC and is only written in Matlab. Since the chair ‘Information Systems and Statistics’ at the Westfälische Wilhelms-Universität Münster, Germany is mainly concentrating its work on Statistical Computing in R an implementation of this algorithm became interesting.</p>
-<p>As part of this Seminar Project in the context of the Seminar ‘Statistical Computing in R’ a reimplementation of the NMMSO algorithm in R will be presented. During this technical documentation, the general function of the algorithm and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, as well as problems and pitfalls due to the different behaviours of R and Matlab, will be shown. The documentation will be closed by the benchmarking results and different test cases.</p>
-<p>It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program.</p>
-<p><strong>… write a bit more here.</strong></p>
+<p>As part of this Seminar Project in the context of the Seminar ‘Statistical Computing in R’ a reimplementation of the NMMSO algorithm in R (nmmso.R) will be presented. During this technical documentation, the general function of the algorithm and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, as well as problems and pitfalls due to the different behaviours of R and Matlab, will be shown. The documentation will be closed by the benchmarking results and different test cases.</p>
+<p>It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. To reach this, unit tests were used where possible and continouous comparison between part results of the original implementation and nmmso.R where used to ensure functioning. Additionally a benchmarking suite, which builds on the CEC Benchmarking Suite for Niching Algorithm was implemented to evaluate and test the functioning of nmmso.R with the same characteristics as in the original implementation.</p>
 <h1 id="general-function"><span class="header-section-number">2</span> General Function</h1>
 <p>The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend <span class="citation">[1]</span> on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates <span class="citation">[1]</span>.</p>
-<p>Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points <span class="citation">[1]</span>. In order to do so, many early multi-modal optimisation algorithms needed highly defined parameters [TODO: quote needed].</p>
+<p>Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points <span class="citation">[1]</span>. In order to do so, many early multi-modal optimisation algorithms needed defined parameters [TODO: quote needed].</p>
 <p><strong>maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?</strong></p>
 <p>Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices <span class="citation">[2]</span> and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs <span class="citation">[3]</span>. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current <span class="citation">[1]</span></p>
 <p>In order to do so NMMSO follow a strict structure which can be seen in the following pseudo-code</p>
@@ -42,6 +41,47 @@
     {X*, Y*} := extract_gebsest(S)
     return X*,Y*</code></pre>
 <p>This structure wasn’t modified during the reimplementation of NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="center">.</th>
+<th align="left">standard value</th>
+<th align="left">used value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">evaluations</td>
+<td align="left">0</td>
+<td align="left">0</td>
+</tr>
+<tr class="even">
+<td align="center">max_evol</td>
+<td align="left">100</td>
+<td align="left">100</td>
+</tr>
+<tr class="odd">
+<td align="center">tol_val</td>
+<td align="left">10^-6</td>
+<td align="left">10^-6</td>
+</tr>
+<tr class="even">
+<td align="center">c_1</td>
+<td align="left">2.0</td>
+<td align="left">2.0</td>
+</tr>
+<tr class="odd">
+<td align="center">c_2</td>
+<td align="left">2.0</td>
+<td align="left">2.0</td>
+</tr>
+<tr class="even">
+<td align="center">omega</td>
+<td align="left">0.1</td>
+<td align="left">0.1</td>
+</tr>
+</tbody>
+</table>
 <p><strong>What else about the algorithm need to be explained that isn’t explicitly part of the implementation?</strong></p>
 <hr />
 <h1 id="cec-algrithms"><span class="header-section-number">3</span> CEC Algrithms</h1>
@@ -354,7 +394,7 @@
 <td align="right">24640</td>
 <td align="right">30646</td>
 <td align="right">42534</td>
-<td align="right">2e+05</td>
+<td align="right">200001</td>
 <td align="right">29</td>
 </tr>
 <tr class="odd">
@@ -380,7 +420,7 @@
 <td align="right">175729</td>
 <td align="right">179787</td>
 <td align="right">192204</td>
-<td align="right">2e+05</td>
+<td align="right">203835</td>
 <td align="right">213030</td>
 <td align="right">15</td>
 </tr>
@@ -440,20 +480,20 @@
 </tr>
 <tr class="even">
 <td align="center"><strong>F16</strong></td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
 <td align="right">8</td>
 </tr>
 <tr class="odd">
 <td align="center"><strong>F17</strong></td>
 <td align="right">362540</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
 <td align="right">7</td>
 </tr>
 <tr class="even">
@@ -467,20 +507,20 @@
 </tr>
 <tr class="odd">
 <td align="center"><strong>F19</strong></td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
 <td align="right">7</td>
 </tr>
 <tr class="even">
 <td align="center"><strong>F20</strong></td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
-<td align="right">4e+05</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
+<td align="right">400001</td>
 <td align="right">6</td>
 </tr>
 </tbody>
@@ -690,11 +730,6 @@
 </tr>
 </tbody>
 </table>
-<pre><code>## Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-## na.strings, : number of items read is not a multiple of the number of
-## columns</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (stat_summary).</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_path).</code></pre>
 <div class="figure">
 <embed src="figure/trend%20curve%20of%20kept%20swarms%20over%20all%2020%20functions.-1.pdf" />
 <p class="caption">plot of chunk trend curve of kept swarms over all 20 functions.</p>
@@ -709,8 +744,8 @@
 <div id="ref-fieldsend_2014">
 <p>[1] J.E. Fieldsend, Running up those hills: Multi-modal search with the niching migratory multi-swarm optimiser, in: Evolutionary Computation (CEC), 2014 IEEE Congress on, IEEE, 2014: pp. 2593–2600.</p>
 </div>
-<div id="ref-preuss_2010">
-<p>[2] M. Preuss, Niching the cMA-eS via nearest-better clustering, in: Proceedings of the 12th Annual Conference Companion on Genetic and Evolutionary Computation, ACM, New York, NY, USA, 2010: pp. 1711–1718. doi:<a href="https://doi.org/10.1145/1830761.1830793">10.1145/1830761.1830793</a>.</p>
+<div id="ref-preuss_2012">
+<p>[2] M. Preuss, Improved topological niching for real-valued global optimization, in: Applications of Evolutionary Computation, Springer, 2012: pp. 386–395.</p>
 </div>
 <div id="ref-epitropakis_2013">
 <p>[3] M.G. Epitropakis, X. Li, E.K. Burke, A dynamic archive niching differential evolution algorithm for multimodal optimization, in: Evolutionary Computation (CEC), 2013 IEEE Congress on, IEEE, 2013: pp. 79–86.</p>

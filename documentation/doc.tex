@@ -100,9 +100,7 @@
 \pagenumbering{roman} %numbering before main content starts
 \tableofcontents
 \newpage
-\listoffigures
 
-\newpage
 \pagenumbering{arabic} %reset numbering to normal for the main content
 
 \section{Introduction}\label{introduction}
@@ -129,18 +127,22 @@ of this algorithm became interesting.
 
 As part of this Seminar Project in the context of the Seminar
 `Statistical Computing in R' a reimplementation of the NMMSO algorithm
-in R will be presented. During this technical documentation, the general
-function of the algorithm and the used test cases by the CEC will be
-shown. Afterwards the structure and used techniques and libraries, as
-well as problems and pitfalls due to the different behaviours of R and
-Matlab, will be shown. The documentation will be closed by the
-benchmarking results and different test cases.
+in R (nmmso.R) will be presented. During this technical documentation,
+the general function of the algorithm and the used test cases by the CEC
+will be shown. Afterwards the structure and used techniques and
+libraries, as well as problems and pitfalls due to the different
+behaviours of R and Matlab, will be shown. The documentation will be
+closed by the benchmarking results and different test cases.
 
 It was the goal of this project to keep up high comparability with the
 original code, to ensure the correct functionality and easily implement
-changes to the original codebase in this program.
-
-\textbf{\ldots{} write a bit more here.}
+changes to the original codebase in this program. To reach this, unit
+tests were used where possible and continouous comparison between part
+results of the original implementation and nmmso.R where used to ensure
+functioning. Additionally a benchmarking suite, which builds on the CEC
+Benchmarking Suite for Niching Algorithm was implemented to evaluate and
+test the functioning of nmmso.R with the same characteristics as in the
+original implementation.
 
 \section{General Function}\label{general-function}
 
@@ -158,14 +160,14 @@ known and widely discussed single-objective optimisation, but in
 difference to it the goal of the algorithms in the multi-modal is not to
 find just one single optimising point but all possible points (Fieldsend
 2014, 1). In order to do so, many early multi-modal optimisation
-algorithms needed highly defined parameters {[}TODO: quote needed{]}.
+algorithms needed defined parameters {[}TODO: quote needed{]}.
 
 \textbf{maybe it would be interesting to write a few more lines about
 the history of evolutionary algorithms here?}
 
 Newer algorithms fall in the field of self-tuning and try to use
 different mathematical paradigms like nearest-best clustering with
-covariance matrices (Preuss 2010) and strategies like storing the so far
+covariance matrices (Preuss 2012) and strategies like storing the so far
 best found global optima estimators to provide them as parameters for
 new optimisation runs (Epitropakis, Li, and Burke 2013). Contradictory
 to that NMMSO goes another way and uses the the swarm strategy in order
@@ -197,6 +199,20 @@ keep comparability and the possibility to fix bugs at a high level. The
 only newly introduced setting was the possibility to modify the c\_1,
 c\_2, chi, w as parameters from the outside. In the original version
 those parameters are part of the program code.
+
+\begin{longtable}[c]{@{}cll@{}}
+\toprule
+. & standard value & used value\tabularnewline
+\midrule
+\endhead
+evaluations & 0 & 0\tabularnewline
+max\_evol & 100 & 100\tabularnewline
+tol\_val & 10\^{}-6 & 10\^{}-6\tabularnewline
+c\_1 & 2.0 & 2.0\tabularnewline
+c\_2 & 2.0 & 2.0\tabularnewline
+omega & 0.1 & 0.1\tabularnewline
+\bottomrule
+\end{longtable}
 
 \textbf{What else about the algorithm need to be explained that isn't
 explicitly part of the implementation?}
@@ -965,7 +981,7 @@ runs
 42534
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-2e+05
+200001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 29
@@ -1025,7 +1041,7 @@ runs
 192204
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-2e+05
+203835
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 213030
@@ -1163,19 +1179,19 @@ runs
 \textbf{F16}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 8
@@ -1187,16 +1203,16 @@ runs
 362540
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 7
@@ -1226,19 +1242,19 @@ runs
 \textbf{F19}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 7
@@ -1247,19 +1263,19 @@ runs
 \textbf{F20}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-4e+05
+400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 6
@@ -1740,20 +1756,6 @@ runs
 \bottomrule
 \end{longtable}
 
-\begin{verbatim}
-## Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-## na.strings, : number of items read is not a multiple of the number of
-## columns
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: Removed 1 rows containing missing values (stat_summary).
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: Removed 1 rows containing missing values (geom_path).
-\end{verbatim}
-
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/trend\%20curve\%20of\%20kept\%20swarms\%20over\%20all\%2020\%20functions.-1.pdf}
@@ -1786,12 +1788,10 @@ search with the niching migratory multi-swarm optimiser.'' In
 \emph{Evolutionary computation (cEC), 2014 iEEE congress on}, IEEE, p.
 2593--2600.
 
-\hypertarget{ref-preussux5f2010}{}
-Preuss, Mike. 2010. ``Niching the cMA-eS via nearest-better
-clustering.'' In \emph{Proceedings of the 12th annual conference
-companion on genetic and evolutionary computation}, GECCO '10, New York,
-NY, USA: ACM, p. 1711--1718.
-\url{http://doi.acm.org/10.1145/1830761.1830793}.
+\hypertarget{ref-preussux5f2012}{}
+Preuss, Mike. 2012. ``Improved topological niching for real-valued
+global optimization.'' In \emph{Applications of evolutionary
+computation}, Springer, p. 386--395.
 
 
 \end{document}

@@ -109,9 +109,7 @@ $endif$
 \pagenumbering{roman} %numbering before main content starts
 \tableofcontents
 \newpage
-\listoffigures
 
-\newpage
 \pagenumbering{arabic} %reset numbering to normal for the main content
 
 $body$

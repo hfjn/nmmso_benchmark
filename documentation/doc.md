@@ -4,11 +4,9 @@ In the recent years R has become the statistical programming language of choice 
 
 An example for a well perceived new finding in statistical computing is the NMMSO-Algorithm by Jonathan E. Fieldsend [@fieldsend_2014]. It won the niching competition in 2015 held by the CEC and is only written in Matlab. Since the chair 'Information Systems and Statistics' at the Westfälische Wilhelms-Universität Münster, Germany is mainly concentrating its work on Statistical Computing in R an implementation of this algorithm became interesting. 
 
-As part of this Seminar Project in the context of the Seminar 'Statistical Computing in R' a reimplementation of the NMMSO algorithm in R will be presented. During this technical documentation, the general function of the algorithm and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, as well as problems and pitfalls due to the different behaviours of R and Matlab, will be shown. The documentation will be closed by the benchmarking results and different test cases. 
+As part of this Seminar Project in the context of the Seminar 'Statistical Computing in R' a reimplementation of the NMMSO algorithm in R (nmmso.R) will be presented. During this technical documentation, the general function of the algorithm and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, as well as problems and pitfalls due to the different behaviours of R and Matlab, will be shown. The documentation will be closed by the benchmarking results and different test cases. 
 
-It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. 
-
-**… write a bit more here.**
+It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. To reach this, unit tests were used where possible and continouous comparison between part results of the original implementation and nmmso.R where used to ensure functioning. Additionally a benchmarking suite, which builds on the CEC Benchmarking Suite for Niching Algorithm was implemented to evaluate and test the functioning of nmmso.R with the same characteristics as in the original implementation.
 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage
@@ -17,11 +15,11 @@ It was the goal of this project to keep up high comparability with the original 
 
 The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
-Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimisation algorithms needed highly defined parameters [TODO: quote needed]. 
+Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimisation algorithms needed defined parameters [TODO: quote needed]. 
 
 **maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?**
 
-Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2010] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
+Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2012] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
 
 In order to do so NMMSO follow a strict structure which can be seen in the following pseudo-code
 
@@ -42,6 +40,16 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 		return X*,Y*
 
 This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
+
+    .      standard value 	used value     
+--------   --------------	----------
+evaluations	0				0
+max_evol	100				100
+tol_val		10^-6			10^-6
+c_1			2.0             2.0
+c_2			2.0	            2.0
+omega		0.1       		0.1
+---------  --------------   ----------
 
 **What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
@@ -160,13 +168,13 @@ Table: Success Ratio over given runs
 
  **F5**       84    200     322      503       786     29
 
- **F6**    19548  24640   30646    42534     2e+05     29
+ **F6**    19548  24640   30646    42534    200001     29
 
  **F7**     8368   9059   10272    12212     13613     29
 
  **F8**   176727 215977  253443   307968    341918     11
 
- **F9**   175729 179787  192204    2e+05    213030     15
+ **F9**   175729 179787  192204   203835    213030     15
 
  **F10**     899   1347    1727     2255      2773     29
 
@@ -180,15 +188,15 @@ Table: Success Ratio over given runs
 
  **F15**   97539 120679  145910   175327    185881     20
 
- **F16**   4e+05  4e+05   4e+05    4e+05     4e+05      8
+ **F16**  400001 400001  400001   400001    400001      8
 
- **F17**  362540  4e+05   4e+05    4e+05     4e+05      7
+ **F17**  362540 400001  400001   400001    400001      7
 
  **F18**  288605 288631  288822   288905    289382     10
 
- **F19**   4e+05  4e+05   4e+05    4e+05     4e+05      7
+ **F19**  400001 400001  400001   400001    400001      7
 
- **F20**   4e+05  4e+05   4e+05    4e+05     4e+05      6
+ **F20**  400001 400001  400001   400001    400001      6
 ---------------------------------------------------------
 
 Table: Convergence Rates over given runs
@@ -241,24 +249,10 @@ Table: Convergence Rates over given runs
 Table: Mean Peak Ratio over given runs
 
 
-
-
-
-```
-## Warning in scan(file, what, nmax, sep, dec, quote, skip, nlines,
-## na.strings, : number of items read is not a multiple of the number of
-## columns
-```
-
-```
-## Warning: Removed 1 rows containing missing values (stat_summary).
-```
-
-```
-## Warning: Removed 1 rows containing missing values (geom_path).
-```
-
 ![plot of chunk trend curve of kept swarms over all 20 functions.](figure/trend curve of kept swarms over all 20 functions.-1.pdf) 
+
+
+
 
 
 # Discussion #
