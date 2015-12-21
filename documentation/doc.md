@@ -51,6 +51,7 @@ c_2			2.0	            2.0
 omega		0.1       		0.1
 ---------  --------------   ----------
 
+Additionally
 **What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
 ----
@@ -111,172 +112,181 @@ To compare nmmso.R with the original NMMSO the CEC test cases were used to run t
 The first measure used is the Success Ratio (SR). The Success Ratio is defined as the percentage of Successful runs (runs that found all global optima) over all runs [@li_2013, p. 7]. As for the other ratios this measure was taken over several independent runs and collectively evaluated. The taken measures for the Success Ratio can be found in Table 2. 
 $$\frac{successful\ runs}{NR} = SR $$ 
 Here $NR$ denotes the Number of runs done to reach this measure.
+\newline
+
+--------------------------------------------------------
+ &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
+--------- ----- ------ ------- -------- --------- ------
+ **F1**       1      1       1        1         1     37
+
+ **F2**       1      1       1        1         1     35
+
+ **F3**       1      1       1        1         1     37
+
+ **F4**       1      1       1        1         1     37
+
+ **F5**       1      1       1        1         1     34
+
+ **F6**       1      1       1        1         0     34
+
+ **F7**       1      1       1        1         1     34
+
+ **F8**       1      1       1     0.94      0.71     17
+
+ **F9**    0.95   0.95    0.95     0.95      0.95     20
+
+ **F10**      1      1       1        1         1     34
+
+ **F11**      1      1       1        1         1     33
+
+ **F12**      1      1       1        1         1     34
+
+ **F13**      1      1       1        1         1     34
+
+ **F14**      1      1       1        1         1     33
+
+ **F15**   0.96   0.96    0.96     0.96      0.96     26
+
+ **F16**      0      0       0        0         0     13
+
+ **F17**   0.17      0       0        0         0     12
+
+ **F18**   0.38   0.38    0.38     0.31      0.31     16
+
+ **F19**      0      0       0        0         0     13
+
+ **F20**      0      0       0        0         0     12
+--------------------------------------------------------
+
+Table: Success Ratio over given runs (Measure of share of runs which found all global optima)
 
 The second measure introduced by the CEC committee and also used by Dr. Fieldsend is the Convergence Rate. The Convergence Rate (CR) measures the needed evaluations per Accuracy and Function to find all global optima [@li_2013, p.7]. This measure takes the mean of evaluations over all runs. The results of this measure can be found in Table 3.
+
 $$\frac{\sum\nolimits_{n=1}^{NR} evals_{n}}{NR} = CR$$ 
 In this measure $evals$ denotes the number of evaluations done. 
+\newline
+
+---------------------------------------------------------
+ &nbsp;      0.1   0.01   0.001   0.0001   0.00001   runs
+--------- ------ ------ ------- -------- --------- ------
+ **F1**      622    815    1018     1205      1441     37
+
+ **F2**      179    269     397      533       640     35
+
+ **F3**       35    170     273      390       513     37
+
+ **F4**      506    735     961     1201      1455     37
+
+ **F5**       82    194     321      522       788     34
+
+ **F6**    19519  24388   30499    42404    200001     34
+
+ **F7**     8564   9211   10604    12328     14646     34
+
+ **F8**   194031 231763  271058   320284    354533     17
+
+ **F9**   185670 189360  204110   219559    228586     20
+
+ **F10**     887   1326    1728     2254      2758     34
+
+ **F11**    3692   5747    7347     8549      9164     33
+
+ **F12**   17321  25823   38464    44660     51792     34
+
+ **F13**   11338  15676   19107    23152     26802     34
+
+ **F14**   28776  34298   48738    59775     68576     33
+
+ **F15**  107225 129151  149266   172770    189144     26
+
+ **F16**  400001 400001  400001   400001    400001     13
+
+ **F17**  377470 400001  400001   400001    400001     12
+
+ **F18**  299577 302391  304385   309050    309450     16
+
+ **F19**  400001 400001  400001   400001    400001     13
+
+ **F20**  400001 400001  400001   400001    400001     12
+---------------------------------------------------------
+
+Table: Convergence Rates over given runs (Mean of evaluations needed to find all global optima, if all optima have never been found the maximum allowed evaluations for that function were taken.)
 
 The third measure is the Peak Ratio (PR). It measures the share of found global optima over all runs [@li_2013, p.7]. The results of this evaluation can be found in Table 4.
 
 $$\frac{\sum\nolimits_{n=1}^{NR} NOF_{n}}{NKO * NR} = PR$$
+\newline
 In this measure $NOF$ denotes the number of found optima per run and $NKO$ the number of known optima for the function. 
+\newline
+
+--------------------------------------------------------
+ &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
+--------- ----- ------ ------- -------- --------- ------
+ **F1**       1      1       1        1         1     37
+
+ **F2**       1      1       1        1         1     35
+
+ **F3**       1      1       1        1         1     37
+
+ **F4**       1      1       1        1         1     37
+
+ **F5**       1      1       1        1         1     34
+
+ **F6**       1      1       1        1         0     34
+
+ **F7**       1      1       1        1         1     34
+
+ **F8**       1      1       1        1      0.98     17
+
+ **F9**       1      1       1        1         1     20
+
+ **F10**      1      1       1        1         1     34
+
+ **F11**      1      1       1        1         1     33
+
+ **F12**      1      1       1        1         1     34
+
+ **F13**      1      1       1        1         1     34
+
+ **F14**      1      1       1        1         1     33
+
+ **F15**      1      1       1        1         1     26
+
+ **F16**   0.01      0       0        0         0     13
+
+ **F17**   0.77   0.74    0.72     0.71      0.67     12
+
+ **F18**   0.83   0.83    0.83      0.8       0.8     16
+
+ **F19**   0.44   0.44    0.42     0.42       0.4     13
+
+ **F20**   0.15   0.14    0.14     0.14      0.12     12
+--------------------------------------------------------
+
+Table: Peak Ratio over given runs (Share of found global optima over all runs)
 
 As a fourth measure, which wasn't introduced by the CEC committee, but used in the original nmmso implementation [@fieldsend_2014] the Number of Swarms was chosen. Since this is a continuous measure and therefore no calculation is needed this measure is pictured as graphs. The graphs can be found in Figure 1. The show the development of $number of swarms$ kept by nmmso.R over all iterations. Important to notice here is that $iterations$ is different from the $evaluations$ referenced in the other measures. Iterations are calls to start single runs of nmmso.R and is therefore different from the evaluations taken within the program.
 
 Additionally a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will comparable on common computers. The ZIVHPC was only used to parallelize the single runs.
 
 
---------------------------------------------------------
- &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
---------- ----- ------ ------- -------- --------- ------
- **F1**       1      1       1        1         1     32
+![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) 
 
- **F2**       1      1       1        1         1     30
 
- **F3**       1      1       1        1         1     32
 
- **F4**       1      1       1        1         1     32
 
- **F5**       1      1       1        1         1     29
+When comparing those measures with the ones given in the original paper [@fieldsend_2014] it can be seen that the reimplementation nmmso.R is an overall good resemblance of the original algorithm. The three CEC measures are close to the original taken measures and the trend curves for the number of kept swarms have similar trends. 
 
- **F6**       1      1       1        1         0     29
+The biggest differences between the benchmarking results of the two implementations can be seen in the general results of function 14, 15, 16 and 18, as well as in the number of created swarms for the n-dimensional functions: 
 
- **F7**       1      1       1        1         1     29
+(1) Function 14 and 15 have a $Success\ Ratio$ of $1$ aswell as as $Peak$ $Ratio$ of one $1$ for all accuracy levels. Additionally nmmso.R sometimes found all global optima for Function 18.  In contradiction to that the evaluation of all thre function almost never result in the finding of global optima in the evaluation of the original implementation. Only at the lowest accuracy the original implementation is able to find all global optima for Function 14 [@fieldsend_2014, p.16].  It is hard to say if this difference is equal to an error in the implementation of nmmso.R or if an error in the original implementation was fixed. Also this could be a difference in the reimplementation of the CEC Benchmarking Tool. Nevertheless, this is interesting point of discussion and worth evaluating.
 
- **F8**       1      1       1     0.91      0.73     11
+(2) nmmso.R performs noticeable worse for Function 16 than the original function. While nmmso.R has a $Peak$ $Ratio$ of $0.01$ for an accuracy of $0.1$ and $0$ for all others, the original implementation reaches a $Peak$ $Ratio$ of around $0.6$ for all accuracies. This might be to an implementation error in the CEC Benchmarking Tool. Since it is so significantly worse that it is unlikely that this difference would only occur in one test function.
 
- **F9**       1      1       1        1         1     15
+(3) Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms, while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original paper the x-axis rank from 0-40,000 iterations, while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.
 
- **F10**      1      1       1        1         1     29
 
- **F11**      1      1       1        1         1     29
 
- **F12**      1      1       1        1         1     28
-
- **F13**      1      1       1        1         1     28
-
- **F14**      1      1       1        1         1     27
-
- **F15**      1      1       1        1         1     20
-
- **F16**      0      0       0        0         0      8
-
- **F17**   0.14      0       0        0         0      7
-
- **F18**    0.4    0.4     0.4      0.4       0.4     10
-
- **F19**      0      0       0        0         0      7
-
- **F20**      0      0       0        0         0      6
---------------------------------------------------------
-
-Table: Success Ratio over given runs
-
-
-
----------------------------------------------------------
- &nbsp;      0.1   0.01   0.001   0.0001   0.00001   runs
---------- ------ ------ ------- -------- --------- ------
- **F1**      641    839    1050     1228      1449     32
-
- **F2**      179    256     394      534       636     30
-
- **F3**       38    182     277      386       511     32
-
- **F4**      501    736     969     1173      1434     32
-
- **F5**       84    200     322      503       786     29
-
- **F6**    19548  24640   30646    42534    200001     29
-
- **F7**     8368   9059   10272    12212     13613     29
-
- **F8**   176727 215977  253443   307968    341918     11
-
- **F9**   175729 179787  192204   203835    213030     15
-
- **F10**     899   1347    1727     2255      2773     29
-
- **F11**    3517   5516    7099     8069      8741     29
-
- **F12**   17330  25136   37468    44542     50752     28
-
- **F13**   11555  16033   20058    23771     27500     28
-
- **F14**   29504  35431   50219    58919     68803     27
-
- **F15**   97539 120679  145910   175327    185881     20
-
- **F16**  400001 400001  400001   400001    400001      8
-
- **F17**  362540 400001  400001   400001    400001      7
-
- **F18**  288605 288631  288822   288905    289382     10
-
- **F19**  400001 400001  400001   400001    400001      7
-
- **F20**  400001 400001  400001   400001    400001      6
----------------------------------------------------------
-
-Table: Convergence Rates over given runs
-
-
---------------------------------------------------------
- &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
---------- ----- ------ ------- -------- --------- ------
- **F1**       1      1       1        1         1     32
-
- **F2**       1      1       1        1         1     30
-
- **F3**       1      1       1        1         1     32
-
- **F4**       1      1       1        1         1     32
-
- **F5**       1      1       1        1         1     29
-
- **F6**       1      1       1        1         0     29
-
- **F7**       1      1       1        1         1     29
-
- **F8**       1      1       1        1      0.98     11
-
- **F9**       1      1       1        1         1     15
-
- **F10**      1      1       1        1         1     29
-
- **F11**      1      1       1        1         1     29
-
- **F12**      1      1       1        1         1     28
-
- **F13**      1      1       1        1         1     28
-
- **F14**      1      1       1        1         1     27
-
- **F15**      1      1       1        1         1     20
-
- **F16**   0.02      0       0        0         0      8
-
- **F17**    0.8   0.79    0.79     0.79      0.71      7
-
- **F18**   0.82   0.82    0.82      0.8       0.8     10
-
- **F19**   0.36   0.36    0.33     0.33      0.31      7
-
- **F20**   0.21   0.19    0.19     0.19      0.17      6
---------------------------------------------------------
-
-Table: Mean Peak Ratio over given runs
-
-
-![plot of chunk trend curve of kept swarms over all 20 functions.](figure/trend curve of kept swarms over all 20 functions.-1.pdf) 
-
-
-
-
-
-# Discussion #
-
-test
 
 # Conclusion #
 
@@ -285,5 +295,5 @@ test
 
 # Acknowledgements #
 
-Thanks to everybody!
+We want to thank Dr. Jonathan Fieldsend for his continuous help via mail during this seminar. Also the committee of the CEC was always available for questions and concerns during our work. Furthermore a special thanks goes to all employees of the chair for 'Information Systems and Statistics' including Dr. Mike Preuß, Jakob Bossek and Pascal Kerschke who were available for any questions regarding the implementation and this report at all times.
 \newpage

@@ -51,6 +51,7 @@ c_2			2.0	            2.0
 omega		0.1       		0.1
 ---------  --------------   ----------
 
+Additionally
 **What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
 ----
@@ -111,20 +112,7 @@ To compare nmmso.R with the original NMMSO the CEC test cases were used to run t
 The first measure used is the Success Ratio (SR). The Success Ratio is defined as the percentage of Successful runs (runs that found all global optima) over all runs [@li_2013, p. 7]. As for the other ratios this measure was taken over several independent runs and collectively evaluated. The taken measures for the Success Ratio can be found in Table 2. 
 $$\frac{successful\ runs}{NR} = SR $$ 
 Here $NR$ denotes the Number of runs done to reach this measure.
-
-The second measure introduced by the CEC committee and also used by Dr. Fieldsend is the Convergence Rate. The Convergence Rate (CR) measures the needed evaluations per Accuracy and Function to find all global optima [@li_2013, p.7]. This measure takes the mean of evaluations over all runs. The results of this measure can be found in Table 3.
-$$\frac{\sum\nolimits_{n=1}^{NR} evals_{n}}{NR} = CR$$ 
-In this measure $evals$ denotes the number of evaluations done. 
-
-The third measure is the Peak Ratio (PR). It measures the share of found global optima over all runs [@li_2013, p.7]. The results of this evaluation can be found in Table 4.
-
-$$\frac{\sum\nolimits_{n=1}^{NR} NOF_{n}}{NKO * NR} = PR$$
-In this measure $NOF$ denotes the number of found optima per run and $NKO$ the number of known optima for the function. 
-
-As a fourth measure, which wasn't introduced by the CEC committee, but used in the original nmmso implementation [@fieldsend_2014] the Number of Swarms was chosen. Since this is a continuous measure and therefore no calculation is needed this measure is pictured as graphs. The graphs can be found in Figure 1. The show the development of $number of swarms$ kept by nmmso.R over all iterations. Important to notice here is that $iterations$ is different from the $evaluations$ referenced in the other measures. Iterations are calls to start single runs of nmmso.R and is therefore different from the evaluations taken within the program.
-
-Additionally a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will comparable on common computers. The ZIVHPC was only used to parallelize the single runs.
-
+\newline
 ```{r, SR, echo=FALSE}
 rm(list = ls())
 # remove scientific notation
@@ -160,17 +148,27 @@ rownames(sd) = names
 sr <- rename(sr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
 mean <- rename(mean, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
 sd <- rename(sd, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
-set.caption('Success Ratio over given runs')
+set.caption('Success Ratio over given runs (Measure of share of runs which found all global optima)')
 pander(sr)
 
 ```
 
+The second measure introduced by the CEC committee and also used by Dr. Fieldsend is the Convergence Rate. The Convergence Rate (CR) measures the needed evaluations per Accuracy and Function to find all global optima [@li_2013, p.7]. This measure takes the mean of evaluations over all runs. The results of this measure can be found in Table 3.
 
+$$\frac{\sum\nolimits_{n=1}^{NR} evals_{n}}{NR} = CR$$ 
+In this measure $evals$ denotes the number of evaluations done. 
+\newline
 ```{r, Mean, echo=FALSE}
-set.caption('Convergence Rates over given runs')
+set.caption('Convergence Rates over given runs (Mean of evaluations needed to find all global optima, if all optima have never been found the maximum allowed evaluations for that function were taken.)')
 pander(mean)
 ```
 
+The third measure is the Peak Ratio (PR). It measures the share of found global optima over all runs [@li_2013, p.7]. The results of this evaluation can be found in Table 4.
+
+$$\frac{\sum\nolimits_{n=1}^{NR} NOF_{n}}{NKO * NR} = PR$$
+\newline
+In this measure $NOF$ denotes the number of found optima per run and $NKO$ the number of known optima for the function. 
+\newline
 ```{r, MPR, echo=FALSE}
 source("../R/cec_2015_problem_data.R")
 names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")
@@ -187,17 +185,21 @@ for(i in 1:20){
 }
 rownames(mpr) = names
 mpr <- rename(mpr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))
-set.caption('Mean Peak Ratio over given runs')
+set.caption('Peak Ratio over given runs (Share of found global optima over all runs)')
 pander(mpr)
 
 ```
 
+As a fourth measure, which wasn't introduced by the CEC committee, but used in the original nmmso implementation [@fieldsend_2014] the Number of Swarms was chosen. Since this is a continuous measure and therefore no calculation is needed this measure is pictured as graphs. The graphs can be found in Figure 1. The show the development of $number of swarms$ kept by nmmso.R over all iterations. Important to notice here is that $iterations$ is different from the $evaluations$ referenced in the other measures. Iterations are calls to start single runs of nmmso.R and is therefore different from the evaluations taken within the program.
 
-![plot of chunk trend curve of kept swarms over all 20 functions.](figure/trend curve of kept swarms over all 20 functions.-1.pdf) 
+Additionally a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will comparable on common computers. The ZIVHPC was only used to parallelize the single runs.
 
 
-```{r, trend curve of kept swarms over all 20 functions., echo = FALSE, dpi = 250, fig.ext='pdf', keep='all'}
-# rm(list = ls())
+![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) 
+
+
+```{r, trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs., echo = FALSE, dpi = 250, fig.ext='pdf', keep='all'}
+rm(list = ls())
 # source("../R/cec_2015_problem_data.R")
 # library(plyr)
 # library(ggplot2)
@@ -220,16 +222,23 @@ pander(mpr)
 # 	p1 = ggplot(results, aes(x = iterations, y = swarms, group=.id, colour="grey"))
 # 	p1 = p1 + ggtitle(paste0("F",i)) + geom_line() + theme_tufte() + theme(legend.position = "none")
 # 	p1 = p1 + stat_summary(fun.y = mean, geom="line", colour="black", aes(group = 1))
-# 	plots[[i]] = p1
+# 	plots[[i]] = p1 + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.margin=unit(c(0,0,0,0),"mm"))
 # }
 # do.call("grid.arrange", c(plots, ncol = 4))
-
 ```
 
+When comparing those measures with the ones given in the original paper [@fieldsend_2014] it can be seen that the reimplementation nmmso.R is an overall good resemblance of the original algorithm. The three CEC measures are close to the original taken measures and the trend curves for the number of kept swarms have similar trends. 
 
-# Discussion #
+The biggest differences between the benchmarking results of the two implementations can be seen in the general results of function 14, 15, 16 and 18, as well as in the number of created swarms for the n-dimensional functions: 
 
-test
+(1) Function 14 and 15 have a $Success\ Ratio$ of $1$ aswell as as $Peak$ $Ratio$ of one $1$ for all accuracy levels. Additionally nmmso.R sometimes found all global optima for Function 18.  In contradiction to that the evaluation of all thre function almost never result in the finding of global optima in the evaluation of the original implementation. Only at the lowest accuracy the original implementation is able to find all global optima for Function 14 [@fieldsend_2014, p.16].  It is hard to say if this difference is equal to an error in the implementation of nmmso.R or if an error in the original implementation was fixed. Also this could be a difference in the reimplementation of the CEC Benchmarking Tool. Nevertheless, this is interesting point of discussion and worth evaluating.
+
+(2) nmmso.R performs noticeable worse for Function 16 than the original function. While nmmso.R has a $Peak$ $Ratio$ of $0.01$ for an accuracy of $0.1$ and $0$ for all others, the original implementation reaches a $Peak$ $Ratio$ of around $0.6$ for all accuracies. This might be to an implementation error in the CEC Benchmarking Tool. Since it is so significantly worse that it is unlikely that this difference would only occur in one test function.
+
+(3) Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms, while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original paper the x-axis rank from 0-40,000 iterations, while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.
+
+
+
 
 # Conclusion #
 
@@ -238,5 +247,5 @@ test
 
 # Acknowledgements #
 
-Thanks to everybody!
+We want to thank Dr. Jonathan Fieldsend for his continuous help via mail during this seminar. Also the committee of the CEC was always available for questions and concerns during our work. Furthermore a special thanks goes to all employees of the chair for 'Information Systems and Statistics' including Dr. Mike Preuß, Jakob Bossek and Pascal Kerschke who were available for any questions regarding the implementation and this report at all times.
 \newpage
