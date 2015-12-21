@@ -4,6 +4,13 @@
         <Document ID="9">
             <Title>The Implementation</Title>
         </Document>
+        <Document ID="25">
+            <Title>_Recovered Files</Title>
+        </Document>
+        <Document ID="15">
+            <Title>Pitfalls and Problems</Title>
+            <Text>test</Text>
+        </Document>
         <Document ID="21">
             <Title>cec2013-niching-benchmark-tech-report</Title>
             <Text>Benchmark Functions for CEC’2013 Special
@@ -805,10 +812,6 @@ PR
 0.502 0.013 0.000 0.000 0.000
 ￼￼</Text>
         </Document>
-        <Document ID="15">
-            <Title>Pitfalls and Problems</Title>
-            <Text>test</Text>
-        </Document>
         <Document ID="26">
             <Title>Benchmarking</Title>
         </Document>
@@ -819,10 +822,18 @@ To compare the nmmsoR with the original NMMSO the CEC test cases were used to ru
 
 ```{r, SR, echo=FALSE}
 rm(list = ls())
+# remove scientific notation
+library(plyr)
+options(scipen=999)
 # calculate sr
 source("../R/cec_2015_problem_data.R")
 # calculate sr
 library(pander)
+panderOptions('table.alignment.default', function(df) ifelse(sapply(df, is.numeric), 'right', 'left'))
+panderOptions('digits', 2)
+panderOptions('round', 2)
+panderOptions('keep.trailing.zeros', TRUE)
+
 names &lt;- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")
 sr &lt;- as.data.frame(matrix(0,nrow=20,ncol=6))
 mean &lt;- as.data.frame(matrix(0,nrow=20,ncol=6))
@@ -875,35 +886,36 @@ pander(mpr)
 ```
 
 
+![plot of chunk trend curve of kept swarms over all 20 functions.](figure/trend curve of kept swarms over all 20 functions.-1.pdf) 
 
 
 ```{r, trend curve of kept swarms over all 20 functions., echo = FALSE, dpi = 250, fig.ext='pdf', keep='all'}
-rm(list = ls())
-source("../R/cec_2015_problem_data.R")
-library(plyr)
-library(ggplot2)
-library(ggthemes)
-library(gridExtra)
+# rm(list = ls())
+# source("../R/cec_2015_problem_data.R")
+# library(plyr)
+# library(ggplot2)
+# library(ggthemes)
+# library(gridExtra)
 
-plots = list()
-for(i in 1:20){
-	results &lt;- NA
-	filenames.swarms &lt;- list.files(full.names = TRUE, path='../output', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))
+# plots = list()
+# for(i in 1:20){
+# 	results &lt;- NA
+# 	filenames.swarms &lt;- list.files(full.names = TRUE, path='../output', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))
 
-	results &lt;- lapply(filenames.swarms, read.table)
-	names(results) &lt;- paste0('run',seq_along(results))
-	results &lt;- ldply(results)
+# 	results &lt;- lapply(filenames.swarms, read.table)
+# 	names(results) &lt;- paste0('run',seq_along(results))
+# 	results &lt;- ldply(results)
 
-	results &lt;- rename(results, c("V1" = "iterations", "V2" = "swarms"))
+# 	results &lt;- rename(results, c("V1" = "iterations", "V2" = "swarms"))
 
-	#results &lt;- transform(results, run = sprintf('run%d', run)) 
+# 	#results &lt;- transform(results, run = sprintf('run%d', run)) 
 
-	p1 = ggplot(results, aes(x = iterations, y = swarms, group=.id, colour="grey"))
-	p1 = p1 + ggtitle(paste0("F",i)) + geom_line() + theme_tufte() + theme(legend.position = "none")
-	p1 = p1 + stat_summary(fun.y = mean, geom="line", colour="black", aes(group = 1))
-	plots[[i]] = p1
-}
-do.call("grid.arrange", c(plots, ncol = 4))
+# 	p1 = ggplot(results, aes(x = iterations, y = swarms, group=.id, colour="grey"))
+# 	p1 = p1 + ggtitle(paste0("F",i)) + geom_line() + theme_tufte() + theme(legend.position = "none")
+# 	p1 = p1 + stat_summary(fun.y = mean, geom="line", colour="black", aes(group = 1))
+# 	plots[[i]] = p1
+# }
+# do.call("grid.arrange", c(plots, ncol = 4))
 
 ```
 </Text>
@@ -1031,8 +1043,8 @@ Kamin, S. N. (1990). Programming languages. Addison Wesley.
 	•	2.1 General Function -&gt; don't write as much about history of evolutionary algorithms, but more about multimodal optimaziation
 	•	2.2 CEC -&gt; show more that implementation of benchmarking suite was own work, show we tested it and "proved" that it is working as described. Also show the problems that occured here.
 	•	4. Benchmark -&gt; describe the definition of the single measures.
-	•	Delete list of igures
-	•	 Give examples for paramaters, basically and explanation on how to use nmmso
+	•	Delete list of figures
+	•	Give examples for paramaters, basically and explanation on how to use nmmso
 	•	self-contained description of tables and graphs
 	•	maybe introduce grayscale table to better visualize the measures?
 	•	show runtimes of algorithm
@@ -1042,11 +1054,11 @@ Kamin, S. N. (1990). Programming languages. Addison Wesley.
             <Title>General Function</Title>
             <Text>The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
-Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimisation algorithms needed highly defined parameters [TODO: quote needed]. 
+Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimisation algorithms needed defined parameters [TODO: quote needed]. 
 
 **maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?**
 
-Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2010] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
+Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2012] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
 
 In order to do so NMMSO follow a strict structure which can be seen in the following pseudo-code
 
@@ -1068,27 +1080,17 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 
 This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
 
+    .      standard value 	used value     
+--------   --------------	----------
+evaluations	0				0
+max_evol	100				100
+tol_val		10^-6			10^-6
+c_1			2.0             2.0
+c_2			2.0	            2.0
+omega		0.1       		0.1
+---------  --------------   ----------
+
 **What else about the algorithm need to be explained that isn't explicitly part of the implementation?**</Text>
-        </Document>
-        <Document ID="5">
-            <Title>Structure</Title>
-            <Text>### Seminar Project - R Implementation of NMMSO 
-1. Introduction
-2. Explanation of the Algorithm &amp; Problem
-	1. General function &amp; Pseudcode
-	2. CEC
-3. Our implementation of the programm
-	1. Structure of the project
-	2. Pitfalls &amp; Problems
-	4. Benchmark &amp; Comparison
-	5. Testing &amp; alternative parameter settings
-4. Discussion
-5. Conclusion
-	</Text>
-        </Document>
-        <Document ID="17">
-            <Title>Testing and alternative parameter settings</Title>
-            <Text>test</Text>
         </Document>
         <Document ID="23">
             <Title>running_up_those_hills_2014</Title>
@@ -1591,6 +1593,9 @@ F6
 [23] X. Li, A. Engelbrecht, and M. G. Epitropakis, “Benchmark Functions for CEC’2013 Special Session and Competition on Niching Methods for Multimodal Function Optimization,” Evolutionary Computation and Machine Learning Group, RMIT University, Tech. Rep., 2013.
 </Text>
         </Document>
+        <Document ID="28">
+            <Title>CEC Algrithms</Title>
+        </Document>
         <Document ID="13">
             <Title>CEC</Title>
             <Text>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.
@@ -1617,17 +1622,18 @@ All of the test functions are formulated as maximisation problems. F1, F2 and F3
 
 https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation</Text>
         </Document>
-        <Document ID="18">
-            <Title>Discussion</Title>
-            <Text>test</Text>
-        </Document>
         <Document ID="24">
             <Title>Acknowledgements</Title>
             <Text>Thanks to everybody!
 \newpage</Text>
         </Document>
-        <Document ID="8">
-            <Title>The Algorithm</Title>
+        <Document ID="18">
+            <Title>Discussion</Title>
+            <Text>test</Text>
+        </Document>
+        <Document ID="29">
+            <Title>Implementation and Pitfalls</Title>
+            <Text>**write also about the count_goptima and so on**</Text>
         </Document>
         <Document ID="14">
             <Title>Structure of the project</Title>
@@ -1643,11 +1649,9 @@ During the developing time, an issue raised with the CEC benchmark tool. In orde
 
 An example for a well perceived new finding in statistical computing is the NMMSO-Algorithm by Jonathan E. Fieldsend [@fieldsend_2014]. It won the niching competition in 2015 held by the CEC and is only written in Matlab. Since the chair 'Information Systems and Statistics' at the Westfälische Wilhelms-Universität Münster, Germany is mainly concentrating its work on Statistical Computing in R an implementation of this algorithm became interesting. 
 
-As part of this Seminar Project in the context of the Seminar 'Statistical Computing in R' a reimplementation of the NMMSO algorithm in R will be presented. During this technical documentation the general function of the algorithm will and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, aswell as problems and pitfalls due to the different behaviors of R and Matlab will be shown. The documentation will be closed by the benchmarking results and different test cases. 
+As part of this Seminar Project in the context of the Seminar 'Statistical Computing in R' a reimplementation of the NMMSO algorithm in R (nmmso.R) will be presented. During this technical documentation, the general function of the algorithm and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, as well as problems and pitfalls due to the different behaviours of R and Matlab, will be shown. The documentation will be closed by the benchmarking results and different test cases. 
 
-It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. 
-
-**… write a bit more here.**
+It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. To reach this, unit tests were used where possible and continouous comparison between part results of the original implementation and nmmso.R where used to ensure functioning. Additionally a benchmarking suite, which builds on the CEC Benchmarking Suite for Niching Algorithm was implemented to evaluate and test the functioning of nmmso.R with the same characteristics as in the original implementation.
 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage</Text>

@@ -1,18 +1,41 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
-{\fonttbl\f0\fmodern\fcharset0 Courier;\f1\fswiss\fcharset0 Helvetica;\f2\fnil\fcharset0 Consolas;
-}
-{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red234\green234\blue234;\red107\green0\blue1;
-\red43\green39\blue19;\red0\green0\blue120;\red43\green39\blue19;\red234\green234\blue234;}
+{\fonttbl\f0\fnil\fcharset0 OpenSans;\f1\fswiss\fcharset0 Helvetica;\f2\fmodern\fcharset0 Courier;
+\f3\fnil\fcharset0 Consolas;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red196\green219\blue241;\red43\green39\blue19;
+\red19\green8\blue105;\red15\green112\blue1;\red83\green83\blue83;\red234\green234\blue234;\red107\green0\blue1;
+\red0\green0\blue120;}
 \deftab720
 \pard\pardeftab720\sl280
 
-\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\f0\fs28 \cf0 \expnd0\expndtw0\kerning0
 \
-
-\f1\fs28 To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in \kerning1\expnd0\expndtw0 [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. \expnd0\expndtw0\kerning0
+To compare nmmso.R with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in \kerning1\expnd0\expndtw0 [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. \expnd0\expndtw0\kerning0
 Nmmso.R uses the same measures to reach the highest comparability possible.\
+\
+The first measure used is the Success Ratio (SR). The Success Ratio is defined as the percentage of Successful runs (runs that found all global optima) over all runs [@li_2013, p. 7]. As for the other ratios this measure was taken over several independent runs and collectively evaluated. The taken measures for the Success Ratio can be found in Table 2. \
+$$\cf2 \cb3 \outl0\strokewidth0 \strokec2 \\frac\cf0 \cb1 \outl0\strokewidth0 \{successful\\ runs\}\cf2 \cb3 \outl0\strokewidth0 \strokec2 \{\cf0 \cb1 \outl0\strokewidth0 NR\} = SR $$ \
+Here $NR$ denotes the Number of runs done to reach this measure.\
+\pard\pardeftab720\sl280
+\cf0 \
+The second measure introduced by the CEC committee and also used by Dr. Fieldsend is the Convergence Rate. The Convergence Rate (CR) measures the needed evaluations per Accuracy and Function to find all global optima [@li_2013, p.7]. This measure takes the mean of evaluations over all runs. The results of this measure can be found in Table 3.\
+$$\\frac\{\cf5 \outl0\strokewidth0 \strokec5 \\sum\\nolimits\cf6 \strokec6 _\{n\cf7 \strokec7 =1\cf6 \strokec6 \}^\{NR\} evals_\{n\}\}\{NR\} = CR$$ \
+In this measure $evals$ denotes the number of evaluations done. \cf0 \outl0\strokewidth0 \
+\
+The third measure is the Peak Ratio (PR). It measures the share of found global optima over all runs [@li_2013, p.7]. The results of this evaluation can be found in Table 4.
+\f1 \
+\pard\pardeftab720\sl280
 
-\f0\fs24 \
+\f2\fs24 \cf0 \
+
+\f0\fs28 $$\\frac\{\\\cf5 \outl0\strokewidth0 \strokec5 sum\\nolimits\cf6 \strokec6 _\{n\cf7 \strokec7 =1\cf6 \strokec6 \}^\{NR\} NOF_\{n\}\}\{NKO * NR\} = PR$$\
+In this measure $NOF$ denotes the number of found optima per run and $NKO$ the number of known optima for the function. \
+\
+\pard\pardeftab720\sl280
+\cf0 As a fourth measure, which wasn't introduced by the CEC committee, but used in the original nmmso implementation [@fieldsend_2014] the Number of Swarms was chosen. Since this is a continuous measure and therefore no calculation is needed this measure is pictured as graphs. The graphs can be found in Figure 1. The show the development of $number of swarms$ kept by nmmso.R over all iterations. Important to notice here is that $iterations$ is different from the $evaluations$ referenced in the other measures. Iterations are calls to start single runs of nmmso.R and is therefore different from the evaluations taken within the program.\
+\
+Additionally a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC a scientific High Perfomance Computing Cluster by Westf\'e4lische Wilhelms-Universit\'e4t M\'fcnster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will comparable on common computers. The ZIVHPC was only used to parallelize the single runs.
+\f2\fs24 \outl0\strokewidth0 \
+\
 ```\{r, SR, echo=FALSE\}\
 \pard\pardeftab720\sl308
 \cf0 rm(list = ls())\
@@ -20,21 +43,22 @@ Nmmso.R uses the same measures to reach the highest comparability possible.\
 library(plyr)\
 \pard\pardeftab720\sl300
 
-\f2\fs26 \cf2 \cb3 \outl0\strokewidth0 \strokec2 options(scipen=\cf4 \strokec4 999\cf2 \strokec2 )\cf5 \strokec5 \
+\f3\fs26 \cf0 \cb8 options(scipen=\cf9 999\cf0 )\cf4 \
 \pard\pardeftab720\sl280
 
-\f0\fs24 \cf0 \cb1 \outl0\strokewidth0 # calculate sr\
+\f2\fs24 \cf0 \cb1 # calculate sr\
 source("../R/cec_2015_problem_data.R")\
 # calculate sr\
 library(pander)\
 \pard\pardeftab720\sl300
 
-\f2\fs26 \cf2 \cb3 \outl0\strokewidth0 \strokec2 panderOptions(\cf4 \strokec4 'table.alignment.default'\cf2 \strokec2 , \cf6 \strokec6 function\cf2 \strokec2 (df) ifelse(sapply(df, is.numeric), \cf4 \strokec4 'right'\cf2 \strokec2 , \cf4 \strokec4 'left'\cf2 \strokec2 ))\
-panderOptions(\cf4 \strokec4 'digits'\cf2 \strokec2 , \cf4 \strokec4 2\cf2 \strokec2 )\
-panderOptions(\cf4 \strokec4 'round'\cf2 \strokec2 , \cf4 \strokec4 2\cf2 \strokec2 )\
-panderOptions(\cf4 \strokec4 'keep.trailing.zeros'\cf2 \strokec2 , \cf4 \strokec4 TRUE\cf2 \strokec2 )\cf5 \strokec5 \
+\f3\fs26 \cf0 \cb8 panderOptions(\cf9 'table.alignment.default'\cf0 , \cf10 function\cf0 (df) ifelse(sapply(df, is.numeric), \cf9 'right'\cf0 , \cf9 'left'\cf0 ))\
+panderOptions(\cf9 'digits'\cf0 , \cf9 2\cf0 )\
+panderOptions(\cf9 'round'\cf0 , \cf9 2\cf0 )\
+panderOptions(\cf9 'keep.trailing.zeros'\cf0 , \cf9 TRUE\cf0 )\cf4 \
+\pard\pardeftab720\sl300
 
-\f0\fs24 \cf0 \cb1 \outl0\strokewidth0 \
+\f2\fs24 \cf0 \cb1 \
 \pard\pardeftab720\sl280
 \cf0 names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")\
 sr <- as.data.frame(matrix(0,nrow=20,ncol=6))\
@@ -61,6 +85,8 @@ set.caption('Success Ratio over given runs')\
 pander(sr)\
 \
 ```\
+\
+\
 ```\{r, Mean, echo=FALSE\}\
 set.caption('Convergence Rates over given runs')\
 pander(mean)\
@@ -83,7 +109,7 @@ for(i in 1:20)\{\
 rownames(mpr) = names\
 mpr <- rename(mpr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001", "V5" = "0.00001", "V6" = "runs"))\
 set.caption('Mean Peak Ratio over given runs')\
-pander(mpr)\cf7 \cb8 \
+pander(mpr)\cf4 \cb8 \
 \cf0 \cb1 \
 ```\
 \

@@ -36,12 +36,12 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 			evals := evals + k
 			S := add_new_swarm(S)
 			evals := evals + 1
-		{X*, Y*} := extract_gebsest(S)
+		{X*, Y*} := extract_gbest(S)
 		return X*,Y*
 
 This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
 
-    .      standard value 	used value     
+           standard value 	used value     
 --------   --------------	----------
 evaluations	0				0
 max_evol	100				100
@@ -55,7 +55,7 @@ omega		0.1       		0.1
 
 ----
 
-# CEC Algrithms #
+# CEC Algorithms #
 
 ## CEC ##
 
@@ -106,7 +106,24 @@ test
 # Benchmark and Comparison #
 
 
-To compare the nmmsoR with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
+To compare nmmso.R with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
+
+The first measure used is the Success Ratio (SR). The Success Ratio is defined as the percentage of Successful runs (runs that found all global optima) over all runs [@li_2013, p. 7]. As for the other ratios this measure was taken over several independent runs and collectively evaluated. The taken measures for the Success Ratio can be found in Table 2. 
+$$\frac{successful\ runs}{NR} = SR $$ 
+Here $NR$ denotes the Number of runs done to reach this measure.
+
+The second measure introduced by the CEC committee and also used by Dr. Fieldsend is the Convergence Rate. The Convergence Rate (CR) measures the needed evaluations per Accuracy and Function to find all global optima [@li_2013, p.7]. This measure takes the mean of evaluations over all runs. The results of this measure can be found in Table 3.
+$$\frac{\sum\nolimits_{n=1}^{NR} evals_{n}}{NR} = CR$$ 
+In this measure $evals$ denotes the number of evaluations done. 
+
+The third measure is the Peak Ratio (PR). It measures the share of found global optima over all runs [@li_2013, p.7]. The results of this evaluation can be found in Table 4.
+
+$$\frac{\sum\nolimits_{n=1}^{NR} NOF_{n}}{NKO * NR} = PR$$
+In this measure $NOF$ denotes the number of found optima per run and $NKO$ the number of known optima for the function. 
+
+As a fourth measure, which wasn't introduced by the CEC committee, but used in the original nmmso implementation [@fieldsend_2014] the Number of Swarms was chosen. Since this is a continuous measure and therefore no calculation is needed this measure is pictured as graphs. The graphs can be found in Figure 1. The show the development of $number of swarms$ kept by nmmso.R over all iterations. Important to notice here is that $iterations$ is different from the $evaluations$ referenced in the other measures. Iterations are calls to start single runs of nmmso.R and is therefore different from the evaluations taken within the program.
+
+Additionally a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will comparable on common computers. The ZIVHPC was only used to parallelize the single runs.
 
 
 --------------------------------------------------------
@@ -154,6 +171,8 @@ To compare the nmmsoR with the original NMMSO the CEC test cases were used to ru
 --------------------------------------------------------
 
 Table: Success Ratio over given runs
+
+
 
 ---------------------------------------------------------
  &nbsp;      0.1   0.01   0.001   0.0001   0.00001   runs

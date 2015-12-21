@@ -720,9 +720,9 @@
 		</array>
 	</dict>
 	<key>supportingDocumentEditor.scrollRect</key>
-	<string>{{0, 554}, {700, 951}}</string>
-	<key>supportingDocumentEditor.selectedRanges</key>
-	<string>{2895, 0}</string>
+	<string>{{0, 0}, {621, 304}}</string>
+	<key>supportingDocumentEditor.selectedItemIDs</key>
+	<array/>
 	<key>supportingDocumentEditor.textEditorState</key>
 	<dict>
 		<key>hasMultiplePages</key>

@@ -153,13 +153,13 @@ relies heavily on multiple swarms which are generated on the landscape
 of an function in order to find the global optimum. It is build around
 three main pillars: (1) dynamic in the numbers of dimensions, (2)
 self-adaptive without any special preparation and (3) exploitative local
-search to quickly find peak estimates (Fieldsend 2014, 1).
+search to quickly find peak estimates (Fieldsend 2014, p. 1).
 
 Multi-modal optimisation in general is not that different from well
 known and widely discussed single-objective optimisation, but in
 difference to it the goal of the algorithms in the multi-modal is not to
 find just one single optimising point but all possible points (Fieldsend
-2014, 1). In order to do so, many early multi-modal optimisation
+2014, p. 1). In order to do so, many early multi-modal optimisation
 algorithms needed defined parameters {[}TODO: quote needed{]}.
 
 \textbf{maybe it would be interesting to write a few more lines about
@@ -169,9 +169,9 @@ Newer algorithms fall in the field of self-tuning and try to use
 different mathematical paradigms like nearest-best clustering with
 covariance matrices (Preuss 2012) and strategies like storing the so far
 best found global optima estimators to provide them as parameters for
-new optimisation runs (Epitropakis, Li, and Burke 2013). Contradictory
-to that NMMSO goes another way and uses the the swarm strategy in order
-to find which store their current (Fieldsend 2014)
+new optimisation runs (Epitropakis et al. 2013). Contradictory to that
+NMMSO goes another way and uses the the swarm strategy in order to find
+which store their current (Fieldsend 2014)
 
 In order to do so NMMSO follow a strict structure which can be seen in
 the following pseudo-code
@@ -190,7 +190,7 @@ nmmso(max_evals, tol, n, max_inc, c_1, c_2, chi, w)
         evals := evals + k
         S := add_new_swarm(S)
         evals := evals + 1
-    {X*, Y*} := extract_gebsest(S)
+    {X*, Y*} := extract_gbest(S)
     return X*,Y*
 \end{verbatim}
 
@@ -200,9 +200,9 @@ only newly introduced setting was the possibility to modify the c\_1,
 c\_2, chi, w as parameters from the outside. In the original version
 those parameters are part of the program code.
 
-\begin{longtable}[c]{@{}cll@{}}
+\begin{longtable}[c]{@{}lll@{}}
 \toprule
-. & standard value & used value\tabularnewline
+& standard value & used value\tabularnewline
 \midrule
 \endhead
 evaluations & 0 & 0\tabularnewline
@@ -219,7 +219,7 @@ explicitly part of the implementation?}
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\section{CEC Algrithms}\label{cec-algrithms}
+\section{CEC Algorithms}\label{cec-algorithms}
 
 \subsection{CEC}\label{cec}
 
@@ -234,17 +234,17 @@ submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here,
 Dr.~Fieldsend was provided with some multimodal benchmark test functions
 with different dimension sizes and characteristics, for evaluating
 niching algorithms developed by Dr.~Xiaodong Li, Dr.~Andries Engelbrecht
-and Dr.~Michael G. Epitropakis (Epitropakis, Li, and Burke 2013). They
-state that even if several niching methods have been around for many
-years, further advances in this area have been hindered by several
-obstacles; most of the studies focus on very low dimensional multimodal
-problems (2 or 3 dimensions) making this more complicated to asses
-theses methods' scalability to high dimensions with better performance.
-The benchmark tool includes 20 test functions (in some cases the same
-function but with different dimension sizes), which includes 10 simple,
-well-known and widely used benchmark functions, based on recent studies,
-and more complex functions following the paradigm of composition
-functions. In the following section, they will be briefly explained:
+and Dr.~Michael G. Epitropakis (Epitropakis et al. 2013). They state
+that even if several niching methods have been around for many years,
+further advances in this area have been hindered by several obstacles;
+most of the studies focus on very low dimensional multimodal problems (2
+or 3 dimensions) making this more complicated to asses theses methods'
+scalability to high dimensions with better performance. The benchmark
+tool includes 20 test functions (in some cases the same function but
+with different dimension sizes), which includes 10 simple, well-known
+and widely used benchmark functions, based on recent studies, and more
+complex functions following the paradigm of composition functions. In
+the following section, they will be briefly explained:
 
 \begin{verbatim}
 •   F1: Five-Uneven-Peak Trap (1D)
@@ -274,7 +274,7 @@ function). F9 and F10 are separable, and non-symmetric, while F11 and
 F12 are non-separable, non-symmetric complex multimodal functions. The
 number of global optima in all of the composition functions is
 independent from the number of dimensions, therefore can be controlled
-by the user (Epitropakis, Li, and Burke 2013).
+by the user (Epitropakis et al. 2013).
 
 \textbf{Maybe write each math equation or the R code}
 
@@ -327,15 +327,56 @@ test
 
 \section{Benchmark and Comparison}\label{benchmark-and-comparison}
 
-To compare the nmmsoR with the original NMMSO the CEC test cases were
-used to run the same benchmarks as in the original submission (Fieldsend
+To compare nmmso.R with the original NMMSO the CEC test cases were used
+to run the same benchmarks as in the original submission (Fieldsend
 2014). There 4 different Ratios were used to measure the performance of
 certain algorithms. Three of those measures (Peak Ratio, Success Ratio
-and Convergence Speed) have been introduced in (Epitropakis, Li, and
-Burke 2013, 6--7) to create a common point of comparison. The fourth
-ratio is special for the nmmso algorithm since it tracks the number of
-swarms over the iterations of the algorithm. Nmmso.R uses the same
-measures to reach the highest comparability possible.
+and Convergence Speed) have been introduced in (Epitropakis et al. 2013,
+pp. 6--7) to create a common point of comparison. The fourth ratio is
+special for the nmmso algorithm since it tracks the number of swarms
+over the iterations of the algorithm. Nmmso.R uses the same measures to
+reach the highest comparability possible.
+
+The first measure used is the Success Ratio (SR). The Success Ratio is
+defined as the percentage of Successful runs (runs that found all global
+optima) over all runs (Li et al. 2013, p. 7). As for the other ratios
+this measure was taken over several independent runs and collectively
+evaluated. The taken measures for the Success Ratio can be found in
+Table 2. \[\frac{successful\ runs}{NR} = SR \] Here \(NR\) denotes the
+Number of runs done to reach this measure.
+
+The second measure introduced by the CEC committee and also used by
+Dr.~Fieldsend is the Convergence Rate. The Convergence Rate (CR)
+measures the needed evaluations per Accuracy and Function to find all
+global optima (Li et al. 2013, p. 7). This measure takes the mean of
+evaluations over all runs. The results of this measure can be found in
+Table 3. \[\frac{\sum\nolimits_{n=1}^{NR} evals_{n}}{NR} = CR\] In this
+measure \(evals\) denotes the number of evaluations done.
+
+The third measure is the Peak Ratio (PR). It measures the share of found
+global optima over all runs (Li et al. 2013, p. 7). The results of this
+evaluation can be found in Table 4.
+
+\[\frac{\sum\nolimits_{n=1}^{NR} NOF_{n}}{NKO * NR} = PR\] In this
+measure \(NOF\) denotes the number of found optima per run and \(NKO\)
+the number of known optima for the function.
+
+As a fourth measure, which wasn't introduced by the CEC committee, but
+used in the original nmmso implementation (Fieldsend 2014) the Number of
+Swarms was chosen. Since this is a continuous measure and therefore no
+calculation is needed this measure is pictured as graphs. The graphs can
+be found in Figure 1. The show the development of \(number of swarms\)
+kept by nmmso.R over all iterations. Important to notice here is that
+\(iterations\) is different from the \(evaluations\) referenced in the
+other measures. Iterations are calls to start single runs of nmmso.R and
+is therefore different from the evaluations taken within the program.
+
+Additionally a fifth measure was introduced which denotes the runtime of
+nmmso.R for the single functions. These times were taken on the ZIVHPC a
+scientific High Perfomance Computing Cluster by Westfälische
+Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential
+algorithm the runtimes for single runs will comparable on common
+computers. The ZIVHPC was only used to parallelize the single runs.
 
 \begin{longtable}[c]{@{}crrrrrr@{}}
 \caption{Success Ratio over given runs}\tabularnewline
@@ -1777,21 +1818,27 @@ Thanks to everybody! \newpage
 
 \hypertarget{refs}{}
 \hypertarget{ref-epitropakisux5f2013}{}
-Epitropakis, Michael G, Xiaodong Li, and Edmund K Burke. 2013. ``A
-dynamic archive niching differential evolution algorithm for multimodal
-optimization.'' In \emph{Evolutionary computation (cEC), 2013 iEEE
-congress on}, IEEE, p. 79--86.
+Epitropakis, M. G., Li, X., and Burke, E. K. 2013. ``A dynamic archive
+niching differential evolution algorithm for multimodal optimization,''
+in \emph{Evolutionary computation (cEC), 2013 iEEE congress on}, IEEE,
+pp. 79--86.
 
 \hypertarget{ref-fieldsendux5f2014}{}
-Fieldsend, Jonathan E. 2014. ``Running up those hills: Multi-modal
-search with the niching migratory multi-swarm optimiser.'' In
-\emph{Evolutionary computation (cEC), 2014 iEEE congress on}, IEEE, p.
-2593--2600.
+Fieldsend, J. E. 2014. ``Running up those hills: Multi-modal search with
+the niching migratory multi-swarm optimiser,'' in \emph{Evolutionary
+computation (cEC), 2014 iEEE congress on}, IEEE, pp. 2593--2600.
+
+\hypertarget{ref-liux5f2013}{}
+Li, X., Engelbrecht, A., and Epitropakis, M. G. 2013. ``Benchmark
+functions for cEC'2013 special session and competition on niching
+methods for multimodal function optimization,'' \emph{RMIT University,
+Evolutionary Computation and Machine Learning Group, Australia, Tech.
+Rep}.
 
 \hypertarget{ref-preussux5f2012}{}
-Preuss, Mike. 2012. ``Improved topological niching for real-valued
-global optimization.'' In \emph{Applications of evolutionary
-computation}, Springer, p. 386--395.
+Preuss, M. 2012. ``Improved topological niching for real-valued global
+optimization,'' in \emph{Applications of evolutionary computation},
+Springer, pp. 386--395.
 
 
 \end{document}
