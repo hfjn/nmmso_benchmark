@@ -13,24 +13,22 @@ It was the goal of this project to keep up high comparability with the original 
 
 # General Function #
 
-The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optimum. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
+The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optima. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
-Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. In order to do so, many early multi-modal optimisation algorithms needed defined parameters [TODO: quote needed]. 
+Multi-modal optimisation in general is not that different from well known and widely discussed single-objective optimisation, but in difference to it the goal of the algorithms in the multi-modal is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1]. To reach this goal many multi-modal optimization algorithms use strategies oriented on the biological world and utilize swarm intelligence to find optima defined by the search parameters [@yang_2009]. In order to do so, many early multi-modal optimisation algorithms needed defined parameters [@fieldsend_2014, p.1].
 
-**maybe it would be interesting to write a few more lines about the history of evolutionary algorithms here?**
-
-Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2012] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]
+Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2012] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes another way and uses the the swarm strategy in order to find which store their current [@fieldsend_2014]. 
 
 In order to do so NMMSO follow a strict structure which can be seen in the following pseudo-code
 
-	nmmso(max_evals, tol, n, max_inc, c_1, c_2, chi, w)
+	nmmso(max_evals, tol, n, max_inc, c_1, c_2, omega)
 		S: initialise_swarm(1)
 		evaluations := 1
 		while evaluations < max_evals:
 			while flagged_swarms(S) == true:
 				{S, m} := attempt_merge(S, n, tol)
 				evals := evals + m
-			S := increment(S, n, max_inc, c_1, c_2, chi, w)
+			S := increment(S, n, max_inc, c_1, c_2, omega)
 			evals := evals + min(|S|, max_inc)
 			{S, k} := attempt_separation(S, tol)
 			evals := evals + k
@@ -39,7 +37,7 @@ In order to do so NMMSO follow a strict structure which can be seen in the follo
 		{X*, Y*} := extract_gbest(S)
 		return X*,Y*
 
-This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, chi, w as parameters from the outside. In the original version those parameters are part of the program code.
+This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify the c_1, c_2, w as parameters from the outside. In the original version those parameters are part of the program code.
 
            standard value 	used value     
 --------   --------------	----------
@@ -51,8 +49,6 @@ c_2			2.0	            2.0
 omega		0.1       		0.1
 ---------  --------------   ----------
 
-Additionally
-**What else about the algorithm need to be explained that isn't explicitly part of the implementation?**
 
 ----
 

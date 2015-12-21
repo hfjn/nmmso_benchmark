@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-21 14:45:10 +0100" ModID="5FE44C45-38A8-4138-A60D-D2CECB50A6DA">
+<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-21 15:12:37 +0100" ModID="2BEA336F-B69C-4883-B6BA-ACF61FBA513E">
     <Binder>
         <BinderItem ID="0" UUID="BC25FB0C-FB20-4BF6-990C-801331C2F125" Type="DraftFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:28:01 +0100">
             <Title>Paper</Title>
@@ -18,14 +18,14 @@
                         <TextSelection>2202,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 08:29:50 +0100" Modified="2015-12-21 14:27:58 +0100">
+                <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 08:29:50 +0100" Modified="2015-12-21 15:10:37 +0100">
                     <Title>General Function</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>2703,0</TextSelection>
+                        <TextSelection>1998,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="28" UUID="B1E44F1C-1AD5-4B67-B9A6-11A0EFC327C8" Type="Folder" Created="2015-12-18 16:19:27 +0100" Modified="2015-12-21 11:41:16 +0100">
@@ -99,10 +99,10 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>9615,0</TextSelection>
+                        <TextSelection>9435,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="19" UUID="C9E39732-0842-4E1F-BA4B-369728A18E5F" Type="Text" Created="2015-11-30 08:49:23 +0100" Modified="2015-12-15 16:08:03 +0100">
+                <BinderItem ID="19" UUID="C9E39732-0842-4E1F-BA4B-369728A18E5F" Type="Text" Created="2015-11-30 08:49:23 +0100" Modified="2015-12-21 15:12:37 +0100">
                     <Title>Conclusion</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -250,7 +250,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2015-11-30 08:26:41 +0100" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-        <PreviousSession Words="1003" Characters="6018" Date="2015-12-21 10:25:21 +0100"></PreviousSession>
+        <PreviousSession Words="994" Characters="5983" Date="2015-12-21 10:25:21 +0100"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
