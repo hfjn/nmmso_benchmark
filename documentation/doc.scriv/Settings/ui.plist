@@ -951,9 +951,15 @@
 		</array>
 	</dict>
 	<key>supportingDocumentEditor.scrollRect</key>
+<<<<<<< HEAD
 	<string>{{0, 0}, {595, 841.88977}}</string>
 	<key>supportingDocumentEditor.selectedRanges</key>
 	<string>{250, 0}</string>
+=======
+	<string>{{0, 0}, {621, 304}}</string>
+	<key>supportingDocumentEditor.selectedItemIDs</key>
+	<array/>
+>>>>>>> origin/master
 	<key>supportingDocumentEditor.textEditorState</key>
 	<dict>
 		<key>hasMultiplePages</key>

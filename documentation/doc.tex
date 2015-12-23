@@ -150,59 +150,59 @@ The starting point of the project was the paper provided by Dr.~Jonathen
 E. Fieldsend (Fieldsend 2014) on the Niching Migratory Multi-Swarm
 Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which
 relies heavily on multiple swarms which are generated on the landscape
-of an function in order to find the global optimum. It is build around
+of an function in order to find the global optima. It is build around
 three main pillars: (1) dynamic in the numbers of dimensions, (2)
 self-adaptive without any special preparation and (3) exploitative local
-search to quickly find peak estimates (Fieldsend 2014, 1).
+search to quickly find peak estimates (Fieldsend 2014, p. 1).
 
 Multi-modal optimisation in general is not that different from well
 known and widely discussed single-objective optimisation, but in
 difference to it the goal of the algorithms in the multi-modal is not to
 find just one single optimising point but all possible points (Fieldsend
-2014, 1). In order to do so, many early multi-modal optimisation
-algorithms needed defined parameters {[}TODO: quote needed{]}.
-
-\textbf{maybe it would be interesting to write a few more lines about
-the history of evolutionary algorithms here?}
+2014, p. 1). To reach this goal many multi-modal optimization algorithms
+use strategies oriented on the biological world and utilize swarm
+intelligence to find optima defined by the search parameters (Yang
+2009). In order to do so, many early multi-modal optimisation algorithms
+needed defined parameters (Fieldsend 2014, p. 1).
 
 Newer algorithms fall in the field of self-tuning and try to use
 different mathematical paradigms like nearest-best clustering with
 covariance matrices (Preuss 2012) and strategies like storing the so far
 best found global optima estimators to provide them as parameters for
-new optimisation runs (Epitropakis, Li, and Burke 2013). Contradictory
-to that NMMSO goes another way and uses the the swarm strategy in order
-to find which store their current (Fieldsend 2014)
+new optimisation runs (Epitropakis et al. 2013). Contradictory to that
+NMMSO goes another way and uses the the swarm strategy in order to find
+which store their current (Fieldsend 2014).
 
 In order to do so NMMSO follow a strict structure which can be seen in
 the following pseudo-code
 
 \begin{verbatim}
-nmmso(max_evals, tol, n, max_inc, c_1, c_2, chi, w)
+nmmso(max_evals, tol, n, max_inc, c_1, c_2, omega)
     S: initialise_swarm(1)
     evaluations := 1
     while evaluations < max_evals:
         while flagged_swarms(S) == true:
             {S, m} := attempt_merge(S, n, tol)
             evals := evals + m
-        S := increment(S, n, max_inc, c_1, c_2, chi, w)
+        S := increment(S, n, max_inc, c_1, c_2, omega)
         evals := evals + min(|S|, max_inc)
         {S, k} := attempt_separation(S, tol)
         evals := evals + k
         S := add_new_swarm(S)
         evals := evals + 1
-    {X*, Y*} := extract_gebsest(S)
+    {X*, Y*} := extract_gbest(S)
     return X*,Y*
 \end{verbatim}
 
 This structure wasn't modified during the reimplementation of NMMSO to
 keep comparability and the possibility to fix bugs at a high level. The
 only newly introduced setting was the possibility to modify the c\_1,
-c\_2, chi, w as parameters from the outside. In the original version
-those parameters are part of the program code.
+c\_2, w as parameters from the outside. In the original version those
+parameters are part of the program code.
 
-\begin{longtable}[c]{@{}cll@{}}
+\begin{longtable}[c]{@{}lll@{}}
 \toprule
-. & standard value & used value\tabularnewline
+& standard value & used value\tabularnewline
 \midrule
 \endhead
 evaluations & 0 & 0\tabularnewline
@@ -214,12 +214,9 @@ omega & 0.1 & 0.1\tabularnewline
 \bottomrule
 \end{longtable}
 
-\textbf{What else about the algorithm need to be explained that isn't
-explicitly part of the implementation?}
-
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
-\section{CEC Algrithms}\label{cec-algrithms}
+\section{CEC Algorithms}\label{cec-algorithms}
 
 \subsection{CEC}\label{cec}
 
@@ -234,17 +231,17 @@ submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here,
 Dr.~Fieldsend was provided with some multimodal benchmark test functions
 with different dimension sizes and characteristics, for evaluating
 niching algorithms developed by Dr.~Xiaodong Li, Dr.~Andries Engelbrecht
-and Dr.~Michael G. Epitropakis (Epitropakis, Li, and Burke 2013). They
-state that even if several niching methods have been around for many
-years, further advances in this area have been hindered by several
-obstacles; most of the studies focus on very low dimensional multimodal
-problems (2 or 3 dimensions) making this more complicated to asses
-theses methods' scalability to high dimensions with better performance.
-The benchmark tool includes 20 test functions (in some cases the same
-function but with different dimension sizes), which includes 10 simple,
-well-known and widely used benchmark functions, based on recent studies,
-and more complex functions following the paradigm of composition
-functions. In the following section, they will be briefly explained:
+and Dr.~Michael G. Epitropakis (Epitropakis et al. 2013). They state
+that even if several niching methods have been around for many years,
+further advances in this area have been hindered by several obstacles;
+most of the studies focus on very low dimensional multimodal problems (2
+or 3 dimensions) making this more complicated to asses theses methods'
+scalability to high dimensions with better performance. The benchmark
+tool includes 20 test functions (in some cases the same function but
+with different dimension sizes), which includes 10 simple, well-known
+and widely used benchmark functions, based on recent studies, and more
+complex functions following the paradigm of composition functions. In
+the following section, they will be briefly explained:
 
 \begin{verbatim}
 •   F1: Five-Uneven-Peak Trap (1D)
@@ -274,7 +271,7 @@ function). F9 and F10 are separable, and non-symmetric, while F11 and
 F12 are non-separable, non-symmetric complex multimodal functions. The
 number of global optima in all of the composition functions is
 independent from the number of dimensions, therefore can be controlled
-by the user (Epitropakis, Li, and Burke 2013).
+by the user (Epitropakis et al. 2013).
 
 \textbf{Maybe write each math equation or the R code}
 
@@ -327,18 +324,27 @@ test
 
 \section{Benchmark and Comparison}\label{benchmark-and-comparison}
 
-To compare the nmmsoR with the original NMMSO the CEC test cases were
-used to run the same benchmarks as in the original submission (Fieldsend
+To compare nmmso.R with the original NMMSO the CEC test cases were used
+to run the same benchmarks as in the original submission (Fieldsend
 2014). There 4 different Ratios were used to measure the performance of
 certain algorithms. Three of those measures (Peak Ratio, Success Ratio
-and Convergence Speed) have been introduced in (Epitropakis, Li, and
-Burke 2013, 6--7) to create a common point of comparison. The fourth
-ratio is special for the nmmso algorithm since it tracks the number of
-swarms over the iterations of the algorithm. Nmmso.R uses the same
-measures to reach the highest comparability possible.
+and Convergence Speed) have been introduced in (Epitropakis et al. 2013,
+pp. 6--7) to create a common point of comparison. The fourth ratio is
+special for the nmmso algorithm since it tracks the number of swarms
+over the iterations of the algorithm. Nmmso.R uses the same measures to
+reach the highest comparability possible.
+
+The first measure used is the Success Ratio (SR). The Success Ratio is
+defined as the percentage of Successful runs (runs that found all global
+optima) over all runs (Li et al. 2013, p. 7). As for the other ratios
+this measure was taken over several independent runs and collectively
+evaluated. The taken measures for the Success Ratio can be found in
+Table 2. \[\frac{successful\ runs}{NR} = SR \] Here \(NR\) denotes the
+Number of runs done to reach this measure. \newline
 
 \begin{longtable}[c]{@{}crrrrrr@{}}
-\caption{Success Ratio over given runs}\tabularnewline
+\caption{Success Ratio over given runs (Measure of share of runs which
+found all global optima)}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
@@ -406,7 +412,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
@@ -427,7 +433,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-30
+35
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
@@ -448,7 +454,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
@@ -469,7 +475,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
@@ -490,7 +496,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
@@ -511,7 +517,7 @@ runs
 0
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
@@ -532,7 +538,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
@@ -547,34 +553,34 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-0.91
+0.94
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-0.73
+0.71
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-11
+17
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-1
+0.95
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-1
+0.95
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-1
+0.95
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-1
+0.95
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-1
+0.95
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-15
+20
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
@@ -595,7 +601,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
@@ -616,7 +622,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+33
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
@@ -637,7 +643,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-28
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
@@ -658,7 +664,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-28
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
@@ -679,28 +685,28 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-27
+33
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-1
+0.96
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-1
+0.96
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-1
+0.96
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-1
+0.96
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-1
+0.96
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-20
+26
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
@@ -721,13 +727,13 @@ runs
 0
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-8
+13
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.14
+0.17
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 0
@@ -742,28 +748,28 @@ runs
 0
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-7
+12
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.4
+0.38
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-0.4
+0.38
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-0.4
+0.38
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-0.4
+0.31
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-0.4
+0.31
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-10
+16
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
@@ -784,7 +790,7 @@ runs
 0
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-7
+13
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
@@ -805,13 +811,26 @@ runs
 0
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-6
+12
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
+The second measure introduced by the CEC committee and also used by
+Dr.~Fieldsend is the Convergence Rate. The Convergence Rate (CR)
+measures the needed evaluations per Accuracy and Function to find all
+global optima (Li et al. 2013, p. 7). This measure takes the mean of
+evaluations over all runs. The results of this measure can be found in
+Table 3.
+
+\[\frac{\sum\nolimits_{n=1}^{NR} evals_{n}}{NR} = CR\] In this measure
+\(evals\) denotes the number of evaluations done. \newline
+
 \begin{longtable}[c]{@{}crrrrrr@{}}
-\caption{Convergence Rates over given runs}\tabularnewline
+\caption{Convergence Rates over given runs (Mean of evaluations needed
+to find all global optima, if all optima have never been found the
+maximum allowed evaluations for that function were
+taken.)}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
@@ -864,22 +883,22 @@ runs
 \textbf{F1}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-641
+622
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-839
+815
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-1050
+1018
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-1228
+1205
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-1449
+1441
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
@@ -888,292 +907,292 @@ runs
 179
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-256
+269
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-394
+397
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-534
+533
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-636
+640
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-30
+35
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-38
+35
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-182
+170
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-277
+273
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-386
+390
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-511
+513
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-501
+506
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-736
+735
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-969
+961
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-1173
+1201
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-1434
+1455
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-84
+82
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-200
+194
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-322
+321
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-503
+522
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-786
+788
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-19548
+19519
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-24640
+24388
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-30646
+30499
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-42534
+42404
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 200001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-8368
+8564
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-9059
+9211
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-10272
+10604
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-12212
+12328
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-13613
+14646
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-176727
+194031
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-215977
+231763
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-253443
+271058
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-307968
+320284
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-341918
+354533
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-11
+17
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-175729
+185670
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-179787
+189360
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-192204
+204110
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-203835
+219559
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-213030
+228586
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-15
+20
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-899
+887
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-1347
+1326
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-1727
+1728
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-2255
+2254
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-2773
+2758
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-3517
+3692
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-5516
+5747
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-7099
+7347
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-8069
+8549
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-8741
+9164
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+33
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-17330
+17321
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-25136
+25823
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-37468
+38464
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-44542
+44660
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-50752
+51792
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-28
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-11555
+11338
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-16033
+15676
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-20058
+19107
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-23771
+23152
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-27500
+26802
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-28
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-29504
+28776
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-35431
+34298
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-50219
+48738
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-58919
+59775
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-68803
+68576
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-27
+33
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-97539
+107225
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-120679
+129151
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-145910
+149266
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-175327
+172770
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-185881
+189144
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-20
+26
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
@@ -1194,13 +1213,13 @@ runs
 400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-8
+13
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-362540
+377470
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 400001
@@ -1215,28 +1234,28 @@ runs
 400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-7
+12
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-288605
+299577
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-288631
+302391
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-288822
+304385
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-288905
+309050
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-289382
+309450
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-10
+16
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
@@ -1257,7 +1276,7 @@ runs
 400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-7
+13
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
@@ -1278,13 +1297,22 @@ runs
 400001
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-6
+12
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
+The third measure is the Peak Ratio (PR). It measures the share of found
+global optima over all runs (Li et al. 2013, p. 7). The results of this
+evaluation can be found in Table 4.
+
+\[\frac{\sum\nolimits_{n=1}^{NR} NOF_{n}}{NKO * NR} = PR\] \newline
+In this measure \(NOF\) denotes the number of found optima per run and
+\(NKO\) the number of known optima for the function. \newline
+
 \begin{longtable}[c]{@{}crrrrrr@{}}
-\caption{Mean Peak Ratio over given runs}\tabularnewline
+\caption{Peak Ratio over given runs (Share of found global optima over
+all runs)}\tabularnewline
 \toprule
 \begin{minipage}[b]{0.11\columnwidth}\centering\strut
 ~
@@ -1352,7 +1380,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F2}
@@ -1373,7 +1401,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-30
+35
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F3}
@@ -1394,7 +1422,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F4}
@@ -1415,7 +1443,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-32
+37
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F5}
@@ -1436,7 +1464,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F6}
@@ -1457,7 +1485,7 @@ runs
 0
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F7}
@@ -1478,7 +1506,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F8}
@@ -1499,7 +1527,7 @@ runs
 0.98
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-11
+17
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F9}
@@ -1520,7 +1548,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-15
+20
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F10}
@@ -1541,7 +1569,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F11}
@@ -1562,7 +1590,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-29
+33
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F12}
@@ -1583,7 +1611,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-28
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F13}
@@ -1604,7 +1632,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-28
+34
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F14}
@@ -1625,7 +1653,7 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-27
+33
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F15}
@@ -1646,13 +1674,13 @@ runs
 1
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-20
+26
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F16}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.02
+0.01
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
 0
@@ -1667,40 +1695,40 @@ runs
 0
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-8
+13
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F17}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.8
+0.77
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-0.79
+0.74
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-0.79
+0.72
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-0.79
-\strut\end{minipage} &
-\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
 0.71
 \strut\end{minipage} &
+\begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
+0.67
+\strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-7
+12
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F18}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.82
+0.83
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-0.82
+0.83
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-0.82
+0.83
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
 0.8
@@ -1709,63 +1737,124 @@ runs
 0.8
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-10
+16
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F19}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.36
+0.44
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-0.36
+0.44
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-0.33
+0.42
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-0.33
+0.42
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-0.31
+0.4
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-7
+13
 \strut\end{minipage}\tabularnewline
 \begin{minipage}[t]{0.11\columnwidth}\centering\strut
 \textbf{F20}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.21
+0.15
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-0.19
+0.14
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-0.19
+0.14
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-0.19
+0.14
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-0.17
+0.12
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-6
+12
 \strut\end{minipage}\tabularnewline
 \bottomrule
 \end{longtable}
 
+As a fourth measure, which wasn't introduced by the CEC committee, but
+used in the original nmmso implementation (Fieldsend 2014) the Number of
+Swarms was chosen. Since this is a continuous measure and therefore no
+calculation is needed this measure is pictured as graphs. The graphs can
+be found in Figure 1. The show the development of \(number of swarms\)
+kept by nmmso.R over all iterations. Important to notice here is that
+\(iterations\) is different from the \(evaluations\) referenced in the
+other measures. Iterations are calls to start single runs of nmmso.R and
+is therefore different from the evaluations taken within the program.
+
+Additionally a fifth measure was introduced which denotes the runtime of
+nmmso.R for the single functions. These times were taken on the ZIVHPC a
+scientific High Perfomance Computing Cluster by Westfälische
+Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential
+algorithm the runtimes for single runs will comparable on common
+computers. The ZIVHPC was only used to parallelize the single runs.
+
 \begin{figure}[htbp]
 \centering
-\includegraphics{figure/trend\%20curve\%20of\%20kept\%20swarms\%20over\%20all\%2020\%20functions.-1.pdf}
-\caption{plot of chunk trend curve of kept swarms over all 20
-functions.}
+\includegraphics{figure/trend\%20curve\%20of\%20kept\%20swarms\%20over\%20all\%2020\%20functions.\%20The\%20red\%20curves\%20show\%20the\%20number\%20of\%20swarms\%20kept\%20for\%20each\%20single\%20run.\%20The\%20black\%20line\%20shows\%20the\%20mean\%20of\%20kept\%20swarms\%20over\%20these\%20runs.-1.pdf}
+\caption{plot of chunk trend curve of kept swarms over all 20 functions.
+The red curves show the number of swarms kept for each single run. The
+black line shows the mean of kept swarms over these runs.}
 \end{figure}
 
-\section{Discussion}\label{discussion}
+When comparing those measures with the ones given in the original paper
+(Fieldsend 2014) it can be seen that the reimplementation nmmso.R is an
+overall good resemblance of the original algorithm. The three CEC
+measures are close to the original taken measures and the trend curves
+for the number of kept swarms have similar trends.
 
-test
+The biggest differences between the benchmarking results of the two
+implementations can be seen in the general results of function 14, 15,
+16 and 18, as well as in the number of created swarms for the
+n-dimensional functions:
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\item
+  Function 14 and 15 have a \(Success\ Ratio\) of \(1\) aswell as as
+  \(Peak\) \(Ratio\) of one \(1\) for all accuracy levels. Additionally
+  nmmso.R sometimes found all global optima for Function 18. In
+  contradiction to that the evaluation of all thre function almost never
+  result in the finding of global optima in the evaluation of the
+  original implementation. Only at the lowest accuracy the original
+  implementation is able to find all global optima for Function 14
+  (Fieldsend 2014, p. 16). It is hard to say if this difference is equal
+  to an error in the implementation of nmmso.R or if an error in the
+  original implementation was fixed. Also this could be a difference in
+  the reimplementation of the CEC Benchmarking Tool. Nevertheless, this
+  is interesting point of discussion and worth evaluating.
+\item
+  nmmso.R performs noticeable worse for Function 16 than the original
+  function. While nmmso.R has a \(Peak\) \(Ratio\) of \(0.01\) for an
+  accuracy of \(0.1\) and \(0\) for all others, the original
+  implementation reaches a \(Peak\) \(Ratio\) of around \(0.6\) for all
+  accuracies. This might be to an implementation error in the CEC
+  Benchmarking Tool. Since it is so significantly worse that it is
+  unlikely that this difference would only occur in one test function.
+\item
+  Almost all algorithm runs on high-dimensional functions (F12-F20)
+  result in a high number of swarms, while all other results regarding
+  this functions are comparable to the original results. This difference
+  becomes very clear in the case of Functions 17-20. In the paper
+  addressing the original paper the x-axis rank from 0-40,000
+  iterations, while for the reimplementation limit of 4,000 for Function
+  17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for
+  Function 20 is enough to show all data sets. This is connected to the
+  creation of much more swarms, which leads to an earlier depletion of
+  the maximum allowed number of evaluations.
+\end{enumerate}
 
 \section{Conclusion}\label{conclusion}
 
@@ -1773,25 +1862,42 @@ test
 
 \section{Acknowledgements}\label{acknowledgements}
 
-Thanks to everybody! \newpage
+We want to thank Dr.~Jonathan Fieldsend for his continuous help via mail
+during this seminar. Also the committee of the CEC was always available
+for questions and concerns during our work. Furthermore a special thanks
+goes to all employees of the chair for `Information Systems and
+Statistics' including Dr.~Mike Preuß, Jakob Bossek and Pascal Kerschke
+who were available for any questions regarding the implementation and
+this report at all times. \newpage
 
 \hypertarget{refs}{}
 \hypertarget{ref-epitropakisux5f2013}{}
-Epitropakis, Michael G, Xiaodong Li, and Edmund K Burke. 2013. ``A
-dynamic archive niching differential evolution algorithm for multimodal
-optimization.'' In \emph{Evolutionary computation (cEC), 2013 iEEE
-congress on}, IEEE, p. 79--86.
+Epitropakis, M. G., Li, X., and Burke, E. K. 2013. ``A dynamic archive
+niching differential evolution algorithm for multimodal optimization,''
+in \emph{Evolutionary computation (cEC), 2013 iEEE congress on}, IEEE,
+pp. 79--86.
 
 \hypertarget{ref-fieldsendux5f2014}{}
-Fieldsend, Jonathan E. 2014. ``Running up those hills: Multi-modal
-search with the niching migratory multi-swarm optimiser.'' In
-\emph{Evolutionary computation (cEC), 2014 iEEE congress on}, IEEE, p.
-2593--2600.
+Fieldsend, J. E. 2014. ``Running up those hills: Multi-modal search with
+the niching migratory multi-swarm optimiser,'' in \emph{Evolutionary
+computation (cEC), 2014 iEEE congress on}, IEEE, pp. 2593--2600.
+
+\hypertarget{ref-liux5f2013}{}
+Li, X., Engelbrecht, A., and Epitropakis, M. G. 2013. ``Benchmark
+functions for cEC'2013 special session and competition on niching
+methods for multimodal function optimization,'' \emph{RMIT University,
+Evolutionary Computation and Machine Learning Group, Australia, Tech.
+Rep}.
 
 \hypertarget{ref-preussux5f2012}{}
-Preuss, Mike. 2012. ``Improved topological niching for real-valued
-global optimization.'' In \emph{Applications of evolutionary
-computation}, Springer, p. 386--395.
+Preuss, M. 2012. ``Improved topological niching for real-valued global
+optimization,'' in \emph{Applications of evolutionary computation},
+Springer, pp. 386--395.
+
+\hypertarget{ref-yangux5f2009}{}
+Yang, X.-S. 2009. ``Firefly algorithms for multimodal optimization,'' in
+\emph{Stochastic algorithms: Foundations and applications}, Springer,
+pp. 169--178.
 
 
 \end{document}

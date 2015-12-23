@@ -9,6 +9,7 @@
         </Document>
         <Document ID="15">
             <Title>Pitfalls and Problems</Title>
+<<<<<<< HEAD
             <Text>In the beginning of the project, after translating each function into the R programming language and in order to start testing each one of them, some data was missing. The algorithm runs with some parameters that had to be given by the CEC so it was necessary to contact the organisation and ask for the files including the benchmarking tool. Also, Dr. Fieldsend was contacted in order to have a better understanding of the general structure of his algorithm. Once the data was completed, the test phase started, trying to get the same results as the original one, but this was not possible at first instance because the output was not generalised and most of the data generated inside the algorithm were random values to be evaluated.
 
 During the implementation of the NMMSO.R algorithm, some problems regarding the language structure came up immediately. After some first test cases, it was discovered how different Matlab and R work with matrices and vectors. In the case of Matlab, every time a value wanted to be added for an inexistent index, this was created automatically and added to the data structure instead of throwing the common “index out of bounds” error. First, it was necessary to compare all these possible behaviours in Matlab so a general way to attack them could be implemented and after few tries, two function-files were created. “add_col.R”, as its name says, is in charge to add a new column into a structure, it is just necessary to specify the original structure where it will be added to, the index and the new object containing the information to add. This function considers the cases if the new object is a vector, a matrix or just a single value, so the original matrix could be modified and returned as desired. “add_row.R”, on the other hand, simply imitates the behaviour of “add_col” but as a transpose matrix in order to add the rows.
@@ -18,6 +19,9 @@ Once the data was completed in order to run the algorithm and get at least a sim
 After solving the previous issues and starting running the whole algorithm, a memory problem came up. Mainly because of the continuous problem between R and Matlab, this was caused because one matrix, originally containing only integer values, was added a float value in a certain point within the process. R automatically cloned the integer matrix and then creating it with a float type in order to continue without errors for every iteration, in the end having an unnecessary number of matrices allocated in memory and making impossible the computation of the algorithm with a size of 7.9 GB during the iteration 700 out of 50,000 (depending the function to be evaluated in CEC benchmark suite, the total number of iterations would vary). Even if this issue was solved only by changing the original matrix to contain float values since the beginning, it caused several problems and time consumption during the testing phase.
 
 Finally, after completing and fixing the R implementation, and  trying to test it with the real number of iterations for each of the twenty CEC benchmarking functions, a bigger computation power was needed. Having only students’ computers for development, it was necessary a bigger source of computation power and with the help of the R library “BatchJobs” together with the Palma Cluster, property of the Westfälische Wilhelms-Universität located in Münster, Germany, it was possible to run the algorithm in different batch jobs within the cluster and just printing output files in order to analyse the data in the end.</Text>
+=======
+            <Text>test</Text>
+>>>>>>> origin/master
         </Document>
         <Document ID="21">
             <Title>cec2013-niching-benchmark-tech-report</Title>
@@ -1644,6 +1648,7 @@ https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation</Text>
         </Document>
         <Document ID="29">
             <Title>Implementation and Pitfalls</Title>
+<<<<<<< HEAD
             <Text>#Implementation
 
 
@@ -1673,6 +1678,9 @@ f_ 17  : f(1...1) =  -1238.211
 f_ 18  : f(1...1) =  -1683.184 
 f_ 19  : f(1...1) =  -1342.819 
 f_ 20  : f(1...1) =  -1337.852 </Text>
+=======
+            <Text>**write also about the count_goptima and so on**</Text>
+>>>>>>> origin/master
         </Document>
         <Document ID="14">
             <Title>Structure of the project</Title>
