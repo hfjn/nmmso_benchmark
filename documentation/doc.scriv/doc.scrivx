@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="Daniels-MacBook-Pro" Modified="2015-12-23 07:36:35 +0100" ModID="E40C7D01-090D-415F-9741-91030E427FBF">
-=======
-<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-21 15:12:37 +0100" ModID="2BEA336F-B69C-4883-B6BA-ACF61FBA513E">
->>>>>>> origin/master
+<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2015-12-28 17:30:56 +0100" ModID="F684BB50-E1E5-4A85-862E-A12B1FA3D5AF">
     <Binder>
         <BinderItem ID="0" UUID="BC25FB0C-FB20-4BF6-990C-801331C2F125" Type="DraftFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:28:01 +0100">
             <Title>Paper</Title>
@@ -12,27 +8,27 @@
                 <IconFileName>Book (Blue Book).tiff</IconFileName>
             </MetaData>
             <Children>
-                <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 08:49:31 +0100" Modified="2015-12-19 11:42:35 +0100">
+                <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 08:49:31 +0100" Modified="2015-12-28 17:16:09 +0100">
                     <Title>Introduction</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>2202,0</TextSelection>
+                        <TextSelection>1870,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 08:29:50 +0100" Modified="2015-12-21 15:10:37 +0100">
+                <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 08:29:50 +0100" Modified="2015-12-28 17:19:15 +0100">
                     <Title>General Function</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>1998,0</TextSelection>
+                        <TextSelection>2317,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="28" UUID="B1E44F1C-1AD5-4B67-B9A6-11A0EFC327C8" Type="Folder" Created="2015-12-18 16:19:27 +0100" Modified="2015-12-21 11:41:16 +0100">
+                <BinderItem ID="28" UUID="B1E44F1C-1AD5-4B67-B9A6-11A0EFC327C8" Type="Folder" Created="2015-12-18 16:19:27 +0100" Modified="2015-12-28 17:19:40 +0100">
                     <Title>CEC Algorithms</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -42,24 +38,24 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                     <Children>
-                        <BinderItem ID="13" UUID="A73FBB02-F78F-42F1-A3FF-412C9EFB7705" Type="Text" Created="2015-11-30 08:30:01 +0100" Modified="2015-12-21 23:57:39 +0100">
+                        <BinderItem ID="13" UUID="A73FBB02-F78F-42F1-A3FF-412C9EFB7705" Type="Text" Created="2015-11-30 08:30:01 +0100" Modified="2015-12-28 17:21:04 +0100">
                             <Title>CEC</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>2768,0</TextSelection>
+                                <TextSelection>2856,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem ID="29" UUID="65D0B888-D2AD-4D63-B2D1-1A3502EBAA1B" Type="Text" Created="2015-12-18 16:20:00 +0100" Modified="2015-12-22 00:20:09 +0100">
+                        <BinderItem ID="29" UUID="65D0B888-D2AD-4D63-B2D1-1A3502EBAA1B" Type="Text" Created="2015-12-18 16:20:00 +0100" Modified="2015-12-28 17:21:32 +0100">
                             <Title>Implementation and Pitfalls</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>250,0</TextSelection>
+                                <TextSelection>689,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
@@ -74,49 +70,49 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                     <Children>
-                        <BinderItem ID="14" UUID="8867A109-D2AB-4D4C-8880-C9EE4408A18E" Type="Text" Created="2015-11-30 08:30:13 +0100" Modified="2015-12-15 16:03:25 +0100">
+                        <BinderItem ID="14" UUID="8867A109-D2AB-4D4C-8880-C9EE4408A18E" Type="Text" Created="2015-11-30 08:30:13 +0100" Modified="2015-12-28 17:22:36 +0100">
                             <Title>Structure of the project</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>1792,0</TextSelection>
+                                <TextSelection>1090,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem ID="15" UUID="B9005DD4-E8A0-4C00-A160-7B3B4FF3767F" Type="Text" Created="2015-11-30 08:30:20 +0100" Modified="2015-12-21 23:41:26 +0100">
+                        <BinderItem ID="15" UUID="B9005DD4-E8A0-4C00-A160-7B3B4FF3767F" Type="Text" Created="2015-11-30 08:30:20 +0100" Modified="2015-12-28 17:25:37 +0100">
                             <Title>Pitfalls and Problems</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>2639,0</TextSelection>
+                                <TextSelection>3594,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
                 </BinderItem>
-                <BinderItem ID="16" UUID="205AC671-0528-4B9E-80FD-14FDAFD490D6" Type="Text" Created="2015-11-30 08:30:31 +0100" Modified="2015-12-21 14:44:52 +0100">
+                <BinderItem ID="16" UUID="205AC671-0528-4B9E-80FD-14FDAFD490D6" Type="Text" Created="2015-11-30 08:30:31 +0100" Modified="2015-12-28 17:29:17 +0100">
                     <Title>Benchmark and Comparison</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>9435,0</TextSelection>
+                        <TextSelection>9806,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="19" UUID="C9E39732-0842-4E1F-BA4B-369728A18E5F" Type="Text" Created="2015-11-30 08:49:23 +0100" Modified="2015-12-21 15:12:37 +0100">
+                <BinderItem ID="19" UUID="C9E39732-0842-4E1F-BA4B-369728A18E5F" Type="Text" Created="2015-11-30 08:49:23 +0100" Modified="2015-12-15 16:08:03 +0100">
                     <Title>Conclusion</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>5,0</TextSelection>
+                        <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="24" UUID="74B3CBBC-5417-47A4-BD0C-045C8CEA37CC" Type="Text" Created="2015-12-11 13:03:09 +0100" Modified="2015-12-21 13:36:21 +0100">
+                <BinderItem ID="24" UUID="74B3CBBC-5417-47A4-BD0C-045C8CEA37CC" Type="Text" Created="2015-12-11 13:03:09 +0100" Modified="2015-12-28 17:30:44 +0100">
                     <Title>Acknowledgements</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -124,7 +120,7 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>448,0</TextSelection>
+                        <TextSelection>29,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -168,17 +164,17 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <MediaSettings>
-                        <CurrentPDFPage>5</CurrentPDFPage>
+                        <CurrentPDFPage>1</CurrentPDFPage>
                     </MediaSettings>
                 </BinderItem>
-                <BinderItem ID="27" UUID="305FA7F8-A4CD-4C4B-A6B1-8F3FFABFC0CC" Type="Text" Created="2015-12-16 16:17:55 +0100" Modified="2015-12-21 11:11:19 +0100">
+                <BinderItem ID="27" UUID="305FA7F8-A4CD-4C4B-A6B1-8F3FFABFC0CC" Type="Text" Created="2015-12-16 16:17:55 +0100" Modified="2015-12-19 12:18:53 +0100">
                     <Title>Todo</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>636,0</TextSelection>
+                        <TextSelection>486,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -254,13 +250,7 @@
     <ProjectTargets Notify="No">
         <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2015-11-30 08:26:41 +0100" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
-<<<<<<< HEAD
-        <PreviousSession Words="0" Characters="0" Date="2015-12-23 07:36:32 +0100"></PreviousSession>
-    </ProjectTargets>
-    <PrintSettings PaperSize="595.275574,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
-=======
-        <PreviousSession Words="994" Characters="5983" Date="2015-12-21 10:25:21 +0100"></PreviousSession>
+        <PreviousSession Words="0" Characters="22" Date="2015-12-28 17:12:23 +0100"></PreviousSession>
     </ProjectTargets>
     <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
->>>>>>> origin/master
 </ScrivenerProject>

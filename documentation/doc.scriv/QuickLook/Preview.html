@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 	body {background-color: #bac0c7}
-    p.binderItem {margin: 10.0px 0.0px 0.0px 05.0px; font-family:Cochin, Times, Courier, Arial, serif; font-size:14.0px;}
+    p.binderItem {margin: 10.0px 0.0px 0.0px 05.0px; font-family:Open Sans, Cochin, Times, Courier, Arial, serif; font-size:14.0px;}
     .page {border: 1px solid #727272; background: #fff}
     hr {
       border-top: 1px dashed #000;
@@ -28,10 +28,13 @@
 
 <ul>
 <li>
-<p class="binderItem"><strong>Introduction</strong><br/>In the recent years R has become the statistical programming language of choice for many scientist. The strength of R of being a domain specific language has also become one of its weaknesses. Since new research findings in statistical computing are split up over several languages like R, Matlab or SciPy[^1] it often becomes difficult to compare new methods with established ones. Since it is also hard to interface those languages due to different architectures, data storage mechanisms there is o...</p>
+<p class="binderItem"><strong>Introduction</strong><br/>In the recent years, R has become the statistical programming language of choice for many scientists. The strength of R, being a domain specific language, has also become one of its weaknesses. Since new research findings in statistical computing are split up over several languages like R, Matlab or SciPy[^1], it often becomes difficult to compare new methods with established ones. Because it is also hard to interface those languages due to different architectures and data storage mechanisms the...</p>
 </li>
 <li>
-<p class="binderItem"><strong>General Function</strong><br/>The starting point of the project was the paper provided by Dr. Jonathen E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms which are generated on the landscape of an function in order to find the global optima. It is build around three main pillars: (1) dynamic in the numbers of dimensions, (2) self-adaptive without any special preparation and (3) exploitative local search to q...</p>
+<p class="binderItem"><strong>General Function</strong><br/>The starting point of the project was the paper provided by Dr. Jonathan E. Fieldsend [@fieldsend_2014] on the Niching Migratory Multi-Swarm Optimiser (NMMSO) algorithm. NMMSO is a multi-modal optimiser which relies heavily on multiple swarms that are generated on the landscape of a function in order to find the global optima. It is build around three main pillars: <br/>
+(1) dynamic in the numbers of dimensions, <br/>
+(2) self-adaptive without any special preparation and <br/>
+(3) exploitative local search to ...</p>
 </li>
 <li>
 <p class="binderItem"><strong>CEC Algorithms</strong></p>
@@ -39,29 +42,12 @@
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>CEC</strong><br/>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognised conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society, and covers most of the subtopics of the EC.<br/>
+<p class="binderItem"><strong>CEC</strong><br/>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognized conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society and covers most of the subtopics of the EC.<br/>
 <br/>
-In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2013 held in Cancun, Mexico. Here, Dr. Fieldsend was provided with some multimodal benc...</p>
+In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2015 held in Sendai, Japan. Here, Dr. Fieldsend was provided with some multimodal benchm...</p>
 </li>
 <li>
-<p class="binderItem"><strong>Implementation and Pitfalls</strong><br/>#Implementation<br/>
-<br/>
-<br/>
-<br/>
-#Pitfalls<br/>
-<br/>
-When the decision of re-writing the whole benchmark tool in the R programming language was taken, some issues came up regarding the way Matlab handles the matrices and vectors. After analysing the Matlab implementation, <br/>
-<br/>
-**Results in R**<br/>
-f_ 1  : f(1...1) =  120 <br/>
-f_ 2  : f(1...1) =  5.270904e-92 <br/>
-f_ 3  : f(1...1) =  0.02501472 <br/>
-f_ 4  : f(1...1) =  94 <br/>
-f_ 5  : f(1...1) =  -3.233333 <br/>
-f_ 6  : f(1...1) =  -3.180351 <br/>
-f_ 7  : f(1...1) =  0 <br/>
-f_ 8  : f(1...1) =  5.671692 <br/>
-f...</p>
+<p class="binderItem"><strong>Implementation and Pitfalls</strong><br/>During the developing time, an issue raised with the CEC benchmark tool. In order to compare the R implementation of the NMMSO algorithm with the original one, it was mandatory to use this tool to test each of its functions with the new algorithm and compare results. After several complications with the original test suite (these complications will be addressed in the pitfalls’ section), it was decided to recode each of the functions as an independent R package to avoid any further complication ...</p>
 </li>
 </ul>
 <hr/>
@@ -71,9 +57,9 @@ f...</p>
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>Structure of the project</strong><br/>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be addressed in the pitfalls’ section of this paper.<br/>
+<p class="binderItem"><strong>Structure of the project</strong><br/>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.<br/>
 <br/>
-Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has be said, that one of...</p>
+Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that ...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Pitfalls and Problems</strong><br/>In the beginning of the project, after translating each function into the R programming language and in order to start testing each one of them, some data was missing. The algorithm runs with some parameters that had to be given by the CEC so it was necessary to contact the organisation and ask for the files including the benchmarking tool. Also, Dr. Fieldsend was contacted in order to have a better understanding of the general structure of his algorithm. Once the data was completed, the test ph...</p>
@@ -88,7 +74,7 @@ To compare nmmso.R with the original NMMSO the CEC test cases were used to run t
 <p class="binderItem"><strong>Conclusion</strong><br/>test</p>
 </li>
 <li>
-<p class="binderItem"><strong>Acknowledgements</strong><br/>We want to thank Dr. Jonathan Fieldsend for his continuous help via mail during this seminar. Also the committee of the CEC was always available for questions and concerns during our work. Furthermore a special thanks goes to all employees of the chair for 'Information Systems and Statistics' including Dr. Mike Preuß, Jakob Bossek and Pascal Kerschke who were available for any questions regarding the implementation and this report at all times.<br/>
+<p class="binderItem"><strong>Acknowledgements</strong><br/>We want to thank Dr. Jonathan Fieldsend for his continuous help via mail during this seminar. Also, the committee of the CEC was always available for questions and concerns during our work. Furthermore, a special thanks go to all employees of the chair for 'Information Systems and Statistics' including Dr. Mike Preuß, Jakob Bossek and Pascal Kerschke who were available for any questions regarding the implementation and this report at all times.<br/>
 \newpage</p>
 </li>
 </ul>
