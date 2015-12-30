@@ -34,8 +34,6 @@ for(i in 1:20){
 # plot all single plots and arrange them in grid
 do.call("grid.arrange", c(plots, ncol = 4))
 
-
-
 # calculate Success Rate
 source("../R/cec_2015_problem_data.R")
 # calculate sr
@@ -100,5 +98,14 @@ pr <- rename(pr, c("V1" = "0.1", "V2" = "0.01", "V3" = "0.001", "V4" = "0.0001",
 rownames(pr) <- names
 set.caption('Mean Peak Ratio')
 pander(pr)
+
+times <- as.data.frame(matrix(0, nrow = 20, ncol = 2))
+for(i in 1:20){
+	filenames.times <- list.files(full.names = TRUE, path='.', pattern=paste("(^",i,")_.*\\time.txt$", sep=""))
+	if(length(filenames.output) != 0){
+		results <- lapply(filenames.output, read.table)
+		mean <- mean(results[3])		
+	}
+}
 
 
