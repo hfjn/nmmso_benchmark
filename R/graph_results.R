@@ -85,7 +85,7 @@ for(i in 1:20){
 		max <- lapply(results, function (x) sapply(x, max))
 		names(max) <- paste0('run',seq_along(max))
 		c_list <- ldply(max)
-		pr[i,] <-c(apply(c_list[,2:6], 2, function(x) mean(x)/nopt[i]), length(unique(c_list$.id)))
+		pr[i,] <-c(apply(c_list[,2:6], 2, function(x) sum(x)/(nopt[i]*length(x))), length(unique(c_list$.id)))
 	}
 }
 rownames(pr) = names
@@ -99,13 +99,21 @@ rownames(pr) <- names
 set.caption('Mean Peak Ratio')
 pander(pr)
 
+
+# added calculation for time consumption of single functions
+names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")
 times <- as.data.frame(matrix(0, nrow = 20, ncol = 2))
 for(i in 1:20){
-	filenames.times <- list.files(full.names = TRUE, path='.', pattern=paste("(^",i,")_.*\\time.txt$", sep=""))
-	if(length(filenames.output) != 0){
-		results <- lapply(filenames.output, read.table)
-		mean <- mean(results[3])		
+	filenames.times <- list.files(full.names = TRUE, path='.', pattern=paste("(^",i,")_.*\\_time.txt$", sep=""))
+	if(length(filenames.times) != 0){
+		results <- lapply(filenames.times, read.table)
+		time <- ldply(results)
+		mean <- mean(time$V3)
+		sd <- sd(time$V3)
+		times[i,] <- c(mean, sd)
 	}
 }
+rownames(times) = names
+times <- rename(times, c("V1" = "Mean", "V2" = "Standard Deviation"))
 
-
+pander(times)

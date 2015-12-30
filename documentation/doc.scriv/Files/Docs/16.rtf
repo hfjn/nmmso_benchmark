@@ -165,4 +165,22 @@ The biggest differences between the benchmarking results of the two implementati
 \
 
 \f1\fs24 \
-}
+```\{r, time consumption, echo=FALSE\}\
+names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")\
+times <- as.data.frame(matrix(0, nrow = 20, ncol = 2))\
+for(i in 1:20)\{\
+	filenames.times <- list.files(full.names = TRUE, path='../output', pattern=paste("(^",i,")_.*\\\\_time.txt$", sep=""))\
+	if(length(filenames.times) != 0)\{\
+		results <- lapply(filenames.times, read.table)\
+		time <- ldply(results)\
+		mean <- mean(time$V3)\
+		sd <- sd(time$V3)\
+		times[i,] <- c(mean, sd)\
+	\}\
+\}\
+rownames(times) = names\
+times <- rename(times, c("V1" = "Mean", "V2" = "Standard Deviation"))\
+\
+set.caption('Taken time of nmmso.R for all 20 functions. All times are in seconds.')\
+pander(times)\
+```}
