@@ -1,13 +1,13 @@
 Package: nmmsoBenchmark
 Type: Package
 Title: CEC Benchmarking Tool
-Version: 0.1
-Date: 2015-11-16
+Version: 0.2
+Date: 2016-01-02
 Author: c(person("Daniel", "Carriola",
   email = "daniel.carriola@gmail.com", role = c("aut")), person("Jannik", "Hoffjann", email="jhoffjann@gmail.com", role = c("aut", "cre")))
 Maintainer: Who to complain to <daniel.carriola@gmail.com>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
 LinkingTo: pracma
-Imports: testthat, pracma, flexclust, R.matlab, pryr
-Suggests:
+Imports: testthat, pracma, flexclust, R.matlab, pryr, nmmso.R
+Suggests: testthat
