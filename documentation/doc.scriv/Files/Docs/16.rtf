@@ -163,6 +163,7 @@ The biggest differences between the benchmarking results of the two implementati
 \
 (3) Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original implementation the x-axis rank from 0-40,000 iterations while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.\
 \
+Additionally, the time of all algorithms was taken. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions.\
 
 \f1\fs24 \
 ```\{r, time consumption, echo=FALSE\}\

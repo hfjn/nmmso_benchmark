@@ -328,6 +328,17 @@ f\_ 19 : f(1\ldots{}1) = -1342.819 • f\_ 20 : f(1\ldots{}1) = -1337.852
 
 \subsection{Structure of the project}\label{structure-of-the-project}
 
+In difference to the original implementation it was chosen to split up
+all single functions of the nmmso algorithm into single files. These
+were bundled into the standard R package structure to give the
+possibility to make it available over CRAN\footnote{Comprehensive R
+  Archive Network.} in the future. To and give the possibilty to
+collaborate the project was managed and versioned via Github. The
+package was tested with testthat\footnote{https://cran.r-project.org/web/packages/testthat/index.html}
+and documented with roxygen2\footnote{https://cran.r-project.org/web/packages/roxygen2/index.html}.
+To assure functioning the package was continuously tested with Travis
+CI.
+
 After analysing the algorithm provided in Matlab by Dr.~Fieldsend, it
 was decided to first translate each of the functions into the R
 programming language. At first instance, this task seemed to be simple
@@ -1839,19 +1850,19 @@ runs
 \textbf{F19}
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
-0.45
+0.34
 \strut\end{minipage} &
 \begin{minipage}[t]{0.08\columnwidth}\raggedleft\strut
-0.44
+0.33
 \strut\end{minipage} &
 \begin{minipage}[t]{0.09\columnwidth}\raggedleft\strut
-0.43
+0.32
 \strut\end{minipage} &
 \begin{minipage}[t]{0.10\columnwidth}\raggedleft\strut
-0.43
+0.32
 \strut\end{minipage} &
 \begin{minipage}[t]{0.11\columnwidth}\raggedleft\strut
-0.41
+0.31
 \strut\end{minipage} &
 \begin{minipage}[t]{0.07\columnwidth}\raggedleft\strut
 18
@@ -1953,6 +1964,10 @@ n-dimensional functions:
   creation of much more swarms, which leads to an earlier depletion of
   the maximum allowed number of evaluations.
 \end{enumerate}
+
+Additionally, the time of all algorithms was taken. Even though this
+measure widely varies depending on the computer's architecture it can
+show the different complexity of all 20 functions.
 
 \begin{longtable}[c]{@{}crr@{}}
 \caption{Taken time of nmmso.R for all 20 functions. All times are in

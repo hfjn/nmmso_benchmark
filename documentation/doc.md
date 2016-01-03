@@ -125,10 +125,15 @@ When the decision of re-writing the whole benchmark tool in the R programming la
 
 ## Structure of the project ##
 
+In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To and give the possibilty to collaborate the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travis CI.
+
 After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.
 
 Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that one of the biggest problems when coding an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks to that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.
 
+[^2]: Comprehensive R Archive Network. 
+[^3]: https://cran.r-project.org/web/packages/testthat/index.html
+[^4]: https://cran.r-project.org/web/packages/roxygen2/index.html
 
 
 ## Pitfalls and Problems ##
@@ -297,7 +302,7 @@ In this measure $NOF$ denotes the number of found optima per run and $NKO$ the n
 
  **F18**   0.84   0.83    0.83     0.79      0.79     23
 
- **F19**   0.45   0.44    0.43     0.43      0.41     18
+ **F19**   0.34   0.33    0.32     0.32      0.31     18
 
  **F20**   0.15   0.15    0.15     0.15      0.13     17
 --------------------------------------------------------
@@ -324,6 +329,7 @@ The biggest differences between the benchmarking results of the two implementati
 
 (3) Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original implementation the x-axis rank from 0-40,000 iterations while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.
 
+Additionally, the time of all algorithms was taken. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions. 
 
 
 -------------------------------------

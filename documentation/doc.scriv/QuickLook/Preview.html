@@ -57,9 +57,7 @@ In order to validate the potential of the NMMSO algorithm, it was submitted to t
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>Structure of the project</strong><br/>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.<br/>
-<br/>
-Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that ...</p>
+<p class="binderItem"><strong>Structure of the project</strong><br/>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To and give the possibilty to collaborate the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travi...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Pitfalls and Problems</strong><br/>In the beginning of the project, after translating each function into the R programming language and in order to start testing each one of them, some data was missing. The algorithm runs with some parameters that had to be given by the CEC so it was necessary to contact the organisation and ask for the files including the benchmarking tool. Also, Dr. Fieldsend was contacted in order to have a better understanding of the general structure of his algorithm. Once the data was completed, the test ph...</p>

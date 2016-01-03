@@ -113,6 +113,7 @@
 <hr />
 <h1 id="the-implementation"><span class="header-section-number">4</span> The Implementation</h1>
 <h2 id="structure-of-the-project"><span class="header-section-number">4.1</span> Structure of the project</h2>
+<p>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> in the future. To and give the possibilty to collaborate the project was managed and versioned via Github. The package was tested with testthat<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> and documented with roxygen2<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. To assure functioning the package was continuously tested with Travis CI.</p>
 <p>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.</p>
 <p>Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that one of the biggest problems when coding an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks to that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.</p>
 <h2 id="pitfalls-and-problems"><span class="header-section-number">4.2</span> Pitfalls and Problems</h2>
@@ -725,11 +726,11 @@
 </tr>
 <tr class="odd">
 <td align="center"><strong>F19</strong></td>
-<td align="right">0.45</td>
-<td align="right">0.44</td>
-<td align="right">0.43</td>
-<td align="right">0.43</td>
-<td align="right">0.41</td>
+<td align="right">0.34</td>
+<td align="right">0.33</td>
+<td align="right">0.32</td>
+<td align="right">0.32</td>
+<td align="right">0.31</td>
 <td align="right">18</td>
 </tr>
 <tr class="even">
@@ -756,6 +757,7 @@
 <li><p>nmmso.R performs noticeable worse for Function 16 than for the original function. While nmmso.R has a <span class="math inline"><em>P</em><em>e</em><em>a</em><em>k</em></span> <span class="math inline"><em>R</em><em>a</em><em>t</em><em>i</em><em>o</em></span> of <span class="math inline">0.01</span> for an accuracy of <span class="math inline">0.1</span> and <span class="math inline">0</span> for all others, the original implementation reaches a <span class="math inline"><em>P</em><em>e</em><em>a</em><em>k</em></span> <span class="math inline"><em>R</em><em>a</em><em>t</em><em>i</em><em>o</em></span> of around <span class="math inline">0.6</span> for all accuracies. This might be an implementation error in the CEC Benchmarking Tool and not in nmmso.R since it is so significantly worse that it is unlikely that this difference would only occur in one test function.</p></li>
 <li><p>Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original implementation the x-axis rank from 0-40,000 iterations while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.</p></li>
 </ol>
+<p>Additionally, the time of all algorithms was taken. Even though this measure widely varies depending on the computer’s architecture it can show the different complexity of all 20 functions.</p>
 <table style="width:51%;">
 <caption>Taken time of nmmso.R for all 20 functions. All times are in seconds.</caption>
 <colgroup>
@@ -895,6 +897,9 @@
 <hr />
 <ol>
 <li id="fn1"><p>SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language. <a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>Comprehensive R Archive Network.<a href="#fnref2">↩</a></p></li>
+<li id="fn3"><p>https://cran.r-project.org/web/packages/testthat/index.html<a href="#fnref3">↩</a></p></li>
+<li id="fn4"><p>https://cran.r-project.org/web/packages/roxygen2/index.html<a href="#fnref4">↩</a></p></li>
 </ol>
 </div>
 </body>
