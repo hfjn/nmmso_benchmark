@@ -42,17 +42,19 @@ In order to do so, NMMSO follow a strict structure, which can be seen in the fol
 		{X*, Y*} := extract_gbest(S)
 		return X*,Y*
 
-This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify c_1, c_2 and omega as parameters from the outside. In the original version those parameters are part of the program code.
+This structure wasn't modified during the reimplementation of  NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify c_1, c_2 and omega as parameters from the outside. In the original version those parameters are part of the program code. All other variables have been set to the variables seen in the following table. While variables like maximal amount of evaluations are dependent on the used test function and have been explicitly stated in the test function by the CEC (Section 3.1) other values have been chosen by Dr. Fieldsend and were used for the reimplementation [@fieldsend_2014, p. 2-3]. Those values can be found in the following table:
 
-           standard value 	used value     
---------   --------------	----------
-evaluations	0				0
-max_evol	100				100
-tol_val		10^-6			10^-6
-c_1			2.0             2.0
-c_2			2.0	            2.0
-omega		0.1       		0.1
----------  --------------   ----------
+           		used value 	
+-----------	 	--------------
+evaluations		0			
+max_inc			100			
+tol				10^-6		
+c_1				2.0         
+c_2				2.0	        
+omega			0.1       	
+---------  		--------------   
+Table: Values used for all program evaluations.   
+
 
 
 ----
@@ -125,7 +127,7 @@ When the decision of re-writing the whole benchmark tool in the R programming la
 
 ## Structure of the project ##
 
-In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To and give the possibilty to collaborate the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travis CI.
+In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To give the possibilty to collaborate, the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travis CI.
 
 After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.
 
@@ -329,7 +331,7 @@ The biggest differences between the benchmarking results of the two implementati
 
 (3) Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original implementation the x-axis rank from 0-40,000 iterations while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.
 
-Additionally, the time of all algorithms was taken. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions. 
+Additionally, the time of all algorithms was taken. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions.
 
 
 -------------------------------------
@@ -380,7 +382,11 @@ Table: Taken time of nmmso.R for all 20 functions. All times are in seconds.
 
 # Conclusion #
 
-In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R 
+In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement a existing algorithm in both languages. 
+
+Even though this implementation is not the most performant and certainly had its problems while being implemented a recreation of the nmmso algorithm and the cec benchmarking tool have been done which work reliably and provide similar results to the original implementations. 
+
+A foundation to further use this both packages has been set, which enables further testing and invite to reuse the nmmso.R for different uses. 
 
 # Acknowledgements #
 

@@ -57,7 +57,7 @@ In order to validate the potential of the NMMSO algorithm, it was submitted to t
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>Structure of the project</strong><br/>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To and give the possibilty to collaborate the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travi...</p>
+<p class="binderItem"><strong>Structure of the project</strong><br/>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To give the possibilty to collaborate, the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travis C...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Pitfalls and Problems</strong><br/>In the beginning of the project, after translating each function into the R programming language and in order to start testing each one of them, some data was missing. The algorithm runs with some parameters that had to be given by the CEC so it was necessary to contact the organisation and ask for the files including the benchmarking tool. Also, Dr. Fieldsend was contacted in order to have a better understanding of the general structure of his algorithm. Once the data was completed, the test ph...</p>
@@ -69,7 +69,9 @@ In order to validate the potential of the NMMSO algorithm, it was submitted to t
 To compare nmmso.R with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the i...</p>
 </li>
 <li>
-<p class="binderItem"><strong>Conclusion</strong><br/>In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R </p>
+<p class="binderItem"><strong>Conclusion</strong><br/>In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement a existing algorithm in both languages. <br/>
+<br/>
+Even though this implementation i...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Acknowledgements</strong><br/>We want to thank Dr. Jonathan Fieldsend for his continuous help via mail during this seminar. Also, the committee of the CEC was always available for questions and concerns during our work. Furthermore, a special thanks go to all employees of the chair for 'Information Systems and Statistics' including Dr. Mike Preuß, Jakob Bossek and Pascal Kerschke who were available for any questions regarding the implementation and this report at all times.<br/>

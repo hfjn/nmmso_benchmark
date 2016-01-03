@@ -197,19 +197,30 @@ This structure wasn't modified during the reimplementation of NMMSO to
 keep comparability and the possibility to fix bugs at a high level. The
 only newly introduced setting was the possibility to modify c\_1, c\_2
 and omega as parameters from the outside. In the original version those
-parameters are part of the program code.
+parameters are part of the program code. All other variables have been
+set to the variables seen in the following table. While variables like
+maximal amount of evaluations are dependent on the used test function
+and have been explicitly stated in the test function by the CEC (Section
+3.1) other values have been chosen by Dr.~Fieldsend and were used for
+the reimplementation (Fieldsend 2014, pp. 2--3). Those values can be
+found in the following table:
 
-\begin{longtable}[c]{@{}lll@{}}
+\begin{longtable}[c]{@{}ll@{}}
+\caption{Values used for all program evaluations.}\tabularnewline
 \toprule
-& standard value & used value\tabularnewline
+& used value\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+& used value\tabularnewline
 \midrule
 \endhead
-evaluations & 0 & 0\tabularnewline
-max\_evol & 100 & 100\tabularnewline
-tol\_val & 10\^{}-6 & 10\^{}-6\tabularnewline
-c\_1 & 2.0 & 2.0\tabularnewline
-c\_2 & 2.0 & 2.0\tabularnewline
-omega & 0.1 & 0.1\tabularnewline
+evaluations & 0\tabularnewline
+max\_inc & 100\tabularnewline
+tol & 10\^{}-6\tabularnewline
+c\_1 & 2.0\tabularnewline
+c\_2 & 2.0\tabularnewline
+omega & 0.1\tabularnewline
 \bottomrule
 \end{longtable}
 
@@ -332,8 +343,8 @@ In difference to the original implementation it was chosen to split up
 all single functions of the nmmso algorithm into single files. These
 were bundled into the standard R package structure to give the
 possibility to make it available over CRAN\footnote{Comprehensive R
-  Archive Network.} in the future. To and give the possibilty to
-collaborate the project was managed and versioned via Github. The
+  Archive Network.} in the future. To give the possibilty to
+collaborate, the project was managed and versioned via Github. The
 package was tested with testthat\footnote{https://cran.r-project.org/web/packages/testthat/index.html}
 and documented with roxygen2\footnote{https://cran.r-project.org/web/packages/roxygen2/index.html}.
 To assure functioning the package was continuously tested with Travis
@@ -2184,7 +2195,19 @@ Standard Deviation
 In this project a reimplementation of the NMMSO algorithm in R was
 shown. As part of this project also a reimplementation of the CEC
 Benchmarking Suite was created. It was shown that it is possible to
-translate a Matlab program into R
+translate a Matlab program into R, while keeping the comparability at a
+high level. In the programming project approaches have been shown and
+tested to overcome common difference in the two programming language to
+implement a existing algorithm in both languages.
+
+Even though this implementation is not the most performant and certainly
+had its problems while being implemented a recreation of the nmmso
+algorithm and the cec benchmarking tool have been done which work
+reliably and provide similar results to the original implementations.
+
+A foundation to further use this both packages has been set, which
+enables further testing and invite to reuse the nmmso.R for different
+uses.
 
 \section{Acknowledgements}\label{acknowledgements}
 

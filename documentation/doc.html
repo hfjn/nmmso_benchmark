@@ -40,12 +40,12 @@
         evals := evals + 1
     {X*, Y*} := extract_gbest(S)
     return X*,Y*</code></pre>
-<p>This structure wasn’t modified during the reimplementation of NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify c_1, c_2 and omega as parameters from the outside. In the original version those parameters are part of the program code.</p>
+<p>This structure wasn’t modified during the reimplementation of NMMSO to keep comparability and the possibility to fix bugs at a high level. The only newly introduced setting was the possibility to modify c_1, c_2 and omega as parameters from the outside. In the original version those parameters are part of the program code. All other variables have been set to the variables seen in the following table. While variables like maximal amount of evaluations are dependent on the used test function and have been explicitly stated in the test function by the CEC (Section 3.1) other values have been chosen by Dr. Fieldsend and were used for the reimplementation <span class="citation">(Fieldsend 2014, pp. 2–3)</span>. Those values can be found in the following table:</p>
 <table>
+<caption>Values used for all program evaluations.</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>
-<th align="left">standard value</th>
 <th align="left">used value</th>
 </tr>
 </thead>
@@ -53,31 +53,25 @@
 <tr class="odd">
 <td align="left">evaluations</td>
 <td align="left">0</td>
-<td align="left">0</td>
 </tr>
 <tr class="even">
-<td align="left">max_evol</td>
-<td align="left">100</td>
+<td align="left">max_inc</td>
 <td align="left">100</td>
 </tr>
 <tr class="odd">
-<td align="left">tol_val</td>
-<td align="left">10^-6</td>
+<td align="left">tol</td>
 <td align="left">10^-6</td>
 </tr>
 <tr class="even">
 <td align="left">c_1</td>
 <td align="left">2.0</td>
-<td align="left">2.0</td>
 </tr>
 <tr class="odd">
 <td align="left">c_2</td>
 <td align="left">2.0</td>
-<td align="left">2.0</td>
 </tr>
 <tr class="even">
 <td align="left">omega</td>
-<td align="left">0.1</td>
 <td align="left">0.1</td>
 </tr>
 </tbody>
@@ -113,7 +107,7 @@
 <hr />
 <h1 id="the-implementation"><span class="header-section-number">4</span> The Implementation</h1>
 <h2 id="structure-of-the-project"><span class="header-section-number">4.1</span> Structure of the project</h2>
-<p>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> in the future. To and give the possibilty to collaborate the project was managed and versioned via Github. The package was tested with testthat<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> and documented with roxygen2<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. To assure functioning the package was continuously tested with Travis CI.</p>
+<p>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN<a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a> in the future. To give the possibilty to collaborate, the project was managed and versioned via Github. The package was tested with testthat<a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a> and documented with roxygen2<a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>. To assure functioning the package was continuously tested with Travis CI.</p>
 <p>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.</p>
 <p>Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that one of the biggest problems when coding an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks to that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.</p>
 <h2 id="pitfalls-and-problems"><span class="header-section-number">4.2</span> Pitfalls and Problems</h2>
@@ -876,7 +870,9 @@
 </tbody>
 </table>
 <h1 id="conclusion"><span class="header-section-number">6</span> Conclusion</h1>
-<p>In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R</p>
+<p>In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement a existing algorithm in both languages.</p>
+<p>Even though this implementation is not the most performant and certainly had its problems while being implemented a recreation of the nmmso algorithm and the cec benchmarking tool have been done which work reliably and provide similar results to the original implementations.</p>
+<p>A foundation to further use this both packages has been set, which enables further testing and invite to reuse the nmmso.R for different uses.</p>
 <h1 id="acknowledgements"><span class="header-section-number">7</span> Acknowledgements</h1>
 <p>We want to thank Dr. Jonathan Fieldsend for his continuous help via mail during this seminar. Also, the committee of the CEC was always available for questions and concerns during our work. Furthermore, a special thanks go to all employees of the chair for ‘Information Systems and Statistics’ including Dr. Mike Preuß, Jakob Bossek and Pascal Kerschke who were available for any questions regarding the implementation and this report at all times. </p>
 <div id="refs" class="references">
