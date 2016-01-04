@@ -13,12 +13,21 @@
 	</dict>
 	<key>binderSelection</key>
 	<array>
+<<<<<<< Updated upstream
 		<integer>10</integer>
 	</array>
 	<key>binderSplitFrames</key>
 	<array>
 		<string>{{0, 0}, {251, 1000}}</string>
 		<string>{{252, 0}, {1428, 1000}}</string>
+=======
+		<integer>4</integer>
+	</array>
+	<key>binderSplitFrames</key>
+	<array>
+		<string>{{0, 0}, {250.5, 1000}}</string>
+		<string>{{251.5, 0}, {1428.5, 1000}}</string>
+>>>>>>> Stashed changes
 	</array>
 	<key>binderState</key>
 	<array>
@@ -45,7 +54,11 @@
 	<real>227</real>
 	<key>mainDocumentEditor.binderDocuments</key>
 	<array>
+<<<<<<< Updated upstream
 		<integer>19</integer>
+=======
+		<integer>13</integer>
+>>>>>>> Stashed changes
 	</array>
 	<key>mainDocumentEditor.currentEditorViewMode</key>
 	<integer>0</integer>
@@ -54,7 +67,11 @@
 	<key>mainDocumentEditor.navigationHistory</key>
 	<dict>
 		<key>CurrentIndex</key>
+<<<<<<< Updated upstream
 		<integer>57</integer>
+=======
+		<integer>70</integer>
+>>>>>>> Stashed changes
 		<key>NavigationHistoryArray</key>
 		<array>
 			<dict>
@@ -516,7 +533,122 @@
 			<dict>
 				<key>BinderDocIDs</key>
 				<array>
+<<<<<<< Updated upstream
+=======
+					<integer>13</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>29</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>14</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>15</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>16</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+>>>>>>> Stashed changes
 					<integer>19</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+<<<<<<< Updated upstream
+		</array>
+	</dict>
+	<key>mainDocumentEditor.scrollRect</key>
+	<string>{{0, 0}, {700, 921}}</string>
+	<key>mainDocumentEditor.selectedRanges</key>
+	<string>{235, 0}</string>
+=======
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>24</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>12</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>13</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>29</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>14</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>15</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>29</integer>
+				</array>
+				<key>ViewMode</key>
+				<integer>0</integer>
+			</dict>
+			<dict>
+				<key>BinderDocIDs</key>
+				<array>
+					<integer>13</integer>
 				</array>
 				<key>ViewMode</key>
 				<integer>0</integer>
@@ -524,9 +656,10 @@
 		</array>
 	</dict>
 	<key>mainDocumentEditor.scrollRect</key>
-	<string>{{0, 0}, {700, 921}}</string>
+	<string>{{0, 221}, {700, 921}}</string>
 	<key>mainDocumentEditor.selectedRanges</key>
-	<string>{235, 0}</string>
+	<string>{2856, 0}</string>
+>>>>>>> Stashed changes
 	<key>mainDocumentEditor.textEditorState</key>
 	<dict>
 		<key>hasMultiplePages</key>

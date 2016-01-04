@@ -5,12 +5,11 @@
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qj
 
-\f0\fs28 \cf0 During the developing time, an issue raised with the CEC benchmark tool. In order to compare the R implementation of the NMMSO algorithm with the original one, it was mandatory to use this tool to test each of its functions with the new algorithm and compare results. After several complications with the original test suite (these complications will be addressed in the pitfalls\'92 section), it was decided to recode each of the functions as an independent R package to avoid any further complication and having an easier and more trustworthy comparison of the NMMSO algorithm in R.\
+\f0\fs28 \cf0 During the development, an issue raised with the CEC benchmark tool. In order to compare the R implementation of the NMMSO algorithm with the original one, it was mandatory to use this tool to test each of its functions with the new algorithm and compare results. After several complications with the original test suite (these complications will be addressed in the pitfalls\'92 section), it was decided to recode each of the functions as an independent R package to avoid any further complication and having an easier and more trustworthy comparison of the NMMSO algorithm in R.\
 \
+The original tool included several files in order to build a main file calling each one and be able to run as needed, including a graphing function for presentation purposes. While re-writing the tool in R, it followed the same structure but just focusing in the main files like the functions and count_goptima files because most of the other files were used in the graphing function and in this case, the original file was not used but still was created in a way to present the output in a graphic way for this paper. In comparison with the NMMSO algorithm, this tool was faster to work with but still generated several issues during the process.\
 \
-Pitfalls\
-\
-When the decision of re-writing the whole benchmark tool in the R programming language was made, some issues came up regarding the way Matlab handles the matrices and vectors. After analysing the Matlab implementation, \
+Finally, the whole benchmark tool uses a demo_suite file in order to run it and display the optimal values found using each of the twenty functions with dummy data. This file is considered as one of the most important files within the tool because it helped to understand how the original version used to work. Most of the tests were run with this function and comparing both versions several times until the output given was exactly the same and also focusing in the execution time so it could have a better performance and could be used as a new option in future cases for the CEC. The output of each function can be seen in the following list:\
 \
 **Results in R**
 \fs24 \CocoaLigature0 	\
@@ -34,4 +33,12 @@ When the decision of re-writing the whole benchmark tool in the R programming la
 \ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 17  : f(1...1) =  -1238.211 \
 \ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 18  : f(1...1) =  -1683.184 \
 \ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 19  : f(1...1) =  -1342.819 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 20  : f(1...1) =  -1337.852 }
+\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 20  : f(1...1) =  -1337.852 
+\fs28 \CocoaLigature1 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qj
+\cf0 \
+Pitfalls\
+\
+When the decision of re-writing the whole benchmark tool in the R programming language was made, some issues came up regarding the way Matlab handles the matrices and vectors. After analysing the Matlab implementation, it was easier to solve the issues because it was done after the NMMSO implementation and some of these issues were repeated between both implementations. Even if the matrix and vectors caused some problems during the implementation, it was not necessary to use the add_row and add_col functions because it always uses a matrix of one row so it was decided to change the structure so the R implementation would only use vectors to facilitate and simplify its usage. \
+\
+After some testing, some issues raised regarding the performance of the tool. As explained in the section before, the tool contains 12 different functions in order to evaluate the algorithm\'92s data and together with the count_goptima function, get the optimal values for the different parameters given to the NMMSO algorithm. The main problem here was with the last 4 functions (composition functions), some data of an output file was mandatory read and given as a parameter for a further evaluation, making necessary the use of an additional R library in order to read this Matlab\'92s data files and use them as expected. This solution worked perfectly regarding the output values but increased the processing time because each file had to be read in each iteration so it was decided to create different global variables that read only once each Matlab\'92s data file and only be called during the iteration process. This worked as expected and reduced the time and processor consumption of the tool, displaying the same results as the Matlab implementation created by the CEC.}

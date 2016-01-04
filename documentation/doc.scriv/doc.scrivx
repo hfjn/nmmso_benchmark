@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< Updated upstream
 <ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="MacBook-Pro" Modified="2016-01-04 15:00:01 +0100" ModID="51E9BFFF-FD65-4CE6-876A-452249285170">
+=======
+<ScrivenerProject Version="1.5" Creator="SCRMAC-2.7-26106" Device="Daniels-MacBook-Pro" Modified="2016-01-04 10:57:57 -0600" ModID="1997B65D-7C11-40E3-971B-A81D76CD5CA3">
+>>>>>>> Stashed changes
     <Binder>
-        <BinderItem ID="0" UUID="BC25FB0C-FB20-4BF6-990C-801331C2F125" Type="DraftFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:28:01 +0100">
+        <BinderItem ID="0" UUID="BC25FB0C-FB20-4BF6-990C-801331C2F125" Type="DraftFolder" Created="2015-11-30 01:26:42 -0600" Modified="2015-11-30 01:28:01 -0600">
             <Title>Paper</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
                 <IconFileName>Book (Blue Book).tiff</IconFileName>
             </MetaData>
             <Children>
+<<<<<<< Updated upstream
                 <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 08:49:31 +0100" Modified="2016-01-04 14:45:21 +0100">
+=======
+                <BinderItem ID="20" UUID="F67B2EA2-01A1-4F93-9A2E-56CC088BB8E2" Type="Text" Created="2015-11-30 01:49:31 -0600" Modified="2015-12-28 10:16:09 -0600">
+>>>>>>> Stashed changes
                     <Title>Introduction</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -18,17 +26,25 @@
                         <TextSelection>2102,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
+<<<<<<< Updated upstream
                 <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 08:29:50 +0100" Modified="2016-01-04 14:45:40 +0100">
+=======
+                <BinderItem ID="12" UUID="AF2EC352-2D96-4646-A1ED-352658DD1DAE" Type="Text" Created="2015-11-30 01:29:50 -0600" Modified="2015-12-28 10:19:15 -0600">
+>>>>>>> Stashed changes
                     <Title>General Function</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
+<<<<<<< Updated upstream
                         <TextSelection>976,0</TextSelection>
+=======
+                        <TextSelection>1626,0</TextSelection>
+>>>>>>> Stashed changes
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="28" UUID="B1E44F1C-1AD5-4B67-B9A6-11A0EFC327C8" Type="Folder" Created="2015-12-18 16:19:27 +0100" Modified="2015-12-28 17:19:40 +0100">
+                <BinderItem ID="28" UUID="B1E44F1C-1AD5-4B67-B9A6-11A0EFC327C8" Type="Folder" Created="2015-12-18 09:19:27 -0600" Modified="2015-12-28 10:19:40 -0600">
                     <Title>CEC Algorithms</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -38,29 +54,37 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                     <Children>
+<<<<<<< Updated upstream
                         <BinderItem ID="13" UUID="A73FBB02-F78F-42F1-A3FF-412C9EFB7705" Type="Text" Created="2015-11-30 08:30:01 +0100" Modified="2016-01-04 14:45:33 +0100">
+=======
+                        <BinderItem ID="13" UUID="A73FBB02-F78F-42F1-A3FF-412C9EFB7705" Type="Text" Created="2015-11-30 01:30:01 -0600" Modified="2016-01-04 10:55:05 -0600">
+>>>>>>> Stashed changes
                             <Title>CEC</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
+<<<<<<< Updated upstream
                                 <TextSelection>2764,49</TextSelection>
+=======
+                                <TextSelection>3143,0</TextSelection>
+>>>>>>> Stashed changes
                             </TextSettings>
                         </BinderItem>
-                        <BinderItem ID="29" UUID="65D0B888-D2AD-4D63-B2D1-1A3502EBAA1B" Type="Text" Created="2015-12-18 16:20:00 +0100" Modified="2015-12-28 17:21:32 +0100">
+                        <BinderItem ID="29" UUID="65D0B888-D2AD-4D63-B2D1-1A3502EBAA1B" Type="Text" Created="2015-12-18 09:20:00 -0600" Modified="2016-01-04 10:56:41 -0600">
                             <Title>Implementation and Pitfalls</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
-                                <TextSelection>689,0</TextSelection>
+                                <TextSelection>1873,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                     </Children>
                 </BinderItem>
-                <BinderItem ID="9" UUID="A001D365-A092-4144-B129-4286EFE21D96" Type="Folder" Created="2015-11-30 08:29:09 +0100" Modified="2015-11-30 08:29:15 +0100">
+                <BinderItem ID="9" UUID="A001D365-A092-4144-B129-4286EFE21D96" Type="Folder" Created="2015-11-30 01:29:09 -0600" Modified="2015-11-30 01:29:15 -0600">
                     <Title>The Implementation</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -70,39 +94,65 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                     <Children>
+<<<<<<< Updated upstream
                         <BinderItem ID="14" UUID="8867A109-D2AB-4D4C-8880-C9EE4408A18E" Type="Text" Created="2015-11-30 08:30:13 +0100" Modified="2016-01-03 19:28:59 +0100">
+=======
+                        <BinderItem ID="14" UUID="8867A109-D2AB-4D4C-8880-C9EE4408A18E" Type="Text" Created="2015-11-30 01:30:13 -0600" Modified="2016-01-04 10:57:57 -0600">
+>>>>>>> Stashed changes
                             <Title>Structure of the project</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
+<<<<<<< Updated upstream
                                 <TextSelection>304,0</TextSelection>
                             </TextSettings>
                         </BinderItem>
                         <BinderItem ID="15" UUID="B9005DD4-E8A0-4C00-A160-7B3B4FF3767F" Type="Text" Created="2015-11-30 08:30:20 +0100" Modified="2016-01-04 14:46:04 +0100">
+=======
+                                <TextSelection>1218,0</TextSelection>
+                            </TextSettings>
+                        </BinderItem>
+                        <BinderItem ID="15" UUID="B9005DD4-E8A0-4C00-A160-7B3B4FF3767F" Type="Text" Created="2015-11-30 01:30:20 -0600" Modified="2015-12-30 11:43:03 -0600">
+>>>>>>> Stashed changes
                             <Title>Pitfalls and Problems</Title>
                             <MetaData>
                                 <IncludeInCompile>Yes</IncludeInCompile>
                                 <NotesTextSelection>0,0</NotesTextSelection>
                             </MetaData>
                             <TextSettings>
+<<<<<<< Updated upstream
                                 <TextSelection>1171,0</TextSelection>
+=======
+                                <TextSelection>2256,0</TextSelection>
+>>>>>>> Stashed changes
                             </TextSettings>
                         </BinderItem>
                     </Children>
                 </BinderItem>
+<<<<<<< Updated upstream
                 <BinderItem ID="16" UUID="205AC671-0528-4B9E-80FD-14FDAFD490D6" Type="Text" Created="2015-11-30 08:30:31 +0100" Modified="2016-01-04 15:00:00 +0100">
+=======
+                <BinderItem ID="16" UUID="205AC671-0528-4B9E-80FD-14FDAFD490D6" Type="Text" Created="2015-11-30 01:30:31 -0600" Modified="2015-12-28 10:29:17 -0600">
+>>>>>>> Stashed changes
                     <Title>Benchmark and Comparison</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
+<<<<<<< Updated upstream
                         <TextSelection>10438,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
                 <BinderItem ID="19" UUID="C9E39732-0842-4E1F-BA4B-369728A18E5F" Type="Text" Created="2015-11-30 08:49:23 +0100" Modified="2016-01-03 19:40:45 +0100">
+=======
+                        <TextSelection>9753,0</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="19" UUID="C9E39732-0842-4E1F-BA4B-369728A18E5F" Type="Text" Created="2015-11-30 01:49:23 -0600" Modified="2015-12-15 09:08:03 -0600">
+>>>>>>> Stashed changes
                     <Title>Conclusion</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -112,7 +162,7 @@
                         <TextSelection>428,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="24" UUID="74B3CBBC-5417-47A4-BD0C-045C8CEA37CC" Type="Text" Created="2015-12-11 13:03:09 +0100" Modified="2015-12-28 17:30:44 +0100">
+                <BinderItem ID="24" UUID="74B3CBBC-5417-47A4-BD0C-045C8CEA37CC" Type="Text" Created="2015-12-11 06:03:09 -0600" Modified="2015-12-30 11:31:30 -0600">
                     <Title>Acknowledgements</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -120,12 +170,12 @@
                         <NotesTextSelection>0,0</NotesTextSelection>
                     </MetaData>
                     <TextSettings>
-                        <TextSelection>29,0</TextSelection>
+                        <TextSelection>457,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
         </BinderItem>
-        <BinderItem ID="1" UUID="400CCAE5-17FF-4AB3-B913-5E07C422287A" Type="ResearchFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:26:42 +0100">
+        <BinderItem ID="1" UUID="400CCAE5-17FF-4AB3-B913-5E07C422287A" Type="ResearchFolder" Created="2015-11-30 01:26:42 -0600" Modified="2015-11-30 01:26:42 -0600">
             <Title>Research</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
@@ -134,7 +184,7 @@
                 <SelectedSubdocumentIDs>21</SelectedSubdocumentIDs>
             </CorkboardAndOutliner>
             <Children>
-                <BinderItem ID="21" UUID="932F7F0A-AE62-4A6A-B8B4-B8400374B43F" Type="PDF" Created="2015-12-04 18:00:00 +0100" Modified="2015-12-04 18:00:00 +0100">
+                <BinderItem ID="21" UUID="932F7F0A-AE62-4A6A-B8B4-B8400374B43F" Type="PDF" Created="2015-12-04 11:00:00 -0600" Modified="2015-12-04 11:00:00 -0600">
                     <Title>cec2013-niching-benchmark-tech-report</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -145,7 +195,7 @@
                         <CurrentPDFPage>0</CurrentPDFPage>
                     </MediaSettings>
                 </BinderItem>
-                <BinderItem ID="22" UUID="5F157252-D866-4A0F-A856-3CE00FF4980B" Type="PDF" Created="2015-12-05 13:09:32 +0100" Modified="2015-12-05 13:09:32 +0100">
+                <BinderItem ID="22" UUID="5F157252-D866-4A0F-A856-3CE00FF4980B" Type="PDF" Created="2015-12-05 06:09:32 -0600" Modified="2015-12-05 06:09:32 -0600">
                     <Title>ihaka_98</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -156,7 +206,7 @@
                         <CurrentPDFPage>0</CurrentPDFPage>
                     </MediaSettings>
                 </BinderItem>
-                <BinderItem ID="23" UUID="2447E214-126F-4649-B81C-29E6A8DDF1C3" Type="PDF" Created="2015-12-04 17:52:04 +0100" Modified="2015-12-04 17:52:04 +0100">
+                <BinderItem ID="23" UUID="2447E214-126F-4649-B81C-29E6A8DDF1C3" Type="PDF" Created="2015-12-04 10:52:04 -0600" Modified="2015-12-04 10:52:04 -0600">
                     <Title>running_up_those_hills_2014</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -167,7 +217,7 @@
                         <CurrentPDFPage>1</CurrentPDFPage>
                     </MediaSettings>
                 </BinderItem>
-                <BinderItem ID="27" UUID="305FA7F8-A4CD-4C4B-A6B1-8F3FFABFC0CC" Type="Text" Created="2015-12-16 16:17:55 +0100" Modified="2015-12-19 12:18:53 +0100">
+                <BinderItem ID="27" UUID="305FA7F8-A4CD-4C4B-A6B1-8F3FFABFC0CC" Type="Text" Created="2015-12-16 09:17:55 -0600" Modified="2015-12-19 05:18:53 -0600">
                     <Title>Todo</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -179,13 +229,13 @@
                 </BinderItem>
             </Children>
         </BinderItem>
-        <BinderItem ID="2" UUID="FB59FCE3-FA5C-4C89-965E-8EAE68AA2DCB" Type="TrashFolder" Created="2015-11-30 08:26:42 +0100" Modified="2015-11-30 08:26:42 +0100">
+        <BinderItem ID="2" UUID="FB59FCE3-FA5C-4C89-965E-8EAE68AA2DCB" Type="TrashFolder" Created="2015-11-30 01:26:42 -0600" Modified="2015-11-30 01:26:42 -0600">
             <Title>Trash</Title>
             <MetaData>
                 <IncludeInCompile>Yes</IncludeInCompile>
             </MetaData>
             <Children>
-                <BinderItem ID="26" UUID="0503C4EA-719D-4FB9-A209-DC0DF6F94F73" Type="Folder" Created="2015-12-16 16:17:27 +0100" Modified="2015-12-16 16:17:31 +0100">
+                <BinderItem ID="26" UUID="0503C4EA-719D-4FB9-A209-DC0DF6F94F73" Type="Folder" Created="2015-12-16 09:17:27 -0600" Modified="2015-12-16 09:17:31 -0600">
                     <Title>Benchmarking</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -195,7 +245,7 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="25" UUID="29F2FBF0-7B1A-4D5D-BECC-706D3ADCDD63" Type="Folder" Created="2015-12-11 13:03:09 +0100" Modified="2015-12-11 13:03:09 +0100">
+                <BinderItem ID="25" UUID="29F2FBF0-7B1A-4D5D-BECC-706D3ADCDD63" Type="Folder" Created="2015-12-11 06:03:09 -0600" Modified="2015-12-11 06:03:09 -0600">
                     <Title>_Recovered Files</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -205,7 +255,7 @@
                         <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
-                <BinderItem ID="18" UUID="82313CFD-6C13-4A4B-9A50-58D6618CE5C6" Type="Text" Created="2015-11-30 08:49:12 +0100" Modified="2015-12-06 20:46:50 +0100">
+                <BinderItem ID="18" UUID="82313CFD-6C13-4A4B-9A50-58D6618CE5C6" Type="Text" Created="2015-11-30 01:49:12 -0600" Modified="2015-12-06 13:46:50 -0600">
                     <Title>Discussion</Title>
                     <MetaData>
                         <IncludeInCompile>Yes</IncludeInCompile>
@@ -213,6 +263,16 @@
                     </MetaData>
                     <TextSettings>
                         <TextSelection>0,4</TextSelection>
+                    </TextSettings>
+                </BinderItem>
+                <BinderItem ID="30" UUID="8B4D32A5-6D77-404E-AB75-386622647820" Type="Text" Created="2016-01-04 10:40:15 -0600" Modified="2016-01-04 10:40:15 -0600">
+                    <Title>Untitled</Title>
+                    <MetaData>
+                        <IncludeInCompile>Yes</IncludeInCompile>
+                        <NotesTextSelection>0,0</NotesTextSelection>
+                    </MetaData>
+                    <TextSettings>
+                        <TextSelection>0,0</TextSelection>
                     </TextSettings>
                 </BinderItem>
             </Children>
@@ -248,9 +308,13 @@
         </StatusItems>
     </StatusSettings>
     <ProjectTargets Notify="No">
-        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2015-11-30 08:26:41 +0100" IgnoreDeadline="Yes">0</DraftTarget>
+        <DraftTarget Type="Words" CountIncludedOnly="Yes" CurrentCompileGroupOnly="No" Deadline="2015-11-30 01:26:41 -0600" IgnoreDeadline="Yes">0</DraftTarget>
         <SessionTarget Type="Words" CountDraftOnly="Yes" AllowNegatives="Yes" ResetType="Midnight" DeterminedFromDeadline="No" WritingDays="" CanWriteOnDeadlineDate="No">0</SessionTarget>
+<<<<<<< Updated upstream
         <PreviousSession Words="62" Characters="352" Date="2016-01-04 12:35:50 +0100"></PreviousSession>
+=======
+        <PreviousSession Words="430" Characters="2571" Date="2016-01-04 08:58:45 -0600"></PreviousSession>
+>>>>>>> Stashed changes
     </ProjectTargets>
-    <PrintSettings PaperSize="595.0,842.0" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
+    <PrintSettings PaperSize="595.275574,841.889771" LeftMargin="72.0" RightMargin="72.0" TopMargin="90.0" BottomMargin="90.0" PaperType="iso-a4" Orientation="Portrait" HorizontalPagination="Clip" VerticalPagination="Auto" ScaleFactor="1.0" HorizontallyCentered="Yes" VerticallyCentered="Yes" Collates="Yes" PagesAcross="1" PagesDown="1"></PrintSettings>
 </ScrivenerProject>
