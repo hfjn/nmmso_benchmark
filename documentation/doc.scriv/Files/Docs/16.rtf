@@ -10,7 +10,7 @@
 \f0\fs28 \cf0 \expnd0\expndtw0\kerning0
 \
 To compare nmmso.R with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in \kerning1\expnd0\expndtw0 [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. \expnd0\expndtw0\kerning0
-Nmmso.R uses the same measures to reach the highest comparability possible.\
+Nmmso.R uses the same measures to reach the highest comparability possible. All of the following measures were taken over several runs and contain all results which could be received until the deadline of this paper. The number of runs in total for each function is stated in the first three tables and matches in the graph.\
 \
 The first measure used is the Success Ratio (SR). The Success Ratio is defined as the percentage of successful runs (runs that found all global optima) over all runs [@li_2013, p. 7]. As for the other ratios this measure was taken over several independent runs and collectively evaluated. The taken measures for the Success Ratio can be found in Table 2. \
 $$\cb2 \\frac\cb1 \{successful\\ runs\}\cb2 \{\cb1 NR\} = SR $$ \
@@ -116,10 +116,8 @@ pander(mpr)\cf5 \cb3 \
 \pard\pardeftab720\sl280
 \cf0 As a fourth measure, which wasn't introduced by the CEC committee, but used in the original nmmso implementation [@fieldsend_2014], the Number of Swarms was chosen. Since this is a continuous measure and, therefore no calculation is needed, this measure is pictured as graphs. The graphs can be found in Figure 1. They show the development of $number$ $of$ $swarms$ kept by nmmso.R over all iterations. Important to notice here is that $iterations$ is different from the $evaluations$ referenced in the other measures. Iterations are calls to start single runs of nmmso.R and, therefore, are different from the evaluations taken within the program.\
 \
-Additionally, a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC, a scientific High Perfomance Computing Cluster by Westf\'e4lische Wilhelms-Universit\'e4t M\'fcnster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will be comparable on common computers. The ZIVHPC was only used to parallelise the single runs.
+
 \f1\fs24 \
-\
-\
 ![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs. These plots contain all runs pictured in the other tables which were done for the benchmarking of this paper.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) \
 \
 \
@@ -163,10 +161,12 @@ The biggest differences between the benchmarking results of the two implementati
 (2) nmmso.R performs noticeable worse for Function 16 than for the original function. While nmmso.R has a $Peak$ $Ratio$ of $0.01$ for an accuracy of $0.1$ and $0$ for all others, the original implementation reaches a $Peak$ $Ratio$ of around $0.6$ for all accuracies. This might be an implementation error in the CEC Benchmarking Tool and not in nmmso.R since it is so significantly worse that it is unlikely that this difference would only occur in one test function.\
 \
 (3) Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original implementation the x-axis rank from 0-40,000 iterations while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.\
-\
-Additionally, the time of all algorithms was taken. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions.\
 
 \f1\fs24 \
+
+\f0\fs28 Additionally, a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC, a scientific High Perfomance Computing Cluster by Westf\'e4lische Wilhelms-Universit\'e4t M\'fcnster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will be comparable on common computers. The ZIVHPC was only used to parallelise the single runs. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions. This measure was taken separately on 10 runs of each function.
+\f1\fs24 \
+\
 ```\{r, time consumption, echo=FALSE\}\
 names <- c("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F17", "F18", "F19", "F20")\
 times <- as.data.frame(matrix(0, nrow = 20, ncol = 2))\
@@ -183,6 +183,6 @@ for(i in 1:20)\{\
 rownames(times) = names\
 times <- rename(times, c("V1" = "Mean", "V2" = "Standard Deviation"))\
 \
-set.caption('Taken time of nmmso.R for all 20 functions. All times are in seconds.')\
+set.caption('Taken time of nmmso.R for all 20 functions over 10 runs. All times are in seconds.')\
 pander(times)\
 ```}

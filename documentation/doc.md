@@ -6,7 +6,7 @@ An example for a well perceived new finding in statistical computing is the NMMS
 
 As part of this Seminar Project in the context of the Seminar 'Statistical Computing in R', a reimplementation of the NMMSO algorithm in R (nmmso.R) will be presented. During this technical documentation, the general function of the algorithm and the used test cases by the CEC will be shown. Afterwards the structure and used techniques and libraries, as well as problems and pitfalls due to the different behaviors of R and Matlab, will be shown. The documentation will be closed by the benchmarking results and several test cases. 
 
-It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. To reach this, unit tests were used where possible and continuous comparison between interim results of the original implementation and nmmso.R where used to ensure functioning. Additionally a benchmarking suite, which builds on the CEC Benchmarking Suite for Niching Algorithm was implemented to evaluate and test the functioning of nmmso.R with the same characteristics as in the original implementation.
+It was the goal of this project to keep up high comparability with the original code, to ensure the correct functionality and easily implement changes to the original codebase in this program. To reach this, unit tests were used where possible and continuous comparison between interim results of the original implementation and nmmso.R where used to ensure functioning. Additionally a benchmarking suite, which builds on the CEC Benchmarking Suite for Niching Algorithm [@epitropakis_2013] was implemented to evaluate and test the functioning of nmmso.R with the same characteristics as in the original implementation.
 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage
@@ -19,8 +19,6 @@ The starting point of the project was the paper provided by Dr. Jonathan E. Fiel
 (3) exploitative local search to quickly find peak estimates [@fieldsend_2014, p. 1]. 
 
 Multi-modal optimisation in general, does not differ very much from well known and widely discussed single-objective optimisation, but but unlike it, the goal of the algorithms in the multi-modal perspective is not to find just one single optimising point but all possible points [@fieldsend_2014, p. 1].  In order to do so, many early multi-modal optimisation algorithms needed defined parameters [@fieldsend_2014, p.1].
-
-**Maybe write a bit more about multi-modal algorithms in general**
 
 Newer algorithms fall in the field of self-tuning and try to use different mathematical paradigms like nearest-best clustering with covariance matrices [@preuss_2012] and strategies like storing the so far best found global optima estimators to provide them as parameters for new optimisation runs [@epitropakis_2013]. Contradictory to that NMMSO goes the way of many early algorithms and uses the swarm strategy in order to find which store their current [@fieldsend_2014]. 
 
@@ -153,7 +151,7 @@ Finally, after completing and fixing the R implementation, and  trying to test i
 # Benchmark and Comparison #
 
 
-To compare nmmso.R with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible.
+To compare nmmso.R with the original NMMSO the CEC test cases were used to run the same benchmarks as in the original submission [@fieldsend_2014]. There 4 different Ratios were used to measure the performance of certain algorithms. Three of those measures (Peak Ratio, Success Ratio and Convergence Speed) have been introduced in [@epitropakis_2013, pp. 6-7] to create a common point of comparison. The fourth ratio is special for the nmmso algorithm since it tracks the number of swarms over the iterations of the algorithm. Nmmso.R uses the same measures to reach the highest comparability possible. All of the following measures were taken over several runs and contain all results which could be received until the deadline of this paper. The number of runs in total for each function is stated in the first three tables and matches in the graph.
 
 The first measure used is the Success Ratio (SR). The Success Ratio is defined as the percentage of successful runs (runs that found all global optima) over all runs [@li_2013, p. 7]. As for the other ratios this measure was taken over several independent runs and collectively evaluated. The taken measures for the Success Ratio can be found in Table 2. 
 $$\frac{successful\ runs}{NR} = SR $$ 
@@ -313,8 +311,6 @@ Table: Peak Ratio over given runs (Share of found global optima over all runs)
 
 As a fourth measure, which wasn't introduced by the CEC committee, but used in the original nmmso implementation [@fieldsend_2014], the Number of Swarms was chosen. Since this is a continuous measure and, therefore no calculation is needed, this measure is pictured as graphs. The graphs can be found in Figure 1. They show the development of $number$ $of$ $swarms$ kept by nmmso.R over all iterations. Important to notice here is that $iterations$ is different from the $evaluations$ referenced in the other measures. Iterations are calls to start single runs of nmmso.R and, therefore, are different from the evaluations taken within the program.
 
-Additionally, a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC, a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will be comparable on common computers. The ZIVHPC was only used to parallelise the single runs.
-
 
 ![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs. These plots contain all runs pictured in the other tables which were done for the benchmarking of this paper.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) 
 
@@ -331,7 +327,7 @@ The biggest differences between the benchmarking results of the two implementati
 
 (3) Almost all algorithm runs on high-dimensional functions (F12-F20) result in a high number of swarms while all other results regarding this functions are comparable to the original results. This difference becomes very clear in the case of Functions 17-20. In the paper addressing the original implementation the x-axis rank from 0-40,000 iterations while for the reimplementation limit of 4,000 for Function 17, of 20,000 for Function 18, 6,000 for Function 19 and of 30,000 for Function 20 is enough to show all data sets. This is connected to the creation of much more swarms, which leads to an earlier depletion of the maximum allowed number of evaluations.
 
-Additionally, the time of all algorithms was taken. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions.
+Additionally, a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC, a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will be comparable on common computers. The ZIVHPC was only used to parallelise the single runs. Even though this measure widely varies depending on the computer's architecture it can show the different complexity of all 20 functions. This measure was taken separately on 10 runs of each function.
 
 
 -------------------------------------

@@ -1,5 +1,5 @@
 library(devtools)
-load_all("../nmmso/")
+library(nmmso.R)
 source("R/cec_2015_problem_data.R")
 source("R/niching_funcs.R")
 source("R/count_goptima.R")

@@ -140,9 +140,9 @@ changes to the original codebase in this program. To reach this, unit
 tests were used where possible and continuous comparison between interim
 results of the original implementation and nmmso.R where used to ensure
 functioning. Additionally a benchmarking suite, which builds on the CEC
-Benchmarking Suite for Niching Algorithm was implemented to evaluate and
-test the functioning of nmmso.R with the same characteristics as in the
-original implementation.
+Benchmarking Suite for Niching Algorithm (Epitropakis et al. 2013) was
+implemented to evaluate and test the functioning of nmmso.R with the
+same characteristics as in the original implementation.
 
 \section{General Function}\label{general-function}
 
@@ -161,8 +161,6 @@ it, the goal of the algorithms in the multi-modal perspective is not to
 find just one single optimising point but all possible points (Fieldsend
 2014, p. 1). In order to do so, many early multi-modal optimisation
 algorithms needed defined parameters (Fieldsend 2014, p. 1).
-
-\textbf{Maybe write a bit more about multi-modal algorithms in general}
 
 Newer algorithms fall in the field of self-tuning and try to use
 different mathematical paradigms like nearest-best clustering with
@@ -450,7 +448,11 @@ and Convergence Speed) have been introduced in (Epitropakis et al. 2013,
 pp. 6--7) to create a common point of comparison. The fourth ratio is
 special for the nmmso algorithm since it tracks the number of swarms
 over the iterations of the algorithm. Nmmso.R uses the same measures to
-reach the highest comparability possible.
+reach the highest comparability possible. All of the following measures
+were taken over several runs and contain all results which could be
+received until the deadline of this paper. The number of runs in total
+for each function is stated in the first three tables and matches in the
+graph.
 
 The first measure used is the Success Ratio (SR). The Success Ratio is
 defined as the percentage of successful runs (runs that found all global
@@ -1913,13 +1915,6 @@ in the other measures. Iterations are calls to start single runs of
 nmmso.R and, therefore, are different from the evaluations taken within
 the program.
 
-Additionally, a fifth measure was introduced which denotes the runtime
-of nmmso.R for the single functions. These times were taken on the
-ZIVHPC, a scientific High Perfomance Computing Cluster by Westfälische
-Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential
-algorithm the runtimes for single runs will be comparable on common
-computers. The ZIVHPC was only used to parallelise the single runs.
-
 \begin{figure}[htbp]
 \centering
 \includegraphics{figure/trend\%20curve\%20of\%20kept\%20swarms\%20over\%20all\%2020\%20functions.\%20The\%20red\%20curves\%20show\%20the\%20number\%20of\%20swarms\%20kept\%20for\%20each\%20single\%20run.\%20The\%20black\%20line\%20shows\%20the\%20mean\%20of\%20kept\%20swarms\%20over\%20these\%20runs.-1.pdf}
@@ -1978,9 +1973,15 @@ n-dimensional functions:
   the maximum allowed number of evaluations.
 \end{enumerate}
 
-Additionally, the time of all algorithms was taken. Even though this
-measure widely varies depending on the computer's architecture it can
-show the different complexity of all 20 functions.
+Additionally, a fifth measure was introduced which denotes the runtime
+of nmmso.R for the single functions. These times were taken on the
+ZIVHPC, a scientific High Perfomance Computing Cluster by Westfälische
+Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential
+algorithm the runtimes for single runs will be comparable on common
+computers. The ZIVHPC was only used to parallelise the single runs. Even
+though this measure widely varies depending on the computer's
+architecture it can show the different complexity of all 20 functions.
+This measure was taken separately on 10 runs of each function.
 
 \begin{longtable}[c]{@{}crr@{}}
 \caption{Taken time of nmmso.R for all 20 functions. All times are in
