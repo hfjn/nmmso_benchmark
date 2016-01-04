@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <SearchIndexes Version="1.0">
     <Documents>
+        <Document ID="19">
+            <Title>Conclusion</Title>
+            <Text>test</Text>
+        </Document>
         <Document ID="9">
             <Title>The Implementation</Title>
-        </Document>
-        <Document ID="25">
-            <Title>_Recovered Files</Title>
         </Document>
         <Document ID="21">
             <Title>cec2013-niching-benchmark-tech-report</Title>
@@ -253,11 +254,72 @@ In order to validate the potential of the NMMSO algorithm, it was submitted to t
 
 All of the test functions are formulated as maximisation problems. F1, F2 and F3 are simple 1D multimodal functions, while F4 and F5 are simple 2D functions and not scalable. F6 to F8 are scalable multimodal functions. The number of global optima for F6 and F7 are determined by the dimension. However, for F8, the number of global optima is independent of the dimension, therefore it can be controlled by the user. F9 to F12 are scalable multimodal functions constructed by several basic functions with different properties (Sphere function, Grienwank, Rastrigin, Weierstrass and the Expanded Griewank’s plus Rosenbrock’s function). F9 and F10 are separable, and non-symmetric, while F11 and F12 are non-separable, non-symmetric complex multimodal functions. The number of global optima in all of the composition functions is independent of the number of dimensions, therefore can be controlled by the user [@epitropakis_2013].
 
-**Maybe write each math equation or the R code**
+The properties of each function can be seen in the following table:
 
-Besides the 12 different functions, also, a $count_goptima$ function was included in order to find the optimal value for each evaluated function in each iteration. Here, some optimal values are already given as well as the number of each value to find. Together with an accuracy rate, the evaluation starts in a cycle and stores the possible optimal values in order to be compared with the expected values using the accuracy rates of 0.1, 0.01, 0.001, 0.0001 and 0.00001 for each different iteration. Once the optimal values are found and after comparing them with the same results of the Matlab implementation, it can be concluded that the new implementation works as expected and is ready for submission.
+Function
+Variables Range
+No. of Global Optima
+No. of Local Optima
+Five-Uneven-Peak Trap
+x ∈ [0, 30] 
+2
+3
+Equal Maxima
+x ∈ [0, 1] 
+5
+0
+Uneven Decreasing Maxima
+x ∈ [0, 1] 
+1
+4
+Himmelblau
+x,y ∈ [−6,6] 
+4
+0
+Six-Hump Camel Back
+x ∈ [−1.9, 1.9]; 
+y ∈ [−1.1, 1.1] 
+2
+2
+Shubert
+xi ∈ [−10,10]D, i = 1, 2, ..., D 
+D · 3D
+many
+Vincent
+xi ∈ [0.25,10]D, i = 1, 2, ..., D 
+6D
+0
+Modified Rastrigin
+xi ∈ [0,1]D, i = 1, 2, ..., D 
+∏Di=1 ki
+0
 
-**Explain maybe a little bit more, maybe a pseudocode**
+For simplifying purposes, the composition functions were not taken in consideration because of its complexity, for further and deeper understanding of all functions, please refer to the CEC’2013 Niching Benchmark Tech Report included in the CEC website.
+
+Besides the 12 different functions, also, a $count_goptima$ function was included in order to find the optimal value for each evaluated function in each iteration. Here, some optimal values are already given as well as the number of each value to find. Together with an accuracy rate, the evaluation starts in a cycle and stores the possible optimal values in order to be compared with the expected values using the accuracy rates of 0.1, 0.01, 0.001, 0.0001 and 0.00001 for each different iteration. 
+
+The structure of the $count_goptima$ function can be seen as a pseudocode:
+
+	input : Lsorted - a list of individuals (candidate solutions) sorted in decreasing fitness values; 		    ε - accuracy level; r - niche radius; 		    ph - the fitness of global optima (or peak height) 
+	output: S - a list of best-fit individuals identified as solutions 
+	
+	begin 
+		S = ∅; 		while not reaching the end of Lsorted do 
+			Get best unprocessed p ∈ Lsorted;
+			found ← FALSE; 			if d(ph, f it(p)) ≤ ε) then 
+				for all s ∈ S do 					if d(s, p) ≤ r then 
+						found ← TRUE; 
+						break; 
+					end 
+				end 
+				if not found then 
+					let S ← S ∪ {p}; 
+				end 
+			end 
+		end 
+	end 
+
+Once the optimal values are found and after comparing them with the same results of the Matlab implementation, it can be concluded that the new implementation works as expected and is ready for submission.
 
 https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation</Text>
         </Document>
@@ -272,12 +334,11 @@ https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation</Text>
         </Document>
         <Document ID="29">
             <Title>Implementation and Pitfalls</Title>
-            <Text>During the developing time, an issue raised with the CEC benchmark tool. In order to compare the R implementation of the NMMSO algorithm with the original one, it was mandatory to use this tool to test each of its functions with the new algorithm and compare results. After several complications with the original test suite (these complications will be addressed in the pitfalls’ section), it was decided to recode each of the functions as an independent R package to avoid any further complication and having an easier and more trustworthy comparison of the NMMSO algorithm in R.
+            <Text>During the development, an issue raised with the CEC benchmark tool. In order to compare the R implementation of the NMMSO algorithm with the original one, it was mandatory to use this tool to test each of its functions with the new algorithm and compare results. After several complications with the original test suite (these complications will be addressed in the pitfalls’ section), it was decided to recode each of the functions as an independent R package to avoid any further complication and having an easier and more trustworthy comparison of the NMMSO algorithm in R.
 
+The original tool included several files in order to build a main file calling each one and be able to run as needed, including a graphing function for presentation purposes. While re-writing the tool in R, it followed the same structure but just focusing in the main files like the functions and count_goptima files because most of the other files were used in the graphing function and in this case, the original file was not used but still was created in a way to present the output in a graphic way for this paper. In comparison with the NMMSO algorithm, this tool was faster to work with but still generated several issues during the process.
 
-Pitfalls
-
-When the decision of re-writing the whole benchmark tool in the R programming language was made, some issues came up regarding the way Matlab handles the matrices and vectors. After analysing the Matlab implementation, 
+Finally, the whole benchmark tool uses a demo_suite file in order to run it and display the optimal values found using each of the twenty functions with dummy data. This file is considered as one of the most important files within the tool because it helped to understand how the original version used to work. Most of the tests were run with this function and comparing both versions several times until the output given was exactly the same and also focusing in the execution time so it could have a better performance and could be used as a new option in future cases for the CEC. The output of each function can be seen in the following list:
 
 **Results in R**	
 	•	f_ 1  : f(1...1) =  120 
@@ -299,7 +360,13 @@ When the decision of re-writing the whole benchmark tool in the R programming la
 	•	f_ 17  : f(1...1) =  -1238.211 
 	•	f_ 18  : f(1...1) =  -1683.184 
 	•	f_ 19  : f(1...1) =  -1342.819 
-	•	f_ 20  : f(1...1) =  -1337.852 </Text>
+	•	f_ 20  : f(1...1) =  -1337.852 
+
+Pitfalls
+
+When the decision of re-writing the whole benchmark tool in the R programming language was made, some issues came up regarding the way Matlab handles the matrices and vectors. After analysing the Matlab implementation, it was easier to solve the issues because it was done after the NMMSO implementation and some of these issues were repeated between both implementations. Even if the matrix and vectors caused some problems during the implementation, it was not necessary to use the add_row and add_col functions because it always uses a matrix of one row so it was decided to change the structure so the R implementation would only use vectors to facilitate and simplify its usage. 
+
+After some testing, some issues raised regarding the performance of the tool. As explained in the section before, the tool contains 12 different functions in order to evaluate the algorithm’s data and together with the count_goptima function, get the optimal values for the different parameters given to the NMMSO algorithm. The main problem here was with the last 4 functions (composition functions), some data of an output file was mandatory read and given as a parameter for a further evaluation, making necessary the use of an additional R library in order to read this Matlab’s data files and use them as expected. This solution worked perfectly regarding the output values but increased the processing time because each file had to be read in each iteration so it was decided to create different global variables that read only once each Matlab’s data file and only be called during the iteration process. This worked as expected and reduced the time and processor consumption of the tool, displaying the same results as the Matlab implementation created by the CEC.</Text>
         </Document>
         <Document ID="14">
             <Title>Structure of the project</Title>
@@ -307,7 +374,7 @@ When the decision of re-writing the whole benchmark tool in the R programming la
 
 Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that one of the biggest problems when coding an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks to that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.
 
-</Text>
+Having all the issues solved and the algorithm running with the CEC benchmark tool, also developed in R during this project, </Text>
         </Document>
         <Document ID="20">
             <Title>Introduction</Title>
@@ -322,9 +389,8 @@ It was the goal of this project to keep up high comparability with the original 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage</Text>
         </Document>
-        <Document ID="19">
-            <Title>Conclusion</Title>
-            <Text>In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R </Text>
+        <Document ID="25">
+            <Title>_Recovered Files</Title>
         </Document>
     </Documents>
 </SearchIndexes>

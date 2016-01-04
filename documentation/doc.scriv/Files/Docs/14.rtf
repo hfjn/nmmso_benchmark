@@ -9,11 +9,9 @@ After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decide
 \
 Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that one of the biggest problems when coding an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks to that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.\
 \
-<<<<<<< Updated upstream
+Having the algorithm running hand by hand with the CEC benchmark tool, also developed in R during the project, and in order to get the output needed to compare the new implementation with the old one written in Matlab, it was necessary to use the Palma Cluster. This gave a radical change to the project because it was never taken in consideration to use a bigger computational power. It was necessary to implement some batch jobs in order to run the algorithm within the cluster and then specify a way to print and store all the output data later to be analysed and compared. Even if this step was never considered part of the project, it came across in a helpful way because it helped to discover that the NMMSO.R implementation is working properly and in a way that it could be used for further research and investigations.\
+\
 [^2]: Comprehensive R Archive Network. \
 [^3]: {\field{\*\fldinst{HYPERLINK "https://cran.r-project.org/web/packages/testthat/index.html"}}{\fldrslt https://cran.r-project.org/web/packages/testthat/index.html}}\
 [^4]: {\field{\*\fldinst{HYPERLINK "https://cran.r-project.org/web/packages/roxygen2/index.html"}}{\fldrslt https://cran.r-project.org/web/packages/roxygen2/index.html}}\
 }
-=======
-Having all the issues solved and the algorithm running with the CEC benchmark tool, also developed in R during this project, }
->>>>>>> Stashed changes
