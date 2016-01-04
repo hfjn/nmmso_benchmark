@@ -1,8 +1,8 @@
 library(devtools)
 library(nmmso.R)
-source("R/cec_2015_problem_data.R")
-source("R/niching_funcs.R")
-source("R/count_goptima.R")
+source("./R/cec_2015_problem_data.R")
+source("./R/niching_funcs.R")
+source("./R/count_goptima.R")
 
 # the accuracies
 acc = c(0.1, 0.01, 0.001, 0.0001, 0.00001)
@@ -15,7 +15,6 @@ niching_funcs = c(five_uneven_peak_trap, equal_maxima, uneven_decreasing_maxima,
 #'
 #' @param index Number of the function to be used.
 #' @param seed Random seed for the evaluation.
-#' @return
 #'
 #' @export
 benchmark <- function(index, seed){

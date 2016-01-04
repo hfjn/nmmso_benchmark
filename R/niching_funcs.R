@@ -240,17 +240,17 @@ eval_functions = function(fname, x) {
 
 # Global variables for composition functions
 initial_flag = 0
-o = readMat("R/data/optima.mat")$o
-M_CF3_2 = readMat("R/data/CF3_M_D2.mat")$M
-M_CF3_3 = readMat("R/data/CF3_M_D3.mat")$M
-M_CF3_5 = readMat("R/data/CF3_M_D5.mat")$M
-M_CF3_10 = readMat("R/data/CF3_M_D10.mat")$M
-M_CF3_20 = readMat("R/data/CF3_M_D20.mat")$M
-M_CF4_2 = readMat("R/data/CF4_M_D2.mat")$M
-M_CF4_3 = readMat("R/data/CF4_M_D3.mat")$M
-M_CF4_5 = readMat("R/data/CF4_M_D5.mat")$M
-M_CF4_10 = readMat("R/data/CF4_M_D10.mat")$M
-M_CF4_20 = readMat("R/data/CF4_M_D20.mat")$M
+o = readMat("./R/data/optima.mat")$o
+M_CF3_2 = readMat("./R/data/CF3_M_D2.mat")$M
+M_CF3_3 = readMat("./R/data/CF3_M_D3.mat")$M
+M_CF3_5 = readMat("./R/data/CF3_M_D5.mat")$M
+M_CF3_10 = readMat("./R/data/CF3_M_D10.mat")$M
+M_CF3_20 = readMat("./R/data/CF3_M_D20.mat")$M
+M_CF4_2 = readMat("./R/data/CF4_M_D2.mat")$M
+M_CF4_3 = readMat("./R/data/CF4_M_D3.mat")$M
+M_CF4_5 = readMat("./R/data/CF4_M_D5.mat")$M
+M_CF4_10 = readMat("./R/data/CF4_M_D10.mat")$M
+M_CF4_20 = readMat("./R/data/CF4_M_D20.mat")$M
 
 #' @title Composition Function 1
 #' @description n = 6
@@ -574,7 +574,6 @@ local_gram_schmidt = function(A) {
 #'
 #' @param D Number of dimensions for the matrix.
 #' @param c Constant matrix 1xfunc_num full of 1s.
-#' @return
 #'
 #' @export
 rot_matrix_condition = function(D, c) {

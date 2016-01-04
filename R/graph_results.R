@@ -1,6 +1,6 @@
 ### Single Calculations used in the documentation to graph the results of nmmso.
 
-source("R/cec_2015_problem_data.R")
+source("./R/cec_2015_problem_data.R")
 library(plyr)
 library(ggplot2)
 library(reshape2)

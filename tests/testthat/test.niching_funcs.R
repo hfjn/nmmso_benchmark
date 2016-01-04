@@ -1,4 +1,5 @@
 # test comparison values out of matlab
+data(vals)
 test_that("all functions give the same values as in matlab", {
 	for(func_num in 1:20) {
 		# set the lower and upper bound for each function
