@@ -163,45 +163,45 @@ Here $NR$ denotes the Number of runs done to reach this measure.
 --------------------------------------------------------
  &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
 --------- ----- ------ ------- -------- --------- ------
- **F1**       1      1       1        1         1     45
+ **F1**       1      1       1        1         1     48
 
- **F2**       1      1       1        1         1     42
+ **F2**       1      1       1        1         1     45
 
- **F3**       1      1       1        1         1     44
+ **F3**       1      1       1        1         1     47
 
- **F4**       1      1       1        1         1     44
+ **F4**       1      1       1        1         1     47
 
- **F5**       1      1       1        1         1     41
+ **F5**       1      1       1        1         1     44
 
- **F6**       1      1       1        1         0     40
+ **F6**       1      1       1        1         0     43
 
- **F7**       1      1       1        1         1     41
+ **F7**       1      1       1        1         1     44
 
- **F8**       1      1       1     0.78      0.61     23
+ **F8**       1      1       1     0.81      0.63     27
 
- **F9**    0.96   0.96    0.96     0.93      0.93     27
+ **F9**    0.97   0.97    0.97     0.94      0.94     31
 
- **F10**      1      1       1        1         1     41
+ **F10**      1      1       1        1         1     44
 
- **F11**      1      1       1        1         1     40
+ **F11**      1      1       1        1         1     43
 
- **F12**      1      1       1        1         1     41
+ **F12**      1      1       1        1         1     44
 
- **F13**      1      1       1        1         1     41
+ **F13**      1      1       1        1         1     44
 
- **F14**      1      1       1        1         1     39
+ **F14**      1      1       1        1         1     43
 
- **F15**   0.97   0.97    0.97     0.97      0.97     31
+ **F15**   0.97   0.97    0.97     0.97      0.97     35
 
- **F16**      0      0       0        0         0     20
+ **F16**      0      0       0        0         0     23
 
- **F17**   0.21   0.11    0.11     0.11      0.11     19
+ **F17**   0.22   0.09    0.09     0.09      0.09     23
 
- **F18**   0.39   0.39    0.35      0.3       0.3     23
+ **F18**   0.33   0.33     0.3     0.26      0.26     27
 
- **F19**      0      0       0        0         0     18
+ **F19**      0      0       0        0         0     23
 
- **F20**      0      0       0        0         0     17
+ **F20**      0      0       0        0         0     23
 --------------------------------------------------------
 
 Table: Success Ratio over given runs (Measure of share of runs which found all global optima)
@@ -215,45 +215,45 @@ In this measure, $evals$ denotes the number of evaluations done.
 ---------------------------------------------------------
  &nbsp;      0.1   0.01   0.001   0.0001   0.00001   runs
 --------- ------ ------ ------- -------- --------- ------
- **F1**      610    814    1010     1204      1434     45
+ **F1**      619    817    1009     1200      1433     48
 
- **F2**      181    265     390      560       677     42
+ **F2**      180    265     389      551       661     45
 
- **F3**       33    164     269      382       504     44
+ **F3**       33    173     272      385       505     47
 
- **F4**      501    728     951     1202      1458     44
+ **F4**      508    728     951     1196      1454     47
 
- **F5**       80    194     312      514       748     41
+ **F5**       78    189     322      517       751     44
 
- **F6**    19124  24077   29970    41858    200001     40
+ **F6**    19195  24080   30049    41876    200001     43
 
- **F7**     8453   9073   10539    12097     14434     41
+ **F7**     8393   8987   10359    11956     14181     44
 
- **F8**   199028 239062  283957   331813    358588     23
+ **F8**   199648 237118  282068   327787    358610     27
 
- **F9**   190205 197213  213486   227226    235417     27
+ **F9**   186608 193491  211905   226095    235502     31
 
- **F10**     871   1309    1716     2252      2749     41
+ **F10**     879   1302    1718     2256      2758     44
 
- **F11**    3743   5652    7159     8309      9173     40
+ **F11**    3749   5599    7151     8258      9110     43
 
- **F12**   17240  25441   36657    43765     50048     41
+ **F12**   16961  25035   35955    43212     49331     44
 
- **F13**   10221  14763   18100    21782     26547     41
+ **F13**   10310  14708   17942    22116     26602     44
 
- **F14**   28185  34579   47325    57497     65873     39
+ **F14**   27111  35790   47728    57964     65885     43
 
- **F15**  106836 125918  144279   165564    180095     31
+ **F15**  108351 125661  142817   164637    182483     35
 
- **F16**  400001 400001  400001   400001    400001     20
+ **F16**  400001 400001  400001   400001    400001     23
 
- **F17**  352657 368393  372283   373597    374462     19
+ **F17**  351987 373890  377104   378189    378904     23
 
- **F18**  299275 302915  313231   318487    320204     23
+ **F18**  314198 317298  326086   330563    332025     27
 
- **F19**  400001 400001  400001   400001    400001     18
+ **F19**  400001 400001  400001   400001    400001     23
 
- **F20**  400001 400001  400001   400001    400001     17
+ **F20**  400001 400001  400001   400001    400001     23
 ---------------------------------------------------------
 
 Table: Convergence Rates over given runs (Mean of evaluations needed to find all global optima, if all optima have never been found the maximum allowed evaluations for that function were taken.)
@@ -268,45 +268,45 @@ In this measure $NOF$ denotes the number of found optima per run and $NKO$ the n
 --------------------------------------------------------
  &nbsp;     0.1   0.01   0.001   0.0001   0.00001   runs
 --------- ----- ------ ------- -------- --------- ------
- **F1**       1      1       1        1         1     45
+ **F1**       1      1       1        1         1     48
 
- **F2**       1      1       1        1         1     42
+ **F2**       1      1       1        1         1     45
 
- **F3**       1      1       1        1         1     44
+ **F3**       1      1       1        1         1     47
 
- **F4**       1      1       1        1         1     44
+ **F4**       1      1       1        1         1     47
 
- **F5**       1      1       1        1         1     41
+ **F5**       1      1       1        1         1     44
 
- **F6**       1      1       1        1         0     40
+ **F6**       1      1       1        1         0     43
 
- **F7**       1      1       1        1         1     41
+ **F7**       1      1       1        1         1     44
 
- **F8**       1      1       1     0.99      0.97     23
+ **F8**       1      1       1     0.99      0.98     27
 
- **F9**       1      1       1        1         1     27
+ **F9**       1      1       1        1         1     31
 
- **F10**      1      1       1        1         1     41
+ **F10**      1      1       1        1         1     44
 
- **F11**      1      1       1        1         1     40
+ **F11**      1      1       1        1         1     43
 
- **F12**      1      1       1        1         1     41
+ **F12**      1      1       1        1         1     44
 
- **F13**      1      1       1        1         1     41
+ **F13**      1      1       1        1         1     44
 
- **F14**      1      1       1        1         1     39
+ **F14**      1      1       1        1         1     43
 
- **F15**      1      1       1        1         1     31
+ **F15**      1      1       1        1         1     35
 
- **F16**   0.01      0       0        0         0     20
+ **F16**   0.01      0       0        0         0     23
 
- **F17**   0.78   0.75    0.73     0.72      0.69     19
+ **F17**   0.79   0.76    0.73     0.72       0.7     23
 
- **F18**   0.84   0.83    0.83     0.79      0.79     23
+ **F18**   0.83   0.83    0.82     0.79      0.78     27
 
- **F19**   0.34   0.33    0.32     0.32      0.31     18
+ **F19**   0.38   0.36    0.35     0.33      0.32     23
 
- **F20**   0.15   0.15    0.15     0.15      0.13     17
+ **F20**   0.16   0.14    0.13     0.12      0.11     23
 --------------------------------------------------------
 
 Table: Peak Ratio over given runs (Share of found global optima over all runs)
@@ -316,7 +316,7 @@ As a fourth measure, which wasn't introduced by the CEC committee, but used in t
 Additionally, a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC, a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will be comparable on common computers. The ZIVHPC was only used to parallelise the single runs.
 
 
-![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) 
+![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs. These plots contain all runs pictured in the other tables which were done for the benchmarking of this paper.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) 
 
 
 
@@ -337,52 +337,52 @@ Additionally, the time of all algorithms was taken. Even though this measure wid
 -------------------------------------
  &nbsp;     Mean   Standard Deviation
 --------- ------ --------------------
- **F1**       13                  3.8
+ **F1**       13                  3.3
 
- **F2**      8.6                  6.5
+ **F2**      7.2                  5.8
 
- **F3**      4.8                  2.6
+ **F3**      4.8                  2.3
 
- **F4**       27                  6.1
+ **F4**       25                  5.6
 
- **F5**       10                  4.4
+ **F5**       11                  3.9
 
- **F6**     7341                  807
+ **F6**     7374                  783
 
- **F7**      740                  350
+ **F7**      661                  321
 
- **F8**    32089                 5379
+ **F8**    29808                 7881
 
- **F9**    23513                 4169
+ **F9**    21714                 7307
 
- **F10**     123                   26
+ **F10**     121                   35
 
- **F11**     660                  439
+ **F11**     586                  391
 
- **F12**    2182                  517
+ **F12**    2147                  555
 
- **F13**    1746                 1359
+ **F13**    1614                 1142
 
- **F14**    4519                 1940
+ **F14**    4452                 1549
 
- **F15**   12282                 7859
+ **F15**   13181                 6137
 
- **F16**   40958                 1837
+ **F16**   40178                 2235
 
- **F17**   33240                12200
+ **F17**   34906                 9699
 
- **F18**   61631                27491
+ **F18**   56113                22004
 
- **F19**   63224                15799
+ **F19**   57162                14803
 
- **F20**   97631                14844
+ **F20**   89594                17536
 -------------------------------------
 
 Table: Taken time of nmmso.R for all 20 functions. All times are in seconds.
 
 # Conclusion #
 
-In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement a existing algorithm in both languages. 
+In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement a nexisting algorithm in both languages. 
 
 Even though this implementation is not the most performant and certainly had its problems while being implemented a recreation of the nmmso algorithm and the cec benchmarking tool have been done which work reliably and provide similar results to the original implementations. 
 

@@ -6,30 +6,29 @@ library(ggplot2)
 library(reshape2)
 library(ggthemes)
 library(gridExtra)
+library(grid)
 
 # set the output folder
 graph_plots <- function(){
 # first create plot which shows the number of swarms for all single functions
 	plots = list()
-	for(i in 1:20){	
+	for(i in 1:20){
 		results <- NA
-		# read all files which match the following pattern (<functionumber>_<seed>.txt)
-		filenames.swarms <- list.files(full.names = TRUE, path='./output/', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))
+		filenames.swarms <- list.files(full.names = TRUE, path='../output', pattern=paste("(^",i,")(_.*)([[:digit:]].txt)$", sep=""))
+
 		results <- lapply(filenames.swarms, read.table)
 		names(results) <- paste0('run',seq_along(results))
-		# put all table into one data.frame
 		results <- ldply(results)
 
 		results <- rename(results, c("V1" = "iterations", "V2" = "swarms"))
 
-		# create ggplot with wished design
+	#results <- transform(results, run = sprintf('run%d', run)) 
+
 		p1 = ggplot(results, aes(x = iterations, y = swarms, group=.id, colour="grey"))
 		p1 = p1 + ggtitle(paste0("F",i)) + geom_line() + theme_tufte() + theme(legend.position = "none")
 		p1 = p1 + stat_summary(fun.y = mean, geom="line", colour="black", aes(group = 1))
-		# add plot to list of plots
-		plots[[i]] = p1
+		plots[[i]] = p1 + theme(axis.text.x = element_text(angle = 45, hjust = 1)) + theme(plot.margin = unit(c(1,1,1,1), "cm"))
 	}
-	# plot all single plots and arrange them in grid
 	do.call("grid.arrange", c(plots, ncol = 4))
 }
 

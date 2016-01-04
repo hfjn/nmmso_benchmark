@@ -241,16 +241,17 @@ As a fourth measure, which wasn't introduced by the CEC committee, but used in t
 Additionally, a fifth measure was introduced which denotes the runtime of nmmso.R for the single functions. These times were taken on the ZIVHPC, a scientific High Perfomance Computing Cluster by Westfälische Wilhelms-Universität Münster. Since the nmmso.R is a strictly sequential algorithm the runtimes for single runs will be comparable on common computers. The ZIVHPC was only used to parallelise the single runs.
 
 
-![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) 
+![plot of chunk trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs. These plots contain all runs pictured in the other tables which were done for the benchmarking of this paper.](figure/trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs.-1.pdf) 
 
 
 ```{r, trend curve of kept swarms over all 20 functions. The red curves show the number of swarms kept for each single run. The black line shows the mean of kept swarms over these runs., echo = FALSE, dpi = 250, fig.ext='pdf', keep='all'}
-rm(list = ls())
+# rm(list = ls())
 # source("../R/cec_2015_problem_data.R")
 # library(plyr)
 # library(ggplot2)
 # library(ggthemes)
 # library(gridExtra)
+# library(grid)
 
 # plots = list()
 # for(i in 1:20){
@@ -307,7 +308,7 @@ pander(times)
 
 # Conclusion #
 
-In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement a existing algorithm in both languages. 
+In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement a nexisting algorithm in both languages. 
 
 Even though this implementation is not the most performant and certainly had its problems while being implemented a recreation of the nmmso algorithm and the cec benchmarking tool have been done which work reliably and provide similar results to the original implementations. 
 
