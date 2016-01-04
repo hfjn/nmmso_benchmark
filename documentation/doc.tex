@@ -281,7 +281,8 @@ number of global optima in all of the composition functions is
 independent of the number of dimensions, therefore, can be controlled by
 the user (Li et al. 2013).
 
-The properties of each function can be seen in the following table:
+The properties of the first 8 functions can be seen in the following
+table:
 
 \begin{longtable}[c]{@{}llll@{}}
 \caption{Properties of the test functions used. (\#GO = Number of Global
@@ -393,9 +394,7 @@ function and comparing both versions several times until the output
 given was exactly the same and also focusing in the execution time so it
 could have a better performance and could be used as a new option in
 future cases for the CEC. The output of each function can be seen in the
-following R output:
-
-\textbf{Results in R}
+following R output: \newpage    
 
 \begin{verbatim}
 f_ 1  : f(1...1) =  120 
@@ -433,20 +432,20 @@ would only use vectors to facilitate and simplify its usage.
 
 After some testing, some issues raised regarding the performance of the
 tool. As explained in the section before, the tool contains 12 different
-functions in order to evaluate the algorithm's data and together with
-the count\_goptima function, get the optimal values for the different
+functions in order to evaluate the algorithm's data. Aswell as the
+count\_goptima function to get the optimal values for the different
 parameters given to the NMMSO algorithm. The main problem here was with
 the last 4 functions (composition functions), some data of an output
 file was mandatory read and given as a parameter for a further
 evaluation, making necessary the use of an additional R library in order
 to read this Matlab's data files and use them as expected. This solution
 worked perfectly regarding the output values but increased the
-processing time because each file had to be read in each iteration so it
-was decided to create different global variables that read only once
-each Matlab's data file and only be called during the iteration process.
-This worked as expected and reduced the time and processor consumption
-of the tool, displaying the same results as the Matlab implementation
-created by the CEC.
+processing time because each file had to be read in each iteration. So
+it was decided to create different global variables that read each
+Matlab's data file only once and only be called during the iteration
+process. This worked as expected and reduced the time and processor
+consumption of the tool, displaying similar results as the Matlab
+implementation created by the CEC.
 
 \begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
 
@@ -466,16 +465,16 @@ To assure functioning the package was continuously tested with Travis
 CI.
 
 After analysing the algorithm provided in Matlab by Dr.~Fieldsend, it
-was decided to first translate each of the functions into the R
-programming language. At first instance, this task seemed to be simple
-because most of the functions were basically managing matrices and
-vectors, but later this became a problem that will be covered in the
-pitfalls' section (4.2) of this paper.
+was decided to translate each of the functions into the R programming
+language first. At first instance, this task seemed to be simple because
+most of the functions were basically managing matrices and vectors, but
+later this became a problem that will be covered in the pitfalls'
+section (4.2) of this paper.
 
 Once all the NMMSO functions existed in R and having the input data, the
 testing phase started. It has been said, that one of the biggest
 problems when coding an already existing program into another
-programming language, is the different behaviours corresponding to each
+programming language, is the different behaviors corresponding to each
 object (in case of an object-oriented language) or its main structure.
 The first runs came with several errors regarding the matrix generation
 and handling, slowing down the project in a near future. Using GitHub,
@@ -503,7 +502,7 @@ used for further research and investigations.
 In the beginning of the project, after translating each function into
 the R programming language and in order to start testing each one of
 them, some data was missing. The algorithm runs with some parameters
-that had to be given by the CEC so it was necessary to contact the
+that had to be given by the CEC. So it was necessary to contact the
 organisation and ask for the files including the benchmarking tool.
 Also, Dr.~Fieldsend was contacted in order to have a better
 understanding of the general structure of his algorithm. Once the data
@@ -520,15 +519,16 @@ to be added for an inexistent index, this was created automatically and
 added to the data structure, where no row was existing before, instead
 of throwing the common ``index out of bounds'' error. First, it was
 necessary to compare all these possible behaviors in Matlab so a general
-way to attack them could be implemented and after few tries, two
+way to attack them could be implemented. After few tries, two
 function-files were created. ``add\_col.R'', as its name says, is in
-charge to add a new column into a structure, it is just necessary to
+charge to add a new column into a structure. It is just necessary to
 specify the original structure where it will be added to, the index and
 the new object containing the information to add. This function
-considers the cases if the new object is a vector, a matrix or just a
-single value, so the original matrix could be modified and returned as
-desired. ``add\_row.R'', on the other hand, simply imitates the behavior
-of ``add\_col.R'' but as a transpose matrix in order to add the rows.
+considers the cases, whether the new object is a vector, a matrix or
+just a single value, so the original matrix could be modified and
+returned as desired. ``add\_row.R'', on the other hand, simply imitates
+the behavior of ``add\_col.R'' but as a transpose matrix in order to add
+the rows.
 
 Once the data was completed in order to run the algorithm and get at
 least a similar output as the original version, the CEC benchmarking
@@ -561,12 +561,12 @@ testing phase.
 Finally, after completing and fixing the R implementation, and trying to
 test it with the real number of iterations for each of the twenty CEC
 benchmarking functions, a bigger computation power was needed. Having
-only students' computers for development, it was necessary a bigger
-source of computation power and with the help of the R library
-``BatchJobs'' together with the Palma Cluster, property of the
-Westfälische Wilhelms-Universität located in Münster, Germany, it was
-possible to run the algorithm in different batch jobs within the cluster
-and just printing output files in order to analyse the data in the end.
+only students' computers for development, a bigger source of computation
+power was necessary. With the help of the R library ``BatchJobs''
+together with the Palma Cluster, property of the Westfälische
+Wilhelms-Universität located in Münster, Germany, it was possible to run
+the algorithm in different batch jobs within the cluster and just
+printing output files in order to analyse the data in the end.
 
 \section{Benchmark and Comparison}\label{benchmark-and-comparison}
 
@@ -2334,13 +2334,16 @@ tested to overcome common differences in the two programming language to
 implement an existing algorithm in both languages.
 
 Even though this implementation is not the most performant and certainly
-had its problems while being implemented a recreation of the NMMSO
+had its problems while being implemented, a recreation of the NMMSO
 algorithm and the CEC benchmarking tool have been done which work
 reliably and provide similar results to the original implementations.
 
 A foundation to further use this both packages has been set, which
 enables further testing and invite to reuse the nmmso.R for different
-uses.
+uses. Especially an improvement in the implementations performance could
+be interesting. In this matter it could already help to minimize the I/O
+actions, which are currently done to gather the benchmarking data. But
+also other improvements to better match the style of R could help.
 
 \section{Acknowledgements}\label{acknowledgements}
 

@@ -80,7 +80,7 @@ In order to validate the potential of the NMMSO algorithm, it was submitted to t
 
 All of the test functions are formulated as maximisation problems. F1, F2 and F3 are simple 1D multimodal functions, while F4 and F5 are simple 2D functions and not scalable. F6 to F8 are scalable multimodal functions. The number of global optima for F6 and F7 are determined by the dimension. However, for F8, the number of global optima is independent of the dimension, therefore it can be controlled by the user. F9 to F12 are scalable multimodal functions constructed by several basic functions with different properties (Sphere function, Grienwank, Rastrigin, Weierstrass and the Expanded Griewank’s plus Rosenbrock’s function). F9 and F10 are separable, and non-symmetric while F11 and F12 are non-separable, non-symmetric complex multimodal functions. The number of global optima in all of the composition functions is independent of the number of dimensions, therefore, can be controlled by the user [@li_2013].
 
-The properties of each function can be seen in the following table:
+The properties of the first 8 functions can be seen in the following table:
 
 Function 					Variables Range 						#GO						#LO
 --------					---------------							--------------------	-------------------
@@ -141,8 +141,7 @@ During the development, an issue raised with the CEC benchmark tool. In order to
 The original tool included several files in order to build the main file calling each one and be able to run as needed, including a graphing function for presentation purposes. While re-writing the tool in R, it followed the same structure but just focusing in the main files like the functions and count_goptima files because most of the other files were used in the graphing function and in this case, the original file was not used but still was created in a way to present the output in a graphic way for this paper. In comparison with the NMMSO algorithm, this tool was faster to work with but still generated several issues during the process.
 
 Finally, the whole benchmark tool uses a demo_suite file in order to run it and display the optimal values found using each of the twenty functions with dummy data. This file is considered as one of the most important files within the tool because it helped to understand how the original version used to work. Most of the tests were run with this function and comparing both versions several times until the output given was exactly the same and also focusing in the execution time so it could have a better performance and could be used as a new option in future cases for the CEC. The output of each function can be seen in the following R output:
-
-**Results in R**	
+\newpage	
 	
 	f_ 1  : f(1...1) =  120 
 	f_ 2  : f(1...1) =  5.270904e-92 
@@ -168,7 +167,7 @@ Finally, the whole benchmark tool uses a demo_suite file in order to run it and 
 
 When the decision of re-writing the whole benchmark tool in the R programming language was made, some issues came up regarding the way Matlab handles the matrices and vectors. After analysing the Matlab implementation, it was easier to solve the issues because it was done after the NMMSO implementation and some of these issues were repeated between both implementations. Even if the matrix and vectors caused some problems during the implementation, it was not necessary to use the add_row and add_col functions because it always uses a matrix of one row so it was decided to change the structure so the R implementation would only use vectors to facilitate and simplify its usage. 
 
-After some testing, some issues raised regarding the performance of the tool. As explained in the section before, the tool contains 12 different functions in order to evaluate the algorithm’s data and together with the count_goptima function, get the optimal values for the different parameters given to the NMMSO algorithm. The main problem here was with the last 4 functions (composition functions), some data of an output file was mandatory read and given as a parameter for a further evaluation, making necessary the use of an additional R library in order to read this Matlab’s data files and use them as expected. This solution worked perfectly regarding the output values but increased the processing time because each file had to be read in each iteration so it was decided to create different global variables that read only once each Matlab’s data file and only be called during the iteration process. This worked as expected and reduced the time and processor consumption of the tool, displaying the same results as the Matlab implementation created by the CEC.
+After some testing, some issues raised regarding the performance of the tool. As explained in the section before, the tool contains 12 different functions in order to evaluate the algorithm’s data. Aswell as the count_goptima function to get the optimal values for the different parameters given to the NMMSO algorithm. The main problem here was with the last 4 functions (composition functions), some data of an output file was mandatory read and given as a parameter for a further evaluation, making necessary the use of an additional R library in order to read this Matlab’s data files and use them as expected. This solution worked perfectly regarding the output values but increased the processing time because each file had to be read in each iteration. So it was decided to create different global variables that read each Matlab’s data file only once and only be called during the iteration process. This worked as expected and reduced the time and processor consumption of the tool, displaying similar results as the Matlab implementation created by the CEC.
 
 ----
 
@@ -360,7 +359,7 @@ pander(times)
 
 In this project. a reimplementation of the NMMSO algorithm in R was shown. As part of this project also, a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common differences in the two programming language to implement an existing algorithm in both languages. 
 
-Even though this implementation is not the most performant and certainly had its problems while being implemented a recreation of the NMMSO algorithm and the CEC benchmarking tool have been done which work reliably and provide similar results to the original implementations. 
+Even though this implementation is not the most performant and certainly had its problems while being implemented, a recreation of the NMMSO algorithm and the CEC benchmarking tool have been done which work reliably and provide similar results to the original implementations. 
 
 A foundation to further use this both packages has been set, which enables further testing and invite to reuse the nmmso.R for different uses. Especially an improvement in the implementations performance could be interesting. In this matter it could already help to minimize the I/O actions, which are currently done to gather the benchmarking data. But also other improvements to better match the style of R could help.
 
