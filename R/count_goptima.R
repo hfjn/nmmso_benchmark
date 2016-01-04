@@ -1,9 +1,10 @@
 #' @title count_goptima
+#' @description Evaluates the data given with a niching function and iterates it comparing the data with the rho parameter, determining if an optima has been found or not.
 #'
-#' @param pop
-#' @param nfunc
-#' @param accuracy
-#' @return
+#' @param pop Data given to be evaluated.
+#' @param nfunc Number of the niching function to be used.
+#' @param accuracy Accuracy value for the optima selection criteria.
+#' @return A list containing the number of optimas found and the value of it. (count, finalseeds)
 #'
 #' @export
 count_goptima = function(pop, nfunc, accuracy) {

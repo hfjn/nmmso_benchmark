@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <SearchIndexes Version="1.0">
     <Documents>
+        <Document ID="25">
+            <Title>_Recovered Files</Title>
+        </Document>
         <Document ID="19">
             <Title>Conclusion</Title>
-            <Text>test</Text>
-        </Document>
-        <Document ID="9">
-            <Title>The Implementation</Title>
+            <Text>In this project a reimplementation of the NMMSO algorithm in R was shown. As part of this project also a reimplementation of the CEC Benchmarking Suite was created. It was shown that it is possible to translate a Matlab program into R, while keeping the comparability at a high level. In the programming project approaches have been shown and tested to overcome common difference in the two programming language to implement an existing algorithm in both languages. 
+
+Even though this implementation is not the most performant and certainly had its problems while being implemented a recreation of the NMMSO algorithm and the CEC benchmarking tool have been done which work reliably and provide similar results to the original implementations. 
+
+A foundation to further use this both packages has been set, which enables further testing and invite to reuse the nmmso.R for different uses. </Text>
         </Document>
         <Document ID="21">
             <Title>cec2013-niching-benchmark-tech-report</Title>
@@ -370,11 +374,18 @@ After some testing, some issues raised regarding the performance of the tool. As
         </Document>
         <Document ID="14">
             <Title>Structure of the project</Title>
-            <Text>After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.
+            <Text>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To give the possibilty to collaborate, the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travis CI.
+
+After analysing the algorithm provided in Matlab by Dr. Fieldsend, it was decided to first translate each of the functions into the R programming language. At first instance, this task seemed to be simple because most of the functions were basically managing matrices and vectors, but later this became a problem that will be covered in the pitfalls’ section (4.2) of this paper.
 
 Once all the NMMSO functions existed in R and having the input data, the testing phase started. It has been said, that one of the biggest problems when coding an already existing program into another programming language, is the different behaviours corresponding to each object (in case of an object-oriented language) or its main structure. The first runs came with several errors regarding the matrix generation and handling, slowing down the project in a near future. Using GitHub, it was easier to attack these problems in parallel, having one developer reviewing different functions and the other one, fixing other bugs and continue the testing phase. Also, this was achieved in an easier way, thanks to that each function was coded in an independent R file, making easier and faster the debugging and the fixing of each problem.
 
-Having all the issues solved and the algorithm running with the CEC benchmark tool, also developed in R during this project, </Text>
+Having the algorithm running hand by hand with the CEC benchmark tool, also developed in R during the project, and in order to get the output needed to compare the new implementation with the old one written in Matlab, it was necessary to use the Palma Cluster. This gave a radical change to the project because it was never taken in consideration to use a bigger computational power. It was necessary to implement some batch jobs in order to run the algorithm within the cluster and then specify a way to print and store all the output data later to be analysed and compared. Even if this step was never considered part of the project, it came across in a helpful way because it helped to discover that the NMMSO.R implementation is working properly and in a way that it could be used for further research and investigations.
+
+[^2]: Comprehensive R Archive Network. 
+[^3]: https://cran.r-project.org/web/packages/testthat/index.html
+[^4]: https://cran.r-project.org/web/packages/roxygen2/index.html
+</Text>
         </Document>
         <Document ID="20">
             <Title>Introduction</Title>
@@ -389,8 +400,8 @@ It was the goal of this project to keep up high comparability with the original 
 [^1]: SciPy is a common library for the Python Programming language which brings Statistical Computing capabilities to the language.
 \newpage</Text>
         </Document>
-        <Document ID="25">
-            <Title>_Recovered Files</Title>
+        <Document ID="9">
+            <Title>The Implementation</Title>
         </Document>
     </Documents>
 </SearchIndexes>

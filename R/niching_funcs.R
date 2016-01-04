@@ -87,8 +87,8 @@ niching_func = function(x, func_num) {
 #' No. of global peaks: 2
 #' No. of local peaks: 3
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (1D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 five_uneven_peak_trap = function(x) {
@@ -119,8 +119,8 @@ five_uneven_peak_trap = function(x) {
 #' No. of global peaks: 5
 #' No. of local peaks: 0
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (1D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 equal_maxima = function(x) sin(5 * pi * x)^6
@@ -130,8 +130,8 @@ equal_maxima = function(x) sin(5 * pi * x)^6
 #' No. of global peaks: 1
 #' No. of local peaks: 4
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (1D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 uneven_decreasing_maxima = function(x) {
@@ -145,8 +145,8 @@ uneven_decreasing_maxima = function(x) {
 #' No. of global peaks: 4
 #' No. of local peaks: 0
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 himmelblau = function(x) 200 - (x[1] * x[1] + x[2] - 11) * (x[1] * x[1] + x[2] - 11) - (x[1] + x[2] * x[2] - 7) * (x[1] + x[2] * x[2] - 7)
@@ -156,8 +156,8 @@ himmelblau = function(x) 200 - (x[1] * x[1] + x[2] - 11) * (x[1] * x[1] + x[2] -
 #' No. of global peaks: 2
 #' No. of local peaks: 2
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 six_hump_camel_back = function(x){
@@ -177,8 +177,8 @@ six_hump_camel_back = function(x){
 #' No. of global peaks: n * 3^n
 #' No. of local peaks: many
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D, 3D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 shubert = function(x) {
@@ -197,8 +197,8 @@ shubert = function(x) {
 #' No. of global peaks: 6^n
 #' No. of local peaks: 0
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D, 3D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 vincent = function(x) {
@@ -211,8 +211,8 @@ vincent = function(x) {
 #' No. of global peaks: \prod_{i=1}^n k_i
 #' No. of local peaks: 0
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 modified_rastrigin_all = function(x) {
@@ -255,8 +255,8 @@ M_CF4_20 = readMat("R/data/CF4_M_D20.mat")$M
 #' @title Composition Function 1
 #' @description n = 6
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 CF1 = function(x) {
@@ -285,8 +285,8 @@ CF1 = function(x) {
 #' @title Composition Function 2
 #' @description n = 8
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 CF2 = function(x) {
@@ -315,8 +315,8 @@ CF2 = function(x) {
 #' @title Composition Function 3
 #' @description n = 6
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (2D, 3D, 5D, 10D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 CF3 = function(x) {
@@ -361,8 +361,8 @@ CF3 = function(x) {
 #' @title Composition Function 4
 #' @description n = 8
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated (3D, 5D, 10D, 20D).
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 CF4 = function(x) {
@@ -406,15 +406,15 @@ CF4 = function(x) {
 
 #' @title Hybrid Composition General Framework
 #'
-#' @param x
-#' @param func_num
-#' @param func
-#' @param o
-#' @param sigma
-#' @param lambda
-#' @param bias
-#' @param M
-#' @return
+#' @param x Data matrix to be evaluated.
+#' @param func_num Number of the function to be used.
+#' @param func Function to use during the evaluation.
+#' @param o Omega parameter (Matlab's data file containing a data matrix)
+#' @param sigma Vector containing different sigma values.
+#' @param lambda Vector containing different lambda values.
+#' @param bias Matrix 1xfunc_num full with 0s.
+#' @param M Identity matrix.
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M, CF3_CF4_flag) {
@@ -471,16 +471,16 @@ hybrid_composition_func = function(x, func_num, func, o, sigma, lambda, bias, M,
 
 #' @title Sphere Function
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated.
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 FSphere = function(x) apply(x^2, 1, sum)
 
 #' @title Griewank's Function
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated.
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 FGriewank = function(x) {
@@ -494,16 +494,16 @@ FGriewank = function(x) {
 
 #' @title Rastrigin's Function
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated.
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 FRastrigin = function(x) apply(x^2 - 10 * cos(2 * pi * x) + 10, 1, sum)
 
 #' @title Weierstrass Function
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated.
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 FWeierstrass = function(x) {
@@ -532,8 +532,8 @@ w = function(x, c1, c2) {
 
 #' @title FEF8F2 Function
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated.
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 FEF8F2 = function(x) {
@@ -547,8 +547,8 @@ FEF8F2 = function(x) {
 
 #' @title F8F2 Function
 #'
-#' @param x
-#' @return
+#' @param x Data matrix to be evaluated.
+#' @return Result of the evaluation as a float number.
 #'
 #' @export
 F8F2 = function(x) {
@@ -558,8 +558,8 @@ F8F2 = function(x) {
 
 #' @title Classical Gram Schmidt Function
 #'
-#' @param A
-#' @return
+#' @param x Data matrix to be evaluated (3D, 5D, 10D, 20D).
+#' @return Resulting matrix with the q information.
 #'
 #' @export
 local_gram_schmidt = function(A) {
@@ -572,8 +572,8 @@ local_gram_schmidt = function(A) {
 #' @title Rotation Matrix
 #' @description Generates a D-dimensional rotation matrix with predifined Condition Number (c)
 #'
-#' @param D
-#' @param c
+#' @param D Number of dimensions for the matrix.
+#' @param c Constant matrix 1xfunc_num full of 1s.
 #' @return
 #'
 #' @export

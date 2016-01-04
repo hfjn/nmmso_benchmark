@@ -1,7 +1,7 @@
 #' @title get_no_goptima
 #'
-#' @param nfunc
-#' @return
+#' @param nfunc Number of the niching function to be used.
+#' @return The number of global optimal values to be found depending the function.
 #' 
 #' @export
 get_no_goptima = function(nfunc) {
