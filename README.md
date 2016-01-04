@@ -11,7 +11,7 @@ If you wanna see example usages of the benchmarking framework works you should p
 
 If you are willing to run this on a High Computing Cluster (which is advised if you wanna get serious), you should have a look at [run_parallel.R](https://github.com/jhoffjann/nmmso_benchmark/blob/master/R/run_parallel.R).
 
-For usage with other algorithms you probably want to check the (demo_suite.R)[https://github.com/jhoffjann/nmmso_benchmark/blob/master/R/demo_suite.R] which is an adaptation of example code used in the original benchmarking tool. Keep in mind to remove the comments though.
+For usage with other algorithms you probably want to check the [demo_suite.R](https://github.com/jhoffjann/nmmso_benchmark/blob/master/R/demo_suite.R) which is an adaptation of example code used in the original benchmarking tool. Keep in mind to remove the comments though.
 
 If you are interested in create some nice graphs and tables aswell as result files after your runs you could have a look at [graph_results.R](https://github.com/jhoffjann/nmmso_benchmark/blob/master/R/graph_results.R). It contains the code we used for our technical documentation.
 
