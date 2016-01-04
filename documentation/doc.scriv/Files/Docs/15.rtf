@@ -9,11 +9,7 @@ During the implementation of the NMMSO.R algorithm, some problems regarding the 
 \
 Once the data was completed in order to run the algorithm and get at least a similar output as the original version, the CEC benchmarking tool was intended to be used for testing. Thanks to the CEC organisation, these tools were provided in C++, Java and Matlab to check which one could be the best implementation for this case. After some trials with the C++ version, some issues regarding its implementation and missing documentation lead the development team to re-write the complete benchmarking tool in the R programming language, in order to avoid mixing code and be sure to get the results expected since the beginning of this project. Also, it was thought in a way to supply the research community with a new implementation of this tool for future projects.\
 \
-<<<<<<< Updated upstream
-\pard\pardeftab720\sl288\slmult1\sb100\sa100
-=======
 \pard\pardeftab720\sl288\slmult1\sb100\sa100\qj
->>>>>>> Stashed changes
 \cf0 After solving the previous issues and starting to run the whole algorithm, a memory problem came up. Mainly because of the continuous problem between R and Matlab, this was caused, because one matrix, originally containing only integer values, was added a float value in a certain point within the process. R automatically cloned the integer matrix, creating it with a float type in order to continue without errors for every iteration. In the end having an unnecessary number of matrices allocated in memory, making impossible the computation of the algorithm with a size of 7.9 GB during the iteration 700 out of 50,000 (depending on the function to be evaluated in CEC benchmark suite, the total number of iterations would vary). Even if this issue was solved only by changing the original matrix to contain float values since the beginning, it caused several problems and time consumption during the testing phase.\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qj
 \cf0 \

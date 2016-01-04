@@ -5,7 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css">
 	body {background-color: #bac0c7}
-    p.binderItem {margin: 10.0px 0.0px 0.0px 05.0px; font-family:Cochin, Times, Courier, Arial, serif; font-size:14.0px;}
+    p.binderItem {margin: 10.0px 0.0px 0.0px 05.0px; font-family:Open Sans, Cochin, Times, Courier, Arial, serif; font-size:14.0px;}
     .page {border: 1px solid #727272; background: #fff}
     hr {
       border-top: 1px dashed #000;
@@ -42,9 +42,9 @@
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>CEC</strong><br/>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognized conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society and covers most of the subtopics of the EC.<br/>
+<p class="binderItem"><strong>CEC</strong><br/>The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognized conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society and covers most of the subtopics of the EC [^2].<br/>
 <br/>
-In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2015 held in Sendai, Japan. Here, Dr. Fieldsend was provided with some multimodal benchm...</p>
+In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2015 held in Sendai, Japan. Here, Dr. Fieldsend was provided with some multimodal b...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Implementation and Pitfalls</strong><br/>During the development, an issue raised with the CEC benchmark tool. In order to compare the R implementation of the NMMSO algorithm with the original one, it was mandatory to use this tool to test each of its functions with the new algorithm and compare results. After several complications with the original test suite (these complications will be addressed in the pitfalls’ section), it was decided to recode each of the functions as an independent R package to avoid any further complication and ...</p>
@@ -57,7 +57,7 @@ In order to validate the potential of the NMMSO algorithm, it was submitted to t
 <hr/>
 <ul>
 <li>
-<p class="binderItem"><strong>Structure of the project</strong><br/>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^2] in the future. To give the possibilty to collaborate, the project was managed and versioned via Github. The package was tested with testthat[^3] and documented with roxygen2[^4]. To assure functioning the package was continuously tested with Travis C...</p>
+<p class="binderItem"><strong>Structure of the project</strong><br/>In difference to the original implementation it was chosen to split up all single functions of the nmmso algorithm into single files. These were bundled into the standard R package structure to give the possibility to make it available over CRAN[^3] in the future. To give the possibilty to collaborate, the project was managed and versioned via Github. The package was tested with testthat[^4] and documented with roxygen2[^5]. To assure functioning the package was continuously tested with Travis C...</p>
 </li>
 <li>
 <p class="binderItem"><strong>Pitfalls and Problems</strong><br/>In the beginning of the project, after translating each function into the R programming language and in order to start testing each one of them, some data was missing. The algorithm runs with some parameters that had to be given by the CEC so it was necessary to contact the organisation and ask for the files including the benchmarking tool. Also, Dr. Fieldsend was contacted in order to have a better understanding of the general structure of his algorithm. Once the data was completed, the test ph...</p>

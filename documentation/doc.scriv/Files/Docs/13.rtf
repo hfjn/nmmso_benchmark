@@ -1,12 +1,11 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 AppleSymbols;\f2\froman\fcharset0 Times-Roman;
-\f3\fnil\fcharset0 LucidaGrande;}
-{\colortbl;\red255\green255\blue255;\red191\green191\blue191;}
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
 {\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qj
 
-\f0\fs28 \cf0 The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognized conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society and covers most of the subtopics of the EC.\
+\f0\fs28 \cf0 The IEEE Congress of Evolutionary Computation (CEC) is one of the largest, most important and recognized conferences within Evolutionary Computation (EC). It is organised by the IEEE Computational Intelligence Society in cooperation with the Evolutionary Programming Society and covers most of the subtopics of the EC [^2].\
 \
 In order to validate the potential of the NMMSO algorithm, it was submitted to the IEEE CEC 2015 held in Sendai, Japan. Here, Dr. Fieldsend was provided with some multimodal benchmark test functions with different dimension sizes and characteristics, for evaluating niching algorithms developed by Dr. Xiaodong Li, Dr. Andries Engelbrecht and Dr. Michael G. Epitropakis [@epitropakis_2013]. They state that even if several niching methods have been around for many years, further advances in this area have been hindered by several obstacles; most of the studies focus on very low dimensional multi-modal problems (2 or 3 dimensions) making this more complicated to asses theses methods\'92 scalability to high dimensions with better performance. The benchmark tool includes 20 test functions (in some cases the same function but with different dimension sizes), which includes 10 simple, well-known and widely used benchmark functions, based on recent studies, and more complex functions following the paradigm of composition functions. In the following section, they will be briefly explained:\
 \
@@ -29,172 +28,23 @@ All of the test functions are formulated as maximisation problems. F1, F2 and F3
 \
 The properties of each function can be seen in the following table:\
 \
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalt \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf0 \clbrdrl\brdrs\brdrw20\brdrcf0 \clbrdrb\brdrs\brdrw20\brdrcf0 \clbrdrr\brdrs\brdrw20\brdrcf0 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalt \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf0 \clbrdrl\brdrs\brdrw20\brdrcf0 \clbrdrb\brdrs\brdrw20\brdrcf0 \clbrdrr\brdrs\brdrw20\brdrcf0 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalt \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf0 \clbrdrl\brdrs\brdrw20\brdrcf0 \clbrdrb\brdrs\brdrw20\brdrcf0 \clbrdrr\brdrs\brdrw20\brdrcf0 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qc
-
-\b \cf0 Function\cell 
-\pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qc
-\cf0 Variables Range\cell 
-\pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qc
-\cf0 No. of Global Optima\cell 
-\pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qc
-\cf0 No. of Local Optima
-\b0 \cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalt \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf0 \clbrdrl\brdrs\brdrw20\brdrcf0 \clbrdrb\brdrs\brdrw20\brdrcf0 \clbrdrr\brdrs\brdrw20\brdrcf0 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalt \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf0 \clbrdrl\brdrs\brdrw20\brdrcf0 \clbrdrb\brdrs\brdrw20\brdrcf0 \clbrdrr\brdrs\brdrw20\brdrcf0 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalt \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf0 \clbrdrl\brdrs\brdrw20\brdrcf0 \clbrdrb\brdrs\brdrw20\brdrcf0 \clbrdrr\brdrs\brdrw20\brdrcf0 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-
-\fs24 \cf0 Five-Uneven-Peak Trap\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x 
-\f1 \uc0\u8712 
-\f0  [0, 30] \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 2\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 3\cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalc \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalc \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalc \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 Equal Maxima\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x 
-\f1 \uc0\u8712 
-\f0  [0, 1] \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 5\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 0\cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalc \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalc \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalc \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 Uneven Decreasing Maxima\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x 
-\f1 \uc0\u8712 
-\f0  [0, 1] \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 1\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 4\cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalc \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalc \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalc \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 Himmelblau\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x,y 
-\f1 \uc0\u8712 
-\f0  [\uc0\u8722 6,6] \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 4\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 0\cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalc \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalc \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalc \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 Six-Hump Camel Back\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x 
-\f1 \uc0\u8712 
-\f0  [\uc0\u8722 1.9, 1.9]; \
-y 
-\f1 \uc0\u8712 
-\f0  [\uc0\u8722 1.1, 1.1] \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 2\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 2\cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalc \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalc \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalc \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 Shubert\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x\dn3 i 
-\f1 \up0 \uc0\u8712 
-\f0  [\uc0\u8722 10,10]\up10 D\up0 , i = 1, 2, ..., D \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-D \'b7 3\up10 D\kerning1\expnd0\expndtw0 \up0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 many\cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
-\clvertalc \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalc \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalc \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 Vincent\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x\dn3 i 
-\f1 \up0 \uc0\u8712 
-\f0  [0.25,10]\up10 D\up0 , i = 1, 2, ..., D \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-6\up10 D\kerning1\expnd0\expndtw0 \up0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 0\cell \row
-
-\itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrt\brdrnil \trbrdrr\brdrnil 
-\clvertalc \clshdrawnil \clwWidth2820\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2160
-\clvertalc \clshdrawnil \clwWidth3100\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx4320
-\clvertalc \clshdrawnil \clwWidth3180\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx6480
-\clvertalc \clshdrawnil \clwWidth3020\clftsWidth3 \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 Modified Rastrigin\cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 \expnd0\expndtw0\kerning0
-x\dn3 i 
-\f1 \up0 \uc0\u8712 
-\f0  [0,1]\up10 D\up0 , i = 1, 2, ..., D \kerning1\expnd0\expndtw0 \cell 
-\pard\intbl\itap1\pardeftab720\sl300\sa240\qc\partightenfactor0
-
-\f2\fs26 \cf0 \expnd0\expndtw0\kerning0
-\uc0\u8719 
-\f0\fs24 \up13 D\dn8 i=1 \up0 k\dn3 i\kerning1\expnd0\expndtw0 \up0 \cell 
-\pard\intbl\itap1\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
-\cf0 0\cell \lastrow\row
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qj
-
-\fs28 \cf0 \
+Function 					Variables Range 						#GO						#LO\
+--------					---------------							--------------------	-------------------\
+Five-Uneven-Peak Trap		$x \\in [0, 30]$ 						2						3\
+Equal Maxima				$x \\in [0, 1]$ 							5						0\
+Uneven Decreasing Maxima 	$x \\in [0, 1]$ 							1						4\
+Himmelblau					$x,y \\in [6,6]$ 						4						0\
+Six-Hump Camel Back			$x \\in [1.9, 1.9]$ 						2						2\
+							$y \\in [1.1, 1.1]$ \
+Shubert						$x_i \\in [10,10]^D,i=1,2,...,D$			$D * 3D$ 				many\
+Vincent						$x_i \\in [0.25,10]^D, i = 1,2,...,D$ 	$6^D$ 					0\
+Modified Rastrigin			$x_i \\in [0,1]D, i = 1,2,...,D$ 		$\\Pi^Di=1^\{ki\}$			0\
+--------					---------------							--------------------	-------------------\
+Table: Properties of the test functions used. (#GO = Number of Global Optima, #LO = Number of Local Optima)\
+\
 For simplifying purposes, the composition functions were not taken in consideration because of its complexity, for further and deeper understanding of all functions, please refer to the \expnd0\expndtw0\kerning0
-CEC\'922013 Niching Benchmark Tech Report included in the CEC website.\kerning1\expnd0\expndtw0 \
+CEC\'922013 Niching Benchmark Tech Report \kerning1\expnd0\expndtw0  [@epitropakis_2013]\expnd0\expndtw0\kerning0
+.\kerning1\expnd0\expndtw0 \
 \
 Besides the 12 different functions, also, a $count_goptima$ function was included in order to find the optimal value for each evaluated function in each iteration. Here, some optimal values are already given as well as the number of each value to find. Together with an accuracy rate, the evaluation starts in a cycle and stores the possible optimal values in order to be compared with the expected values using the accuracy rates of 0.1, 0.01, 0.001, 0.0001 and 0.00001 for each different iteration. \
 \
@@ -202,42 +52,27 @@ The structure of the $count_goptima$ function can be seen as a pseudocode:\
 \
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
 \cf0 \expnd0\expndtw0\kerning0
-	input : L\dn3 sorted \up0 - a list of individuals (candidate solutions) sorted in decreasing fitness values;\uc0\u8232 		    \u949  - accuracy level; r - niche radius;\u8232 		    ph - the fitness of global optima (or peak height) \
-	output: S - a list of best-fit individuals identified as solutions \
+	input : \
+	Lsorted #a list of individuals (candidate solutions) sorted in decreasing fitness values;		    \
+	acc #accuracy level; \
+	r #niche radius;		    \
+	ph #the fitness of global optima (or peak height) \
+	output: S  #a list of best-fit individuals identified as solutions \
 	\
 	begin \
-		S = 
-\f1 \uc0\u8709 
-\f0 ;\uc0\u8232 		while 
-\i not reaching the end of 
-\i0 L\dn3 sorted \up0 do \
-			Get best unprocessed p 
-\f1 \uc0\u8712 
-\f0  L\dn3 sorted\up0 ;\
-			found 
-\f3 \uc0\u8592 
-\f0  FALSE;\uc0\u8232 			if d(ph, f it(p)) \u8804  \u949 
-\i ) 
-\i0 then \
-				for 
-\i all 
-\i0 s 
-\f1 \uc0\u8712 
-\f0  S do\uc0\u8232 					if d(s, p) \u8804  r then \
-						found 
-\f3 \uc0\u8592 
-\f0  TRUE; \
+		S = empty;		\
+		while not reaching the end of Lsorted do \
+			Get best unprocessed p partOf Lsorted;\
+			found = FALSE;			\
+			if d(ph, f it(p)) <= acc) then \
+				for all s partOf S do					\
+					if d(s, p)  r then \
+						found = TRUE; \
 						break; \
 					end \
 				end \
-				if 
-\i not 
-\i0 found then \
-					let S 
-\f3 \uc0\u8592 
-\f0  S 
-\f1 \uc0\u8746 
-\f0  \{p\}; \
+				if not found then \
+					let S = S + \{p\}; \
 				end \
 			end \
 		end \
@@ -248,5 +83,4 @@ The structure of the $count_goptima$ function can be seen as a pseudocode:\
 
 \fs28 \cf0 Once the optimal values are found and after comparing them with the same results of the Matlab implementation, it can be concluded that the new implementation works as expected and is ready for submission.\
 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qj
-{\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation"}}{\fldrslt \cf0 https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation}}}
+[^2]: {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation"}}{\fldrslt https://en.wikipedia.org/wiki/IEEE_Congress_on_Evolutionary_Computation}}}

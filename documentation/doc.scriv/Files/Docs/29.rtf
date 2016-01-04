@@ -9,35 +9,35 @@
 \
 The original tool included several files in order to build a main file calling each one and be able to run as needed, including a graphing function for presentation purposes. While re-writing the tool in R, it followed the same structure but just focusing in the main files like the functions and count_goptima files because most of the other files were used in the graphing function and in this case, the original file was not used but still was created in a way to present the output in a graphic way for this paper. In comparison with the NMMSO algorithm, this tool was faster to work with but still generated several issues during the process.\
 \
-Finally, the whole benchmark tool uses a demo_suite file in order to run it and display the optimal values found using each of the twenty functions with dummy data. This file is considered as one of the most important files within the tool because it helped to understand how the original version used to work. Most of the tests were run with this function and comparing both versions several times until the output given was exactly the same and also focusing in the execution time so it could have a better performance and could be used as a new option in future cases for the CEC. The output of each function can be seen in the following list:\
+Finally, the whole benchmark tool uses a demo_suite file in order to run it and display the optimal values found using each of the twenty functions with dummy data. This file is considered as one of the most important files within the tool because it helped to understand how the original version used to work. Most of the tests were run with this function and comparing both versions several times until the output given was exactly the same and also focusing in the execution time so it could have a better performance and could be used as a new option in future cases for the CEC. The output of each function can be seen in the following R output:\
 \
 **Results in R**
 \fs24 \CocoaLigature0 	\
 \pard\tx220\tx720\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\li720\fi-720\pardirnatural\partightenfactor0
-\ls1\ilvl0\cf0 \CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 1  : f(1...1) =  120 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 2  : f(1...1) =  5.270904e-92 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 3  : f(1...1) =  0.02501472 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 4  : f(1...1) =  94 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 5  : f(1...1) =  -3.233333 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 6  : f(1...1) =  -3.180351 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 7  : f(1...1) =  0 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 8  : f(1...1) =  5.671692 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 9  : f(1...1) =  0 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 10  : f(1...1) =  -38 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 11  : f(1...1) =  -268.6638 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 12  : f(1...1) =  -758.9333 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 13  : f(1...1) =  -613.5412 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 14  : f(1...1) =  -1838.556 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 15  : f(1...1) =  -1049.86 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 16  : f(1...1) =  -2149.558 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 17  : f(1...1) =  -1238.211 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 18  : f(1...1) =  -1683.184 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 19  : f(1...1) =  -1342.819 \
-\ls1\ilvl0\CocoaLigature1 {\listtext	\'95	}\CocoaLigature0 f_ 20  : f(1...1) =  -1337.852 
-\fs28 \CocoaLigature1 \
+\ls1\ilvl0\cf0 \CocoaLigature1 	\
+	f_ 1  : f(1...1) =  120 \
+	f_ 2  : f(1...1) =  5.270904e-92 \
+	f_ 3  : f(1...1) =  0.02501472 \
+	f_ 4  : f(1...1) =  94 \
+	f_ 5  : f(1...1) =  -3.233333 \
+	f_ 6  : f(1...1) =  -3.180351 \
+	f_ 7  : f(1...1) =  0 \
+	f_ 8  : f(1...1) =  5.671692 \
+	f_ 9  : f(1...1) =  0 \
+	f_ 10  : f(1...1) =  -38 \
+	f_ 11  : f(1...1) =  -268.6638 \
+	f_ 12  : f(1...1) =  -758.9333 \
+	f_ 13  : f(1...1) =  -613.5412 \
+	f_ 14  : f(1...1) =  -1838.556 \
+	f_ 15  : f(1...1) =  -1049.86 \
+	f_ 16  : f(1...1) =  -2149.558 \
+	f_ 17  : f(1...1) =  -1238.211 \
+	f_ 18  : f(1...1) =  -1683.184 \
+	f_ 19  : f(1...1) =  -1342.819 \
+	f_ 20  : f(1...1) =  -1337.852 
+\fs28 \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\fi360\sl288\slmult1\pardirnatural\qj
 \cf0 \
-Pitfalls\
 \
 When the decision of re-writing the whole benchmark tool in the R programming language was made, some issues came up regarding the way Matlab handles the matrices and vectors. After analysing the Matlab implementation, it was easier to solve the issues because it was done after the NMMSO implementation and some of these issues were repeated between both implementations. Even if the matrix and vectors caused some problems during the implementation, it was not necessary to use the add_row and add_col functions because it always uses a matrix of one row so it was decided to change the structure so the R implementation would only use vectors to facilitate and simplify its usage. \
 \
