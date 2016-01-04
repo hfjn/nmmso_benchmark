@@ -1,7 +1,7 @@
 #' @title get_fgoptima
 #'
-#' @param nfunc
-#' @return
+#' @param nfunc Number of the niching function to be used.
+#' @return The global optimal value for the function needed.
 #'
 #' @export
 get_fgoptima = function(nfunc) {

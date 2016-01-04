@@ -1,7 +1,7 @@
 #' @title get_lb
 #'
-#' @param fno
-#' @return
+#' @param fno Number of the niching function to be used.
+#' @return The lower bound for the function.
 #' 
 #' @export
 get_lb = function(fno) {

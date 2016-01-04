@@ -1,7 +1,7 @@
 #' @title get_rho
 #'
-#' @param nfunc
-#' @return
+#' @param nfunc Number of the niching function to be used.
+#' @return The rho value for the function needed.
 #' 
 #' @export
 get_rho = function(nfunc) {

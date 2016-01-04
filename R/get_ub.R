@@ -1,7 +1,7 @@
 #' @title get_ub
 #'
-#' @param fno
-#' @return
+#' @param fno Number of the niching function to be used.
+#' @return The upper bound for the function needed.
 #' 
 #' @export
 get_ub = function(fno) {
