@@ -21,7 +21,7 @@
 # 	x = matrix(1, 1, d)
 # 	# evaluate the solution
 # 	val = niching_func(x, func_num) # fitness evaluation
-# 	vals = c(vals, val)
+# 	#vals = c(vals, val)
 # 	cat("f_", func_num, " : f(1...1) = ", val, "\n")
 # }
 

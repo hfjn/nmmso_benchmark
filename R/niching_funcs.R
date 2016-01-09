@@ -343,7 +343,7 @@ CF3 = function(x) {
 		} else if(d == 3) {
 			M = M_CF3_3
 		} else if(d == 5) {
-			M = M_CF4_5
+			M = M_CF3_5
 		} else if(d == 10) {
 			M = M_CF3_10
 		} else if(d == 20) {
